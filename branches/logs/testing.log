@@ -1,0 +1,294 @@
+INFO:root:sph fnum = 01000, mass weighted eccent: 
+[-0.00942894  0.00742818  0.        ]
+INFO:root:tidal c avg: 
+[ 6.71752079e-04 -8.94840573e-03 -1.79533134e-06]
+INFO:root:growth: -0.006065279349783384
+INFO:root:prec: 0.5509616829957145
+
+INFO:root:cyl fnum = 01000, mass weighted eccent: 
+[-0.00498433  0.00250318  0.        ]
+INFO:root:tidal c avg: 
+[-2.54489791e-04 -1.04465561e-02  3.05968071e-06]
+INFO:root:growth: -0.004460915433973566
+INFO:root:prec: 1.6942167779387838
+
+INFO:root:cyl fnum = 00500, mass weighted eccent: 
+[-0.00523453  0.00198074  0.        ]
+INFO:root:tidal c avg: 
+[-5.42626826e-04 -1.04356771e-02  6.65065223e-06]
+INFO:root:growth: -0.0031857750351106935
+INFO:root:prec: 1.7782315008663157
+
+INFO:root:sph fnum = 00500, mass weighted eccent: 
+[0.00049373 0.00508239 0.        ]
+INFO:root:tidal c avg: 
+[ 3.24622672e-04 -7.06604413e-03 -1.85495704e-07]
+INFO:root:growth: -0.00700154837465675
+INFO:root:prec: -0.1970735751181023
+
+INFO:root:sph fnum = 00560, mass weighted eccent: 
+[-0.00260211 -0.00656481  0.        ]
+INFO:root:tidal c avg: 
+[-1.05926725e-03 -8.39253838e-03  1.87745900e-06]
+INFO:root:growth: 0.008192317295280253
+INFO:root:prec: 0.2984783272249097
+
+INFO:root:cyl fnum = 00566, mass weighted eccent: 
+[-0.00040231  0.00098828  0.        ]
+INFO:root:tidal c avg: 
+[-5.13524543e-04 -9.64913667e-03  5.67711096e-06]
+INFO:root:growth: -0.008743395806640436
+INFO:root:prec: 3.8552784102350612
+
+INFO:root:cyl fnum = 00568, mass weighted eccent: 
+[-0.00240224  0.00093667  0.        ]
+INFO:root:tidal c avg: 
+[-5.37646388e-04 -9.92217156e-03  5.60130420e-06]
+INFO:root:growth: -0.003103565683642922
+INFO:root:prec: 3.6610470440606755
+
+INFO:root:cyl fnum = 00570, mass weighted eccent: 
+[-0.00429054  0.00153692  0.        ]
+INFO:root:tidal c avg: 
+[-5.20193654e-04 -1.01864374e-02  5.70712257e-06]
+INFO:root:growth: -0.002945425930274231
+INFO:root:prec: 2.142656580268939
+
+INFO:root:cyl fnum = 00572, mass weighted eccent: 
+[-0.00583534  0.00270437  0.        ]
+INFO:root:tidal c avg: 
+[-4.65268246e-04 -1.04182329e-02  5.68319669e-06]
+INFO:root:growth: -0.003958565950127465
+INFO:root:prec: 1.5001203759431814
+
+INFO:root:cyl fnum = 00560, mass weighted eccent: 
+[0.00394964 0.00469061 0.        ]
+INFO:root:tidal c avg: 
+[-2.19444438e-04 -9.24268672e-03  5.95717655e-06]
+INFO:root:growth: -0.007211443100371869
+INFO:root:prec: -0.9434712172669603
+
+INFO:root:cyl fnum = 00562, mass weighted eccent: 
+[0.00298976 0.00297334 0.        ]
+INFO:root:tidal c avg: 
+[-3.62639671e-04 -9.30443834e-03  5.93552955e-06]
+INFO:root:growth: -0.006818214175035817
+INFO:root:prec: -1.5039758863125343
+
+INFO:root:cyl fnum = 00564, mass weighted eccent: 
+[0.00147101 0.00169214 0.        ]
+INFO:root:tidal c avg: 
+[-4.65017425e-04 -9.43342282e-03  5.90153119e-06]
+INFO:root:growth: -0.007424462123549449
+INFO:root:prec: -2.6037861882443365
+
+INFO:root:cyl fnum = 05210, mass weighted eccent: 
+[ 0.03670914 -0.09011205  0.        ]
+INFO:root:tidal c avg: 
+[-9.43327366e-03 -2.96752139e-03 -1.61955330e-06]
+INFO:root:growth: -0.0008106483964632002
+INFO:root:prec: -0.10128991147059781
+
+INFO:root:cyl fnum = 05080, mass weighted eccent: 
+[-0.0958779   0.02824862  0.        ]
+INFO:root:tidal c avg: 
+[ 2.61652563e-03 -3.03395175e-02  2.53100832e-06]
+INFO:root:growth: -0.011084399747321913
+INFO:root:prec: 0.28376558345439273
+
+INFO:root:cyl fnum = 05082, mass weighted eccent: 
+[-0.08031305  0.05478796  0.        ]
+INFO:root:tidal c avg: 
+[ 5.07228533e-03 -2.65135956e-02  4.09818841e-06]
+INFO:root:growth: -0.019131649425882243
+INFO:root:prec: 0.19588508774050437
+
+INFO:root:cyl fnum = 05084, mass weighted eccent: 
+[-0.05588182  0.07513186  0.        ]
+INFO:root:tidal c avg: 
+[ 5.77638622e-03 -1.95238073e-02  5.99078766e-06]
+INFO:root:growth: -0.01911303158224164
+INFO:root:prec: 0.07493922359495929
+
+INFO:root:cyl fnum = 05086, mass weighted eccent: 
+[-0.02543069  0.08710316  0.        ]
+INFO:root:tidal c avg: 
+[ 6.68342884e-03 -1.08891189e-02  4.69838527e-06]
+INFO:root:growth: -0.012325825705146986
+INFO:root:prec: -0.03707090720165104
+
+INFO:root:cyl fnum = 05088, mass weighted eccent: 
+[0.00786062 0.08907956 0.        ]
+INFO:root:tidal c avg: 
+[ 7.57298182e-03 -3.71795237e-03  2.61070697e-06]
+INFO:root:growth: -0.0030378876272306003
+INFO:root:prec: -0.08801138445590917
+
+INFO:root:cyl fnum = 05090, mass weighted eccent: 
+[0.03998107 0.08026847 0.        ]
+INFO:root:tidal c avg: 
+[7.09450677e-03 9.13274002e-04 2.15922488e-06]
+INFO:root:growth: 0.003980542404433671
+INFO:root:prec: -0.0662750286311852
+
+INFO:root:cyl fnum = 05092, mass weighted eccent: 
+[0.06686311 0.06139031 0.        ]
+INFO:root:tidal c avg: 
+[5.79835208e-03 3.56836625e-03 2.58563385e-06]
+INFO:root:growth: 0.0066844734758059795
+INFO:root:prec: -0.01424495917639382
+
+INFO:root:cyl fnum = 05094, mass weighted eccent: 
+[0.08505904 0.03466095 0.        ]
+INFO:root:tidal c avg: 
+[3.74707625e-03 4.71030227e-03 2.16914376e-06]
+INFO:root:growth: 0.005247537183854399
+INFO:root:prec: 0.03209613848425863
+
+INFO:root:cyl fnum = 05096, mass weighted eccent: 
+[0.0921554  0.00340024 0.        ]
+INFO:root:tidal c avg: 
+[9.44040256e-04 4.31715636e-03 1.08337152e-06]
+INFO:root:growth: 0.0011025794399124767
+INFO:root:prec: 0.04640533665904771
+
+INFO:root:cyl fnum = 05098, mass weighted eccent: 
+[ 0.08712175 -0.02843222  0.        ]
+INFO:root:tidal c avg: 
+[-2.19939009e-03  2.62696963e-03 -1.89393235e-07]
+INFO:root:growth: -0.002905872693010833
+INFO:root:prec: 0.019804831088173915
+
+INFO:root:cyl fnum = 05100, mass weighted eccent: 
+[ 0.07047585 -0.05670875  0.        ]
+INFO:root:tidal c avg: 
+[-5.27970347e-03  4.47522848e-05 -9.00832624e-07]
+INFO:root:growth: -0.004141453985689052
+INFO:root:prec: -0.03620448455874471
+
+INFO:root:cyl fnum = 05102, mass weighted eccent: 
+[ 0.04425043 -0.0777158   0.        ]
+INFO:root:tidal c avg: 
+[-8.23475928e-03 -3.02909978e-03 -1.16904279e-06]
+INFO:root:growth: -0.0014422652540337865
+INFO:root:prec: -0.09677729301333221
+
+INFO:root:cyl fnum = 05104, mass weighted eccent: 
+[ 0.01170466 -0.08864455  0.        ]
+INFO:root:tidal c avg: 
+[-9.80366523e-03 -6.72118334e-03 -1.55743309e-06]
+INFO:root:growth: 0.005380007336021682
+INFO:root:prec: -0.11854005893124726
+
+INFO:root:cyl fnum = 05106, mass weighted eccent: 
+[-0.02281412 -0.0882236   0.        ]
+INFO:root:tidal c avg: 
+[-9.50600731e-03 -1.19854470e-02 -2.48377408e-06]
+INFO:root:growth: 0.013983660616149517
+INFO:root:prec: -0.06806653011468672
+
+INFO:root:cyl fnum = 05108, mass weighted eccent: 
+[-0.05503762 -0.07683855  0.        ]
+INFO:root:tidal c avg: 
+[-8.54766797e-03 -1.84610347e-02 -2.55135200e-06]
+INFO:root:growth: 0.019985605387655404
+INFO:root:prec: 0.04021591858092735
+
+INFO:root:cyl fnum = 05110, mass weighted eccent: 
+[-0.08111236 -0.0561519   0.        ]
+INFO:root:tidal c avg: 
+[-6.56359347e-03 -2.48029672e-02 -6.45430527e-07]
+INFO:root:growth: 0.01951424158015343
+INFO:root:prec: 0.1688477714239321
+
+INFO:root:cyl fnum = 05112, mass weighted eccent: 
+[-0.09792043 -0.02878954  0.        ]
+INFO:root:tidal c avg: 
+[-3.55523547e-03 -2.94452247e-02  1.19133981e-06]
+INFO:root:growth: 0.011716509614350116
+INFO:root:prec: 0.26695490243462255
+
+INFO:root:cyl fnum = 05114, mass weighted eccent: 
+[-0.10351073  0.00196016  0.        ]
+INFO:root:tidal c avg: 
+[-2.40403866e-04 -3.15538391e-02  1.49249294e-06]
+INFO:root:growth: -0.00035705888702134103
+INFO:root:prec: 0.3047711058245337
+
+INFO:root:cyl fnum = 05116, mass weighted eccent: 
+[-0.09729588  0.03245189  0.        ]
+INFO:root:tidal c avg: 
+[ 2.97503154e-03 -3.06176474e-02  2.58395129e-06]
+INFO:root:growth: -0.01250969358112277
+INFO:root:prec: 0.27400490346628864
+
+INFO:root:cyl fnum = 05118, mass weighted eccent: 
+[-0.08009632  0.05921495  0.        ]
+INFO:root:tidal c avg: 
+[ 5.29444161e-03 -2.61748595e-02  4.78669842e-06]
+INFO:root:growth: -0.019817691223746714
+INFO:root:prec: 0.1797047200432076
+
+INFO:root:cyl fnum = 00000, mass weighted eccent: 
+[-2.34435501e-08 -3.63700251e-10  0.00000000e+00]
+INFO:root:tidal c avg: 
+[ 3.16507510e-05 -2.20840266e-02  1.04476437e-11]
+INFO:root:growth: 0.0003109206116993219
+INFO:root:prec: 941802.9052599238
+
+INFO:root:cyl fnum = 00002, mass weighted eccent: 
+[-0.5322635   0.35518094  0.        ]
+INFO:root:tidal c avg: 
+[-0.05675799 -0.56139222  0.0013076 ]
+INFO:root:growth: -0.26439837436545643
+INFO:root:prec: 0.7790005319027697
+
+INFO:root:cyl fnum = 00026, mass weighted eccent: 
+[0.20226794 0.15632394 0.        ]
+INFO:root:tidal c avg: 
+[-0.00655767 -0.03322596  0.00011044]
+INFO:root:growth: -0.025506714483143796
+INFO:root:prec: -0.08715332719883044
+
+INFO:root:cyl fnum = 00028, mass weighted eccent: 
+[0.18181003 0.09806653 0.        ]
+INFO:root:tidal c avg: 
+[-0.01040968 -0.02200892  0.0001045 ]
+INFO:root:growth: -0.019610231661671376
+INFO:root:prec: -0.06984921220761017
+
+INFO:root:cyl fnum = 00030, mass weighted eccent: 
+[0.15057001 0.05076254 0.        ]
+INFO:root:tidal c avg: 
+[ 0.00041065 -0.02336118  0.00013688]
+INFO:root:growth: -0.007074033953911151
+INFO:root:prec: -0.14014240459356184
+
+INFO:root:cyl fnum = 00032, mass weighted eccent: 
+[0.11195945 0.01520097 0.        ]
+INFO:root:tidal c avg: 
+[-0.01694802 -0.04753171  0.00016319]
+INFO:root:growth: -0.023188742305215414
+INFO:root:prec: -0.3966788779051258
+
+INFO:root:cyl fnum = 00034, mass weighted eccent: 
+[ 0.06598557 -0.00271881  0.        ]
+INFO:root:tidal c avg: 
+[-1.32810669e-02 -1.85042046e-02  6.77280066e-05]
+INFO:root:growth: -0.012508023222622695
+INFO:root:prec: -0.2882317728937846
+
+INFO:root:cyl fnum = 00036, mass weighted eccent: 
+[ 0.02371213 -0.00479801  0.        ]
+INFO:root:tidal c avg: 
+[ 0.00107356 -0.02811557  0.00011895]
+INFO:root:growth: 0.00662824368382742
+INFO:root:prec: -1.1302665292816587
+
+INFO:root:cyl fnum = 00038, mass weighted eccent: 
+[-0.01213389  0.00258915  0.        ]
+INFO:root:tidal c avg: 
+[-1.18077935e-02 -5.26609394e-02  6.31257704e-05]
+INFO:root:growth: 0.0005583383929810122
+INFO:root:prec: 4.34959207377384
+

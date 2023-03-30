@@ -1,0 +1,6437 @@
+INFO:root:0:00:00.000011
+INFO:root:fnum = 0
+INFO:root:	plot
+INFO:root:0:01:29.172873
+INFO:root:fnum = 2
+INFO:root:	plot
+INFO:root:0:01:20.255155
+INFO:root:fnum = 4
+INFO:root:	plot
+INFO:root:0:01:16.988828
+INFO:root:fnum = 6
+INFO:root:	plot
+INFO:root:0:01:21.416578
+INFO:root:fnum = 8
+INFO:root:	plot
+INFO:root:0:01:20.520324
+INFO:root:fnum = 10
+INFO:root:	plot
+INFO:root:0:01:23.674474
+INFO:root:fnum = 12
+INFO:root:	plot
+INFO:root:0:01:11.787208
+INFO:root:fnum = 14
+INFO:root:	plot
+INFO:root:0:01:11.607446
+INFO:root:fnum = 16
+INFO:root:	plot
+INFO:root:0:01:12.301519
+INFO:root:fnum = 18
+INFO:root:	plot
+INFO:root:0:01:12.857960
+INFO:root:fnum = 20
+INFO:root:	plot
+INFO:root:0:01:11.043024
+INFO:root:fnum = 22
+INFO:root:	plot
+INFO:root:0:01:10.921899
+INFO:root:fnum = 24
+INFO:root:	plot
+INFO:root:0:01:09.704621
+INFO:root:fnum = 26
+INFO:root:	plot
+INFO:root:0:01:11.681712
+INFO:root:fnum = 28
+INFO:root:	plot
+INFO:root:0:01:12.730156
+INFO:root:fnum = 30
+INFO:root:	plot
+INFO:root:0:01:11.875273
+INFO:root:fnum = 32
+INFO:root:	plot
+INFO:root:0:01:10.381013
+INFO:root:fnum = 34
+INFO:root:	plot
+INFO:root:0:01:04.318257
+INFO:root:fnum = 36
+INFO:root:	plot
+INFO:root:0:01:05.450082
+INFO:root:fnum = 38
+INFO:root:	plot
+INFO:root:0:01:06.883289
+INFO:root:fnum = 40
+INFO:root:	plot
+INFO:root:0:01:09.501020
+INFO:root:fnum = 42
+INFO:root:	plot
+INFO:root:0:01:11.018549
+INFO:root:fnum = 44
+INFO:root:	plot
+INFO:root:0:01:08.263039
+INFO:root:fnum = 46
+INFO:root:	plot
+INFO:root:0:01:06.767701
+INFO:root:fnum = 48
+INFO:root:	plot
+INFO:root:0:01:07.002200
+INFO:root:fnum = 50
+INFO:root:	plot
+INFO:root:0:01:06.778588
+INFO:root:fnum = 52
+INFO:root:	plot
+INFO:root:0:01:06.611536
+INFO:root:fnum = 54
+INFO:root:	plot
+INFO:root:0:01:11.074894
+INFO:root:fnum = 56
+INFO:root:	plot
+INFO:root:0:01:22.320803
+INFO:root:fnum = 58
+INFO:root:	plot
+INFO:root:0:01:17.020724
+INFO:root:fnum = 60
+INFO:root:	plot
+INFO:root:0:01:06.982014
+INFO:root:fnum = 62
+INFO:root:	plot
+INFO:root:0:01:06.322702
+INFO:root:fnum = 64
+INFO:root:	plot
+INFO:root:0:01:06.923024
+INFO:root:fnum = 66
+INFO:root:	plot
+INFO:root:0:01:10.082109
+INFO:root:fnum = 68
+INFO:root:	plot
+INFO:root:0:01:11.439533
+INFO:root:fnum = 70
+INFO:root:	plot
+INFO:root:0:01:17.198616
+INFO:root:fnum = 72
+INFO:root:	plot
+INFO:root:0:01:22.792738
+INFO:root:fnum = 74
+INFO:root:	plot
+INFO:root:0:01:22.460436
+INFO:root:fnum = 76
+INFO:root:	plot
+INFO:root:0:01:20.514525
+INFO:root:fnum = 78
+INFO:root:	plot
+INFO:root:0:01:12.359844
+INFO:root:fnum = 80
+INFO:root:	plot
+INFO:root:0:01:12.418722
+INFO:root:fnum = 82
+INFO:root:	plot
+INFO:root:0:01:13.183995
+INFO:root:fnum = 84
+INFO:root:	plot
+INFO:root:0:01:10.912417
+INFO:root:fnum = 86
+INFO:root:	plot
+INFO:root:0:01:09.396652
+INFO:root:fnum = 88
+INFO:root:	plot
+INFO:root:0:01:10.290639
+INFO:root:fnum = 90
+INFO:root:	plot
+INFO:root:0:01:11.733203
+INFO:root:fnum = 92
+INFO:root:	plot
+INFO:root:0:01:13.773742
+INFO:root:fnum = 94
+INFO:root:	plot
+INFO:root:0:01:09.757541
+INFO:root:fnum = 96
+INFO:root:	plot
+INFO:root:0:01:12.372666
+INFO:root:fnum = 98
+INFO:root:	plot
+INFO:root:0:01:04.951505
+INFO:root:fnum = 100
+INFO:root:	plot
+INFO:root:0:00:55.230993
+INFO:root:fnum = 102
+INFO:root:	plot
+INFO:root:0:00:51.211107
+INFO:root:fnum = 104
+INFO:root:	plot
+INFO:root:0:00:53.413375
+INFO:root:fnum = 106
+INFO:root:	plot
+INFO:root:0:00:55.226603
+INFO:root:fnum = 108
+INFO:root:	plot
+INFO:root:0:00:50.789909
+INFO:root:fnum = 110
+INFO:root:	plot
+INFO:root:0:00:50.889106
+INFO:root:fnum = 112
+INFO:root:	plot
+INFO:root:0:00:50.758752
+INFO:root:fnum = 114
+INFO:root:	plot
+INFO:root:0:00:50.900591
+INFO:root:fnum = 116
+INFO:root:	plot
+INFO:root:0:00:50.262662
+INFO:root:fnum = 118
+INFO:root:	plot
+INFO:root:0:00:51.713404
+INFO:root:fnum = 120
+INFO:root:	plot
+INFO:root:0:00:59.027522
+INFO:root:fnum = 122
+INFO:root:	plot
+INFO:root:0:00:55.444058
+INFO:root:fnum = 124
+INFO:root:	plot
+INFO:root:0:00:51.004188
+INFO:root:fnum = 126
+INFO:root:	plot
+INFO:root:0:00:50.716377
+INFO:root:fnum = 128
+INFO:root:	plot
+INFO:root:0:00:50.873168
+INFO:root:fnum = 130
+INFO:root:	plot
+INFO:root:0:00:50.900016
+INFO:root:fnum = 132
+INFO:root:	plot
+INFO:root:0:00:50.784006
+INFO:root:fnum = 134
+INFO:root:	plot
+INFO:root:0:00:50.281005
+INFO:root:fnum = 136
+INFO:root:	plot
+INFO:root:0:00:54.414091
+INFO:root:fnum = 138
+INFO:root:	plot
+INFO:root:0:00:56.620216
+INFO:root:fnum = 140
+INFO:root:	plot
+INFO:root:0:00:57.368619
+INFO:root:fnum = 142
+INFO:root:	plot
+INFO:root:0:00:57.121534
+INFO:root:fnum = 144
+INFO:root:	plot
+INFO:root:0:00:57.708119
+INFO:root:fnum = 146
+INFO:root:	plot
+INFO:root:0:00:57.789656
+INFO:root:fnum = 148
+INFO:root:	plot
+INFO:root:0:00:57.968724
+INFO:root:fnum = 150
+INFO:root:	plot
+INFO:root:0:00:57.645422
+INFO:root:fnum = 152
+INFO:root:	plot
+INFO:root:0:00:57.612248
+INFO:root:fnum = 154
+INFO:root:	plot
+INFO:root:0:00:57.654961
+INFO:root:fnum = 156
+INFO:root:	plot
+INFO:root:0:00:57.271588
+INFO:root:fnum = 158
+INFO:root:	plot
+INFO:root:0:00:57.131804
+INFO:root:fnum = 160
+INFO:root:	plot
+INFO:root:0:00:57.406627
+INFO:root:fnum = 162
+INFO:root:	plot
+INFO:root:0:00:57.337984
+INFO:root:fnum = 164
+INFO:root:	plot
+INFO:root:0:00:57.314547
+INFO:root:fnum = 166
+INFO:root:	plot
+INFO:root:0:00:57.267894
+INFO:root:fnum = 168
+INFO:root:	plot
+INFO:root:0:00:57.022413
+INFO:root:fnum = 170
+INFO:root:	plot
+INFO:root:0:00:55.721401
+INFO:root:fnum = 172
+INFO:root:	plot
+INFO:root:0:00:50.611205
+INFO:root:fnum = 174
+INFO:root:	plot
+INFO:root:0:00:50.445319
+INFO:root:fnum = 176
+INFO:root:	plot
+INFO:root:0:00:50.548629
+INFO:root:fnum = 178
+INFO:root:	plot
+INFO:root:0:00:50.729299
+INFO:root:fnum = 180
+INFO:root:	plot
+INFO:root:0:00:50.247271
+INFO:root:fnum = 182
+INFO:root:	plot
+INFO:root:0:00:50.609159
+INFO:root:fnum = 184
+INFO:root:	plot
+INFO:root:0:00:50.950992
+INFO:root:fnum = 186
+INFO:root:	plot
+INFO:root:0:00:50.624639
+INFO:root:fnum = 188
+INFO:root:	plot
+INFO:root:0:00:51.002196
+INFO:root:fnum = 190
+INFO:root:	plot
+INFO:root:0:00:50.276849
+INFO:root:fnum = 192
+INFO:root:	plot
+INFO:root:0:00:50.702894
+INFO:root:fnum = 194
+INFO:root:	plot
+INFO:root:0:00:50.518322
+INFO:root:fnum = 196
+INFO:root:	plot
+INFO:root:0:00:50.874408
+INFO:root:fnum = 198
+INFO:root:	plot
+INFO:root:0:00:50.637203
+INFO:root:fnum = 200
+INFO:root:	plot
+INFO:root:0:00:50.463216
+INFO:root:fnum = 202
+INFO:root:	plot
+INFO:root:0:00:50.138418
+INFO:root:fnum = 204
+INFO:root:	plot
+INFO:root:0:00:50.582153
+INFO:root:fnum = 206
+INFO:root:	plot
+INFO:root:0:00:50.775608
+INFO:root:fnum = 208
+INFO:root:	plot
+INFO:root:0:00:50.012801
+INFO:root:fnum = 210
+INFO:root:	plot
+INFO:root:0:00:50.572175
+INFO:root:fnum = 212
+INFO:root:	plot
+INFO:root:0:00:51.127579
+INFO:root:fnum = 214
+INFO:root:	plot
+INFO:root:0:00:50.633119
+INFO:root:fnum = 216
+INFO:root:	plot
+INFO:root:0:00:50.184839
+INFO:root:fnum = 218
+INFO:root:	plot
+INFO:root:0:00:49.904807
+INFO:root:fnum = 220
+INFO:root:	plot
+INFO:root:0:00:50.362887
+INFO:root:fnum = 222
+INFO:root:	plot
+INFO:root:0:00:50.488988
+INFO:root:fnum = 224
+INFO:root:	plot
+INFO:root:0:00:50.695270
+INFO:root:fnum = 226
+INFO:root:	plot
+INFO:root:0:00:50.528151
+INFO:root:fnum = 228
+INFO:root:	plot
+INFO:root:0:00:50.657926
+INFO:root:fnum = 230
+INFO:root:	plot
+INFO:root:0:00:50.262723
+INFO:root:fnum = 232
+INFO:root:	plot
+INFO:root:0:00:50.724989
+INFO:root:fnum = 234
+INFO:root:	plot
+INFO:root:0:00:50.535390
+INFO:root:fnum = 236
+INFO:root:	plot
+INFO:root:0:00:51.286590
+INFO:root:fnum = 238
+INFO:root:	plot
+INFO:root:0:00:49.949181
+INFO:root:fnum = 240
+INFO:root:	plot
+INFO:root:0:00:50.887534
+INFO:root:fnum = 242
+INFO:root:	plot
+INFO:root:0:00:50.561298
+INFO:root:fnum = 244
+INFO:root:	plot
+INFO:root:0:00:50.727203
+INFO:root:fnum = 246
+INFO:root:	plot
+INFO:root:0:00:50.033408
+INFO:root:fnum = 248
+INFO:root:	plot
+INFO:root:0:00:51.186385
+INFO:root:fnum = 250
+INFO:root:	plot
+INFO:root:0:00:51.071245
+INFO:root:fnum = 252
+INFO:root:	plot
+INFO:root:0:00:50.423080
+INFO:root:fnum = 254
+INFO:root:	plot
+INFO:root:0:00:50.172909
+INFO:root:fnum = 256
+INFO:root:	plot
+INFO:root:0:00:50.085660
+INFO:root:fnum = 258
+INFO:root:	plot
+INFO:root:0:00:51.435245
+INFO:root:fnum = 260
+INFO:root:	plot
+INFO:root:0:00:50.163620
+INFO:root:fnum = 262
+INFO:root:	plot
+INFO:root:0:00:50.356621
+INFO:root:fnum = 264
+INFO:root:	plot
+INFO:root:0:00:50.472421
+INFO:root:fnum = 266
+INFO:root:	plot
+INFO:root:0:00:50.858865
+INFO:root:fnum = 268
+INFO:root:	plot
+INFO:root:0:00:50.781268
+INFO:root:fnum = 270
+INFO:root:	plot
+INFO:root:0:00:50.235835
+INFO:root:fnum = 272
+INFO:root:	plot
+INFO:root:0:00:50.294078
+INFO:root:fnum = 274
+INFO:root:	plot
+INFO:root:0:00:50.771207
+INFO:root:fnum = 276
+INFO:root:	plot
+INFO:root:0:00:50.656466
+INFO:root:fnum = 278
+INFO:root:	plot
+INFO:root:0:00:51.061887
+INFO:root:fnum = 280
+INFO:root:	plot
+INFO:root:0:00:50.433991
+INFO:root:fnum = 282
+INFO:root:	plot
+INFO:root:0:00:50.844741
+INFO:root:fnum = 284
+INFO:root:	plot
+INFO:root:0:00:50.916669
+INFO:root:fnum = 286
+INFO:root:	plot
+INFO:root:0:00:50.648021
+INFO:root:fnum = 288
+INFO:root:	plot
+INFO:root:0:00:50.362397
+INFO:root:fnum = 290
+INFO:root:	plot
+INFO:root:0:00:50.566046
+INFO:root:fnum = 292
+INFO:root:	plot
+INFO:root:0:00:50.663403
+INFO:root:fnum = 294
+INFO:root:	plot
+INFO:root:0:00:50.550854
+INFO:root:fnum = 296
+INFO:root:	plot
+INFO:root:0:00:50.294159
+INFO:root:fnum = 298
+INFO:root:	plot
+INFO:root:0:00:50.111618
+INFO:root:fnum = 300
+INFO:root:	plot
+INFO:root:0:00:51.253523
+INFO:root:fnum = 302
+INFO:root:	plot
+INFO:root:0:00:50.989278
+INFO:root:fnum = 304
+INFO:root:	plot
+INFO:root:0:00:51.192305
+INFO:root:fnum = 306
+INFO:root:	plot
+INFO:root:0:00:50.635354
+INFO:root:fnum = 308
+INFO:root:	plot
+INFO:root:0:00:50.660382
+INFO:root:fnum = 310
+INFO:root:	plot
+INFO:root:0:00:50.574738
+INFO:root:fnum = 312
+INFO:root:	plot
+INFO:root:0:00:50.401630
+INFO:root:fnum = 314
+INFO:root:	plot
+INFO:root:0:00:50.841370
+INFO:root:fnum = 316
+INFO:root:	plot
+INFO:root:0:00:50.624820
+INFO:root:fnum = 318
+INFO:root:	plot
+INFO:root:0:00:51.098395
+INFO:root:fnum = 320
+INFO:root:	plot
+INFO:root:0:00:50.859101
+INFO:root:fnum = 322
+INFO:root:	plot
+INFO:root:0:00:50.744129
+INFO:root:fnum = 324
+INFO:root:	plot
+INFO:root:0:00:50.407708
+INFO:root:fnum = 326
+INFO:root:	plot
+INFO:root:0:00:50.121048
+INFO:root:fnum = 328
+INFO:root:	plot
+INFO:root:0:00:50.620879
+INFO:root:fnum = 330
+INFO:root:	plot
+INFO:root:0:00:50.835392
+INFO:root:fnum = 332
+INFO:root:	plot
+INFO:root:0:00:50.693936
+INFO:root:fnum = 334
+INFO:root:	plot
+INFO:root:0:00:50.851027
+INFO:root:fnum = 336
+INFO:root:	plot
+INFO:root:0:00:50.641170
+INFO:root:fnum = 338
+INFO:root:	plot
+INFO:root:0:00:50.761212
+INFO:root:fnum = 340
+INFO:root:	plot
+INFO:root:0:00:50.898304
+INFO:root:fnum = 342
+INFO:root:	plot
+INFO:root:0:00:50.529414
+INFO:root:fnum = 344
+INFO:root:	plot
+INFO:root:0:00:49.826885
+INFO:root:fnum = 346
+INFO:root:	plot
+INFO:root:0:00:49.914432
+INFO:root:fnum = 348
+INFO:root:	plot
+INFO:root:0:00:50.323617
+INFO:root:fnum = 350
+INFO:root:	plot
+INFO:root:0:00:49.993666
+INFO:root:fnum = 352
+INFO:root:	plot
+INFO:root:0:00:50.626033
+INFO:root:fnum = 354
+INFO:root:	plot
+INFO:root:0:00:50.029622
+INFO:root:fnum = 356
+INFO:root:	plot
+INFO:root:0:00:49.829270
+INFO:root:fnum = 358
+INFO:root:	plot
+INFO:root:0:00:50.023975
+INFO:root:fnum = 360
+INFO:root:	plot
+INFO:root:0:00:50.476939
+INFO:root:fnum = 362
+INFO:root:	plot
+INFO:root:0:00:49.903950
+INFO:root:fnum = 364
+INFO:root:	plot
+INFO:root:0:00:50.369551
+INFO:root:fnum = 366
+INFO:root:	plot
+INFO:root:0:00:50.865371
+INFO:root:fnum = 368
+INFO:root:	plot
+INFO:root:0:00:50.407782
+INFO:root:fnum = 370
+INFO:root:	plot
+INFO:root:0:00:50.065658
+INFO:root:fnum = 372
+INFO:root:	plot
+INFO:root:0:00:50.076776
+INFO:root:fnum = 374
+INFO:root:	plot
+INFO:root:0:00:50.761670
+INFO:root:fnum = 376
+INFO:root:	plot
+INFO:root:0:00:49.980026
+INFO:root:fnum = 378
+INFO:root:	plot
+INFO:root:0:00:50.808872
+INFO:root:fnum = 380
+INFO:root:	plot
+INFO:root:0:00:49.810182
+INFO:root:fnum = 382
+INFO:root:	plot
+INFO:root:0:00:50.195084
+INFO:root:fnum = 384
+INFO:root:	plot
+INFO:root:0:00:50.380617
+INFO:root:fnum = 386
+INFO:root:	plot
+INFO:root:0:00:49.856521
+INFO:root:fnum = 388
+INFO:root:	plot
+INFO:root:0:00:50.499354
+INFO:root:fnum = 390
+INFO:root:	plot
+INFO:root:0:00:50.157542
+INFO:root:fnum = 392
+INFO:root:	plot
+INFO:root:0:00:50.392647
+INFO:root:fnum = 394
+INFO:root:	plot
+INFO:root:0:00:50.547656
+INFO:root:fnum = 396
+INFO:root:	plot
+INFO:root:0:00:50.144483
+INFO:root:fnum = 398
+INFO:root:	plot
+INFO:root:0:00:50.147229
+INFO:root:fnum = 400
+INFO:root:	plot
+INFO:root:0:00:50.759100
+INFO:root:fnum = 402
+INFO:root:	plot
+INFO:root:0:00:50.614477
+INFO:root:fnum = 404
+INFO:root:	plot
+INFO:root:0:00:50.379947
+INFO:root:fnum = 406
+INFO:root:	plot
+INFO:root:0:00:49.761726
+INFO:root:fnum = 408
+INFO:root:	plot
+INFO:root:0:00:50.127469
+INFO:root:fnum = 410
+INFO:root:	plot
+INFO:root:0:00:50.354057
+INFO:root:fnum = 412
+INFO:root:	plot
+INFO:root:0:00:50.277828
+INFO:root:fnum = 414
+INFO:root:	plot
+INFO:root:0:00:50.507914
+INFO:root:fnum = 416
+INFO:root:	plot
+INFO:root:0:00:49.874695
+INFO:root:fnum = 418
+INFO:root:	plot
+INFO:root:0:00:50.306316
+INFO:root:fnum = 420
+INFO:root:	plot
+INFO:root:0:00:50.493224
+INFO:root:fnum = 422
+INFO:root:	plot
+INFO:root:0:00:49.983253
+INFO:root:fnum = 424
+INFO:root:	plot
+INFO:root:0:00:50.403423
+INFO:root:fnum = 426
+INFO:root:	plot
+INFO:root:0:00:50.530511
+INFO:root:fnum = 428
+INFO:root:	plot
+INFO:root:0:00:50.217284
+INFO:root:fnum = 430
+INFO:root:	plot
+INFO:root:0:00:50.458787
+INFO:root:fnum = 432
+INFO:root:	plot
+INFO:root:0:00:50.304816
+INFO:root:fnum = 434
+INFO:root:	plot
+INFO:root:0:00:50.450213
+INFO:root:fnum = 436
+INFO:root:	plot
+INFO:root:0:00:49.974284
+INFO:root:fnum = 438
+INFO:root:	plot
+INFO:root:0:00:50.478678
+INFO:root:fnum = 440
+INFO:root:	plot
+INFO:root:0:00:50.144842
+INFO:root:fnum = 442
+INFO:root:	plot
+INFO:root:0:00:50.521281
+INFO:root:fnum = 444
+INFO:root:	plot
+INFO:root:0:00:50.288151
+INFO:root:fnum = 446
+INFO:root:	plot
+INFO:root:0:00:50.845497
+INFO:root:fnum = 448
+INFO:root:	plot
+INFO:root:0:00:50.758349
+INFO:root:fnum = 450
+INFO:root:	plot
+INFO:root:0:00:50.365898
+INFO:root:fnum = 452
+INFO:root:	plot
+INFO:root:0:00:49.933855
+INFO:root:fnum = 454
+INFO:root:	plot
+INFO:root:0:00:50.851050
+INFO:root:fnum = 456
+INFO:root:	plot
+INFO:root:0:00:50.162423
+INFO:root:fnum = 458
+INFO:root:	plot
+INFO:root:0:00:50.156837
+INFO:root:fnum = 460
+INFO:root:	plot
+INFO:root:0:00:50.494992
+INFO:root:fnum = 462
+INFO:root:	plot
+INFO:root:0:00:51.255886
+INFO:root:fnum = 464
+INFO:root:	plot
+INFO:root:0:00:50.634998
+INFO:root:fnum = 466
+INFO:root:	plot
+INFO:root:0:00:49.988664
+INFO:root:fnum = 468
+INFO:root:	plot
+INFO:root:0:00:50.314725
+INFO:root:fnum = 470
+INFO:root:	plot
+INFO:root:0:00:50.736611
+INFO:root:fnum = 472
+INFO:root:	plot
+INFO:root:0:00:50.405293
+INFO:root:fnum = 474
+INFO:root:	plot
+INFO:root:0:00:50.403739
+INFO:root:fnum = 476
+INFO:root:	plot
+INFO:root:0:00:50.327727
+INFO:root:fnum = 478
+INFO:root:	plot
+INFO:root:0:00:50.488805
+INFO:root:fnum = 480
+INFO:root:	plot
+INFO:root:0:00:50.814458
+INFO:root:fnum = 482
+INFO:root:	plot
+INFO:root:0:00:51.008702
+INFO:root:fnum = 484
+INFO:root:	plot
+INFO:root:0:00:50.617185
+INFO:root:fnum = 486
+INFO:root:	plot
+INFO:root:0:00:50.573783
+INFO:root:fnum = 488
+INFO:root:	plot
+INFO:root:0:00:49.991758
+INFO:root:fnum = 490
+INFO:root:	plot
+INFO:root:0:00:49.669826
+INFO:root:fnum = 492
+INFO:root:	plot
+INFO:root:0:00:49.954498
+INFO:root:fnum = 494
+INFO:root:	plot
+INFO:root:0:00:50.271492
+INFO:root:fnum = 496
+INFO:root:	plot
+INFO:root:0:00:50.274516
+INFO:root:fnum = 498
+INFO:root:	plot
+INFO:root:0:00:50.490175
+INFO:root:fnum = 500
+INFO:root:	plot
+INFO:root:0:00:49.972986
+INFO:root:fnum = 502
+INFO:root:	plot
+INFO:root:0:00:50.380460
+INFO:root:fnum = 504
+INFO:root:	plot
+INFO:root:0:00:50.197879
+INFO:root:fnum = 506
+INFO:root:	plot
+INFO:root:0:00:50.353424
+INFO:root:fnum = 508
+INFO:root:	plot
+INFO:root:0:00:50.802920
+INFO:root:fnum = 510
+INFO:root:	plot
+INFO:root:0:00:50.775890
+INFO:root:fnum = 512
+INFO:root:	plot
+INFO:root:0:00:49.844591
+INFO:root:fnum = 514
+INFO:root:	plot
+INFO:root:0:00:50.269489
+INFO:root:fnum = 516
+INFO:root:	plot
+INFO:root:0:00:50.232489
+INFO:root:fnum = 518
+INFO:root:	plot
+INFO:root:0:00:50.694609
+INFO:root:fnum = 520
+INFO:root:	plot
+INFO:root:0:00:50.198045
+INFO:root:fnum = 522
+INFO:root:	plot
+INFO:root:0:00:50.565507
+INFO:root:fnum = 524
+INFO:root:	plot
+INFO:root:0:00:49.999148
+INFO:root:fnum = 526
+INFO:root:	plot
+INFO:root:0:00:50.281473
+INFO:root:fnum = 528
+INFO:root:	plot
+INFO:root:0:00:49.672595
+INFO:root:fnum = 530
+INFO:root:	plot
+INFO:root:0:00:50.525192
+INFO:root:fnum = 532
+INFO:root:	plot
+INFO:root:0:00:50.560287
+INFO:root:fnum = 534
+INFO:root:	plot
+INFO:root:0:00:50.572296
+INFO:root:fnum = 536
+INFO:root:	plot
+INFO:root:0:00:50.003482
+INFO:root:fnum = 538
+INFO:root:	plot
+INFO:root:0:00:50.723338
+INFO:root:fnum = 540
+INFO:root:	plot
+INFO:root:0:00:50.138989
+INFO:root:fnum = 542
+INFO:root:	plot
+INFO:root:0:00:50.847486
+INFO:root:fnum = 544
+INFO:root:	plot
+INFO:root:0:00:50.127701
+INFO:root:fnum = 546
+INFO:root:	plot
+INFO:root:0:00:50.428149
+INFO:root:fnum = 548
+INFO:root:	plot
+INFO:root:0:00:50.278649
+INFO:root:fnum = 550
+INFO:root:	plot
+INFO:root:0:00:50.018333
+INFO:root:fnum = 552
+INFO:root:	plot
+INFO:root:0:00:50.342439
+INFO:root:fnum = 554
+INFO:root:	plot
+INFO:root:0:00:50.432708
+INFO:root:fnum = 556
+INFO:root:	plot
+INFO:root:0:00:50.226288
+INFO:root:fnum = 558
+INFO:root:	plot
+INFO:root:0:00:49.949674
+INFO:root:fnum = 560
+INFO:root:	plot
+INFO:root:0:00:50.036690
+INFO:root:fnum = 562
+INFO:root:	plot
+INFO:root:0:00:50.488276
+INFO:root:fnum = 564
+INFO:root:	plot
+INFO:root:0:00:50.812446
+INFO:root:fnum = 566
+INFO:root:	plot
+INFO:root:0:00:49.861610
+INFO:root:fnum = 568
+INFO:root:	plot
+INFO:root:0:00:50.244490
+INFO:root:fnum = 570
+INFO:root:	plot
+INFO:root:0:00:50.734806
+INFO:root:fnum = 572
+INFO:root:	plot
+INFO:root:0:00:50.025065
+INFO:root:fnum = 574
+INFO:root:	plot
+INFO:root:0:00:50.208102
+INFO:root:fnum = 576
+INFO:root:	plot
+INFO:root:0:00:50.321795
+INFO:root:fnum = 578
+INFO:root:	plot
+INFO:root:0:00:50.229105
+INFO:root:fnum = 580
+INFO:root:	plot
+INFO:root:0:00:50.903750
+INFO:root:fnum = 582
+INFO:root:	plot
+INFO:root:0:00:50.146015
+INFO:root:fnum = 584
+INFO:root:	plot
+INFO:root:0:00:50.466623
+INFO:root:fnum = 586
+INFO:root:	plot
+INFO:root:0:00:50.664904
+INFO:root:fnum = 588
+INFO:root:	plot
+INFO:root:0:00:50.469764
+INFO:root:fnum = 590
+INFO:root:	plot
+INFO:root:0:00:51.019126
+INFO:root:fnum = 592
+INFO:root:	plot
+INFO:root:0:00:50.459002
+INFO:root:fnum = 594
+INFO:root:	plot
+INFO:root:0:00:49.681222
+INFO:root:fnum = 596
+INFO:root:	plot
+INFO:root:0:00:50.284241
+INFO:root:fnum = 598
+INFO:root:	plot
+INFO:root:0:00:50.261421
+INFO:root:fnum = 600
+INFO:root:	plot
+INFO:root:0:00:50.298389
+INFO:root:fnum = 602
+INFO:root:	plot
+INFO:root:0:00:50.580156
+INFO:root:fnum = 604
+INFO:root:	plot
+INFO:root:0:00:51.017813
+INFO:root:fnum = 606
+INFO:root:	plot
+INFO:root:0:00:50.376808
+INFO:root:fnum = 608
+INFO:root:	plot
+INFO:root:0:00:50.166759
+INFO:root:fnum = 610
+INFO:root:	plot
+INFO:root:0:00:50.659476
+INFO:root:fnum = 612
+INFO:root:	plot
+INFO:root:0:00:50.182617
+INFO:root:fnum = 614
+INFO:root:	plot
+INFO:root:0:00:50.209693
+INFO:root:fnum = 616
+INFO:root:	plot
+INFO:root:0:00:50.684461
+INFO:root:fnum = 618
+INFO:root:	plot
+INFO:root:0:00:50.104846
+INFO:root:fnum = 620
+INFO:root:	plot
+INFO:root:0:00:49.563874
+INFO:root:fnum = 622
+INFO:root:	plot
+INFO:root:0:00:50.348351
+INFO:root:fnum = 624
+INFO:root:	plot
+INFO:root:0:00:50.352310
+INFO:root:fnum = 626
+INFO:root:	plot
+INFO:root:0:00:50.944978
+INFO:root:fnum = 628
+INFO:root:	plot
+INFO:root:0:00:50.742700
+INFO:root:fnum = 630
+INFO:root:	plot
+INFO:root:0:00:50.036090
+INFO:root:fnum = 632
+INFO:root:	plot
+INFO:root:0:00:49.752513
+INFO:root:fnum = 634
+INFO:root:	plot
+INFO:root:0:00:50.642876
+INFO:root:fnum = 636
+INFO:root:	plot
+INFO:root:0:00:50.341872
+INFO:root:fnum = 638
+INFO:root:	plot
+INFO:root:0:00:51.173925
+INFO:root:fnum = 640
+INFO:root:	plot
+INFO:root:0:00:50.053243
+INFO:root:fnum = 642
+INFO:root:	plot
+INFO:root:0:00:49.899541
+INFO:root:fnum = 644
+INFO:root:	plot
+INFO:root:0:00:50.014819
+INFO:root:fnum = 646
+INFO:root:	plot
+INFO:root:0:00:50.490015
+INFO:root:fnum = 648
+INFO:root:	plot
+INFO:root:0:00:50.182354
+INFO:root:fnum = 650
+INFO:root:	plot
+INFO:root:0:00:50.415259
+INFO:root:fnum = 652
+INFO:root:	plot
+INFO:root:0:00:50.676758
+INFO:root:fnum = 654
+INFO:root:	plot
+INFO:root:0:00:50.604596
+INFO:root:fnum = 656
+INFO:root:	plot
+INFO:root:0:00:50.328803
+INFO:root:fnum = 658
+INFO:root:	plot
+INFO:root:0:00:50.443104
+INFO:root:fnum = 660
+INFO:root:	plot
+INFO:root:0:00:50.469270
+INFO:root:fnum = 662
+INFO:root:	plot
+INFO:root:0:00:50.411489
+INFO:root:fnum = 664
+INFO:root:	plot
+INFO:root:0:00:50.611274
+INFO:root:fnum = 666
+INFO:root:	plot
+INFO:root:0:00:49.515613
+INFO:root:fnum = 668
+INFO:root:	plot
+INFO:root:0:00:50.373465
+INFO:root:fnum = 670
+INFO:root:	plot
+INFO:root:0:00:50.023039
+INFO:root:fnum = 672
+INFO:root:	plot
+INFO:root:0:00:50.266573
+INFO:root:fnum = 674
+INFO:root:	plot
+INFO:root:0:00:50.233840
+INFO:root:fnum = 676
+INFO:root:	plot
+INFO:root:0:00:51.964155
+INFO:root:fnum = 678
+INFO:root:	plot
+INFO:root:0:00:52.903719
+INFO:root:fnum = 680
+INFO:root:	plot
+INFO:root:0:00:54.015299
+INFO:root:fnum = 682
+INFO:root:	plot
+INFO:root:0:00:53.986302
+INFO:root:fnum = 684
+INFO:root:	plot
+INFO:root:0:00:51.342538
+INFO:root:fnum = 686
+INFO:root:	plot
+INFO:root:0:00:50.868235
+INFO:root:fnum = 688
+INFO:root:	plot
+INFO:root:0:00:50.224495
+INFO:root:fnum = 690
+INFO:root:	plot
+INFO:root:0:00:50.589205
+INFO:root:fnum = 692
+INFO:root:	plot
+INFO:root:0:00:50.337508
+INFO:root:fnum = 694
+INFO:root:	plot
+INFO:root:0:00:50.092486
+INFO:root:fnum = 696
+INFO:root:	plot
+INFO:root:0:00:50.143531
+INFO:root:fnum = 698
+INFO:root:	plot
+INFO:root:0:00:50.832885
+INFO:root:fnum = 700
+INFO:root:	plot
+INFO:root:0:00:50.774792
+INFO:root:fnum = 702
+INFO:root:	plot
+INFO:root:0:00:50.236143
+INFO:root:fnum = 704
+INFO:root:	plot
+INFO:root:0:00:49.913980
+INFO:root:fnum = 706
+INFO:root:	plot
+INFO:root:0:00:50.375121
+INFO:root:fnum = 708
+INFO:root:	plot
+INFO:root:0:00:50.420288
+INFO:root:fnum = 710
+INFO:root:	plot
+INFO:root:0:00:50.211194
+INFO:root:fnum = 712
+INFO:root:	plot
+INFO:root:0:00:50.365263
+INFO:root:fnum = 714
+INFO:root:	plot
+INFO:root:0:00:49.956992
+INFO:root:fnum = 716
+INFO:root:	plot
+INFO:root:0:00:50.211888
+INFO:root:fnum = 718
+INFO:root:	plot
+INFO:root:0:00:50.279241
+INFO:root:fnum = 720
+INFO:root:	plot
+INFO:root:0:00:50.557969
+INFO:root:fnum = 722
+INFO:root:	plot
+INFO:root:0:00:49.972351
+INFO:root:fnum = 724
+INFO:root:	plot
+INFO:root:0:00:50.357013
+INFO:root:fnum = 726
+INFO:root:	plot
+INFO:root:0:00:50.735218
+INFO:root:fnum = 728
+INFO:root:	plot
+INFO:root:0:00:50.608409
+INFO:root:fnum = 730
+INFO:root:	plot
+INFO:root:0:00:49.885434
+INFO:root:fnum = 732
+INFO:root:	plot
+INFO:root:0:00:50.387189
+INFO:root:fnum = 734
+INFO:root:	plot
+INFO:root:0:00:50.785746
+INFO:root:fnum = 736
+INFO:root:	plot
+INFO:root:0:00:50.448971
+INFO:root:fnum = 738
+INFO:root:	plot
+INFO:root:0:00:50.279483
+INFO:root:fnum = 740
+INFO:root:	plot
+INFO:root:0:00:50.531981
+INFO:root:fnum = 742
+INFO:root:	plot
+INFO:root:0:00:49.918499
+INFO:root:fnum = 744
+INFO:root:	plot
+INFO:root:0:00:49.922425
+INFO:root:fnum = 746
+INFO:root:	plot
+INFO:root:0:00:50.519798
+INFO:root:fnum = 748
+INFO:root:	plot
+INFO:root:0:00:51.351592
+INFO:root:fnum = 750
+INFO:root:	plot
+INFO:root:0:00:50.324289
+INFO:root:fnum = 752
+INFO:root:	plot
+INFO:root:0:00:50.086153
+INFO:root:fnum = 754
+INFO:root:	plot
+INFO:root:0:00:50.310554
+INFO:root:fnum = 756
+INFO:root:	plot
+INFO:root:0:00:50.134527
+INFO:root:fnum = 758
+INFO:root:	plot
+INFO:root:0:00:50.232971
+INFO:root:fnum = 760
+INFO:root:	plot
+INFO:root:0:00:50.491614
+INFO:root:fnum = 762
+INFO:root:	plot
+INFO:root:0:00:49.909759
+INFO:root:fnum = 764
+INFO:root:	plot
+INFO:root:0:00:50.826267
+INFO:root:fnum = 766
+INFO:root:	plot
+INFO:root:0:00:50.356503
+INFO:root:fnum = 768
+INFO:root:	plot
+INFO:root:0:00:50.579793
+INFO:root:fnum = 770
+INFO:root:	plot
+INFO:root:0:00:50.482989
+INFO:root:fnum = 772
+INFO:root:	plot
+INFO:root:0:00:50.377623
+INFO:root:fnum = 774
+INFO:root:	plot
+INFO:root:0:00:50.822758
+INFO:root:fnum = 776
+INFO:root:	plot
+INFO:root:0:00:50.503578
+INFO:root:fnum = 778
+INFO:root:	plot
+INFO:root:0:00:50.526795
+INFO:root:fnum = 780
+INFO:root:	plot
+INFO:root:0:00:50.221543
+INFO:root:fnum = 782
+INFO:root:	plot
+INFO:root:0:00:50.709416
+INFO:root:fnum = 784
+INFO:root:	plot
+INFO:root:0:00:50.520589
+INFO:root:fnum = 786
+INFO:root:	plot
+INFO:root:0:00:49.970932
+INFO:root:fnum = 788
+INFO:root:	plot
+INFO:root:0:00:49.803437
+INFO:root:fnum = 790
+INFO:root:	plot
+INFO:root:0:00:50.636388
+INFO:root:fnum = 792
+INFO:root:	plot
+INFO:root:0:00:50.561305
+INFO:root:fnum = 794
+INFO:root:	plot
+INFO:root:0:00:50.126836
+INFO:root:fnum = 796
+INFO:root:	plot
+INFO:root:0:00:50.767025
+INFO:root:fnum = 798
+INFO:root:	plot
+INFO:root:0:00:50.030354
+INFO:root:fnum = 800
+INFO:root:	plot
+INFO:root:0:00:50.649971
+INFO:root:fnum = 802
+INFO:root:	plot
+INFO:root:0:00:50.309263
+INFO:root:fnum = 804
+INFO:root:	plot
+INFO:root:0:00:50.695617
+INFO:root:fnum = 806
+INFO:root:	plot
+INFO:root:0:00:50.706632
+INFO:root:fnum = 808
+INFO:root:	plot
+INFO:root:0:00:50.367879
+INFO:root:fnum = 810
+INFO:root:	plot
+INFO:root:0:00:49.854245
+INFO:root:fnum = 812
+INFO:root:	plot
+INFO:root:0:00:49.796196
+INFO:root:fnum = 814
+INFO:root:	plot
+INFO:root:0:00:50.242487
+INFO:root:fnum = 816
+INFO:root:	plot
+INFO:root:0:00:50.405701
+INFO:root:fnum = 818
+INFO:root:	plot
+INFO:root:0:00:50.532743
+INFO:root:fnum = 820
+INFO:root:	plot
+INFO:root:0:00:50.165323
+INFO:root:fnum = 822
+INFO:root:	plot
+INFO:root:0:00:50.374269
+INFO:root:fnum = 824
+INFO:root:	plot
+INFO:root:0:00:50.709487
+INFO:root:fnum = 826
+INFO:root:	plot
+INFO:root:0:00:50.065138
+INFO:root:fnum = 828
+INFO:root:	plot
+INFO:root:0:00:50.095344
+INFO:root:fnum = 830
+INFO:root:	plot
+INFO:root:0:00:51.032540
+INFO:root:fnum = 832
+INFO:root:	plot
+INFO:root:0:00:50.056066
+INFO:root:fnum = 834
+INFO:root:	plot
+INFO:root:0:00:49.905191
+INFO:root:fnum = 836
+INFO:root:	plot
+INFO:root:0:00:50.148717
+INFO:root:fnum = 838
+INFO:root:	plot
+INFO:root:0:00:50.268143
+INFO:root:fnum = 840
+INFO:root:	plot
+INFO:root:0:00:50.365709
+INFO:root:fnum = 842
+INFO:root:	plot
+INFO:root:0:00:50.287722
+INFO:root:fnum = 844
+INFO:root:	plot
+INFO:root:0:00:50.704185
+INFO:root:fnum = 846
+INFO:root:	plot
+INFO:root:0:00:50.454644
+INFO:root:fnum = 848
+INFO:root:	plot
+INFO:root:0:00:50.037324
+INFO:root:fnum = 850
+INFO:root:	plot
+INFO:root:0:00:51.014369
+INFO:root:fnum = 852
+INFO:root:	plot
+INFO:root:0:00:50.348012
+INFO:root:fnum = 854
+INFO:root:	plot
+INFO:root:0:00:50.307038
+INFO:root:fnum = 856
+INFO:root:	plot
+INFO:root:0:00:50.111220
+INFO:root:fnum = 858
+INFO:root:	plot
+INFO:root:0:00:50.389085
+INFO:root:fnum = 860
+INFO:root:	plot
+INFO:root:0:00:50.460983
+INFO:root:fnum = 862
+INFO:root:	plot
+INFO:root:0:00:50.551667
+INFO:root:fnum = 864
+INFO:root:	plot
+INFO:root:0:00:50.673688
+INFO:root:fnum = 866
+INFO:root:	plot
+INFO:root:0:00:50.577705
+INFO:root:fnum = 868
+INFO:root:	plot
+INFO:root:0:00:50.433186
+INFO:root:fnum = 870
+INFO:root:	plot
+INFO:root:0:00:49.911487
+INFO:root:fnum = 872
+INFO:root:	plot
+INFO:root:0:00:50.004098
+INFO:root:fnum = 874
+INFO:root:	plot
+INFO:root:0:00:50.174725
+INFO:root:fnum = 876
+INFO:root:	plot
+INFO:root:0:00:50.685512
+INFO:root:fnum = 878
+INFO:root:	plot
+INFO:root:0:00:50.613874
+INFO:root:fnum = 880
+INFO:root:	plot
+INFO:root:0:00:50.124710
+INFO:root:fnum = 882
+INFO:root:	plot
+INFO:root:0:00:50.513956
+INFO:root:fnum = 884
+INFO:root:	plot
+INFO:root:0:00:50.111507
+INFO:root:fnum = 886
+INFO:root:	plot
+INFO:root:0:00:50.112144
+INFO:root:fnum = 888
+INFO:root:	plot
+INFO:root:0:00:50.701975
+INFO:root:fnum = 890
+INFO:root:	plot
+INFO:root:0:00:50.721438
+INFO:root:fnum = 892
+INFO:root:	plot
+INFO:root:0:00:50.774376
+INFO:root:fnum = 894
+INFO:root:	plot
+INFO:root:0:00:50.101086
+INFO:root:fnum = 896
+INFO:root:	plot
+INFO:root:0:00:50.230151
+INFO:root:fnum = 898
+INFO:root:	plot
+INFO:root:0:00:50.716089
+INFO:root:fnum = 900
+INFO:root:	plot
+INFO:root:0:00:50.204214
+INFO:root:fnum = 902
+INFO:root:	plot
+INFO:root:0:00:51.076833
+INFO:root:fnum = 904
+INFO:root:	plot
+INFO:root:0:00:49.809273
+INFO:root:fnum = 906
+INFO:root:	plot
+INFO:root:0:00:50.469185
+INFO:root:fnum = 908
+INFO:root:	plot
+INFO:root:0:00:50.325775
+INFO:root:fnum = 910
+INFO:root:	plot
+INFO:root:0:00:50.312128
+INFO:root:fnum = 912
+INFO:root:	plot
+INFO:root:0:00:50.044332
+INFO:root:fnum = 914
+INFO:root:	plot
+INFO:root:0:00:50.957223
+INFO:root:fnum = 916
+INFO:root:	plot
+INFO:root:0:00:50.400194
+INFO:root:fnum = 918
+INFO:root:	plot
+INFO:root:0:00:50.264731
+INFO:root:fnum = 920
+INFO:root:	plot
+INFO:root:0:00:49.837716
+INFO:root:fnum = 922
+INFO:root:	plot
+INFO:root:0:00:50.368132
+INFO:root:fnum = 924
+INFO:root:	plot
+INFO:root:0:00:50.152744
+INFO:root:fnum = 926
+INFO:root:	plot
+INFO:root:0:00:50.718149
+INFO:root:fnum = 928
+INFO:root:	plot
+INFO:root:0:00:50.320318
+INFO:root:fnum = 930
+INFO:root:	plot
+INFO:root:0:00:49.932933
+INFO:root:fnum = 932
+INFO:root:	plot
+INFO:root:0:00:50.272589
+INFO:root:fnum = 934
+INFO:root:	plot
+INFO:root:0:00:49.748908
+INFO:root:fnum = 936
+INFO:root:	plot
+INFO:root:0:00:50.092975
+INFO:root:fnum = 938
+INFO:root:	plot
+INFO:root:0:00:50.747833
+INFO:root:fnum = 940
+INFO:root:	plot
+INFO:root:0:00:50.043023
+INFO:root:fnum = 942
+INFO:root:	plot
+INFO:root:0:00:50.368026
+INFO:root:fnum = 944
+INFO:root:	plot
+INFO:root:0:00:50.826097
+INFO:root:fnum = 946
+INFO:root:	plot
+INFO:root:0:00:52.530840
+INFO:root:fnum = 948
+INFO:root:	plot
+INFO:root:0:00:50.521505
+INFO:root:fnum = 950
+INFO:root:	plot
+INFO:root:0:00:50.619867
+INFO:root:fnum = 952
+INFO:root:	plot
+INFO:root:0:00:49.920357
+INFO:root:fnum = 954
+INFO:root:	plot
+INFO:root:0:00:50.423020
+INFO:root:fnum = 956
+INFO:root:	plot
+INFO:root:0:00:50.893548
+INFO:root:fnum = 958
+INFO:root:	plot
+INFO:root:0:00:50.295119
+INFO:root:fnum = 960
+INFO:root:	plot
+INFO:root:0:00:50.193304
+INFO:root:fnum = 962
+INFO:root:	plot
+INFO:root:0:00:52.345989
+INFO:root:fnum = 964
+INFO:root:	plot
+INFO:root:0:00:50.951103
+INFO:root:fnum = 966
+INFO:root:	plot
+INFO:root:0:00:49.883987
+INFO:root:fnum = 968
+INFO:root:	plot
+INFO:root:0:00:50.701869
+INFO:root:fnum = 970
+INFO:root:	plot
+INFO:root:0:00:50.877858
+INFO:root:fnum = 972
+INFO:root:	plot
+INFO:root:0:00:49.923056
+INFO:root:fnum = 974
+INFO:root:	plot
+INFO:root:0:00:50.704201
+INFO:root:fnum = 976
+INFO:root:	plot
+INFO:root:0:00:50.068685
+INFO:root:fnum = 978
+INFO:root:	plot
+INFO:root:0:00:50.891971
+INFO:root:fnum = 980
+INFO:root:	plot
+INFO:root:0:00:50.639931
+INFO:root:fnum = 982
+INFO:root:	plot
+INFO:root:0:00:50.364958
+INFO:root:fnum = 984
+INFO:root:	plot
+INFO:root:0:00:50.385144
+INFO:root:fnum = 986
+INFO:root:	plot
+INFO:root:0:00:50.496697
+INFO:root:fnum = 988
+INFO:root:	plot
+INFO:root:0:00:50.641955
+INFO:root:fnum = 990
+INFO:root:	plot
+INFO:root:0:00:50.239787
+INFO:root:fnum = 992
+INFO:root:	plot
+INFO:root:0:00:50.442254
+INFO:root:fnum = 994
+INFO:root:	plot
+INFO:root:0:00:50.100161
+INFO:root:fnum = 996
+INFO:root:	plot
+INFO:root:0:00:50.050686
+INFO:root:fnum = 998
+INFO:root:	plot
+INFO:root:0:00:50.676100
+INFO:root:fnum = 1000
+INFO:root:	plot
+INFO:root:0:00:51.250091
+INFO:root:fnum = 1002
+INFO:root:	plot
+INFO:root:0:00:50.667964
+INFO:root:fnum = 1004
+INFO:root:	plot
+INFO:root:0:00:51.660555
+INFO:root:fnum = 1006
+INFO:root:	plot
+INFO:root:0:01:04.422845
+INFO:root:fnum = 1008
+INFO:root:	plot
+INFO:root:0:00:51.327038
+INFO:root:fnum = 1010
+INFO:root:	plot
+INFO:root:0:00:50.501003
+INFO:root:fnum = 1012
+INFO:root:	plot
+INFO:root:0:00:50.378401
+INFO:root:fnum = 1014
+INFO:root:	plot
+INFO:root:0:00:50.943249
+INFO:root:fnum = 1016
+INFO:root:	plot
+INFO:root:0:00:50.407412
+INFO:root:fnum = 1018
+INFO:root:	plot
+INFO:root:0:00:50.443384
+INFO:root:fnum = 1020
+INFO:root:	plot
+INFO:root:0:00:50.234163
+INFO:root:fnum = 1022
+INFO:root:	plot
+INFO:root:0:00:50.514270
+INFO:root:fnum = 1024
+INFO:root:	plot
+INFO:root:0:00:50.225952
+INFO:root:fnum = 1026
+INFO:root:	plot
+INFO:root:0:00:50.149663
+INFO:root:fnum = 1028
+INFO:root:	plot
+INFO:root:0:00:50.377801
+INFO:root:fnum = 1030
+INFO:root:	plot
+INFO:root:0:00:50.089286
+INFO:root:fnum = 1032
+INFO:root:	plot
+INFO:root:0:00:50.673580
+INFO:root:fnum = 1034
+INFO:root:	plot
+INFO:root:0:00:51.195841
+INFO:root:fnum = 1036
+INFO:root:	plot
+INFO:root:0:00:50.976562
+INFO:root:fnum = 1038
+INFO:root:	plot
+INFO:root:0:00:50.135064
+INFO:root:fnum = 1040
+INFO:root:	plot
+INFO:root:0:00:49.903269
+INFO:root:fnum = 1042
+INFO:root:	plot
+INFO:root:0:00:50.507640
+INFO:root:fnum = 1044
+INFO:root:	plot
+INFO:root:0:00:50.788722
+INFO:root:fnum = 1046
+INFO:root:	plot
+INFO:root:0:00:50.871876
+INFO:root:fnum = 1048
+INFO:root:	plot
+INFO:root:0:00:50.376429
+INFO:root:fnum = 1050
+INFO:root:	plot
+INFO:root:0:00:49.867232
+INFO:root:fnum = 1052
+INFO:root:	plot
+INFO:root:0:00:50.549867
+INFO:root:fnum = 1054
+INFO:root:	plot
+INFO:root:0:00:50.143624
+INFO:root:fnum = 1056
+INFO:root:	plot
+INFO:root:0:00:50.531589
+INFO:root:fnum = 1058
+INFO:root:	plot
+INFO:root:0:00:50.470530
+INFO:root:fnum = 1060
+INFO:root:	plot
+INFO:root:0:00:50.210058
+INFO:root:fnum = 1062
+INFO:root:	plot
+INFO:root:0:00:49.825598
+INFO:root:fnum = 1064
+INFO:root:	plot
+INFO:root:0:00:50.277681
+INFO:root:fnum = 1066
+INFO:root:	plot
+INFO:root:0:00:50.462734
+INFO:root:fnum = 1068
+INFO:root:	plot
+INFO:root:0:00:50.536386
+INFO:root:fnum = 1070
+INFO:root:	plot
+INFO:root:0:00:50.411326
+INFO:root:fnum = 1072
+INFO:root:	plot
+INFO:root:0:00:50.268335
+INFO:root:fnum = 1074
+INFO:root:	plot
+INFO:root:0:00:50.579843
+INFO:root:fnum = 1076
+INFO:root:	plot
+INFO:root:0:00:49.917513
+INFO:root:fnum = 1078
+INFO:root:	plot
+INFO:root:0:00:49.993484
+INFO:root:fnum = 1080
+INFO:root:	plot
+INFO:root:0:00:50.673336
+INFO:root:fnum = 1082
+INFO:root:	plot
+INFO:root:0:00:50.030638
+INFO:root:fnum = 1084
+INFO:root:	plot
+INFO:root:0:00:50.046017
+INFO:root:fnum = 1086
+INFO:root:	plot
+INFO:root:0:00:50.756208
+INFO:root:fnum = 1088
+INFO:root:	plot
+INFO:root:0:00:50.591362
+INFO:root:fnum = 1090
+INFO:root:	plot
+INFO:root:0:00:50.441732
+INFO:root:fnum = 1092
+INFO:root:	plot
+INFO:root:0:00:50.126872
+INFO:root:fnum = 1094
+INFO:root:	plot
+INFO:root:0:00:50.200375
+INFO:root:fnum = 1096
+INFO:root:	plot
+INFO:root:0:00:50.368625
+INFO:root:fnum = 1098
+INFO:root:	plot
+INFO:root:0:00:49.581971
+INFO:root:fnum = 1100
+INFO:root:	plot
+INFO:root:0:00:50.262916
+INFO:root:fnum = 1102
+INFO:root:	plot
+INFO:root:0:00:50.107614
+INFO:root:fnum = 1104
+INFO:root:	plot
+INFO:root:0:00:50.590964
+INFO:root:fnum = 1106
+INFO:root:	plot
+INFO:root:0:00:50.571687
+INFO:root:fnum = 1108
+INFO:root:	plot
+INFO:root:0:00:50.548086
+INFO:root:fnum = 1110
+INFO:root:	plot
+INFO:root:0:00:50.432258
+INFO:root:fnum = 1112
+INFO:root:	plot
+INFO:root:0:00:49.506197
+INFO:root:fnum = 1114
+INFO:root:	plot
+INFO:root:0:00:50.771425
+INFO:root:fnum = 1116
+INFO:root:	plot
+INFO:root:0:00:51.062686
+INFO:root:fnum = 1118
+INFO:root:	plot
+INFO:root:0:00:50.192228
+INFO:root:fnum = 1120
+INFO:root:	plot
+INFO:root:0:00:50.132923
+INFO:root:fnum = 1122
+INFO:root:	plot
+INFO:root:0:00:51.023276
+INFO:root:fnum = 1124
+INFO:root:	plot
+INFO:root:0:00:50.377165
+INFO:root:fnum = 1126
+INFO:root:	plot
+INFO:root:0:00:50.412068
+INFO:root:fnum = 1128
+INFO:root:	plot
+INFO:root:0:00:50.424597
+INFO:root:fnum = 1130
+INFO:root:	plot
+INFO:root:0:00:50.711539
+INFO:root:fnum = 1132
+INFO:root:	plot
+INFO:root:0:00:50.808968
+INFO:root:fnum = 1134
+INFO:root:	plot
+INFO:root:0:00:50.363572
+INFO:root:fnum = 1136
+INFO:root:	plot
+INFO:root:0:00:50.792966
+INFO:root:fnum = 1138
+INFO:root:	plot
+INFO:root:0:00:49.968066
+INFO:root:fnum = 1140
+INFO:root:	plot
+INFO:root:0:00:50.584938
+INFO:root:fnum = 1142
+INFO:root:	plot
+INFO:root:0:00:50.972946
+INFO:root:fnum = 1144
+INFO:root:	plot
+INFO:root:0:00:50.791298
+INFO:root:fnum = 1146
+INFO:root:	plot
+INFO:root:0:00:50.392086
+INFO:root:fnum = 1148
+INFO:root:	plot
+INFO:root:0:00:51.230329
+INFO:root:fnum = 1150
+INFO:root:	plot
+INFO:root:0:00:49.906512
+INFO:root:fnum = 1152
+INFO:root:	plot
+INFO:root:0:00:50.703689
+INFO:root:fnum = 1154
+INFO:root:	plot
+INFO:root:0:00:50.536595
+INFO:root:fnum = 1156
+INFO:root:	plot
+INFO:root:0:00:50.327877
+INFO:root:fnum = 1158
+INFO:root:	plot
+INFO:root:0:00:50.963942
+INFO:root:fnum = 1160
+INFO:root:	plot
+INFO:root:0:00:50.749897
+INFO:root:fnum = 1162
+INFO:root:	plot
+INFO:root:0:00:50.583729
+INFO:root:fnum = 1164
+INFO:root:	plot
+INFO:root:0:00:50.906207
+INFO:root:fnum = 1166
+INFO:root:	plot
+INFO:root:0:00:50.366336
+INFO:root:fnum = 1168
+INFO:root:	plot
+INFO:root:0:00:50.294812
+INFO:root:fnum = 1170
+INFO:root:	plot
+INFO:root:0:00:50.548254
+INFO:root:fnum = 1172
+INFO:root:	plot
+INFO:root:0:00:50.184619
+INFO:root:fnum = 1174
+INFO:root:	plot
+INFO:root:0:00:51.193685
+INFO:root:fnum = 1176
+INFO:root:	plot
+INFO:root:0:00:50.349084
+INFO:root:fnum = 1178
+INFO:root:	plot
+INFO:root:0:00:50.708878
+INFO:root:fnum = 1180
+INFO:root:	plot
+INFO:root:0:00:50.812291
+INFO:root:fnum = 1182
+INFO:root:	plot
+INFO:root:0:00:50.571796
+INFO:root:fnum = 1184
+INFO:root:	plot
+INFO:root:0:00:50.351122
+INFO:root:fnum = 1186
+INFO:root:	plot
+INFO:root:0:00:50.188109
+INFO:root:fnum = 1188
+INFO:root:	plot
+INFO:root:0:00:50.435142
+INFO:root:fnum = 1190
+INFO:root:	plot
+INFO:root:0:00:50.366942
+INFO:root:fnum = 1192
+INFO:root:	plot
+INFO:root:0:00:50.754705
+INFO:root:fnum = 1194
+INFO:root:	plot
+INFO:root:0:00:50.298478
+INFO:root:fnum = 1196
+INFO:root:	plot
+INFO:root:0:00:52.208945
+INFO:root:fnum = 1198
+INFO:root:	plot
+INFO:root:0:00:59.406406
+INFO:root:fnum = 1200
+INFO:root:	plot
+INFO:root:0:00:59.302470
+INFO:root:fnum = 1202
+INFO:root:	plot
+INFO:root:0:00:50.660885
+INFO:root:fnum = 1204
+INFO:root:	plot
+INFO:root:0:00:50.119204
+INFO:root:fnum = 1206
+INFO:root:	plot
+INFO:root:0:00:50.138605
+INFO:root:fnum = 1208
+INFO:root:	plot
+INFO:root:0:00:50.521968
+INFO:root:fnum = 1210
+INFO:root:	plot
+INFO:root:0:00:51.032169
+INFO:root:fnum = 1212
+INFO:root:	plot
+INFO:root:0:00:51.075937
+INFO:root:fnum = 1214
+INFO:root:	plot
+INFO:root:0:00:50.721534
+INFO:root:fnum = 1216
+INFO:root:	plot
+INFO:root:0:00:49.846470
+INFO:root:fnum = 1218
+INFO:root:	plot
+INFO:root:0:00:50.606517
+INFO:root:fnum = 1220
+INFO:root:	plot
+INFO:root:0:00:49.980626
+INFO:root:fnum = 1222
+INFO:root:	plot
+INFO:root:0:00:50.611790
+INFO:root:fnum = 1224
+INFO:root:	plot
+INFO:root:0:00:50.298808
+INFO:root:fnum = 1226
+INFO:root:	plot
+INFO:root:0:00:50.914814
+INFO:root:fnum = 1228
+INFO:root:	plot
+INFO:root:0:00:50.624419
+INFO:root:fnum = 1230
+INFO:root:	plot
+INFO:root:0:00:50.830003
+INFO:root:fnum = 1232
+INFO:root:	plot
+INFO:root:0:00:50.392042
+INFO:root:fnum = 1234
+INFO:root:	plot
+INFO:root:0:00:50.816412
+INFO:root:fnum = 1236
+INFO:root:	plot
+INFO:root:0:00:50.276348
+INFO:root:fnum = 1238
+INFO:root:	plot
+INFO:root:0:00:50.564242
+INFO:root:fnum = 1240
+INFO:root:	plot
+INFO:root:0:00:50.024683
+INFO:root:fnum = 1242
+INFO:root:	plot
+INFO:root:0:00:50.294580
+INFO:root:fnum = 1244
+INFO:root:	plot
+INFO:root:0:00:50.285045
+INFO:root:fnum = 1246
+INFO:root:	plot
+INFO:root:0:00:50.449190
+INFO:root:fnum = 1248
+INFO:root:	plot
+INFO:root:0:00:50.422614
+INFO:root:fnum = 1250
+INFO:root:	plot
+INFO:root:0:00:50.539028
+INFO:root:fnum = 1252
+INFO:root:	plot
+INFO:root:0:00:50.243628
+INFO:root:fnum = 1254
+INFO:root:	plot
+INFO:root:0:00:50.223391
+INFO:root:fnum = 1256
+INFO:root:	plot
+INFO:root:0:00:50.638115
+INFO:root:fnum = 1258
+INFO:root:	plot
+INFO:root:0:00:50.176048
+INFO:root:fnum = 1260
+INFO:root:	plot
+INFO:root:0:00:49.888319
+INFO:root:fnum = 1262
+INFO:root:	plot
+INFO:root:0:00:50.071428
+INFO:root:fnum = 1264
+INFO:root:	plot
+INFO:root:0:00:50.126992
+INFO:root:fnum = 1266
+INFO:root:	plot
+INFO:root:0:00:50.809825
+INFO:root:fnum = 1268
+INFO:root:	plot
+INFO:root:0:00:50.794040
+INFO:root:fnum = 1270
+INFO:root:	plot
+INFO:root:0:00:50.917718
+INFO:root:fnum = 1272
+INFO:root:	plot
+INFO:root:0:00:49.944630
+INFO:root:fnum = 1274
+INFO:root:	plot
+INFO:root:0:00:50.275976
+INFO:root:fnum = 1276
+INFO:root:	plot
+INFO:root:0:00:50.424228
+INFO:root:fnum = 1278
+INFO:root:	plot
+INFO:root:0:00:50.188553
+INFO:root:fnum = 1280
+INFO:root:	plot
+INFO:root:0:00:50.735438
+INFO:root:fnum = 1282
+INFO:root:	plot
+INFO:root:0:00:50.393996
+INFO:root:fnum = 1284
+INFO:root:	plot
+INFO:root:0:00:50.158175
+INFO:root:fnum = 1286
+INFO:root:	plot
+INFO:root:0:00:50.615697
+INFO:root:fnum = 1288
+INFO:root:	plot
+INFO:root:0:00:50.394304
+INFO:root:fnum = 1290
+INFO:root:	plot
+INFO:root:0:00:50.188356
+INFO:root:fnum = 1292
+INFO:root:	plot
+INFO:root:0:00:50.300338
+INFO:root:fnum = 1294
+INFO:root:	plot
+INFO:root:0:00:51.013144
+INFO:root:fnum = 1296
+INFO:root:	plot
+INFO:root:0:00:50.736215
+INFO:root:fnum = 1298
+INFO:root:	plot
+INFO:root:0:00:50.836874
+INFO:root:fnum = 1300
+INFO:root:	plot
+INFO:root:0:00:50.747069
+INFO:root:fnum = 1302
+INFO:root:	plot
+INFO:root:0:00:50.583252
+INFO:root:fnum = 1304
+INFO:root:	plot
+INFO:root:0:00:50.501213
+INFO:root:fnum = 1306
+INFO:root:	plot
+INFO:root:0:00:50.778051
+INFO:root:fnum = 1308
+INFO:root:	plot
+INFO:root:0:00:50.297196
+INFO:root:fnum = 1310
+INFO:root:	plot
+INFO:root:0:00:49.687780
+INFO:root:fnum = 1312
+INFO:root:	plot
+INFO:root:0:00:50.647962
+INFO:root:fnum = 1314
+INFO:root:	plot
+INFO:root:0:00:50.087742
+INFO:root:fnum = 1316
+INFO:root:	plot
+INFO:root:0:00:50.720500
+INFO:root:fnum = 1318
+INFO:root:	plot
+INFO:root:0:00:50.356715
+INFO:root:fnum = 1320
+INFO:root:	plot
+INFO:root:0:00:50.782988
+INFO:root:fnum = 1322
+INFO:root:	plot
+INFO:root:0:00:50.963611
+INFO:root:fnum = 1324
+INFO:root:	plot
+INFO:root:0:00:50.860661
+INFO:root:fnum = 1326
+INFO:root:	plot
+INFO:root:0:00:50.724919
+INFO:root:fnum = 1328
+INFO:root:	plot
+INFO:root:0:00:50.945872
+INFO:root:fnum = 1330
+INFO:root:	plot
+INFO:root:0:00:50.704314
+INFO:root:fnum = 1332
+INFO:root:	plot
+INFO:root:0:00:50.714577
+INFO:root:fnum = 1334
+INFO:root:	plot
+INFO:root:0:00:50.692754
+INFO:root:fnum = 1336
+INFO:root:	plot
+INFO:root:0:00:50.460729
+INFO:root:fnum = 1338
+INFO:root:	plot
+INFO:root:0:00:51.260956
+INFO:root:fnum = 1340
+INFO:root:	plot
+INFO:root:0:00:50.984806
+INFO:root:fnum = 1342
+INFO:root:	plot
+INFO:root:0:00:50.721939
+INFO:root:fnum = 1344
+INFO:root:	plot
+INFO:root:0:00:50.212230
+INFO:root:fnum = 1346
+INFO:root:	plot
+INFO:root:0:00:50.331214
+INFO:root:fnum = 1348
+INFO:root:	plot
+INFO:root:0:00:50.568308
+INFO:root:fnum = 1350
+INFO:root:	plot
+INFO:root:0:00:51.285822
+INFO:root:fnum = 1352
+INFO:root:	plot
+INFO:root:0:00:51.005917
+INFO:root:fnum = 1354
+INFO:root:	plot
+INFO:root:0:00:50.804541
+INFO:root:fnum = 1356
+INFO:root:	plot
+INFO:root:0:00:50.914457
+INFO:root:fnum = 1358
+INFO:root:	plot
+INFO:root:0:00:50.924359
+INFO:root:fnum = 1360
+INFO:root:	plot
+INFO:root:0:00:51.092157
+INFO:root:fnum = 1362
+INFO:root:	plot
+INFO:root:0:00:50.711052
+INFO:root:fnum = 1364
+INFO:root:	plot
+INFO:root:0:00:51.150340
+INFO:root:fnum = 1366
+INFO:root:	plot
+INFO:root:0:00:50.709027
+INFO:root:fnum = 1368
+INFO:root:	plot
+INFO:root:0:00:50.718880
+INFO:root:fnum = 1370
+INFO:root:	plot
+INFO:root:0:00:50.637929
+INFO:root:fnum = 1372
+INFO:root:	plot
+INFO:root:0:00:51.111276
+INFO:root:fnum = 1374
+INFO:root:	plot
+INFO:root:0:00:50.618175
+INFO:root:fnum = 1376
+INFO:root:	plot
+INFO:root:0:00:50.720555
+INFO:root:fnum = 1378
+INFO:root:	plot
+INFO:root:0:00:50.781927
+INFO:root:fnum = 1380
+INFO:root:	plot
+INFO:root:0:00:51.127405
+INFO:root:fnum = 1382
+INFO:root:	plot
+INFO:root:0:00:50.426630
+INFO:root:fnum = 1384
+INFO:root:	plot
+INFO:root:0:00:50.939894
+INFO:root:fnum = 1386
+INFO:root:	plot
+INFO:root:0:00:50.945211
+INFO:root:fnum = 1388
+INFO:root:	plot
+INFO:root:0:00:51.451972
+INFO:root:fnum = 1390
+INFO:root:	plot
+INFO:root:0:00:50.865902
+INFO:root:fnum = 1392
+INFO:root:	plot
+INFO:root:0:00:50.516884
+INFO:root:fnum = 1394
+INFO:root:	plot
+INFO:root:0:00:52.524201
+INFO:root:fnum = 1396
+INFO:root:	plot
+INFO:root:0:00:50.490447
+INFO:root:fnum = 1398
+INFO:root:	plot
+INFO:root:0:00:50.643993
+INFO:root:fnum = 1400
+INFO:root:	plot
+INFO:root:0:00:50.231385
+INFO:root:fnum = 1402
+INFO:root:	plot
+INFO:root:0:00:50.236645
+INFO:root:fnum = 1404
+INFO:root:	plot
+INFO:root:0:00:51.295763
+INFO:root:fnum = 1406
+INFO:root:	plot
+INFO:root:0:00:53.982850
+INFO:root:fnum = 1408
+INFO:root:	plot
+INFO:root:0:00:54.846058
+INFO:root:fnum = 1410
+INFO:root:	plot
+INFO:root:0:00:53.756299
+INFO:root:fnum = 1412
+INFO:root:	plot
+INFO:root:0:00:53.305261
+INFO:root:fnum = 1414
+INFO:root:	plot
+INFO:root:0:00:54.002340
+INFO:root:fnum = 1416
+INFO:root:	plot
+INFO:root:0:00:55.051658
+INFO:root:fnum = 1418
+INFO:root:	plot
+INFO:root:0:00:52.635049
+INFO:root:fnum = 1420
+INFO:root:	plot
+INFO:root:0:00:51.792910
+INFO:root:fnum = 1422
+INFO:root:	plot
+INFO:root:0:00:50.510561
+INFO:root:fnum = 1424
+INFO:root:	plot
+INFO:root:0:00:49.647396
+INFO:root:fnum = 1426
+INFO:root:	plot
+INFO:root:0:00:50.970004
+INFO:root:fnum = 1428
+INFO:root:	plot
+INFO:root:0:00:52.915795
+INFO:root:fnum = 1430
+INFO:root:	plot
+INFO:root:0:00:53.528770
+INFO:root:fnum = 1432
+INFO:root:	plot
+INFO:root:0:00:54.347990
+INFO:root:fnum = 1434
+INFO:root:	plot
+INFO:root:0:00:53.904110
+INFO:root:fnum = 1436
+INFO:root:	plot
+INFO:root:0:00:52.924860
+INFO:root:fnum = 1438
+INFO:root:	plot
+INFO:root:0:00:53.651325
+INFO:root:fnum = 1440
+INFO:root:	plot
+INFO:root:0:00:53.034173
+INFO:root:fnum = 1442
+INFO:root:	plot
+INFO:root:0:00:53.113244
+INFO:root:fnum = 1444
+INFO:root:	plot
+INFO:root:0:00:54.179730
+INFO:root:fnum = 1446
+INFO:root:	plot
+INFO:root:0:00:53.439273
+INFO:root:fnum = 1448
+INFO:root:	plot
+INFO:root:0:00:52.925455
+INFO:root:fnum = 1450
+INFO:root:	plot
+INFO:root:0:00:53.382342
+INFO:root:fnum = 1452
+INFO:root:	plot
+INFO:root:0:00:54.449423
+INFO:root:fnum = 1454
+INFO:root:	plot
+INFO:root:0:00:53.609335
+INFO:root:fnum = 1456
+INFO:root:	plot
+INFO:root:0:00:53.714158
+INFO:root:fnum = 1458
+INFO:root:	plot
+INFO:root:0:00:53.386777
+INFO:root:fnum = 1460
+INFO:root:	plot
+INFO:root:0:00:53.307577
+INFO:root:fnum = 1462
+INFO:root:	plot
+INFO:root:0:00:53.520040
+INFO:root:fnum = 1464
+INFO:root:	plot
+INFO:root:0:00:52.477934
+INFO:root:fnum = 1466
+INFO:root:	plot
+INFO:root:0:00:52.745436
+INFO:root:fnum = 1468
+INFO:root:	plot
+INFO:root:0:00:53.274131
+INFO:root:fnum = 1470
+INFO:root:	plot
+INFO:root:0:00:53.543646
+INFO:root:fnum = 1472
+INFO:root:	plot
+INFO:root:0:00:53.016357
+INFO:root:fnum = 1474
+INFO:root:	plot
+INFO:root:0:00:52.955480
+INFO:root:fnum = 1476
+INFO:root:	plot
+INFO:root:0:00:51.306518
+INFO:root:fnum = 1478
+INFO:root:	plot
+INFO:root:0:00:51.239019
+INFO:root:fnum = 1480
+INFO:root:	plot
+INFO:root:0:00:50.175775
+INFO:root:fnum = 1482
+INFO:root:	plot
+INFO:root:0:00:49.219049
+INFO:root:fnum = 1484
+INFO:root:	plot
+INFO:root:0:00:50.411140
+INFO:root:fnum = 1486
+INFO:root:	plot
+INFO:root:0:00:49.878252
+INFO:root:fnum = 1488
+INFO:root:	plot
+INFO:root:0:00:50.354552
+INFO:root:fnum = 1490
+INFO:root:	plot
+INFO:root:0:00:50.872084
+INFO:root:fnum = 1492
+INFO:root:	plot
+INFO:root:0:00:50.673205
+INFO:root:fnum = 1494
+INFO:root:	plot
+INFO:root:0:00:50.677401
+INFO:root:fnum = 1496
+INFO:root:	plot
+INFO:root:0:00:50.646371
+INFO:root:fnum = 1498
+INFO:root:	plot
+INFO:root:0:00:50.974279
+INFO:root:fnum = 1500
+INFO:root:	plot
+INFO:root:0:00:50.213629
+INFO:root:fnum = 1502
+INFO:root:	plot
+INFO:root:0:00:50.715413
+INFO:root:fnum = 1504
+INFO:root:	plot
+INFO:root:0:00:50.441373
+INFO:root:fnum = 1506
+INFO:root:	plot
+INFO:root:0:00:49.943134
+INFO:root:fnum = 1508
+INFO:root:	plot
+INFO:root:0:00:50.531434
+INFO:root:fnum = 1510
+INFO:root:	plot
+INFO:root:0:00:50.564063
+INFO:root:fnum = 1512
+INFO:root:	plot
+INFO:root:0:00:50.615454
+INFO:root:fnum = 1514
+INFO:root:	plot
+INFO:root:0:00:50.662448
+INFO:root:fnum = 1516
+INFO:root:	plot
+INFO:root:0:00:50.059961
+INFO:root:fnum = 1518
+INFO:root:	plot
+INFO:root:0:00:50.257092
+INFO:root:fnum = 1520
+INFO:root:	plot
+INFO:root:0:00:50.181533
+INFO:root:fnum = 1522
+INFO:root:	plot
+INFO:root:0:00:50.203438
+INFO:root:fnum = 1524
+INFO:root:	plot
+INFO:root:0:00:49.875494
+INFO:root:fnum = 1526
+INFO:root:	plot
+INFO:root:0:00:50.240457
+INFO:root:fnum = 1528
+INFO:root:	plot
+INFO:root:0:00:49.995931
+INFO:root:fnum = 1530
+INFO:root:	plot
+INFO:root:0:00:49.960752
+INFO:root:fnum = 1532
+INFO:root:	plot
+INFO:root:0:00:49.690864
+INFO:root:fnum = 1534
+INFO:root:	plot
+INFO:root:0:00:49.712909
+INFO:root:fnum = 1536
+INFO:root:	plot
+INFO:root:0:00:50.791953
+INFO:root:fnum = 1538
+INFO:root:	plot
+INFO:root:0:00:51.225890
+INFO:root:fnum = 1540
+INFO:root:	plot
+INFO:root:0:00:50.283862
+INFO:root:fnum = 1542
+INFO:root:	plot
+INFO:root:0:00:50.009912
+INFO:root:fnum = 1544
+INFO:root:	plot
+INFO:root:0:00:50.359138
+INFO:root:fnum = 1546
+INFO:root:	plot
+INFO:root:0:00:50.984237
+INFO:root:fnum = 1548
+INFO:root:	plot
+INFO:root:0:00:50.708938
+INFO:root:fnum = 1550
+INFO:root:	plot
+INFO:root:0:00:50.142351
+INFO:root:fnum = 1552
+INFO:root:	plot
+INFO:root:0:00:50.254765
+INFO:root:fnum = 1554
+INFO:root:	plot
+INFO:root:0:00:49.197690
+INFO:root:fnum = 1556
+INFO:root:	plot
+INFO:root:0:00:50.326448
+INFO:root:fnum = 1558
+INFO:root:	plot
+INFO:root:0:00:50.113473
+INFO:root:fnum = 1560
+INFO:root:	plot
+INFO:root:0:00:50.138179
+INFO:root:fnum = 1562
+INFO:root:	plot
+INFO:root:0:00:50.543572
+INFO:root:fnum = 1564
+INFO:root:	plot
+INFO:root:0:00:50.625941
+INFO:root:fnum = 1566
+INFO:root:	plot
+INFO:root:0:00:50.793634
+INFO:root:fnum = 1568
+INFO:root:	plot
+INFO:root:0:00:49.818923
+INFO:root:fnum = 1570
+INFO:root:	plot
+INFO:root:0:00:50.892563
+INFO:root:fnum = 1572
+INFO:root:	plot
+INFO:root:0:00:50.246701
+INFO:root:fnum = 1574
+INFO:root:	plot
+INFO:root:0:00:51.970523
+INFO:root:fnum = 1576
+INFO:root:	plot
+INFO:root:0:00:50.143665
+INFO:root:fnum = 1578
+INFO:root:	plot
+INFO:root:0:00:50.620145
+INFO:root:fnum = 1580
+INFO:root:	plot
+INFO:root:0:00:50.272471
+INFO:root:fnum = 1582
+INFO:root:	plot
+INFO:root:0:00:50.718711
+INFO:root:fnum = 1584
+INFO:root:	plot
+INFO:root:0:00:49.995085
+INFO:root:fnum = 1586
+INFO:root:	plot
+INFO:root:0:00:50.727295
+INFO:root:fnum = 1588
+INFO:root:	plot
+INFO:root:0:00:50.762470
+INFO:root:fnum = 1590
+INFO:root:	plot
+INFO:root:0:00:50.127671
+INFO:root:fnum = 1592
+INFO:root:	plot
+INFO:root:0:00:51.341762
+INFO:root:fnum = 1594
+INFO:root:	plot
+INFO:root:0:00:50.601169
+INFO:root:fnum = 1596
+INFO:root:	plot
+INFO:root:0:00:51.106489
+INFO:root:fnum = 1598
+INFO:root:	plot
+INFO:root:0:00:50.992998
+INFO:root:fnum = 1600
+INFO:root:	plot
+INFO:root:0:00:51.056037
+INFO:root:fnum = 1602
+INFO:root:	plot
+INFO:root:0:00:50.422981
+INFO:root:fnum = 1604
+INFO:root:	plot
+INFO:root:0:00:50.673730
+INFO:root:fnum = 1606
+INFO:root:	plot
+INFO:root:0:00:50.709720
+INFO:root:fnum = 1608
+INFO:root:	plot
+INFO:root:0:00:50.430197
+INFO:root:fnum = 1610
+INFO:root:	plot
+INFO:root:0:00:49.890447
+INFO:root:fnum = 1612
+INFO:root:	plot
+INFO:root:0:00:50.631040
+INFO:root:fnum = 1614
+INFO:root:	plot
+INFO:root:0:00:50.947146
+INFO:root:fnum = 1616
+INFO:root:	plot
+INFO:root:0:00:50.665356
+INFO:root:fnum = 1618
+INFO:root:	plot
+INFO:root:0:00:50.023999
+INFO:root:fnum = 1620
+INFO:root:	plot
+INFO:root:0:00:51.096677
+INFO:root:fnum = 1622
+INFO:root:	plot
+INFO:root:0:00:51.237706
+INFO:root:fnum = 1624
+INFO:root:	plot
+INFO:root:0:00:50.874516
+INFO:root:fnum = 1626
+INFO:root:	plot
+INFO:root:0:00:50.690158
+INFO:root:fnum = 1628
+INFO:root:	plot
+INFO:root:0:00:50.087119
+INFO:root:fnum = 1630
+INFO:root:	plot
+INFO:root:0:00:50.762486
+INFO:root:fnum = 1632
+INFO:root:	plot
+INFO:root:0:00:50.288022
+INFO:root:fnum = 1634
+INFO:root:	plot
+INFO:root:0:00:50.589700
+INFO:root:fnum = 1636
+INFO:root:	plot
+INFO:root:0:00:50.108705
+INFO:root:fnum = 1638
+INFO:root:	plot
+INFO:root:0:00:50.185147
+INFO:root:fnum = 1640
+INFO:root:	plot
+INFO:root:0:00:50.514074
+INFO:root:fnum = 1642
+INFO:root:	plot
+INFO:root:0:00:49.956067
+INFO:root:fnum = 1644
+INFO:root:	plot
+INFO:root:0:00:50.069357
+INFO:root:fnum = 1646
+INFO:root:	plot
+INFO:root:0:00:50.570145
+INFO:root:fnum = 1648
+INFO:root:	plot
+INFO:root:0:00:49.671402
+INFO:root:fnum = 1650
+INFO:root:	plot
+INFO:root:0:00:49.973830
+INFO:root:fnum = 1652
+INFO:root:	plot
+INFO:root:0:00:50.461617
+INFO:root:fnum = 1654
+INFO:root:	plot
+INFO:root:0:00:50.676181
+INFO:root:fnum = 1656
+INFO:root:	plot
+INFO:root:0:00:49.989898
+INFO:root:fnum = 1658
+INFO:root:	plot
+INFO:root:0:00:50.311794
+INFO:root:fnum = 1660
+INFO:root:	plot
+INFO:root:0:00:49.928780
+INFO:root:fnum = 1662
+INFO:root:	plot
+INFO:root:0:00:50.071813
+INFO:root:fnum = 1664
+INFO:root:	plot
+INFO:root:0:00:49.637397
+INFO:root:fnum = 1666
+INFO:root:	plot
+INFO:root:0:00:50.495044
+INFO:root:fnum = 1668
+INFO:root:	plot
+INFO:root:0:00:49.779262
+INFO:root:fnum = 1670
+INFO:root:	plot
+INFO:root:0:00:50.194924
+INFO:root:fnum = 1672
+INFO:root:	plot
+INFO:root:0:00:50.284853
+INFO:root:fnum = 1674
+INFO:root:	plot
+INFO:root:0:00:50.695919
+INFO:root:fnum = 1676
+INFO:root:	plot
+INFO:root:0:00:50.016452
+INFO:root:fnum = 1678
+INFO:root:	plot
+INFO:root:0:00:50.357279
+INFO:root:fnum = 1680
+INFO:root:	plot
+INFO:root:0:00:49.948143
+INFO:root:fnum = 1682
+INFO:root:	plot
+INFO:root:0:00:50.574407
+INFO:root:fnum = 1684
+INFO:root:	plot
+INFO:root:0:00:50.555534
+INFO:root:fnum = 1686
+INFO:root:	plot
+INFO:root:0:00:50.491694
+INFO:root:fnum = 1688
+INFO:root:	plot
+INFO:root:0:00:51.200552
+INFO:root:fnum = 1690
+INFO:root:	plot
+INFO:root:0:00:50.622424
+INFO:root:fnum = 1692
+INFO:root:	plot
+INFO:root:0:00:50.024290
+INFO:root:fnum = 1694
+INFO:root:	plot
+INFO:root:0:00:49.757225
+INFO:root:fnum = 1696
+INFO:root:	plot
+INFO:root:0:00:49.667023
+INFO:root:fnum = 1698
+INFO:root:	plot
+INFO:root:0:00:50.001986
+INFO:root:fnum = 1700
+INFO:root:	plot
+INFO:root:0:00:50.149092
+INFO:root:fnum = 1702
+INFO:root:	plot
+INFO:root:0:00:49.905551
+INFO:root:fnum = 1704
+INFO:root:	plot
+INFO:root:0:00:50.174770
+INFO:root:fnum = 1706
+INFO:root:	plot
+INFO:root:0:00:50.426069
+INFO:root:fnum = 1708
+INFO:root:	plot
+INFO:root:0:00:49.797699
+INFO:root:fnum = 1710
+INFO:root:	plot
+INFO:root:0:00:50.315961
+INFO:root:fnum = 1712
+INFO:root:	plot
+INFO:root:0:00:50.459432
+INFO:root:fnum = 1714
+INFO:root:	plot
+INFO:root:0:00:50.472611
+INFO:root:fnum = 1716
+INFO:root:	plot
+INFO:root:0:00:50.192765
+INFO:root:fnum = 1718
+INFO:root:	plot
+INFO:root:0:00:50.242998
+INFO:root:fnum = 1720
+INFO:root:	plot
+INFO:root:0:00:49.977741
+INFO:root:fnum = 1722
+INFO:root:	plot
+INFO:root:0:00:50.181490
+INFO:root:fnum = 1724
+INFO:root:	plot
+INFO:root:0:00:50.065750
+INFO:root:fnum = 1726
+INFO:root:	plot
+INFO:root:0:00:51.313433
+INFO:root:fnum = 1728
+INFO:root:	plot
+INFO:root:0:00:50.804793
+INFO:root:fnum = 1730
+INFO:root:	plot
+INFO:root:0:00:50.508494
+INFO:root:fnum = 1732
+INFO:root:	plot
+INFO:root:0:00:50.816185
+INFO:root:fnum = 1734
+INFO:root:	plot
+INFO:root:0:00:49.720216
+INFO:root:fnum = 1736
+INFO:root:	plot
+INFO:root:0:00:49.699629
+INFO:root:fnum = 1738
+INFO:root:	plot
+INFO:root:0:00:49.776280
+INFO:root:fnum = 1740
+INFO:root:	plot
+INFO:root:0:00:50.237934
+INFO:root:fnum = 1742
+INFO:root:	plot
+INFO:root:0:00:49.595469
+INFO:root:fnum = 1744
+INFO:root:	plot
+INFO:root:0:00:50.816065
+INFO:root:fnum = 1746
+INFO:root:	plot
+INFO:root:0:00:50.185107
+INFO:root:fnum = 1748
+INFO:root:	plot
+INFO:root:0:00:50.366052
+INFO:root:fnum = 1750
+INFO:root:	plot
+INFO:root:0:00:49.529557
+INFO:root:fnum = 1752
+INFO:root:	plot
+INFO:root:0:00:50.365411
+INFO:root:fnum = 1754
+INFO:root:	plot
+INFO:root:0:00:50.099131
+INFO:root:fnum = 1756
+INFO:root:	plot
+INFO:root:0:00:50.164092
+INFO:root:fnum = 1758
+INFO:root:	plot
+INFO:root:0:00:50.905937
+INFO:root:fnum = 1760
+INFO:root:	plot
+INFO:root:0:00:50.705138
+INFO:root:fnum = 1762
+INFO:root:	plot
+INFO:root:0:00:49.970396
+INFO:root:fnum = 1764
+INFO:root:	plot
+INFO:root:0:00:51.024866
+INFO:root:fnum = 1766
+INFO:root:	plot
+INFO:root:0:00:50.749631
+INFO:root:fnum = 1768
+INFO:root:	plot
+INFO:root:0:00:50.729723
+INFO:root:fnum = 1770
+INFO:root:	plot
+INFO:root:0:00:49.987272
+INFO:root:fnum = 1772
+INFO:root:	plot
+INFO:root:0:00:49.555390
+INFO:root:fnum = 1774
+INFO:root:	plot
+INFO:root:0:00:50.511835
+INFO:root:fnum = 1776
+INFO:root:	plot
+INFO:root:0:00:50.143328
+INFO:root:fnum = 1778
+INFO:root:	plot
+INFO:root:0:00:50.284333
+INFO:root:fnum = 1780
+INFO:root:	plot
+INFO:root:0:00:50.595339
+INFO:root:fnum = 1782
+INFO:root:	plot
+INFO:root:0:00:49.635312
+INFO:root:fnum = 1784
+INFO:root:	plot
+INFO:root:0:00:50.089288
+INFO:root:fnum = 1786
+INFO:root:	plot
+INFO:root:0:00:50.453185
+INFO:root:fnum = 1788
+INFO:root:	plot
+INFO:root:0:00:51.059577
+INFO:root:fnum = 1790
+INFO:root:	plot
+INFO:root:0:00:50.056691
+INFO:root:fnum = 1792
+INFO:root:	plot
+INFO:root:0:00:51.132142
+INFO:root:fnum = 1794
+INFO:root:	plot
+INFO:root:0:00:49.942166
+INFO:root:fnum = 1796
+INFO:root:	plot
+INFO:root:0:00:50.335295
+INFO:root:fnum = 1798
+INFO:root:	plot
+INFO:root:0:00:51.023448
+INFO:root:fnum = 1800
+INFO:root:	plot
+INFO:root:0:00:51.301006
+INFO:root:fnum = 1802
+INFO:root:	plot
+INFO:root:0:00:50.156283
+INFO:root:fnum = 1804
+INFO:root:	plot
+INFO:root:0:00:49.336601
+INFO:root:fnum = 1806
+INFO:root:	plot
+INFO:root:0:00:50.020793
+INFO:root:fnum = 1808
+INFO:root:	plot
+INFO:root:0:00:49.585820
+INFO:root:fnum = 1810
+INFO:root:	plot
+INFO:root:0:00:50.608018
+INFO:root:fnum = 1812
+INFO:root:	plot
+INFO:root:0:00:50.741135
+INFO:root:fnum = 1814
+INFO:root:	plot
+INFO:root:0:00:50.444008
+INFO:root:fnum = 1816
+INFO:root:	plot
+INFO:root:0:00:50.278585
+INFO:root:fnum = 1818
+INFO:root:	plot
+INFO:root:0:00:50.710410
+INFO:root:fnum = 1820
+INFO:root:	plot
+INFO:root:0:00:50.875408
+INFO:root:fnum = 1822
+INFO:root:	plot
+INFO:root:0:00:51.132486
+INFO:root:fnum = 1824
+INFO:root:	plot
+INFO:root:0:00:51.739097
+INFO:root:fnum = 1826
+INFO:root:	plot
+INFO:root:0:00:50.200325
+INFO:root:fnum = 1828
+INFO:root:	plot
+INFO:root:0:00:49.910566
+INFO:root:fnum = 1830
+INFO:root:	plot
+INFO:root:0:00:50.362611
+INFO:root:fnum = 1832
+INFO:root:	plot
+INFO:root:0:00:50.204118
+INFO:root:fnum = 1834
+INFO:root:	plot
+INFO:root:0:00:50.471747
+INFO:root:fnum = 1836
+INFO:root:	plot
+INFO:root:0:00:50.373971
+INFO:root:fnum = 1838
+INFO:root:	plot
+INFO:root:0:00:49.989204
+INFO:root:fnum = 1840
+INFO:root:	plot
+INFO:root:0:00:50.004179
+INFO:root:fnum = 1842
+INFO:root:	plot
+INFO:root:0:00:50.189943
+INFO:root:fnum = 1844
+INFO:root:	plot
+INFO:root:0:00:50.049641
+INFO:root:fnum = 1846
+INFO:root:	plot
+INFO:root:0:00:50.003629
+INFO:root:fnum = 1848
+INFO:root:	plot
+INFO:root:0:00:50.491403
+INFO:root:fnum = 1850
+INFO:root:	plot
+INFO:root:0:00:49.864340
+INFO:root:fnum = 1852
+INFO:root:	plot
+INFO:root:0:00:50.133434
+INFO:root:fnum = 1854
+INFO:root:	plot
+INFO:root:0:00:49.987408
+INFO:root:fnum = 1856
+INFO:root:	plot
+INFO:root:0:00:50.501265
+INFO:root:fnum = 1858
+INFO:root:	plot
+INFO:root:0:00:50.516301
+INFO:root:fnum = 1860
+INFO:root:	plot
+INFO:root:0:00:50.580623
+INFO:root:fnum = 1862
+INFO:root:	plot
+INFO:root:0:00:50.574337
+INFO:root:fnum = 1864
+INFO:root:	plot
+INFO:root:0:00:50.825441
+INFO:root:fnum = 1866
+INFO:root:	plot
+INFO:root:0:00:52.303352
+INFO:root:fnum = 1868
+INFO:root:	plot
+INFO:root:0:00:51.606463
+INFO:root:fnum = 1870
+INFO:root:	plot
+INFO:root:0:00:50.064944
+INFO:root:fnum = 1872
+INFO:root:	plot
+INFO:root:0:00:50.773510
+INFO:root:fnum = 1874
+INFO:root:	plot
+INFO:root:0:00:50.465243
+INFO:root:fnum = 1876
+INFO:root:	plot
+INFO:root:0:00:49.325432
+INFO:root:fnum = 1878
+INFO:root:	plot
+INFO:root:0:00:51.246877
+INFO:root:fnum = 1880
+INFO:root:	plot
+INFO:root:0:00:49.386788
+INFO:root:fnum = 1882
+INFO:root:	plot
+INFO:root:0:00:49.940418
+INFO:root:fnum = 1884
+INFO:root:	plot
+INFO:root:0:00:50.721116
+INFO:root:fnum = 1886
+INFO:root:	plot
+INFO:root:0:00:50.209822
+INFO:root:fnum = 1888
+INFO:root:	plot
+INFO:root:0:00:49.680431
+INFO:root:fnum = 1890
+INFO:root:	plot
+INFO:root:0:00:50.129159
+INFO:root:fnum = 1892
+INFO:root:	plot
+INFO:root:0:00:49.691960
+INFO:root:fnum = 1894
+INFO:root:	plot
+INFO:root:0:00:49.649053
+INFO:root:fnum = 1896
+INFO:root:	plot
+INFO:root:0:00:51.203313
+INFO:root:fnum = 1898
+INFO:root:	plot
+INFO:root:0:00:50.847173
+INFO:root:fnum = 1900
+INFO:root:	plot
+INFO:root:0:00:49.752409
+INFO:root:fnum = 1902
+INFO:root:	plot
+INFO:root:0:00:49.775188
+INFO:root:fnum = 1904
+INFO:root:	plot
+INFO:root:0:00:50.510820
+INFO:root:fnum = 1906
+INFO:root:	plot
+INFO:root:0:00:49.680091
+INFO:root:fnum = 1908
+INFO:root:	plot
+INFO:root:0:00:50.412763
+INFO:root:fnum = 1910
+INFO:root:	plot
+INFO:root:0:00:50.244302
+INFO:root:fnum = 1912
+INFO:root:	plot
+INFO:root:0:00:49.523113
+INFO:root:fnum = 1914
+INFO:root:	plot
+INFO:root:0:00:50.452473
+INFO:root:fnum = 1916
+INFO:root:	plot
+INFO:root:0:00:49.481366
+INFO:root:fnum = 1918
+INFO:root:	plot
+INFO:root:0:00:49.825821
+INFO:root:fnum = 1920
+INFO:root:	plot
+INFO:root:0:00:49.566222
+INFO:root:fnum = 1922
+INFO:root:	plot
+INFO:root:0:00:49.844034
+INFO:root:fnum = 1924
+INFO:root:	plot
+INFO:root:0:00:50.426833
+INFO:root:fnum = 1926
+INFO:root:	plot
+INFO:root:0:00:50.244685
+INFO:root:fnum = 1928
+INFO:root:	plot
+INFO:root:0:00:49.574635
+INFO:root:fnum = 1930
+INFO:root:	plot
+INFO:root:0:00:50.451664
+INFO:root:fnum = 1932
+INFO:root:	plot
+INFO:root:0:00:50.029473
+INFO:root:fnum = 1934
+INFO:root:	plot
+INFO:root:0:00:49.964918
+INFO:root:fnum = 1936
+INFO:root:	plot
+INFO:root:0:00:49.766939
+INFO:root:fnum = 1938
+INFO:root:	plot
+INFO:root:0:00:50.445039
+INFO:root:fnum = 1940
+INFO:root:	plot
+INFO:root:0:00:50.171177
+INFO:root:fnum = 1942
+INFO:root:	plot
+INFO:root:0:00:50.244481
+INFO:root:fnum = 1944
+INFO:root:	plot
+INFO:root:0:00:50.399689
+INFO:root:fnum = 1946
+INFO:root:	plot
+INFO:root:0:00:50.999232
+INFO:root:fnum = 1948
+INFO:root:	plot
+INFO:root:0:00:49.482584
+INFO:root:fnum = 1950
+INFO:root:	plot
+INFO:root:0:00:49.832330
+INFO:root:fnum = 1952
+INFO:root:	plot
+INFO:root:0:00:49.811975
+INFO:root:fnum = 1954
+INFO:root:	plot
+INFO:root:0:00:49.484593
+INFO:root:fnum = 1956
+INFO:root:	plot
+INFO:root:0:00:50.166227
+INFO:root:fnum = 1958
+INFO:root:	plot
+INFO:root:0:00:49.848431
+INFO:root:fnum = 1960
+INFO:root:	plot
+INFO:root:0:00:50.165487
+INFO:root:fnum = 1962
+INFO:root:	plot
+INFO:root:0:00:49.960557
+INFO:root:fnum = 1964
+INFO:root:	plot
+INFO:root:0:00:50.611784
+INFO:root:fnum = 1966
+INFO:root:	plot
+INFO:root:0:00:49.757390
+INFO:root:fnum = 1968
+INFO:root:	plot
+INFO:root:0:00:49.990311
+INFO:root:fnum = 1970
+INFO:root:	plot
+INFO:root:0:00:49.542909
+INFO:root:fnum = 1972
+INFO:root:	plot
+INFO:root:0:00:50.036796
+INFO:root:fnum = 1974
+INFO:root:	plot
+INFO:root:0:00:50.426258
+INFO:root:fnum = 1976
+INFO:root:	plot
+INFO:root:0:00:50.071088
+INFO:root:fnum = 1978
+INFO:root:	plot
+INFO:root:0:00:49.821264
+INFO:root:fnum = 1980
+INFO:root:	plot
+INFO:root:0:00:50.155802
+INFO:root:fnum = 1982
+INFO:root:	plot
+INFO:root:0:00:50.454519
+INFO:root:fnum = 1984
+INFO:root:	plot
+INFO:root:0:00:49.949469
+INFO:root:fnum = 1986
+INFO:root:	plot
+INFO:root:0:00:50.946646
+INFO:root:fnum = 1988
+INFO:root:	plot
+INFO:root:0:00:49.535445
+INFO:root:fnum = 1990
+INFO:root:	plot
+INFO:root:0:00:50.469036
+INFO:root:fnum = 1992
+INFO:root:	plot
+INFO:root:0:00:49.728917
+INFO:root:fnum = 1994
+INFO:root:	plot
+INFO:root:0:00:49.811833
+INFO:root:fnum = 1996
+INFO:root:	plot
+INFO:root:0:00:50.089583
+INFO:root:fnum = 1998
+INFO:root:	plot
+INFO:root:0:00:49.725385
+INFO:root:fnum = 2000
+INFO:root:	plot
+INFO:root:0:00:50.284103
+INFO:root:fnum = 2002
+INFO:root:	plot
+INFO:root:0:00:49.629103
+INFO:root:fnum = 2004
+INFO:root:	plot
+INFO:root:0:00:50.331018
+INFO:root:fnum = 2006
+INFO:root:	plot
+INFO:root:0:00:50.316988
+INFO:root:fnum = 2008
+INFO:root:	plot
+INFO:root:0:00:49.438722
+INFO:root:fnum = 2010
+INFO:root:	plot
+INFO:root:0:00:50.347267
+INFO:root:fnum = 2012
+INFO:root:	plot
+INFO:root:0:00:50.032516
+INFO:root:fnum = 2014
+INFO:root:	plot
+INFO:root:0:00:49.754204
+INFO:root:fnum = 2016
+INFO:root:	plot
+INFO:root:0:00:50.317907
+INFO:root:fnum = 2018
+INFO:root:	plot
+INFO:root:0:00:50.332243
+INFO:root:fnum = 2020
+INFO:root:	plot
+INFO:root:0:00:49.531796
+INFO:root:fnum = 2022
+INFO:root:	plot
+INFO:root:0:00:50.537159
+INFO:root:fnum = 2024
+INFO:root:	plot
+INFO:root:0:00:49.860957
+INFO:root:fnum = 2026
+INFO:root:	plot
+INFO:root:0:00:49.637083
+INFO:root:fnum = 2028
+INFO:root:	plot
+INFO:root:0:00:50.303080
+INFO:root:fnum = 2030
+INFO:root:	plot
+INFO:root:0:00:49.995005
+INFO:root:fnum = 2032
+INFO:root:	plot
+INFO:root:0:00:50.060658
+INFO:root:fnum = 2034
+INFO:root:	plot
+INFO:root:0:00:50.401081
+INFO:root:fnum = 2036
+INFO:root:	plot
+INFO:root:0:00:49.366672
+INFO:root:fnum = 2038
+INFO:root:	plot
+INFO:root:0:00:50.462328
+INFO:root:fnum = 2040
+INFO:root:	plot
+INFO:root:0:00:50.752255
+INFO:root:fnum = 2042
+INFO:root:	plot
+INFO:root:0:00:49.909048
+INFO:root:fnum = 2044
+INFO:root:	plot
+INFO:root:0:00:49.912855
+INFO:root:fnum = 2046
+INFO:root:	plot
+INFO:root:0:00:49.757342
+INFO:root:fnum = 2048
+INFO:root:	plot
+INFO:root:0:00:49.914122
+INFO:root:fnum = 2050
+INFO:root:	plot
+INFO:root:0:00:49.805121
+INFO:root:fnum = 2052
+INFO:root:	plot
+INFO:root:0:00:51.157475
+INFO:root:fnum = 2054
+INFO:root:	plot
+INFO:root:0:00:50.584682
+INFO:root:fnum = 2056
+INFO:root:	plot
+INFO:root:0:00:49.832363
+INFO:root:fnum = 2058
+INFO:root:	plot
+INFO:root:0:00:49.836995
+INFO:root:fnum = 2060
+INFO:root:	plot
+INFO:root:0:00:49.423332
+INFO:root:fnum = 2062
+INFO:root:	plot
+INFO:root:0:00:49.544296
+INFO:root:fnum = 2064
+INFO:root:	plot
+INFO:root:0:00:50.394580
+INFO:root:fnum = 2066
+INFO:root:	plot
+INFO:root:0:00:50.313928
+INFO:root:fnum = 2068
+INFO:root:	plot
+INFO:root:0:00:49.761546
+INFO:root:fnum = 2070
+INFO:root:	plot
+INFO:root:0:00:49.958407
+INFO:root:fnum = 2072
+INFO:root:	plot
+INFO:root:0:00:49.813200
+INFO:root:fnum = 2074
+INFO:root:	plot
+INFO:root:0:00:49.757593
+INFO:root:fnum = 2076
+INFO:root:	plot
+INFO:root:0:00:50.341500
+INFO:root:fnum = 2078
+INFO:root:	plot
+INFO:root:0:00:49.710038
+INFO:root:fnum = 2080
+INFO:root:	plot
+INFO:root:0:00:50.066857
+INFO:root:fnum = 2082
+INFO:root:	plot
+INFO:root:0:00:49.963936
+INFO:root:fnum = 2084
+INFO:root:	plot
+INFO:root:0:00:50.063684
+INFO:root:fnum = 2086
+INFO:root:	plot
+INFO:root:0:00:50.122861
+INFO:root:fnum = 2088
+INFO:root:	plot
+INFO:root:0:00:50.651005
+INFO:root:fnum = 2090
+INFO:root:	plot
+INFO:root:0:00:50.032809
+INFO:root:fnum = 2092
+INFO:root:	plot
+INFO:root:0:00:50.098086
+INFO:root:fnum = 2094
+INFO:root:	plot
+INFO:root:0:00:50.297391
+INFO:root:fnum = 2096
+INFO:root:	plot
+INFO:root:0:00:50.022449
+INFO:root:fnum = 2098
+INFO:root:	plot
+INFO:root:0:00:49.713557
+INFO:root:fnum = 2100
+INFO:root:	plot
+INFO:root:0:00:50.580881
+INFO:root:fnum = 2102
+INFO:root:	plot
+INFO:root:0:00:50.411781
+INFO:root:fnum = 2104
+INFO:root:	plot
+INFO:root:0:00:50.292509
+INFO:root:fnum = 2106
+INFO:root:	plot
+INFO:root:0:00:50.005304
+INFO:root:fnum = 2108
+INFO:root:	plot
+INFO:root:0:00:49.648171
+INFO:root:fnum = 2110
+INFO:root:	plot
+INFO:root:0:00:49.499472
+INFO:root:fnum = 2112
+INFO:root:	plot
+INFO:root:0:00:50.093720
+INFO:root:fnum = 2114
+INFO:root:	plot
+INFO:root:0:00:49.822006
+INFO:root:fnum = 2116
+INFO:root:	plot
+INFO:root:0:00:49.218644
+INFO:root:fnum = 2118
+INFO:root:	plot
+INFO:root:0:00:50.478260
+INFO:root:fnum = 2120
+INFO:root:	plot
+INFO:root:0:00:50.806577
+INFO:root:fnum = 2122
+INFO:root:	plot
+INFO:root:0:00:50.067110
+INFO:root:fnum = 2124
+INFO:root:	plot
+INFO:root:0:00:50.449116
+INFO:root:fnum = 2126
+INFO:root:	plot
+INFO:root:0:00:50.366628
+INFO:root:fnum = 2128
+INFO:root:	plot
+INFO:root:0:00:50.282264
+INFO:root:fnum = 2130
+INFO:root:	plot
+INFO:root:0:00:49.870777
+INFO:root:fnum = 2132
+INFO:root:	plot
+INFO:root:0:00:50.366980
+INFO:root:fnum = 2134
+INFO:root:	plot
+INFO:root:0:00:50.033577
+INFO:root:fnum = 2136
+INFO:root:	plot
+INFO:root:0:00:49.917866
+INFO:root:fnum = 2138
+INFO:root:	plot
+INFO:root:0:00:50.145137
+INFO:root:fnum = 2140
+INFO:root:	plot
+INFO:root:0:00:49.481316
+INFO:root:fnum = 2142
+INFO:root:	plot
+INFO:root:0:00:50.636974
+INFO:root:fnum = 2144
+INFO:root:	plot
+INFO:root:0:00:49.265357
+INFO:root:fnum = 2146
+INFO:root:	plot
+INFO:root:0:00:50.691820
+INFO:root:fnum = 2148
+INFO:root:	plot
+INFO:root:0:00:49.970403
+INFO:root:fnum = 2150
+INFO:root:	plot
+INFO:root:0:00:50.193395
+INFO:root:fnum = 2152
+INFO:root:	plot
+INFO:root:0:00:49.725217
+INFO:root:fnum = 2154
+INFO:root:	plot
+INFO:root:0:00:50.067883
+INFO:root:fnum = 2156
+INFO:root:	plot
+INFO:root:0:00:51.130348
+INFO:root:fnum = 2158
+INFO:root:	plot
+INFO:root:0:00:50.448153
+INFO:root:fnum = 2160
+INFO:root:	plot
+INFO:root:0:00:49.881502
+INFO:root:fnum = 2162
+INFO:root:	plot
+INFO:root:0:00:49.919827
+INFO:root:fnum = 2164
+INFO:root:	plot
+INFO:root:0:00:53.465799
+INFO:root:fnum = 2166
+INFO:root:	plot
+INFO:root:0:00:50.977741
+INFO:root:fnum = 2168
+INFO:root:	plot
+INFO:root:0:00:51.306710
+INFO:root:fnum = 2170
+INFO:root:	plot
+INFO:root:0:00:52.190368
+INFO:root:fnum = 2172
+INFO:root:	plot
+INFO:root:0:00:51.616555
+INFO:root:fnum = 2174
+INFO:root:	plot
+INFO:root:0:00:54.572917
+INFO:root:fnum = 2176
+INFO:root:	plot
+INFO:root:0:00:54.590497
+INFO:root:fnum = 2178
+INFO:root:	plot
+INFO:root:0:00:52.986761
+INFO:root:fnum = 2180
+INFO:root:	plot
+INFO:root:0:00:51.956200
+INFO:root:fnum = 2182
+INFO:root:	plot
+INFO:root:0:00:55.346087
+INFO:root:fnum = 2184
+INFO:root:	plot
+INFO:root:0:00:52.636569
+INFO:root:fnum = 2186
+INFO:root:	plot
+INFO:root:0:00:53.807896
+INFO:root:fnum = 2188
+INFO:root:	plot
+INFO:root:0:00:56.046866
+INFO:root:fnum = 2190
+INFO:root:	plot
+INFO:root:0:00:52.352668
+INFO:root:fnum = 2192
+INFO:root:	plot
+INFO:root:0:00:56.175292
+INFO:root:fnum = 2194
+INFO:root:	plot
+INFO:root:0:00:54.343752
+INFO:root:fnum = 2196
+INFO:root:	plot
+INFO:root:0:00:52.272326
+INFO:root:fnum = 2198
+INFO:root:	plot
+INFO:root:0:00:52.171902
+INFO:root:fnum = 2200
+INFO:root:	plot
+INFO:root:0:00:51.581858
+INFO:root:fnum = 2202
+INFO:root:	plot
+INFO:root:0:00:50.310809
+INFO:root:fnum = 2204
+INFO:root:	plot
+INFO:root:0:00:50.201954
+INFO:root:fnum = 2206
+INFO:root:	plot
+INFO:root:0:00:50.071197
+INFO:root:fnum = 2208
+INFO:root:	plot
+INFO:root:0:00:50.077556
+INFO:root:fnum = 2210
+INFO:root:	plot
+INFO:root:0:00:50.568419
+INFO:root:fnum = 2212
+INFO:root:	plot
+INFO:root:0:00:52.194231
+INFO:root:fnum = 2214
+INFO:root:	plot
+INFO:root:0:00:51.795781
+INFO:root:fnum = 2216
+INFO:root:	plot
+INFO:root:0:00:51.611689
+INFO:root:fnum = 2218
+INFO:root:	plot
+INFO:root:0:00:50.659380
+INFO:root:fnum = 2220
+INFO:root:	plot
+INFO:root:0:00:51.838680
+INFO:root:fnum = 2222
+INFO:root:	plot
+INFO:root:0:00:53.269719
+INFO:root:fnum = 2224
+INFO:root:	plot
+INFO:root:0:00:52.699938
+INFO:root:fnum = 2226
+INFO:root:	plot
+INFO:root:0:00:54.253128
+INFO:root:fnum = 2228
+INFO:root:	plot
+INFO:root:0:00:53.046731
+INFO:root:fnum = 2230
+INFO:root:	plot
+INFO:root:0:00:54.666862
+INFO:root:fnum = 2232
+INFO:root:	plot
+INFO:root:0:00:53.092993
+INFO:root:fnum = 2234
+INFO:root:	plot
+INFO:root:0:00:51.963820
+INFO:root:fnum = 2236
+INFO:root:	plot
+INFO:root:0:00:55.184051
+INFO:root:fnum = 2238
+INFO:root:	plot
+INFO:root:0:00:55.693577
+INFO:root:fnum = 2240
+INFO:root:	plot
+INFO:root:0:00:51.633364
+INFO:root:fnum = 2242
+INFO:root:	plot
+INFO:root:0:00:55.928018
+INFO:root:fnum = 2244
+INFO:root:	plot
+INFO:root:0:00:57.442419
+INFO:root:fnum = 2246
+INFO:root:	plot
+INFO:root:0:00:52.466990
+INFO:root:fnum = 2248
+INFO:root:	plot
+INFO:root:0:00:51.970551
+INFO:root:fnum = 2250
+INFO:root:	plot
+INFO:root:0:00:50.393001
+INFO:root:fnum = 2252
+INFO:root:	plot
+INFO:root:0:00:50.280158
+INFO:root:fnum = 2254
+INFO:root:	plot
+INFO:root:0:00:49.839901
+INFO:root:fnum = 2256
+INFO:root:	plot
+INFO:root:0:00:49.921523
+INFO:root:fnum = 2258
+INFO:root:	plot
+INFO:root:0:00:54.031009
+INFO:root:fnum = 2260
+INFO:root:	plot
+INFO:root:0:00:50.675576
+INFO:root:fnum = 2262
+INFO:root:	plot
+INFO:root:0:00:52.164963
+INFO:root:fnum = 2264
+INFO:root:	plot
+INFO:root:0:00:52.578181
+INFO:root:fnum = 2266
+INFO:root:	plot
+INFO:root:0:00:50.508925
+INFO:root:fnum = 2268
+INFO:root:	plot
+INFO:root:0:00:49.834589
+INFO:root:fnum = 2270
+INFO:root:	plot
+INFO:root:0:00:50.176953
+INFO:root:fnum = 2272
+INFO:root:	plot
+INFO:root:0:00:50.271025
+INFO:root:fnum = 2274
+INFO:root:	plot
+INFO:root:0:00:51.128325
+INFO:root:fnum = 2276
+INFO:root:	plot
+INFO:root:0:00:53.436052
+INFO:root:fnum = 2278
+INFO:root:	plot
+INFO:root:0:00:53.222358
+INFO:root:fnum = 2280
+INFO:root:	plot
+INFO:root:0:00:51.749980
+INFO:root:fnum = 2282
+INFO:root:	plot
+INFO:root:0:00:50.729224
+INFO:root:fnum = 2284
+INFO:root:	plot
+INFO:root:0:00:51.818009
+INFO:root:fnum = 2286
+INFO:root:	plot
+INFO:root:0:00:52.596177
+INFO:root:fnum = 2288
+INFO:root:	plot
+INFO:root:0:00:55.187127
+INFO:root:fnum = 2290
+INFO:root:	plot
+INFO:root:0:00:56.985866
+INFO:root:fnum = 2292
+INFO:root:	plot
+INFO:root:0:00:51.585422
+INFO:root:fnum = 2294
+INFO:root:	plot
+INFO:root:0:00:51.022295
+INFO:root:fnum = 2296
+INFO:root:	plot
+INFO:root:0:00:50.585724
+INFO:root:fnum = 2298
+INFO:root:	plot
+INFO:root:0:00:52.827009
+INFO:root:fnum = 2300
+INFO:root:	plot
+INFO:root:0:00:58.161898
+INFO:root:fnum = 2302
+INFO:root:	plot
+INFO:root:0:00:54.495718
+INFO:root:fnum = 2304
+INFO:root:	plot
+INFO:root:0:00:57.222833
+INFO:root:fnum = 2306
+INFO:root:	plot
+INFO:root:0:00:56.828644
+INFO:root:fnum = 2308
+INFO:root:	plot
+INFO:root:0:00:56.843947
+INFO:root:fnum = 2310
+INFO:root:	plot
+INFO:root:0:00:56.463467
+INFO:root:fnum = 2312
+INFO:root:	plot
+INFO:root:0:00:55.824352
+INFO:root:fnum = 2314
+INFO:root:	plot
+INFO:root:0:00:57.522238
+INFO:root:fnum = 2316
+INFO:root:	plot
+INFO:root:0:01:08.604845
+INFO:root:fnum = 2318
+INFO:root:	plot
+INFO:root:0:00:58.006242
+INFO:root:fnum = 2320
+INFO:root:	plot
+INFO:root:0:00:56.659279
+INFO:root:fnum = 2322
+INFO:root:	plot
+INFO:root:0:00:53.988540
+INFO:root:fnum = 2324
+INFO:root:	plot
+INFO:root:0:00:54.505151
+INFO:root:fnum = 2326
+INFO:root:	plot
+INFO:root:0:00:52.113953
+INFO:root:fnum = 2328
+INFO:root:	plot
+INFO:root:0:00:52.028496
+INFO:root:fnum = 2330
+INFO:root:	plot
+INFO:root:0:00:52.570983
+INFO:root:fnum = 2332
+INFO:root:	plot
+INFO:root:0:00:51.825029
+INFO:root:fnum = 2334
+INFO:root:	plot
+INFO:root:0:00:52.595275
+INFO:root:fnum = 2336
+INFO:root:	plot
+INFO:root:0:00:58.741144
+INFO:root:fnum = 2338
+INFO:root:	plot
+INFO:root:0:00:54.919198
+INFO:root:fnum = 2340
+INFO:root:	plot
+INFO:root:0:01:06.454800
+INFO:root:fnum = 2342
+INFO:root:	plot
+INFO:root:0:00:53.904708
+INFO:root:fnum = 2344
+INFO:root:	plot
+INFO:root:0:00:50.171740
+INFO:root:fnum = 2346
+INFO:root:	plot
+INFO:root:0:00:51.595956
+INFO:root:fnum = 2348
+INFO:root:	plot
+INFO:root:0:00:50.553808
+INFO:root:fnum = 2350
+INFO:root:	plot
+INFO:root:0:00:51.596335
+INFO:root:fnum = 2352
+INFO:root:	plot
+INFO:root:0:00:50.775788
+INFO:root:fnum = 2354
+INFO:root:	plot
+INFO:root:0:00:52.882208
+INFO:root:fnum = 2356
+INFO:root:	plot
+INFO:root:0:00:59.075516
+INFO:root:fnum = 2358
+INFO:root:	plot
+INFO:root:0:00:57.399772
+INFO:root:fnum = 2360
+INFO:root:	plot
+INFO:root:0:00:56.309286
+INFO:root:fnum = 2362
+INFO:root:	plot
+INFO:root:0:00:57.357645
+INFO:root:fnum = 2364
+INFO:root:	plot
+INFO:root:0:00:59.428781
+INFO:root:fnum = 2366
+INFO:root:	plot
+INFO:root:0:01:00.145748
+INFO:root:fnum = 2368
+INFO:root:	plot
+INFO:root:0:00:57.761939
+INFO:root:fnum = 2370
+INFO:root:	plot
+INFO:root:0:00:59.499381
+INFO:root:fnum = 2372
+INFO:root:	plot
+INFO:root:0:00:56.558733
+INFO:root:fnum = 2374
+INFO:root:	plot
+INFO:root:0:00:56.759778
+INFO:root:fnum = 2376
+INFO:root:	plot
+INFO:root:0:00:59.071907
+INFO:root:fnum = 2378
+INFO:root:	plot
+INFO:root:0:00:58.997705
+INFO:root:fnum = 2380
+INFO:root:	plot
+INFO:root:0:00:59.216711
+INFO:root:fnum = 2382
+INFO:root:	plot
+INFO:root:0:00:59.926556
+INFO:root:fnum = 2384
+INFO:root:	plot
+INFO:root:0:01:21.905340
+INFO:root:fnum = 2386
+INFO:root:	plot
+INFO:root:0:00:57.508739
+INFO:root:fnum = 2388
+INFO:root:	plot
+INFO:root:0:00:57.628020
+INFO:root:fnum = 2390
+INFO:root:	plot
+INFO:root:0:00:58.260417
+INFO:root:fnum = 2392
+INFO:root:	plot
+INFO:root:0:00:59.493228
+INFO:root:fnum = 2394
+INFO:root:	plot
+INFO:root:0:00:59.398823
+INFO:root:fnum = 2396
+INFO:root:	plot
+INFO:root:0:00:59.643897
+INFO:root:fnum = 2398
+INFO:root:	plot
+INFO:root:0:00:58.819825
+INFO:root:fnum = 2400
+INFO:root:	plot
+INFO:root:0:00:58.067559
+INFO:root:fnum = 2402
+INFO:root:	plot
+INFO:root:0:00:58.013499
+INFO:root:fnum = 2404
+INFO:root:	plot
+INFO:root:0:00:57.447352
+INFO:root:fnum = 2406
+INFO:root:	plot
+INFO:root:0:01:54.349114
+INFO:root:fnum = 2408
+INFO:root:	plot
+INFO:root:0:00:57.038295
+INFO:root:fnum = 2410
+INFO:root:	plot
+INFO:root:0:00:56.120500
+INFO:root:fnum = 2412
+INFO:root:	plot
+INFO:root:0:00:52.419243
+INFO:root:fnum = 2414
+INFO:root:	plot
+INFO:root:0:00:51.860543
+INFO:root:fnum = 2416
+INFO:root:	plot
+INFO:root:0:00:52.291259
+INFO:root:fnum = 2418
+INFO:root:	plot
+INFO:root:0:00:50.855853
+INFO:root:fnum = 2420
+INFO:root:	plot
+INFO:root:0:00:51.840405
+INFO:root:fnum = 2422
+INFO:root:	plot
+INFO:root:0:00:52.308968
+INFO:root:fnum = 2424
+INFO:root:	plot
+INFO:root:0:00:56.841061
+INFO:root:fnum = 2426
+INFO:root:	plot
+INFO:root:0:00:56.183356
+INFO:root:fnum = 2428
+INFO:root:	plot
+INFO:root:0:00:50.977671
+INFO:root:fnum = 2430
+INFO:root:	plot
+INFO:root:0:00:51.496159
+INFO:root:fnum = 2432
+INFO:root:	plot
+INFO:root:0:00:52.032084
+INFO:root:fnum = 2434
+INFO:root:	plot
+INFO:root:0:00:56.028972
+INFO:root:fnum = 2436
+INFO:root:	plot
+INFO:root:0:00:59.918834
+INFO:root:fnum = 2438
+INFO:root:	plot
+INFO:root:0:01:08.857966
+INFO:root:fnum = 2440
+INFO:root:	plot
+INFO:root:0:00:54.101569
+INFO:root:fnum = 2442
+INFO:root:	plot
+INFO:root:0:00:50.946194
+INFO:root:fnum = 2444
+INFO:root:	plot
+INFO:root:0:00:51.110521
+INFO:root:fnum = 2446
+INFO:root:	plot
+INFO:root:0:00:49.665985
+INFO:root:fnum = 2448
+INFO:root:	plot
+INFO:root:0:00:50.216636
+INFO:root:fnum = 2450
+INFO:root:	plot
+INFO:root:0:00:50.515057
+INFO:root:fnum = 2452
+INFO:root:	plot
+INFO:root:0:00:50.993022
+INFO:root:fnum = 2454
+INFO:root:	plot
+INFO:root:0:00:52.002552
+INFO:root:fnum = 2456
+INFO:root:	plot
+INFO:root:0:00:51.174319
+INFO:root:fnum = 2458
+INFO:root:	plot
+INFO:root:0:00:51.163678
+INFO:root:fnum = 2460
+INFO:root:	plot
+INFO:root:0:00:51.845878
+INFO:root:fnum = 2462
+INFO:root:	plot
+INFO:root:0:00:55.534126
+INFO:root:fnum = 2464
+INFO:root:	plot
+INFO:root:0:00:54.423645
+INFO:root:fnum = 2466
+INFO:root:	plot
+INFO:root:0:00:52.559933
+INFO:root:fnum = 2468
+INFO:root:	plot
+INFO:root:0:00:52.132118
+INFO:root:fnum = 2470
+INFO:root:	plot
+INFO:root:0:00:52.488087
+INFO:root:fnum = 2472
+INFO:root:	plot
+INFO:root:0:00:52.417739
+INFO:root:fnum = 2474
+INFO:root:	plot
+INFO:root:0:00:56.502439
+INFO:root:fnum = 2476
+INFO:root:	plot
+INFO:root:0:00:57.341515
+INFO:root:fnum = 2478
+INFO:root:	plot
+INFO:root:0:00:58.307207
+INFO:root:fnum = 2480
+INFO:root:	plot
+INFO:root:0:00:52.201128
+INFO:root:fnum = 2482
+INFO:root:	plot
+INFO:root:0:00:49.725424
+INFO:root:fnum = 2484
+INFO:root:	plot
+INFO:root:0:00:50.733470
+INFO:root:fnum = 2486
+INFO:root:	plot
+INFO:root:0:00:50.883915
+INFO:root:fnum = 2488
+INFO:root:	plot
+INFO:root:0:00:51.246803
+INFO:root:fnum = 2490
+INFO:root:	plot
+INFO:root:0:00:56.945738
+INFO:root:fnum = 2492
+INFO:root:	plot
+INFO:root:0:01:01.936192
+INFO:root:fnum = 2494
+INFO:root:	plot
+INFO:root:0:01:01.961896
+INFO:root:fnum = 2496
+INFO:root:	plot
+INFO:root:0:00:59.192342
+INFO:root:fnum = 2498
+INFO:root:	plot
+INFO:root:0:00:59.065589
+INFO:root:fnum = 2500
+INFO:root:	plot
+INFO:root:0:00:59.695518
+INFO:root:fnum = 2502
+INFO:root:	plot
+INFO:root:0:00:59.995656
+INFO:root:fnum = 2504
+INFO:root:	plot
+INFO:root:0:00:59.106151
+INFO:root:fnum = 2506
+INFO:root:	plot
+INFO:root:0:00:59.690073
+INFO:root:fnum = 2508
+INFO:root:	plot
+INFO:root:0:00:58.303083
+INFO:root:fnum = 2510
+INFO:root:	plot
+INFO:root:0:00:55.405722
+INFO:root:fnum = 2512
+INFO:root:	plot
+INFO:root:0:00:52.248068
+INFO:root:fnum = 2514
+INFO:root:	plot
+INFO:root:0:00:51.810269
+INFO:root:fnum = 2516
+INFO:root:	plot
+INFO:root:0:00:53.422688
+INFO:root:fnum = 2518
+INFO:root:	plot
+INFO:root:0:00:52.303862
+INFO:root:fnum = 2520
+INFO:root:	plot
+INFO:root:0:00:53.549807
+INFO:root:fnum = 2522
+INFO:root:	plot
+INFO:root:0:00:52.644902
+INFO:root:fnum = 2524
+INFO:root:	plot
+INFO:root:0:00:53.934915
+INFO:root:fnum = 2526
+INFO:root:	plot
+INFO:root:0:00:53.599436
+INFO:root:fnum = 2528
+INFO:root:	plot
+INFO:root:0:00:53.878962
+INFO:root:fnum = 2530
+INFO:root:	plot
+INFO:root:0:00:52.944668
+INFO:root:fnum = 2532
+INFO:root:	plot
+INFO:root:0:00:52.433630
+INFO:root:fnum = 2534
+INFO:root:	plot
+INFO:root:0:00:52.272227
+INFO:root:fnum = 2536
+INFO:root:	plot
+INFO:root:0:00:52.090928
+INFO:root:fnum = 2538
+INFO:root:	plot
+INFO:root:0:00:53.222537
+INFO:root:fnum = 2540
+INFO:root:	plot
+INFO:root:0:00:53.419185
+INFO:root:fnum = 2542
+INFO:root:	plot
+INFO:root:0:00:53.155363
+INFO:root:fnum = 2544
+INFO:root:	plot
+INFO:root:0:00:55.400953
+INFO:root:fnum = 2546
+INFO:root:	plot
+INFO:root:0:00:53.876045
+INFO:root:fnum = 2548
+INFO:root:	plot
+INFO:root:0:00:53.189372
+INFO:root:fnum = 2550
+INFO:root:	plot
+INFO:root:0:00:53.429711
+INFO:root:fnum = 2552
+INFO:root:	plot
+INFO:root:0:00:53.776377
+INFO:root:fnum = 2554
+INFO:root:	plot
+INFO:root:0:00:53.315735
+INFO:root:fnum = 2556
+INFO:root:	plot
+INFO:root:0:00:54.014578
+INFO:root:fnum = 2558
+INFO:root:	plot
+INFO:root:0:00:54.183610
+INFO:root:fnum = 2560
+INFO:root:	plot
+INFO:root:0:00:53.279745
+INFO:root:fnum = 2562
+INFO:root:	plot
+INFO:root:0:00:54.316093
+INFO:root:fnum = 2564
+INFO:root:	plot
+INFO:root:0:00:54.202016
+INFO:root:fnum = 2566
+INFO:root:	plot
+INFO:root:0:00:53.145958
+INFO:root:fnum = 2568
+INFO:root:	plot
+INFO:root:0:00:53.057413
+INFO:root:fnum = 2570
+INFO:root:	plot
+INFO:root:0:00:53.353251
+INFO:root:fnum = 2572
+INFO:root:	plot
+INFO:root:0:00:53.633957
+INFO:root:fnum = 2574
+INFO:root:	plot
+INFO:root:0:00:52.936969
+INFO:root:fnum = 2576
+INFO:root:	plot
+INFO:root:0:00:52.500754
+INFO:root:fnum = 2578
+INFO:root:	plot
+INFO:root:0:00:53.328202
+INFO:root:fnum = 2580
+INFO:root:	plot
+INFO:root:0:00:54.002968
+INFO:root:fnum = 2582
+INFO:root:	plot
+INFO:root:0:00:52.649155
+INFO:root:fnum = 2584
+INFO:root:	plot
+INFO:root:0:00:52.852815
+INFO:root:fnum = 2586
+INFO:root:	plot
+INFO:root:0:00:53.310946
+INFO:root:fnum = 2588
+INFO:root:	plot
+INFO:root:0:00:52.868031
+INFO:root:fnum = 2590
+INFO:root:	plot
+INFO:root:0:00:52.957388
+INFO:root:fnum = 2592
+INFO:root:	plot
+INFO:root:0:00:52.749331
+INFO:root:fnum = 2594
+INFO:root:	plot
+INFO:root:0:00:52.533290
+INFO:root:fnum = 2596
+INFO:root:	plot
+INFO:root:0:00:52.310611
+INFO:root:fnum = 2598
+INFO:root:	plot
+INFO:root:0:00:52.724533
+INFO:root:fnum = 2600
+INFO:root:	plot
+INFO:root:0:00:52.600348
+INFO:root:fnum = 2602
+INFO:root:	plot
+INFO:root:0:00:52.646100
+INFO:root:fnum = 2604
+INFO:root:	plot
+INFO:root:0:00:52.218587
+INFO:root:fnum = 2606
+INFO:root:	plot
+INFO:root:0:00:52.489607
+INFO:root:fnum = 2608
+INFO:root:	plot
+INFO:root:0:00:52.722810
+INFO:root:fnum = 2610
+INFO:root:	plot
+INFO:root:0:00:52.839727
+INFO:root:fnum = 2612
+INFO:root:	plot
+INFO:root:0:00:52.534770
+INFO:root:fnum = 2614
+INFO:root:	plot
+INFO:root:0:00:52.216029
+INFO:root:fnum = 2616
+INFO:root:	plot
+INFO:root:0:00:52.550388
+INFO:root:fnum = 2618
+INFO:root:	plot
+INFO:root:0:00:53.105777
+INFO:root:fnum = 2620
+INFO:root:	plot
+INFO:root:0:00:53.516353
+INFO:root:fnum = 2622
+INFO:root:	plot
+INFO:root:0:00:53.369994
+INFO:root:fnum = 2624
+INFO:root:	plot
+INFO:root:0:00:53.380933
+INFO:root:fnum = 2626
+INFO:root:	plot
+INFO:root:0:00:58.122094
+INFO:root:fnum = 2628
+INFO:root:	plot
+INFO:root:0:00:57.937222
+INFO:root:fnum = 2630
+INFO:root:	plot
+INFO:root:0:00:57.918635
+INFO:root:fnum = 2632
+INFO:root:	plot
+INFO:root:0:00:58.710957
+INFO:root:fnum = 2634
+INFO:root:	plot
+INFO:root:0:01:04.770712
+INFO:root:fnum = 2636
+INFO:root:	plot
+INFO:root:0:00:58.737623
+INFO:root:fnum = 2638
+INFO:root:	plot
+INFO:root:0:00:59.005520
+INFO:root:fnum = 2640
+INFO:root:	plot
+INFO:root:0:00:59.421705
+INFO:root:fnum = 2642
+INFO:root:	plot
+INFO:root:0:00:57.379139
+INFO:root:fnum = 2644
+INFO:root:	plot
+INFO:root:0:00:57.736451
+INFO:root:fnum = 2646
+INFO:root:	plot
+INFO:root:0:01:00.074825
+INFO:root:fnum = 2648
+INFO:root:	plot
+INFO:root:0:00:59.859552
+INFO:root:fnum = 2650
+INFO:root:	plot
+INFO:root:0:01:00.604237
+INFO:root:fnum = 2652
+INFO:root:	plot
+INFO:root:0:00:58.594703
+INFO:root:fnum = 2654
+INFO:root:	plot
+INFO:root:0:00:59.096056
+INFO:root:fnum = 2656
+INFO:root:	plot
+INFO:root:0:00:57.605510
+INFO:root:fnum = 2658
+INFO:root:	plot
+INFO:root:0:00:58.443345
+INFO:root:fnum = 2660
+INFO:root:	plot
+INFO:root:0:00:57.965829
+INFO:root:fnum = 2662
+INFO:root:	plot
+INFO:root:0:00:59.095586
+INFO:root:fnum = 2664
+INFO:root:	plot
+INFO:root:0:00:58.913108
+INFO:root:fnum = 2666
+INFO:root:	plot
+INFO:root:0:00:59.185608
+INFO:root:fnum = 2668
+INFO:root:	plot
+INFO:root:0:00:59.518081
+INFO:root:fnum = 2670
+INFO:root:	plot
+INFO:root:0:01:00.126957
+INFO:root:fnum = 2672
+INFO:root:	plot
+INFO:root:0:00:59.231715
+INFO:root:fnum = 2674
+INFO:root:	plot
+INFO:root:0:00:59.258792
+INFO:root:fnum = 2676
+INFO:root:	plot
+INFO:root:0:00:59.420805
+INFO:root:fnum = 2678
+INFO:root:	plot
+INFO:root:0:00:59.464729
+INFO:root:fnum = 2680
+INFO:root:	plot
+INFO:root:0:00:58.637799
+INFO:root:fnum = 2682
+INFO:root:	plot
+INFO:root:0:00:58.697599
+INFO:root:fnum = 2684
+INFO:root:	plot
+INFO:root:0:00:57.487293
+INFO:root:fnum = 2686
+INFO:root:	plot
+INFO:root:0:00:58.228689
+INFO:root:fnum = 2688
+INFO:root:	plot
+INFO:root:0:00:58.578150
+INFO:root:fnum = 2690
+INFO:root:	plot
+INFO:root:0:00:58.652452
+INFO:root:fnum = 2692
+INFO:root:	plot
+INFO:root:0:00:58.910197
+INFO:root:fnum = 2694
+INFO:root:	plot
+INFO:root:0:00:58.465951
+INFO:root:fnum = 2696
+INFO:root:	plot
+INFO:root:0:00:57.738505
+INFO:root:fnum = 2698
+INFO:root:	plot
+INFO:root:0:00:58.916719
+INFO:root:fnum = 2700
+INFO:root:	plot
+INFO:root:0:00:59.648651
+INFO:root:fnum = 2702
+INFO:root:	plot
+INFO:root:0:00:59.128691
+INFO:root:fnum = 2704
+INFO:root:	plot
+INFO:root:0:00:58.957052
+INFO:root:fnum = 2706
+INFO:root:	plot
+INFO:root:0:00:59.807288
+INFO:root:fnum = 2708
+INFO:root:	plot
+INFO:root:0:00:58.331409
+INFO:root:fnum = 2710
+INFO:root:	plot
+INFO:root:0:01:06.954766
+INFO:root:fnum = 2712
+INFO:root:	plot
+INFO:root:0:00:58.075293
+INFO:root:fnum = 2714
+INFO:root:	plot
+INFO:root:0:00:57.090764
+INFO:root:fnum = 2716
+INFO:root:	plot
+INFO:root:0:01:00.210373
+INFO:root:fnum = 2718
+INFO:root:	plot
+INFO:root:0:00:58.288878
+INFO:root:fnum = 2720
+INFO:root:	plot
+INFO:root:0:00:57.608465
+INFO:root:fnum = 2722
+INFO:root:	plot
+INFO:root:0:01:09.371612
+INFO:root:fnum = 2724
+INFO:root:	plot
+INFO:root:0:00:58.844867
+INFO:root:fnum = 2726
+INFO:root:	plot
+INFO:root:0:00:57.503549
+INFO:root:fnum = 2728
+INFO:root:	plot
+INFO:root:0:01:14.979576
+INFO:root:fnum = 2730
+INFO:root:	plot
+INFO:root:0:00:58.680688
+INFO:root:fnum = 2732
+INFO:root:	plot
+INFO:root:0:00:58.268923
+INFO:root:fnum = 2734
+INFO:root:	plot
+INFO:root:0:01:13.120745
+INFO:root:fnum = 2736
+INFO:root:	plot
+INFO:root:0:00:58.766579
+INFO:root:fnum = 2738
+INFO:root:	plot
+INFO:root:0:00:59.218726
+INFO:root:fnum = 2740
+INFO:root:	plot
+INFO:root:0:01:01.941802
+INFO:root:fnum = 2742
+INFO:root:	plot
+INFO:root:0:00:59.310933
+INFO:root:fnum = 2744
+INFO:root:	plot
+INFO:root:0:00:59.183696
+INFO:root:fnum = 2746
+INFO:root:	plot
+INFO:root:0:01:01.939110
+INFO:root:fnum = 2748
+INFO:root:	plot
+INFO:root:0:00:58.823209
+INFO:root:fnum = 2750
+INFO:root:	plot
+INFO:root:0:00:58.802417
+INFO:root:fnum = 2752
+INFO:root:	plot
+INFO:root:0:01:00.281015
+INFO:root:fnum = 2754
+INFO:root:	plot
+INFO:root:0:01:00.853377
+INFO:root:fnum = 2756
+INFO:root:	plot
+INFO:root:0:00:59.113604
+INFO:root:fnum = 2758
+INFO:root:	plot
+INFO:root:0:00:59.763054
+INFO:root:fnum = 2760
+INFO:root:	plot
+INFO:root:0:00:59.565453
+INFO:root:fnum = 2762
+INFO:root:	plot
+INFO:root:0:00:59.025079
+INFO:root:fnum = 2764
+INFO:root:	plot
+INFO:root:0:00:59.408744
+INFO:root:fnum = 2766
+INFO:root:	plot
+INFO:root:0:01:00.102714
+INFO:root:fnum = 2768
+INFO:root:	plot
+INFO:root:0:00:59.654681
+INFO:root:fnum = 2770
+INFO:root:	plot
+INFO:root:0:00:58.597117
+INFO:root:fnum = 2772
+INFO:root:	plot
+INFO:root:0:00:58.649340
+INFO:root:fnum = 2774
+INFO:root:	plot
+INFO:root:0:00:59.575275
+INFO:root:fnum = 2776
+INFO:root:	plot
+INFO:root:0:00:59.211850
+INFO:root:fnum = 2778
+INFO:root:	plot
+INFO:root:0:00:59.529470
+INFO:root:fnum = 2780
+INFO:root:	plot
+INFO:root:0:00:58.609399
+INFO:root:fnum = 2782
+INFO:root:	plot
+INFO:root:0:00:59.876668
+INFO:root:fnum = 2784
+INFO:root:	plot
+INFO:root:0:00:59.740457
+INFO:root:fnum = 2786
+INFO:root:	plot
+INFO:root:0:00:59.287864
+INFO:root:fnum = 2788
+INFO:root:	plot
+INFO:root:0:00:59.957507
+INFO:root:fnum = 2790
+INFO:root:	plot
+INFO:root:0:01:00.424188
+INFO:root:fnum = 2792
+INFO:root:	plot
+INFO:root:0:00:59.357966
+INFO:root:fnum = 2794
+INFO:root:	plot
+INFO:root:0:00:59.382116
+INFO:root:fnum = 2796
+INFO:root:	plot
+INFO:root:0:00:59.609605
+INFO:root:fnum = 2798
+INFO:root:	plot
+INFO:root:0:00:59.670295
+INFO:root:fnum = 2800
+INFO:root:	plot
+INFO:root:0:00:59.312976
+INFO:root:fnum = 2802
+INFO:root:	plot
+INFO:root:0:01:00.220045
+INFO:root:fnum = 2804
+INFO:root:	plot
+INFO:root:0:00:57.946054
+INFO:root:fnum = 2806
+INFO:root:	plot
+INFO:root:0:00:58.907338
+INFO:root:fnum = 2808
+INFO:root:	plot
+INFO:root:0:00:58.196962
+INFO:root:fnum = 2810
+INFO:root:	plot
+INFO:root:0:00:57.519367
+INFO:root:fnum = 2812
+INFO:root:	plot
+INFO:root:0:00:58.391514
+INFO:root:fnum = 2814
+INFO:root:	plot
+INFO:root:0:00:58.604105
+INFO:root:fnum = 2816
+INFO:root:	plot
+INFO:root:0:00:59.593434
+INFO:root:fnum = 2818
+INFO:root:	plot
+INFO:root:0:00:59.618717
+INFO:root:fnum = 2820
+INFO:root:	plot
+INFO:root:0:01:01.483900
+INFO:root:fnum = 2822
+INFO:root:	plot
+INFO:root:0:01:00.299972
+INFO:root:fnum = 2824
+INFO:root:	plot
+INFO:root:0:00:59.055753
+INFO:root:fnum = 2826
+INFO:root:	plot
+INFO:root:0:00:59.916998
+INFO:root:fnum = 2828
+INFO:root:	plot
+INFO:root:0:00:59.374947
+INFO:root:fnum = 2830
+INFO:root:	plot
+INFO:root:0:01:00.115132
+INFO:root:fnum = 2832
+INFO:root:	plot
+INFO:root:0:00:59.445489
+INFO:root:fnum = 2834
+INFO:root:	plot
+INFO:root:0:00:59.523201
+INFO:root:fnum = 2836
+INFO:root:	plot
+INFO:root:0:00:59.640144
+INFO:root:fnum = 2838
+INFO:root:	plot
+INFO:root:0:00:59.278493
+INFO:root:fnum = 2840
+INFO:root:	plot
+INFO:root:0:00:59.155644
+INFO:root:fnum = 2842
+INFO:root:	plot
+INFO:root:0:00:59.573451
+INFO:root:fnum = 2844
+INFO:root:	plot
+INFO:root:0:00:53.640798
+INFO:root:fnum = 2846
+INFO:root:	plot
+INFO:root:0:00:53.419416
+INFO:root:fnum = 2848
+INFO:root:	plot
+INFO:root:0:00:53.732502
+INFO:root:fnum = 2850
+INFO:root:	plot
+INFO:root:0:00:52.741548
+INFO:root:fnum = 2852
+INFO:root:	plot
+INFO:root:0:00:52.573926
+INFO:root:fnum = 2854
+INFO:root:	plot
+INFO:root:0:00:52.810685
+INFO:root:fnum = 2856
+INFO:root:	plot
+INFO:root:0:00:53.610731
+INFO:root:fnum = 2858
+INFO:root:	plot
+INFO:root:0:00:52.118832
+INFO:root:fnum = 2860
+INFO:root:	plot
+INFO:root:0:00:52.751506
+INFO:root:fnum = 2862
+INFO:root:	plot
+INFO:root:0:00:52.617607
+INFO:root:fnum = 2864
+INFO:root:	plot
+INFO:root:0:00:53.973362
+INFO:root:fnum = 2866
+INFO:root:	plot
+INFO:root:0:00:53.577956
+INFO:root:fnum = 2868
+INFO:root:	plot
+INFO:root:0:00:57.803112
+INFO:root:fnum = 2870
+INFO:root:	plot
+INFO:root:0:00:58.652987
+INFO:root:fnum = 2872
+INFO:root:	plot
+INFO:root:0:00:57.375881
+INFO:root:fnum = 2874
+INFO:root:	plot
+INFO:root:0:00:58.974976
+INFO:root:fnum = 2876
+INFO:root:	plot
+INFO:root:0:00:59.271643
+INFO:root:fnum = 2878
+INFO:root:	plot
+INFO:root:0:01:00.222073
+INFO:root:fnum = 2880
+INFO:root:	plot
+INFO:root:0:01:01.230105
+INFO:root:fnum = 2882
+INFO:root:	plot
+INFO:root:0:00:58.188089
+INFO:root:fnum = 2884
+INFO:root:	plot
+INFO:root:0:00:53.223516
+INFO:root:fnum = 2886
+INFO:root:	plot
+INFO:root:0:01:01.964174
+INFO:root:fnum = 2888
+INFO:root:	plot
+INFO:root:0:00:58.092009
+INFO:root:fnum = 2890
+INFO:root:	plot
+INFO:root:0:00:58.635138
+INFO:root:fnum = 2892
+INFO:root:	plot
+INFO:root:0:00:59.236587
+INFO:root:fnum = 2894
+INFO:root:	plot
+INFO:root:0:00:58.978400
+INFO:root:fnum = 2896
+INFO:root:	plot
+INFO:root:0:00:58.011612
+INFO:root:fnum = 2898
+INFO:root:	plot
+INFO:root:0:00:57.913758
+INFO:root:fnum = 2900
+INFO:root:	plot
+INFO:root:0:00:58.697605
+INFO:root:fnum = 2902
+INFO:root:	plot
+INFO:root:0:00:58.537419
+INFO:root:fnum = 2904
+INFO:root:	plot
+INFO:root:0:00:58.633733
+INFO:root:fnum = 2906
+INFO:root:	plot
+INFO:root:0:00:59.771383
+INFO:root:fnum = 2908
+INFO:root:	plot
+INFO:root:0:01:05.550187
+INFO:root:fnum = 2910
+INFO:root:	plot
+INFO:root:0:01:02.243491
+INFO:root:fnum = 2912
+INFO:root:	plot
+INFO:root:0:01:02.841483
+INFO:root:fnum = 2914
+INFO:root:	plot
+INFO:root:0:01:02.793486
+INFO:root:fnum = 2916
+INFO:root:	plot
+INFO:root:0:01:03.157439
+INFO:root:fnum = 2918
+INFO:root:	plot
+INFO:root:0:01:04.030668
+INFO:root:fnum = 2920
+INFO:root:	plot
+INFO:root:0:01:03.566638
+INFO:root:fnum = 2922
+INFO:root:	plot
+INFO:root:0:01:00.738938
+INFO:root:fnum = 2924
+INFO:root:	plot
+INFO:root:0:01:04.605922
+INFO:root:fnum = 2926
+INFO:root:	plot
+INFO:root:0:01:06.424220
+INFO:root:fnum = 2928
+INFO:root:	plot
+INFO:root:0:01:03.666879
+INFO:root:fnum = 2930
+INFO:root:	plot
+INFO:root:0:01:17.419683
+INFO:root:fnum = 2932
+INFO:root:	plot
+INFO:root:0:01:46.765377
+INFO:root:fnum = 2934
+INFO:root:	plot
+INFO:root:0:01:21.157813
+INFO:root:fnum = 2936
+INFO:root:	plot
+INFO:root:0:01:22.841990
+INFO:root:fnum = 2938
+INFO:root:	plot
+INFO:root:0:01:38.162161
+INFO:root:fnum = 2940
+INFO:root:	plot
+INFO:root:0:01:28.196265
+INFO:root:fnum = 2942
+INFO:root:	plot
+INFO:root:0:01:26.722938
+INFO:root:fnum = 2944
+INFO:root:	plot
+INFO:root:0:01:27.453303
+INFO:root:fnum = 2946
+INFO:root:	plot
+INFO:root:0:01:20.846996
+INFO:root:fnum = 2948
+INFO:root:	plot
+INFO:root:0:01:43.654122
+INFO:root:fnum = 2950
+INFO:root:	plot
+INFO:root:0:01:38.176553
+INFO:root:fnum = 2952
+INFO:root:	plot
+INFO:root:0:01:42.550552
+INFO:root:fnum = 2954
+INFO:root:	plot
+INFO:root:0:02:12.870481
+INFO:root:fnum = 2956
+INFO:root:	plot
+INFO:root:0:01:45.660806
+INFO:root:fnum = 2958
+INFO:root:	plot
+INFO:root:0:01:47.673745
+INFO:root:fnum = 2960
+INFO:root:	plot
+INFO:root:0:02:01.069191
+INFO:root:fnum = 2962
+INFO:root:	plot
+INFO:root:0:01:54.387791
+INFO:root:fnum = 2964
+INFO:root:	plot
+INFO:root:0:01:44.680151
+INFO:root:fnum = 2966
+INFO:root:	plot
+INFO:root:0:01:43.160631
+INFO:root:fnum = 2968
+INFO:root:	plot
+INFO:root:0:01:48.974796
+INFO:root:fnum = 2970
+INFO:root:	plot
+INFO:root:0:01:57.480431
+INFO:root:fnum = 2972
+INFO:root:	plot
+INFO:root:0:01:41.720168
+INFO:root:fnum = 2974
+INFO:root:	plot
+INFO:root:0:01:51.865973
+INFO:root:fnum = 2976
+INFO:root:	plot
+INFO:root:0:01:37.089965
+INFO:root:fnum = 2978
+INFO:root:	plot
+INFO:root:0:01:43.156342
+INFO:root:fnum = 2980
+INFO:root:	plot
+INFO:root:0:01:53.165953
+INFO:root:fnum = 2982
+INFO:root:	plot
+INFO:root:0:02:05.086453
+INFO:root:fnum = 2984
+INFO:root:	plot
+INFO:root:0:01:56.944339
+INFO:root:fnum = 2986
+INFO:root:	plot
+INFO:root:0:01:56.781103
+INFO:root:fnum = 2988
+INFO:root:	plot
+INFO:root:0:01:59.730324
+INFO:root:fnum = 2990
+INFO:root:	plot
+INFO:root:0:01:44.283547
+INFO:root:fnum = 2992
+INFO:root:	plot
+INFO:root:0:01:56.048890
+INFO:root:fnum = 2994
+INFO:root:	plot
+INFO:root:0:01:42.426782
+INFO:root:fnum = 2996
+INFO:root:	plot
+INFO:root:0:01:57.550854
+INFO:root:fnum = 2998
+INFO:root:	plot
+INFO:root:0:02:04.722119
+INFO:root:fnum = 3000
+INFO:root:	plot
+INFO:root:0:02:02.514684
+INFO:root:fnum = 3002
+INFO:root:	plot
+INFO:root:0:02:01.836808
+INFO:root:fnum = 3004
+INFO:root:	plot
+INFO:root:0:02:06.353234
+INFO:root:fnum = 3006
+INFO:root:	plot
+INFO:root:0:02:01.599039
+INFO:root:fnum = 3008
+INFO:root:	plot
+INFO:root:0:01:57.267719
+INFO:root:fnum = 3010
+INFO:root:	plot
+INFO:root:0:02:08.345704
+INFO:root:fnum = 3012
+INFO:root:	plot
+INFO:root:0:01:45.145490
+INFO:root:fnum = 3014
+INFO:root:	plot
+INFO:root:0:01:48.550665
+INFO:root:fnum = 3016
+INFO:root:	plot
+INFO:root:0:01:54.827929
+INFO:root:fnum = 3018
+INFO:root:	plot
+INFO:root:0:02:04.211662
+INFO:root:fnum = 3020
+INFO:root:	plot
+INFO:root:0:02:10.131932
+INFO:root:fnum = 3022
+INFO:root:	plot
+INFO:root:0:02:09.220564
+INFO:root:fnum = 3024
+INFO:root:	plot
+INFO:root:0:02:07.389290
+INFO:root:fnum = 3026
+INFO:root:	plot
+INFO:root:0:02:10.557556
+INFO:root:fnum = 3028
+INFO:root:	plot
+INFO:root:0:02:02.435114
+INFO:root:fnum = 3030
+INFO:root:	plot
+INFO:root:0:02:02.464043
+INFO:root:fnum = 3032
+INFO:root:	plot
+INFO:root:0:02:06.967671
+INFO:root:fnum = 3034
+INFO:root:	plot
+INFO:root:0:01:32.012214
+INFO:root:fnum = 3036
+INFO:root:	plot
+INFO:root:0:01:06.995599
+INFO:root:fnum = 3038
+INFO:root:	plot
+INFO:root:0:01:05.225212
+INFO:root:fnum = 3040
+INFO:root:	plot
+INFO:root:0:01:02.790710
+INFO:root:fnum = 3042
+INFO:root:	plot
+INFO:root:0:01:01.082542
+INFO:root:fnum = 3044
+INFO:root:	plot
+INFO:root:0:01:03.097312
+INFO:root:fnum = 3046
+INFO:root:	plot
+INFO:root:0:00:59.904794
+INFO:root:fnum = 3048
+INFO:root:	plot
+INFO:root:0:00:53.515783
+INFO:root:fnum = 3050
+INFO:root:	plot
+INFO:root:0:00:52.728606
+INFO:root:fnum = 3052
+INFO:root:	plot
+INFO:root:0:00:52.932669
+INFO:root:fnum = 3054
+INFO:root:	plot
+INFO:root:0:00:52.960842
+INFO:root:fnum = 3056
+INFO:root:	plot
+INFO:root:0:00:53.836658
+INFO:root:fnum = 3058
+INFO:root:	plot
+INFO:root:0:00:55.919491
+INFO:root:fnum = 3060
+INFO:root:	plot
+INFO:root:0:00:52.943574
+INFO:root:fnum = 3062
+INFO:root:	plot
+INFO:root:0:00:53.197700
+INFO:root:fnum = 3064
+INFO:root:	plot
+INFO:root:0:00:52.952559
+INFO:root:fnum = 3066
+INFO:root:	plot
+INFO:root:0:00:53.969823
+INFO:root:fnum = 3068
+INFO:root:	plot
+INFO:root:0:00:56.329503
+INFO:root:fnum = 3070
+INFO:root:	plot
+INFO:root:0:00:52.911614
+INFO:root:fnum = 3072
+INFO:root:	plot
+INFO:root:0:00:54.685189
+INFO:root:fnum = 3074
+INFO:root:	plot
+INFO:root:0:00:53.273177
+INFO:root:fnum = 3076
+INFO:root:	plot
+INFO:root:0:00:54.024292
+INFO:root:fnum = 3078
+INFO:root:	plot
+INFO:root:0:00:55.124512
+INFO:root:fnum = 3080
+INFO:root:	plot
+INFO:root:0:00:53.561720
+INFO:root:fnum = 3082
+INFO:root:	plot
+INFO:root:0:00:52.989928
+INFO:root:fnum = 3084
+INFO:root:	plot
+INFO:root:0:01:22.561443
+INFO:root:fnum = 3086
+INFO:root:	plot
+INFO:root:0:01:18.626222
+INFO:root:fnum = 3088
+INFO:root:	plot
+INFO:root:0:01:01.354971
+INFO:root:fnum = 3090
+INFO:root:	plot
+INFO:root:0:00:56.017607
+INFO:root:fnum = 3092
+INFO:root:	plot
+INFO:root:0:00:53.642761
+INFO:root:fnum = 3094
+INFO:root:	plot
+INFO:root:0:00:53.813063
+INFO:root:fnum = 3096
+INFO:root:	plot
+INFO:root:0:00:53.176946
+INFO:root:fnum = 3098
+INFO:root:	plot
+INFO:root:0:00:52.477661
+INFO:root:fnum = 3100
+INFO:root:	plot
+INFO:root:0:00:52.841903
+INFO:root:fnum = 3102
+INFO:root:	plot
+INFO:root:0:00:52.738741
+INFO:root:fnum = 3104
+INFO:root:	plot
+INFO:root:0:00:53.518787
+INFO:root:fnum = 3106
+INFO:root:	plot
+INFO:root:0:00:52.818344
+INFO:root:fnum = 3108
+INFO:root:	plot
+INFO:root:0:00:52.984435
+INFO:root:fnum = 3110
+INFO:root:	plot
+INFO:root:0:00:52.925862
+INFO:root:fnum = 3112
+INFO:root:	plot
+INFO:root:0:00:52.842872
+INFO:root:fnum = 3114
+INFO:root:	plot
+INFO:root:0:00:52.863127
+INFO:root:fnum = 3116
+INFO:root:	plot
+INFO:root:0:00:52.787283
+INFO:root:fnum = 3118
+INFO:root:	plot
+INFO:root:0:00:52.903513
+INFO:root:fnum = 3120
+INFO:root:	plot
+INFO:root:0:00:53.524088
+INFO:root:fnum = 3122
+INFO:root:	plot
+INFO:root:0:00:53.200309
+INFO:root:fnum = 3124
+INFO:root:	plot
+INFO:root:0:00:53.128814
+INFO:root:fnum = 3126
+INFO:root:	plot
+INFO:root:0:00:52.903627
+INFO:root:fnum = 3128
+INFO:root:	plot
+INFO:root:0:00:52.773938
+INFO:root:fnum = 3130
+INFO:root:	plot
+INFO:root:0:00:52.764569
+INFO:root:fnum = 3132
+INFO:root:	plot
+INFO:root:0:00:53.024344
+INFO:root:fnum = 3134
+INFO:root:	plot
+INFO:root:0:00:53.462910
+INFO:root:fnum = 3136
+INFO:root:	plot
+INFO:root:0:00:52.946548
+INFO:root:fnum = 3138
+INFO:root:	plot
+INFO:root:0:00:52.698151
+INFO:root:fnum = 3140
+INFO:root:	plot
+INFO:root:0:00:52.052864
+INFO:root:fnum = 3142
+INFO:root:	plot
+INFO:root:0:00:50.926754
+INFO:root:fnum = 3144
+INFO:root:	plot
+INFO:root:0:00:51.072780
+INFO:root:fnum = 3146
+INFO:root:	plot
+INFO:root:0:00:51.022307
+INFO:root:fnum = 3148
+INFO:root:	plot
+INFO:root:0:00:50.498798
+INFO:root:fnum = 3150
+INFO:root:	plot
+INFO:root:0:00:50.907363
+INFO:root:fnum = 3152
+INFO:root:	plot
+INFO:root:0:00:50.593039
+INFO:root:fnum = 3154
+INFO:root:	plot
+INFO:root:0:00:50.403357
+INFO:root:fnum = 3156
+INFO:root:	plot
+INFO:root:0:00:50.729918
+INFO:root:fnum = 3158
+INFO:root:	plot
+INFO:root:0:00:51.116201
+INFO:root:fnum = 3160
+INFO:root:	plot
+INFO:root:0:00:51.606024
+INFO:root:fnum = 3162
+INFO:root:	plot
+INFO:root:0:00:50.798241
+INFO:root:fnum = 3164
+INFO:root:	plot
+INFO:root:0:00:50.350349
+INFO:root:fnum = 3166
+INFO:root:	plot
+INFO:root:0:00:51.230457
+INFO:root:fnum = 3168
+INFO:root:	plot
+INFO:root:0:00:50.892580
+INFO:root:fnum = 3170
+INFO:root:	plot
+INFO:root:0:00:50.769104
+INFO:root:fnum = 3172
+INFO:root:	plot
+INFO:root:0:00:50.134435
+INFO:root:fnum = 3174
+INFO:root:	plot
+INFO:root:0:00:50.457822
+INFO:root:fnum = 3176
+INFO:root:	plot
+INFO:root:0:00:50.716230
+INFO:root:fnum = 3178
+INFO:root:	plot
+INFO:root:0:00:51.251138
+INFO:root:fnum = 3180
+INFO:root:	plot
+INFO:root:0:00:50.642054
+INFO:root:fnum = 3182
+INFO:root:	plot
+INFO:root:0:00:50.976962
+INFO:root:fnum = 3184
+INFO:root:	plot
+INFO:root:0:00:50.712125
+INFO:root:fnum = 3186
+INFO:root:	plot
+INFO:root:0:00:50.421454
+INFO:root:fnum = 3188
+INFO:root:	plot
+INFO:root:0:00:51.349522
+INFO:root:fnum = 3190
+INFO:root:	plot
+INFO:root:0:00:51.653395
+INFO:root:fnum = 3192
+INFO:root:	plot
+INFO:root:0:00:50.681891
+INFO:root:fnum = 3194
+INFO:root:	plot
+INFO:root:0:00:50.770589
+INFO:root:fnum = 3196
+INFO:root:	plot
+INFO:root:0:00:50.866002
+INFO:root:fnum = 3198
+INFO:root:	plot
+INFO:root:0:00:50.598615
+INFO:root:fnum = 3200
+INFO:root:	plot
+INFO:root:0:00:50.516674
+INFO:root:fnum = 3202
+INFO:root:	plot
+INFO:root:0:00:50.754433
+INFO:root:fnum = 3204
+INFO:root:	plot
+INFO:root:0:00:50.861903
+INFO:root:fnum = 3206
+INFO:root:	plot
+INFO:root:0:00:50.476620
+INFO:root:fnum = 3208
+INFO:root:	plot
+INFO:root:0:00:51.352162
+INFO:root:fnum = 3210
+INFO:root:	plot
+INFO:root:0:00:50.916239
+INFO:root:fnum = 3212
+INFO:root:	plot
+INFO:root:0:00:50.982626
+INFO:root:fnum = 3214
+INFO:root:	plot
+INFO:root:0:00:51.176732
+INFO:root:fnum = 3216
+INFO:root:	plot
+INFO:root:0:00:51.329960
+INFO:root:fnum = 3218
+INFO:root:	plot
+INFO:root:0:00:50.786251
+INFO:root:fnum = 3220
+INFO:root:	plot
+INFO:root:0:00:50.853538
+INFO:root:fnum = 3222
+INFO:root:	plot
+INFO:root:0:00:50.698211
+INFO:root:fnum = 3224
+INFO:root:	plot
+INFO:root:0:00:51.022882
+INFO:root:fnum = 3226
+INFO:root:	plot
+INFO:root:0:00:51.421624
+INFO:root:fnum = 3228
+INFO:root:	plot
+INFO:root:0:00:50.803089
+INFO:root:fnum = 3230
+INFO:root:	plot
+INFO:root:0:00:50.956483
+INFO:root:fnum = 3232
+INFO:root:	plot
+INFO:root:0:00:51.175962
+INFO:root:fnum = 3234
+INFO:root:	plot
+INFO:root:0:00:50.908616
+INFO:root:fnum = 3236
+INFO:root:	plot
+INFO:root:0:00:50.917935
+INFO:root:fnum = 3238
+INFO:root:	plot
+INFO:root:0:00:50.701806
+INFO:root:fnum = 3240
+INFO:root:	plot
+INFO:root:0:00:50.289910
+INFO:root:fnum = 3242
+INFO:root:	plot
+INFO:root:0:00:50.768018
+INFO:root:fnum = 3244
+INFO:root:	plot
+INFO:root:0:00:51.205158
+INFO:root:fnum = 3246
+INFO:root:	plot
+INFO:root:0:00:50.431104
+INFO:root:fnum = 3248
+INFO:root:	plot
+INFO:root:0:00:50.953325
+INFO:root:fnum = 3250
+INFO:root:	plot
+INFO:root:0:00:51.023082
+INFO:root:fnum = 3252
+INFO:root:	plot
+INFO:root:0:00:52.099696
+INFO:root:fnum = 3254
+INFO:root:	plot
+INFO:root:0:00:51.944394
+INFO:root:fnum = 3256
+INFO:root:	plot
+INFO:root:0:00:51.730797
+INFO:root:fnum = 3258
+INFO:root:	plot
+INFO:root:0:00:51.627350
+INFO:root:fnum = 3260
+INFO:root:	plot
+INFO:root:0:00:53.807354
+INFO:root:fnum = 3262
+INFO:root:	plot
+INFO:root:0:00:50.740627
+INFO:root:fnum = 3264
+INFO:root:	plot
+INFO:root:0:00:50.843554
+INFO:root:fnum = 3266
+INFO:root:	plot
+INFO:root:0:00:51.067714
+INFO:root:fnum = 3268
+INFO:root:	plot
+INFO:root:0:00:50.744570
+INFO:root:fnum = 3270
+INFO:root:	plot
+INFO:root:0:00:50.810626
+INFO:root:fnum = 3272
+INFO:root:	plot
+INFO:root:0:00:51.205179
+INFO:root:fnum = 3274
+INFO:root:	plot
+INFO:root:0:00:50.919980
+INFO:root:fnum = 3276
+INFO:root:	plot
+INFO:root:0:00:51.596026
+INFO:root:fnum = 3278
+INFO:root:	plot
+INFO:root:0:00:50.547478
+INFO:root:fnum = 3280
+INFO:root:	plot
+INFO:root:0:00:50.870717
+INFO:root:fnum = 3282
+INFO:root:	plot
+INFO:root:0:00:51.227782
+INFO:root:fnum = 3284
+INFO:root:	plot
+INFO:root:0:00:54.448068
+INFO:root:fnum = 3286
+INFO:root:	plot
+INFO:root:0:00:50.908784
+INFO:root:fnum = 3288
+INFO:root:	plot
+INFO:root:0:00:50.616544
+INFO:root:fnum = 3290
+INFO:root:	plot
+INFO:root:0:00:50.401901
+INFO:root:fnum = 3292
+INFO:root:	plot
+INFO:root:0:00:50.491673
+INFO:root:fnum = 3294
+INFO:root:	plot
+INFO:root:0:00:50.619662
+INFO:root:fnum = 3296
+INFO:root:	plot
+INFO:root:0:00:51.577418
+INFO:root:fnum = 3298
+INFO:root:	plot
+INFO:root:0:00:51.108148
+INFO:root:fnum = 3300
+INFO:root:	plot
+INFO:root:0:00:51.031927
+INFO:root:fnum = 3302
+INFO:root:	plot
+INFO:root:0:00:51.338244
+INFO:root:fnum = 3304
+INFO:root:	plot
+INFO:root:0:00:50.922608
+INFO:root:fnum = 3306
+INFO:root:	plot
+INFO:root:0:00:51.384363
+INFO:root:fnum = 3308
+INFO:root:	plot
+INFO:root:0:00:51.204456
+INFO:root:fnum = 3310
+INFO:root:	plot
+INFO:root:0:00:51.049806
+INFO:root:fnum = 3312
+INFO:root:	plot
+INFO:root:0:00:50.736836
+INFO:root:fnum = 3314
+INFO:root:	plot
+INFO:root:0:00:50.500682
+INFO:root:fnum = 3316
+INFO:root:	plot
+INFO:root:0:00:50.734715
+INFO:root:fnum = 3318
+INFO:root:	plot
+INFO:root:0:00:51.031218
+INFO:root:fnum = 3320
+INFO:root:	plot
+INFO:root:0:00:50.669636
+INFO:root:fnum = 3322
+INFO:root:	plot
+INFO:root:0:00:51.157147
+INFO:root:fnum = 3324
+INFO:root:	plot
+INFO:root:0:00:50.914059
+INFO:root:fnum = 3326
+INFO:root:	plot
+INFO:root:0:00:50.619488
+INFO:root:fnum = 3328
+INFO:root:	plot
+INFO:root:0:00:50.585163
+INFO:root:fnum = 3330
+INFO:root:	plot
+INFO:root:0:00:50.904796
+INFO:root:fnum = 3332
+INFO:root:	plot
+INFO:root:0:00:50.413892
+INFO:root:fnum = 3334
+INFO:root:	plot
+INFO:root:0:00:52.336497
+INFO:root:fnum = 3336
+INFO:root:	plot
+INFO:root:0:00:50.825554
+INFO:root:fnum = 3338
+INFO:root:	plot
+INFO:root:0:00:51.055403
+INFO:root:fnum = 3340
+INFO:root:	plot
+INFO:root:0:00:51.073190
+INFO:root:fnum = 3342
+INFO:root:	plot
+INFO:root:0:00:50.873839
+INFO:root:fnum = 3344
+INFO:root:	plot
+INFO:root:0:00:51.143428
+INFO:root:fnum = 3346
+INFO:root:	plot
+INFO:root:0:00:50.683825
+INFO:root:fnum = 3348
+INFO:root:	plot
+INFO:root:0:00:50.394813
+INFO:root:fnum = 3350
+INFO:root:	plot
+INFO:root:0:00:50.484796
+INFO:root:fnum = 3352
+INFO:root:	plot
+INFO:root:0:00:50.520178
+INFO:root:fnum = 3354
+INFO:root:	plot
+INFO:root:0:00:50.930014
+INFO:root:fnum = 3356
+INFO:root:	plot
+INFO:root:0:00:51.280548
+INFO:root:fnum = 3358
+INFO:root:	plot
+INFO:root:0:00:50.797786
+INFO:root:fnum = 3360
+INFO:root:	plot
+INFO:root:0:00:50.680412
+INFO:root:fnum = 3362
+INFO:root:	plot
+INFO:root:0:00:50.458341
+INFO:root:fnum = 3364
+INFO:root:	plot
+INFO:root:0:00:51.400094
+INFO:root:fnum = 3366
+INFO:root:	plot
+INFO:root:0:00:51.334043
+INFO:root:fnum = 3368
+INFO:root:	plot
+INFO:root:0:00:51.736553
+INFO:root:fnum = 3370
+INFO:root:	plot
+INFO:root:0:00:50.569328
+INFO:root:fnum = 3372
+INFO:root:	plot
+INFO:root:0:00:50.778794
+INFO:root:fnum = 3374
+INFO:root:	plot
+INFO:root:0:00:50.672177
+INFO:root:fnum = 3376
+INFO:root:	plot
+INFO:root:0:00:50.722561
+INFO:root:fnum = 3378
+INFO:root:	plot
+INFO:root:0:00:50.687275
+INFO:root:fnum = 3380
+INFO:root:	plot
+INFO:root:0:00:51.110829
+INFO:root:fnum = 3382
+INFO:root:	plot
+INFO:root:0:00:50.572381
+INFO:root:fnum = 3384
+INFO:root:	plot
+INFO:root:0:00:50.802069
+INFO:root:fnum = 3386
+INFO:root:	plot
+INFO:root:0:00:50.983179
+INFO:root:fnum = 3388
+INFO:root:	plot
+INFO:root:0:00:51.121614
+INFO:root:fnum = 3390
+INFO:root:	plot
+INFO:root:0:00:51.368514
+INFO:root:fnum = 3392
+INFO:root:	plot
+INFO:root:0:00:50.766602
+INFO:root:fnum = 3394
+INFO:root:	plot
+INFO:root:0:00:50.557863
+INFO:root:fnum = 3396
+INFO:root:	plot
+INFO:root:0:00:50.774081
+INFO:root:fnum = 3398
+INFO:root:	plot
+INFO:root:0:00:51.233481
+INFO:root:fnum = 3400
+INFO:root:	plot
+INFO:root:0:00:50.798654
+INFO:root:fnum = 3402
+INFO:root:	plot
+INFO:root:0:00:51.017137
+INFO:root:fnum = 3404
+INFO:root:	plot
+INFO:root:0:00:50.801811
+INFO:root:fnum = 3406
+INFO:root:	plot
+INFO:root:0:00:50.873725
+INFO:root:fnum = 3408
+INFO:root:	plot
+INFO:root:0:00:50.788520
+INFO:root:fnum = 3410
+INFO:root:	plot
+INFO:root:0:00:50.772562
+INFO:root:fnum = 3412
+INFO:root:	plot
+INFO:root:0:00:50.496932
+INFO:root:fnum = 3414
+INFO:root:	plot
+INFO:root:0:00:50.843357
+INFO:root:fnum = 3416
+INFO:root:	plot
+INFO:root:0:00:51.006108
+INFO:root:fnum = 3418
+INFO:root:	plot
+INFO:root:0:00:50.613649
+INFO:root:fnum = 3420
+INFO:root:	plot
+INFO:root:0:00:51.061912
+INFO:root:fnum = 3422
+INFO:root:	plot
+INFO:root:0:00:50.701581
+INFO:root:fnum = 3424
+INFO:root:	plot
+INFO:root:0:00:50.939669
+INFO:root:fnum = 3426
+INFO:root:	plot
+INFO:root:0:00:50.893184
+INFO:root:fnum = 3428
+INFO:root:	plot
+INFO:root:0:00:51.330556
+INFO:root:fnum = 3430
+INFO:root:	plot
+INFO:root:0:00:51.012490
+INFO:root:fnum = 3432
+INFO:root:	plot
+INFO:root:0:00:50.735227
+INFO:root:fnum = 3434
+INFO:root:	plot
+INFO:root:0:00:51.562760
+INFO:root:fnum = 3436
+INFO:root:	plot
+INFO:root:0:00:51.176802
+INFO:root:fnum = 3438
+INFO:root:	plot
+INFO:root:0:00:51.040577
+INFO:root:fnum = 3440
+INFO:root:	plot
+INFO:root:0:00:51.631874
+INFO:root:fnum = 3442
+INFO:root:	plot
+INFO:root:0:00:51.079664
+INFO:root:fnum = 3444
+INFO:root:	plot
+INFO:root:0:00:50.787889
+INFO:root:fnum = 3446
+INFO:root:	plot
+INFO:root:0:00:51.005229
+INFO:root:fnum = 3448
+INFO:root:	plot
+INFO:root:0:00:51.292174
+INFO:root:fnum = 3450
+INFO:root:	plot
+INFO:root:0:00:51.508953
+INFO:root:fnum = 3452
+INFO:root:	plot
+INFO:root:0:00:51.218285
+INFO:root:fnum = 3454
+INFO:root:	plot
+INFO:root:0:00:51.086270
+INFO:root:fnum = 3456
+INFO:root:	plot
+INFO:root:0:00:50.973537
+INFO:root:fnum = 3458
+INFO:root:	plot
+INFO:root:0:00:51.046329
+INFO:root:fnum = 3460
+INFO:root:	plot
+INFO:root:0:00:50.807793
+INFO:root:fnum = 3462
+INFO:root:	plot
+INFO:root:0:00:51.497797
+INFO:root:fnum = 3464
+INFO:root:	plot
+INFO:root:0:00:50.973841
+INFO:root:fnum = 3466
+INFO:root:	plot
+INFO:root:0:00:50.468887
+INFO:root:fnum = 3468
+INFO:root:	plot
+INFO:root:0:00:51.121553
+INFO:root:fnum = 3470
+INFO:root:	plot
+INFO:root:0:00:51.119701
+INFO:root:fnum = 3472
+INFO:root:	plot
+INFO:root:0:00:50.931652
+INFO:root:fnum = 3474
+INFO:root:	plot
+INFO:root:0:00:51.172749
+INFO:root:fnum = 3476
+INFO:root:	plot
+INFO:root:0:00:52.014876
+INFO:root:fnum = 3478
+INFO:root:	plot
+INFO:root:0:00:50.883067
+INFO:root:fnum = 3480
+INFO:root:	plot
+INFO:root:0:00:50.668549
+INFO:root:fnum = 3482
+INFO:root:	plot
+INFO:root:0:00:51.028530
+INFO:root:fnum = 3484
+INFO:root:	plot
+INFO:root:0:00:50.867941
+INFO:root:fnum = 3486
+INFO:root:	plot
+INFO:root:0:00:50.492457
+INFO:root:fnum = 3488
+INFO:root:	plot
+INFO:root:0:00:50.668757
+INFO:root:fnum = 3490
+INFO:root:	plot
+INFO:root:0:00:50.246031
+INFO:root:fnum = 3492
+INFO:root:	plot
+INFO:root:0:00:51.795943
+INFO:root:fnum = 3494
+INFO:root:	plot
+INFO:root:0:00:51.081174
+INFO:root:fnum = 3496
+INFO:root:	plot
+INFO:root:0:00:50.868550
+INFO:root:fnum = 3498
+INFO:root:	plot
+INFO:root:0:00:50.510876
+INFO:root:fnum = 3500
+INFO:root:	plot
+INFO:root:0:00:51.080459
+INFO:root:fnum = 3502
+INFO:root:	plot
+INFO:root:0:00:51.159883
+INFO:root:fnum = 3504
+INFO:root:	plot
+INFO:root:0:00:50.515804
+INFO:root:fnum = 3506
+INFO:root:	plot
+INFO:root:0:00:50.879450
+INFO:root:fnum = 3508
+INFO:root:	plot
+INFO:root:0:00:50.986030
+INFO:root:fnum = 3510
+INFO:root:	plot
+INFO:root:0:00:50.909497
+INFO:root:fnum = 3512
+INFO:root:	plot
+INFO:root:0:00:50.832573
+INFO:root:fnum = 3514
+INFO:root:	plot
+INFO:root:0:00:50.656231
+INFO:root:fnum = 3516
+INFO:root:	plot
+INFO:root:0:00:50.758606
+INFO:root:fnum = 3518
+INFO:root:	plot
+INFO:root:0:00:50.524943
+INFO:root:fnum = 3520
+INFO:root:	plot
+INFO:root:0:00:50.928908
+INFO:root:fnum = 3522
+INFO:root:	plot
+INFO:root:0:00:50.787559
+INFO:root:fnum = 3524
+INFO:root:	plot
+INFO:root:0:00:51.014131
+INFO:root:fnum = 3526
+INFO:root:	plot
+INFO:root:0:00:50.282063
+INFO:root:fnum = 3528
+INFO:root:	plot
+INFO:root:0:00:51.172769
+INFO:root:fnum = 3530
+INFO:root:	plot
+INFO:root:0:00:50.929038
+INFO:root:fnum = 3532
+INFO:root:	plot
+INFO:root:0:00:51.334202
+INFO:root:fnum = 3534
+INFO:root:	plot
+INFO:root:0:00:50.849954
+INFO:root:fnum = 3536
+INFO:root:	plot
+INFO:root:0:00:50.975253
+INFO:root:fnum = 3538
+INFO:root:	plot
+INFO:root:0:00:50.779884
+INFO:root:fnum = 3540
+INFO:root:	plot
+INFO:root:0:00:50.647015
+INFO:root:fnum = 3542
+INFO:root:	plot
+INFO:root:0:00:51.045929
+INFO:root:fnum = 3544
+INFO:root:	plot
+INFO:root:0:00:50.692090
+INFO:root:fnum = 3546
+INFO:root:	plot
+INFO:root:0:00:51.025107
+INFO:root:fnum = 3548
+INFO:root:	plot
+INFO:root:0:00:50.652625
+INFO:root:fnum = 3550
+INFO:root:	plot
+INFO:root:0:00:50.989714
+INFO:root:fnum = 3552
+INFO:root:	plot
+INFO:root:0:00:50.529885
+INFO:root:fnum = 3554
+INFO:root:	plot
+INFO:root:0:00:50.554946
+INFO:root:fnum = 3556
+INFO:root:	plot
+INFO:root:0:00:50.365280
+INFO:root:fnum = 3558
+INFO:root:	plot
+INFO:root:0:00:51.458405
+INFO:root:fnum = 3560
+INFO:root:	plot
+INFO:root:0:00:50.842617
+INFO:root:fnum = 3562
+INFO:root:	plot
+INFO:root:0:00:50.776233
+INFO:root:fnum = 3564
+INFO:root:	plot
+INFO:root:0:00:53.079864
+INFO:root:fnum = 3566
+INFO:root:	plot
+INFO:root:0:00:51.630884
+INFO:root:fnum = 3568
+INFO:root:	plot
+INFO:root:0:00:53.760208
+INFO:root:fnum = 3570
+INFO:root:	plot
+INFO:root:0:00:52.844045
+INFO:root:fnum = 3572
+INFO:root:	plot
+INFO:root:0:00:53.353744
+INFO:root:fnum = 3574
+INFO:root:	plot
+INFO:root:0:00:52.971530
+INFO:root:fnum = 3576
+INFO:root:	plot
+INFO:root:0:00:53.854394
+INFO:root:fnum = 3578
+INFO:root:	plot
+INFO:root:0:00:53.315672
+INFO:root:fnum = 3580
+INFO:root:	plot
+INFO:root:0:00:52.929589
+INFO:root:fnum = 3582
+INFO:root:	plot
+INFO:root:0:00:53.709354
+INFO:root:fnum = 3584
+INFO:root:	plot
+INFO:root:0:00:53.111004
+INFO:root:fnum = 3586
+INFO:root:	plot
+INFO:root:0:00:52.863119
+INFO:root:fnum = 3588
+INFO:root:	plot
+INFO:root:0:00:52.935471
+INFO:root:fnum = 3590
+INFO:root:	plot
+INFO:root:0:00:53.058180
+INFO:root:fnum = 3592
+INFO:root:	plot
+INFO:root:0:00:53.017305
+INFO:root:fnum = 3594
+INFO:root:	plot
+INFO:root:0:00:53.146775
+INFO:root:fnum = 3596
+INFO:root:	plot
+INFO:root:0:00:52.760927
+INFO:root:fnum = 3598
+INFO:root:	plot
+INFO:root:0:00:53.158012
+INFO:root:fnum = 3600
+INFO:root:	plot
+INFO:root:0:00:53.215960
+INFO:root:fnum = 3602
+INFO:root:	plot
+INFO:root:0:00:52.990764
+INFO:root:fnum = 3604
+INFO:root:	plot
+INFO:root:0:00:52.897226
+INFO:root:fnum = 3606
+INFO:root:	plot
+INFO:root:0:00:52.608965
+INFO:root:fnum = 3608
+INFO:root:	plot
+INFO:root:0:00:53.041323
+INFO:root:fnum = 3610
+INFO:root:	plot
+INFO:root:0:00:53.450399
+INFO:root:fnum = 3612
+INFO:root:	plot
+INFO:root:0:00:53.358456
+INFO:root:fnum = 3614
+INFO:root:	plot
+INFO:root:0:00:53.895195
+INFO:root:fnum = 3616
+INFO:root:	plot
+INFO:root:0:00:53.509345
+INFO:root:fnum = 3618
+INFO:root:	plot
+INFO:root:0:00:53.592050
+INFO:root:fnum = 3620
+INFO:root:	plot
+INFO:root:0:00:53.152923
+INFO:root:fnum = 3622
+INFO:root:	plot
+INFO:root:0:00:53.354463
+INFO:root:fnum = 3624
+INFO:root:	plot
+INFO:root:0:00:53.377635
+INFO:root:fnum = 3626
+INFO:root:	plot
+INFO:root:0:00:53.500236
+INFO:root:fnum = 3628
+INFO:root:	plot
+INFO:root:0:00:52.823591
+INFO:root:fnum = 3630
+INFO:root:	plot
+INFO:root:0:00:53.326040
+INFO:root:fnum = 3632
+INFO:root:	plot
+INFO:root:0:00:53.557742
+INFO:root:fnum = 3634
+INFO:root:	plot
+INFO:root:0:00:53.636519
+INFO:root:fnum = 3636
+INFO:root:	plot
+INFO:root:0:00:52.901502
+INFO:root:fnum = 3638
+INFO:root:	plot
+INFO:root:0:00:53.448426
+INFO:root:fnum = 3640
+INFO:root:	plot
+INFO:root:0:00:53.314514
+INFO:root:fnum = 3642
+INFO:root:	plot
+INFO:root:0:00:53.356429
+INFO:root:fnum = 3644
+INFO:root:	plot
+INFO:root:0:00:53.133571
+INFO:root:fnum = 3646
+INFO:root:	plot
+INFO:root:0:00:52.949752
+INFO:root:fnum = 3648
+INFO:root:	plot
+INFO:root:0:00:53.664666
+INFO:root:fnum = 3650
+INFO:root:	plot
+INFO:root:0:00:53.646750
+INFO:root:fnum = 3652
+INFO:root:	plot
+INFO:root:0:00:53.765414
+INFO:root:fnum = 3654
+INFO:root:	plot
+INFO:root:0:00:52.944562
+INFO:root:fnum = 3656
+INFO:root:	plot
+INFO:root:0:00:53.288686
+INFO:root:fnum = 3658
+INFO:root:	plot
+INFO:root:0:00:53.475531
+INFO:root:fnum = 3660
+INFO:root:	plot
+INFO:root:0:00:53.160832
+INFO:root:fnum = 3662
+INFO:root:	plot
+INFO:root:0:00:52.805134
+INFO:root:fnum = 3664
+INFO:root:	plot
+INFO:root:0:00:53.147635
+INFO:root:fnum = 3666
+INFO:root:	plot
+INFO:root:0:00:53.302897
+INFO:root:fnum = 3668
+INFO:root:	plot
+INFO:root:0:00:53.267159
+INFO:root:fnum = 3670
+INFO:root:	plot
+INFO:root:0:00:53.068448
+INFO:root:fnum = 3672
+INFO:root:	plot
+INFO:root:0:00:52.865791
+INFO:root:fnum = 3674
+INFO:root:	plot
+INFO:root:0:00:52.882224
+INFO:root:fnum = 3676
+INFO:root:	plot
+INFO:root:0:00:53.380198
+INFO:root:fnum = 3678
+INFO:root:	plot
+INFO:root:0:00:52.596448
+INFO:root:fnum = 3680
+INFO:root:	plot
+INFO:root:0:00:53.266134
+INFO:root:fnum = 3682
+INFO:root:	plot
+INFO:root:0:00:53.079072
+INFO:root:fnum = 3684
+INFO:root:	plot
+INFO:root:0:00:52.929366
+INFO:root:fnum = 3686
+INFO:root:	plot
+INFO:root:0:00:52.259270
+INFO:root:fnum = 3688
+INFO:root:	plot
+INFO:root:0:00:52.552564
+INFO:root:fnum = 3690
+INFO:root:	plot
+INFO:root:0:00:53.422108
+INFO:root:fnum = 3692
+INFO:root:	plot
+INFO:root:0:00:52.654480
+INFO:root:fnum = 3694
+INFO:root:	plot
+INFO:root:0:00:53.071664
+INFO:root:fnum = 3696
+INFO:root:	plot
+INFO:root:0:00:53.367942
+INFO:root:fnum = 3698
+INFO:root:	plot
+INFO:root:0:00:52.637025
+INFO:root:fnum = 3700
+INFO:root:	plot
+INFO:root:0:00:52.686292
+INFO:root:fnum = 3702
+INFO:root:	plot
+INFO:root:0:00:53.104366
+INFO:root:fnum = 3704
+INFO:root:	plot
+INFO:root:0:00:52.546810
+INFO:root:fnum = 3706
+INFO:root:	plot
+INFO:root:0:00:53.056240
+INFO:root:fnum = 3708
+INFO:root:	plot
+INFO:root:0:00:52.763094
+INFO:root:fnum = 3710
+INFO:root:	plot
+INFO:root:0:00:53.965053
+INFO:root:fnum = 3712
+INFO:root:	plot
+INFO:root:0:00:53.690880
+INFO:root:fnum = 3714
+INFO:root:	plot
+INFO:root:0:00:53.069916
+INFO:root:fnum = 3716
+INFO:root:	plot
+INFO:root:0:00:53.138443
+INFO:root:fnum = 3718
+INFO:root:	plot
+INFO:root:0:00:53.008327
+INFO:root:fnum = 3720
+INFO:root:	plot
+INFO:root:0:00:52.310203
+INFO:root:fnum = 3722
+INFO:root:	plot
+INFO:root:0:00:53.034000
+INFO:root:fnum = 3724
+INFO:root:	plot
+INFO:root:0:00:52.413801
+INFO:root:fnum = 3726
+INFO:root:	plot
+INFO:root:0:00:52.258369
+INFO:root:fnum = 3728
+INFO:root:	plot
+INFO:root:0:00:53.292126
+INFO:root:fnum = 3730
+INFO:root:	plot
+INFO:root:0:00:52.223707
+INFO:root:fnum = 3732
+INFO:root:	plot
+INFO:root:0:00:53.067827
+INFO:root:fnum = 3734
+INFO:root:	plot
+INFO:root:0:00:52.427529
+INFO:root:fnum = 3736
+INFO:root:	plot
+INFO:root:0:00:52.853748
+INFO:root:fnum = 3738
+INFO:root:	plot
+INFO:root:0:00:53.087137
+INFO:root:fnum = 3740
+INFO:root:	plot
+INFO:root:0:00:52.602347
+INFO:root:fnum = 3742
+INFO:root:	plot
+INFO:root:0:00:52.162880
+INFO:root:fnum = 3744
+INFO:root:	plot
+INFO:root:0:00:51.717187
+INFO:root:fnum = 3746
+INFO:root:	plot
+INFO:root:0:00:52.621621
+INFO:root:fnum = 3748
+INFO:root:	plot
+INFO:root:0:00:52.653743
+INFO:root:fnum = 3750
+INFO:root:	plot
+INFO:root:0:00:52.557524
+INFO:root:fnum = 3752
+INFO:root:	plot
+INFO:root:0:00:52.653228
+INFO:root:fnum = 3754
+INFO:root:	plot
+INFO:root:0:00:53.001664
+INFO:root:fnum = 3756
+INFO:root:	plot
+INFO:root:0:00:52.937993
+INFO:root:fnum = 3758
+INFO:root:	plot
+INFO:root:0:00:52.711550
+INFO:root:fnum = 3760
+INFO:root:	plot
+INFO:root:0:00:52.757936
+INFO:root:fnum = 3762
+INFO:root:	plot
+INFO:root:0:00:52.631628
+INFO:root:fnum = 3764
+INFO:root:	plot
+INFO:root:0:00:52.464075
+INFO:root:fnum = 3766
+INFO:root:	plot
+INFO:root:0:00:52.515980
+INFO:root:fnum = 3768
+INFO:root:	plot
+INFO:root:0:00:52.245900
+INFO:root:fnum = 3770
+INFO:root:	plot
+INFO:root:0:00:52.740884
+INFO:root:fnum = 3772
+INFO:root:	plot
+INFO:root:0:00:52.513076
+INFO:root:fnum = 3774
+INFO:root:	plot
+INFO:root:0:00:52.277422
+INFO:root:fnum = 3776
+INFO:root:	plot
+INFO:root:0:00:52.414659
+INFO:root:fnum = 3778
+INFO:root:	plot
+INFO:root:0:00:52.569434
+INFO:root:fnum = 3780
+INFO:root:	plot
+INFO:root:0:00:52.505774
+INFO:root:fnum = 3782
+INFO:root:	plot
+INFO:root:0:00:52.788053
+INFO:root:fnum = 3784
+INFO:root:	plot
+INFO:root:0:00:52.758560
+INFO:root:fnum = 3786
+INFO:root:	plot
+INFO:root:0:00:52.244648
+INFO:root:fnum = 3788
+INFO:root:	plot
+INFO:root:0:00:53.201148
+INFO:root:fnum = 3790
+INFO:root:	plot
+INFO:root:0:00:53.275773
+INFO:root:fnum = 3792
+INFO:root:	plot
+INFO:root:0:00:52.944971
+INFO:root:fnum = 3794
+INFO:root:	plot
+INFO:root:0:00:52.759414
+INFO:root:fnum = 3796
+INFO:root:	plot
+INFO:root:0:00:53.242841
+INFO:root:fnum = 3798
+INFO:root:	plot
+INFO:root:0:00:53.483557
+INFO:root:fnum = 3800
+INFO:root:	plot
+INFO:root:0:00:52.697726
+INFO:root:fnum = 3802
+INFO:root:	plot
+INFO:root:0:00:53.133352
+INFO:root:fnum = 3804
+INFO:root:	plot
+INFO:root:0:00:53.694178
+INFO:root:fnum = 3806
+INFO:root:	plot
+INFO:root:0:00:53.378454
+INFO:root:fnum = 3808
+INFO:root:	plot
+INFO:root:0:00:53.372886
+INFO:root:fnum = 3810
+INFO:root:	plot
+INFO:root:0:00:52.756763
+INFO:root:fnum = 3812
+INFO:root:	plot
+INFO:root:0:00:52.690707
+INFO:root:fnum = 3814
+INFO:root:	plot
+INFO:root:0:00:53.275829
+INFO:root:fnum = 3816
+INFO:root:	plot
+INFO:root:0:00:52.693764
+INFO:root:fnum = 3818
+INFO:root:	plot
+INFO:root:0:00:53.615594
+INFO:root:fnum = 3820
+INFO:root:	plot
+INFO:root:0:00:53.267606
+INFO:root:fnum = 3822
+INFO:root:	plot
+INFO:root:0:00:52.756462
+INFO:root:fnum = 3824
+INFO:root:	plot
+INFO:root:0:00:52.757699
+INFO:root:fnum = 3826
+INFO:root:	plot
+INFO:root:0:00:53.511608
+INFO:root:fnum = 3828
+INFO:root:	plot
+INFO:root:0:00:53.227131
+INFO:root:fnum = 3830
+INFO:root:	plot
+INFO:root:0:00:53.544856
+INFO:root:fnum = 3832
+INFO:root:	plot
+INFO:root:0:00:53.065581
+INFO:root:fnum = 3834
+INFO:root:	plot
+INFO:root:0:00:53.024784
+INFO:root:fnum = 3836
+INFO:root:	plot
+INFO:root:0:00:53.232019
+INFO:root:fnum = 3838
+INFO:root:	plot
+INFO:root:0:00:52.450297
+INFO:root:fnum = 3840
+INFO:root:	plot
+INFO:root:0:00:51.298860
+INFO:root:fnum = 3842
+INFO:root:	plot
+INFO:root:0:00:51.082744
+INFO:root:fnum = 3844
+INFO:root:	plot
+INFO:root:0:00:51.397248
+INFO:root:fnum = 3846
+INFO:root:	plot
+INFO:root:0:00:51.237362
+INFO:root:fnum = 3848
+INFO:root:	plot
+INFO:root:0:00:51.320134
+INFO:root:fnum = 3850
+INFO:root:	plot
+INFO:root:0:00:50.449361
+INFO:root:fnum = 3852
+INFO:root:	plot
+INFO:root:0:00:50.937194
+INFO:root:fnum = 3854
+INFO:root:	plot
+INFO:root:0:00:51.258027
+INFO:root:fnum = 3856
+INFO:root:	plot
+INFO:root:0:00:51.151255
+INFO:root:fnum = 3858
+INFO:root:	plot
+INFO:root:0:00:51.101750
+INFO:root:fnum = 3860
+INFO:root:	plot
+INFO:root:0:00:51.095774
+INFO:root:fnum = 3862
+INFO:root:	plot
+INFO:root:0:00:51.120909
+INFO:root:fnum = 3864
+INFO:root:	plot
+INFO:root:0:00:52.897951
+INFO:root:fnum = 3866
+INFO:root:	plot
+INFO:root:0:00:52.348560
+INFO:root:fnum = 3868
+INFO:root:	plot
+INFO:root:0:00:52.565977
+INFO:root:fnum = 3870
+INFO:root:	plot
+INFO:root:0:00:52.165491
+INFO:root:fnum = 3872
+INFO:root:	plot
+INFO:root:0:00:52.926610
+INFO:root:fnum = 3874
+INFO:root:	plot
+INFO:root:0:00:52.354010
+INFO:root:fnum = 3876
+INFO:root:	plot
+INFO:root:0:00:52.730421
+INFO:root:fnum = 3878
+INFO:root:	plot
+INFO:root:0:00:52.333352
+INFO:root:fnum = 3880
+INFO:root:	plot
+INFO:root:0:00:52.354357
+INFO:root:fnum = 3882
+INFO:root:	plot
+INFO:root:0:00:51.628167
+INFO:root:fnum = 3884
+INFO:root:	plot
+INFO:root:0:00:50.241961
+INFO:root:fnum = 3886
+INFO:root:	plot
+INFO:root:0:00:52.946833
+INFO:root:fnum = 3888
+INFO:root:	plot
+INFO:root:0:00:52.456310
+INFO:root:fnum = 3890
+INFO:root:	plot
+INFO:root:0:00:52.859736
+INFO:root:fnum = 3892
+INFO:root:	plot
+INFO:root:0:00:52.541416
+INFO:root:fnum = 3894
+INFO:root:	plot
+INFO:root:0:00:52.509519
+INFO:root:fnum = 3896
+INFO:root:	plot
+INFO:root:0:00:52.579163
+INFO:root:fnum = 3898
+INFO:root:	plot
+INFO:root:0:00:52.703095
+INFO:root:fnum = 3900
+INFO:root:	plot
+INFO:root:0:00:52.255179
+INFO:root:fnum = 3902
+INFO:root:	plot
+INFO:root:0:00:52.629530
+INFO:root:fnum = 3904
+INFO:root:	plot
+INFO:root:0:00:52.782872
+INFO:root:fnum = 3906
+INFO:root:	plot
+INFO:root:0:00:52.460733
+INFO:root:fnum = 3908
+INFO:root:	plot
+INFO:root:0:00:52.904517
+INFO:root:fnum = 3910
+INFO:root:	plot
+INFO:root:0:00:52.773921
+INFO:root:fnum = 3912
+INFO:root:	plot
+INFO:root:0:00:53.023733
+INFO:root:fnum = 3914
+INFO:root:	plot
+INFO:root:0:00:52.245201
+INFO:root:fnum = 3916
+INFO:root:	plot
+INFO:root:0:00:52.627088
+INFO:root:fnum = 3918
+INFO:root:	plot
+INFO:root:0:00:52.925634
+INFO:root:fnum = 3920
+INFO:root:	plot
+INFO:root:0:00:52.634837
+INFO:root:fnum = 3922
+INFO:root:	plot
+INFO:root:0:00:53.258896
+INFO:root:fnum = 3924
+INFO:root:	plot
+INFO:root:0:00:52.673497
+INFO:root:fnum = 3926
+INFO:root:	plot
+INFO:root:0:00:52.521087
+INFO:root:fnum = 3928
+INFO:root:	plot
+INFO:root:0:00:52.292689
+INFO:root:fnum = 3930
+INFO:root:	plot
+INFO:root:0:00:52.440279
+INFO:root:fnum = 3932
+INFO:root:	plot
+INFO:root:0:00:52.651144
+INFO:root:fnum = 3934
+INFO:root:	plot
+INFO:root:0:00:52.815796
+INFO:root:fnum = 3936
+INFO:root:	plot
+INFO:root:0:00:52.137267
+INFO:root:fnum = 3938
+INFO:root:	plot
+INFO:root:0:00:53.289242
+INFO:root:fnum = 3940
+INFO:root:	plot
+INFO:root:0:00:54.419386
+INFO:root:fnum = 3942
+INFO:root:	plot
+INFO:root:0:00:55.651959
+INFO:root:fnum = 3944
+INFO:root:	plot
+INFO:root:0:00:56.123873
+INFO:root:fnum = 3946
+INFO:root:	plot
+INFO:root:0:00:55.141479
+INFO:root:fnum = 3948
+INFO:root:	plot
+INFO:root:0:00:56.911701
+INFO:root:fnum = 3950
+INFO:root:	plot
+INFO:root:0:00:57.239183
+INFO:root:fnum = 3952
+INFO:root:	plot
+INFO:root:0:00:52.779756
+INFO:root:fnum = 3954
+INFO:root:	plot
+INFO:root:0:00:53.433504
+INFO:root:fnum = 3956
+INFO:root:	plot
+INFO:root:0:00:52.375423
+INFO:root:fnum = 3958
+INFO:root:	plot
+INFO:root:0:00:52.214960
+INFO:root:fnum = 3960
+INFO:root:	plot
+INFO:root:0:00:52.883992
+INFO:root:fnum = 3962
+INFO:root:	plot
+INFO:root:0:00:52.745502
+INFO:root:fnum = 3964
+INFO:root:	plot
+INFO:root:0:00:52.374656
+INFO:root:fnum = 3966
+INFO:root:	plot
+INFO:root:0:00:52.739393
+INFO:root:fnum = 3968
+INFO:root:	plot
+INFO:root:0:00:52.404615
+INFO:root:fnum = 3970
+INFO:root:	plot
+INFO:root:0:00:52.282491
+INFO:root:fnum = 3972
+INFO:root:	plot
+INFO:root:0:00:52.950430
+INFO:root:fnum = 3974
+INFO:root:	plot
+INFO:root:0:00:52.567037
+INFO:root:fnum = 3976
+INFO:root:	plot
+INFO:root:0:00:52.839037
+INFO:root:fnum = 3978
+INFO:root:	plot
+INFO:root:0:00:53.071161
+INFO:root:fnum = 3980
+INFO:root:	plot
+INFO:root:0:00:52.379040
+INFO:root:fnum = 3982
+INFO:root:	plot
+INFO:root:0:00:53.385655
+INFO:root:fnum = 3984
+INFO:root:	plot
+INFO:root:0:00:52.514704
+INFO:root:fnum = 3986
+INFO:root:	plot
+INFO:root:0:00:52.529800
+INFO:root:fnum = 3988
+INFO:root:	plot
+INFO:root:0:00:52.252534
+INFO:root:fnum = 3990
+INFO:root:	plot
+INFO:root:0:00:52.656747
+INFO:root:fnum = 3992
+INFO:root:	plot
+INFO:root:0:00:52.762821
+INFO:root:fnum = 3994
+INFO:root:	plot
+INFO:root:0:00:52.413988
+INFO:root:fnum = 3996
+INFO:root:	plot
+INFO:root:0:00:52.651676
+INFO:root:fnum = 3998
+INFO:root:	plot
+INFO:root:0:00:52.507264
+INFO:root:fnum = 4000
+INFO:root:	plot
+INFO:root:0:00:52.688163
+INFO:root:fnum = 4002
+INFO:root:	plot
+INFO:root:0:00:52.076030
+INFO:root:fnum = 4004
+INFO:root:	plot
+INFO:root:0:00:52.144529
+INFO:root:fnum = 4006
+INFO:root:	plot
+INFO:root:0:00:52.262052
+INFO:root:fnum = 4008
+INFO:root:	plot
+INFO:root:0:00:52.678584
+INFO:root:fnum = 4010
+INFO:root:	plot
+INFO:root:0:00:52.617248
+INFO:root:fnum = 4012
+INFO:root:	plot
+INFO:root:0:00:52.977724
+INFO:root:fnum = 4014
+INFO:root:	plot
+INFO:root:0:00:52.520639
+INFO:root:fnum = 4016
+INFO:root:	plot
+INFO:root:0:00:52.483732
+INFO:root:fnum = 4018
+INFO:root:	plot
+INFO:root:0:00:52.693061
+INFO:root:fnum = 4020
+INFO:root:	plot
+INFO:root:0:00:52.811210
+INFO:root:fnum = 4022
+INFO:root:	plot
+INFO:root:0:00:52.429985
+INFO:root:fnum = 4024
+INFO:root:	plot
+INFO:root:0:00:52.545386
+INFO:root:fnum = 4026
+INFO:root:	plot
+INFO:root:0:00:52.686147
+INFO:root:fnum = 4028
+INFO:root:	plot
+INFO:root:0:00:52.512715
+INFO:root:fnum = 4030
+INFO:root:	plot
+INFO:root:0:00:54.390083
+INFO:root:fnum = 4032
+INFO:root:	plot
+INFO:root:0:00:54.923924
+INFO:root:fnum = 4034
+INFO:root:	plot
+INFO:root:0:00:56.000750
+INFO:root:fnum = 4036
+INFO:root:	plot
+INFO:root:0:01:10.288825
+INFO:root:fnum = 4038
+INFO:root:	plot
+INFO:root:0:00:52.113158
+INFO:root:fnum = 4040
+INFO:root:	plot
+INFO:root:0:00:52.718766
+INFO:root:fnum = 4042
+INFO:root:	plot
+INFO:root:0:00:52.886798
+INFO:root:fnum = 4044
+INFO:root:	plot
+INFO:root:0:00:52.773174
+INFO:root:fnum = 4046
+INFO:root:	plot
+INFO:root:0:00:52.745559
+INFO:root:fnum = 4048
+INFO:root:	plot
+INFO:root:0:00:52.602179
+INFO:root:fnum = 4050
+INFO:root:	plot
+INFO:root:0:00:52.822294
+INFO:root:fnum = 4052
+INFO:root:	plot
+INFO:root:0:00:52.353201
+INFO:root:fnum = 4054
+INFO:root:	plot
+INFO:root:0:00:52.859429
+INFO:root:fnum = 4056
+INFO:root:	plot
+INFO:root:0:00:53.391570
+INFO:root:fnum = 4058
+INFO:root:	plot
+INFO:root:0:00:52.403291
+INFO:root:fnum = 4060
+INFO:root:	plot
+INFO:root:0:00:52.320551
+INFO:root:fnum = 4062
+INFO:root:	plot
+INFO:root:0:00:53.095273
+INFO:root:fnum = 4064
+INFO:root:	plot
+INFO:root:0:00:52.806577
+INFO:root:fnum = 4066
+INFO:root:	plot
+INFO:root:0:00:52.867562
+INFO:root:fnum = 4068
+INFO:root:	plot
+INFO:root:0:00:52.745275
+INFO:root:fnum = 4070
+INFO:root:	plot
+INFO:root:0:00:52.433531
+INFO:root:fnum = 4072
+INFO:root:	plot
+INFO:root:0:00:52.033102
+INFO:root:fnum = 4074
+INFO:root:	plot
+INFO:root:0:00:52.134791
+INFO:root:fnum = 4076
+INFO:root:	plot
+INFO:root:0:00:51.935815
+INFO:root:fnum = 4078
+INFO:root:	plot
+INFO:root:0:00:52.669037
+INFO:root:fnum = 4080
+INFO:root:	plot
+INFO:root:0:00:52.695370
+INFO:root:fnum = 4082
+INFO:root:	plot
+INFO:root:0:00:52.403067
+INFO:root:fnum = 4084
+INFO:root:	plot
+INFO:root:0:00:53.188502
+INFO:root:fnum = 4086
+INFO:root:	plot
+INFO:root:0:00:52.690796
+INFO:root:fnum = 4088
+INFO:root:	plot
+INFO:root:0:00:52.448901
+INFO:root:fnum = 4090
+INFO:root:	plot
+INFO:root:0:00:52.577621
+INFO:root:fnum = 4092
+INFO:root:	plot
+INFO:root:0:00:52.860846
+INFO:root:fnum = 4094
+INFO:root:	plot
+INFO:root:0:00:52.829422
+INFO:root:fnum = 4096
+INFO:root:	plot
+INFO:root:0:00:52.521161
+INFO:root:fnum = 4098
+INFO:root:	plot
+INFO:root:0:00:52.290415
+INFO:root:fnum = 4100
+INFO:root:	plot
+INFO:root:0:00:52.439629
+INFO:root:fnum = 4102
+INFO:root:	plot
+INFO:root:0:00:52.578134
+INFO:root:fnum = 4104
+INFO:root:	plot
+INFO:root:0:00:52.552640
+INFO:root:fnum = 4106
+INFO:root:	plot
+INFO:root:0:00:52.803469
+INFO:root:fnum = 4108
+INFO:root:	plot
+INFO:root:0:00:52.248268
+INFO:root:fnum = 4110
+INFO:root:	plot
+INFO:root:0:00:52.791968
+INFO:root:fnum = 4112
+INFO:root:	plot
+INFO:root:0:00:52.291976
+INFO:root:fnum = 4114
+INFO:root:	plot
+INFO:root:0:00:53.287054
+INFO:root:fnum = 4116
+INFO:root:	plot
+INFO:root:0:00:52.580556
+INFO:root:fnum = 4118
+INFO:root:	plot
+INFO:root:0:00:52.384732
+INFO:root:fnum = 4120
+INFO:root:	plot
+INFO:root:0:00:52.307794
+INFO:root:fnum = 4122
+INFO:root:	plot
+INFO:root:0:00:52.554087
+INFO:root:fnum = 4124
+INFO:root:	plot
+INFO:root:0:00:52.647439
+INFO:root:fnum = 4126
+INFO:root:	plot
+INFO:root:0:00:52.421870
+INFO:root:fnum = 4128
+INFO:root:	plot
+INFO:root:0:00:52.679304
+INFO:root:fnum = 4130
+INFO:root:	plot
+INFO:root:0:00:52.887686
+INFO:root:fnum = 4132
+INFO:root:	plot
+INFO:root:0:00:52.420620
+INFO:root:fnum = 4134
+INFO:root:	plot
+INFO:root:0:00:52.459056
+INFO:root:fnum = 4136
+INFO:root:	plot
+INFO:root:0:00:52.764279
+INFO:root:fnum = 4138
+INFO:root:	plot
+INFO:root:0:00:52.428711
+INFO:root:fnum = 4140
+INFO:root:	plot
+INFO:root:0:00:52.279538
+INFO:root:fnum = 4142
+INFO:root:	plot
+INFO:root:0:00:52.762646
+INFO:root:fnum = 4144
+INFO:root:	plot
+INFO:root:0:00:53.416634
+INFO:root:fnum = 4146
+INFO:root:	plot
+INFO:root:0:00:52.207326
+INFO:root:fnum = 4148
+INFO:root:	plot
+INFO:root:0:00:52.788732
+INFO:root:fnum = 4150
+INFO:root:	plot
+INFO:root:0:00:53.090021
+INFO:root:fnum = 4152
+INFO:root:	plot
+INFO:root:0:00:52.790433
+INFO:root:fnum = 4154
+INFO:root:	plot
+INFO:root:0:00:52.101290
+INFO:root:fnum = 4156
+INFO:root:	plot
+INFO:root:0:00:52.129415
+INFO:root:fnum = 4158
+INFO:root:	plot
+INFO:root:0:00:53.216286
+INFO:root:fnum = 4160
+INFO:root:	plot
+INFO:root:0:00:52.797417
+INFO:root:fnum = 4162
+INFO:root:	plot
+INFO:root:0:00:52.394692
+INFO:root:fnum = 4164
+INFO:root:	plot
+INFO:root:0:00:52.341264
+INFO:root:fnum = 4166
+INFO:root:	plot
+INFO:root:0:00:52.618507
+INFO:root:fnum = 4168
+INFO:root:	plot
+INFO:root:0:00:53.113431
+INFO:root:fnum = 4170
+INFO:root:	plot
+INFO:root:0:00:54.575534
+INFO:root:fnum = 4172
+INFO:root:	plot
+INFO:root:0:00:52.541958
+INFO:root:fnum = 4174
+INFO:root:	plot
+INFO:root:0:00:52.577263
+INFO:root:fnum = 4176
+INFO:root:	plot
+INFO:root:0:00:52.854762
+INFO:root:fnum = 4178
+INFO:root:	plot
+INFO:root:0:00:52.960724
+INFO:root:fnum = 4180
+INFO:root:	plot
+INFO:root:0:00:52.878177
+INFO:root:fnum = 4182
+INFO:root:	plot
+INFO:root:0:00:52.292627
+INFO:root:fnum = 4184
+INFO:root:	plot
+INFO:root:0:00:52.104269
+INFO:root:fnum = 4186
+INFO:root:	plot
+INFO:root:0:00:52.911206
+INFO:root:fnum = 4188
+INFO:root:	plot
+INFO:root:0:00:52.792438
+INFO:root:fnum = 4190
+INFO:root:	plot
+INFO:root:0:00:52.505410
+INFO:root:fnum = 4192
+INFO:root:	plot
+INFO:root:0:00:53.205750
+INFO:root:fnum = 4194
+INFO:root:	plot
+INFO:root:0:00:52.779485
+INFO:root:fnum = 4196
+INFO:root:	plot
+INFO:root:0:00:53.133461
+INFO:root:fnum = 4198
+INFO:root:	plot
+INFO:root:0:00:52.379526
+INFO:root:fnum = 4200
+INFO:root:	plot
+INFO:root:0:00:52.476745
+INFO:root:fnum = 4202
+INFO:root:	plot
+INFO:root:0:00:53.453808
+INFO:root:fnum = 4204
+INFO:root:	plot
+INFO:root:0:00:53.126074
+INFO:root:fnum = 4206
+INFO:root:	plot
+INFO:root:0:00:52.255618
+INFO:root:fnum = 4208
+INFO:root:	plot
+INFO:root:0:00:52.496808
+INFO:root:fnum = 4210
+INFO:root:	plot
+INFO:root:0:00:52.381353
+INFO:root:fnum = 4212
+INFO:root:	plot
+INFO:root:0:00:52.466642
+INFO:root:fnum = 4214
+INFO:root:	plot
+INFO:root:0:00:52.801111
+INFO:root:fnum = 4216
+INFO:root:	plot
+INFO:root:0:00:52.928113
+INFO:root:fnum = 4218
+INFO:root:	plot
+INFO:root:0:00:52.654625
+INFO:root:fnum = 4220
+INFO:root:	plot
+INFO:root:0:00:52.884982
+INFO:root:fnum = 4222
+INFO:root:	plot
+INFO:root:0:00:52.742001
+INFO:root:fnum = 4224
+INFO:root:	plot
+INFO:root:0:00:52.590390
+INFO:root:fnum = 4226
+INFO:root:	plot
+INFO:root:0:00:52.580237
+INFO:root:fnum = 4228
+INFO:root:	plot
+INFO:root:0:00:52.283091
+INFO:root:fnum = 4230
+INFO:root:	plot
+INFO:root:0:00:52.519058
+INFO:root:fnum = 4232
+INFO:root:	plot
+INFO:root:0:00:52.657148
+INFO:root:fnum = 4234
+INFO:root:	plot
+INFO:root:0:00:52.574756
+INFO:root:fnum = 4236
+INFO:root:	plot
+INFO:root:0:00:52.812300
+INFO:root:fnum = 4238
+INFO:root:	plot
+INFO:root:0:00:52.328789
+INFO:root:fnum = 4240
+INFO:root:	plot
+INFO:root:0:00:52.225633
+INFO:root:fnum = 4242
+INFO:root:	plot
+INFO:root:0:00:52.573113
+INFO:root:fnum = 4244
+INFO:root:	plot
+INFO:root:0:00:52.285404
+INFO:root:fnum = 4246
+INFO:root:	plot
+INFO:root:0:00:52.757551
+INFO:root:fnum = 4248
+INFO:root:	plot
+INFO:root:0:00:53.309267
+INFO:root:fnum = 4250
+INFO:root:	plot
+INFO:root:0:00:52.618963
+INFO:root:fnum = 4252
+INFO:root:	plot
+INFO:root:0:00:52.937143
+INFO:root:fnum = 4254
+INFO:root:	plot
+INFO:root:0:00:52.993304
+INFO:root:fnum = 4256
+INFO:root:	plot
+INFO:root:0:00:52.473311
+INFO:root:fnum = 4258
+INFO:root:	plot
+INFO:root:0:00:52.887612
+INFO:root:fnum = 4260
+INFO:root:	plot
+INFO:root:0:00:52.753327
+INFO:root:fnum = 4262
+INFO:root:	plot
+INFO:root:0:00:53.512955
+INFO:root:fnum = 4264
+INFO:root:	plot
+INFO:root:0:00:52.359656
+INFO:root:fnum = 4266
+INFO:root:	plot
+INFO:root:0:00:52.677941
+INFO:root:fnum = 4268
+INFO:root:	plot
+INFO:root:0:00:52.985471
+INFO:root:fnum = 4270
+INFO:root:	plot
+INFO:root:0:00:52.597530
+INFO:root:fnum = 4272
+INFO:root:	plot
+INFO:root:0:00:52.244343
+INFO:root:fnum = 4274
+INFO:root:	plot
+INFO:root:0:00:52.279327
+INFO:root:fnum = 4276
+INFO:root:	plot
+INFO:root:0:00:52.142222
+INFO:root:fnum = 4278
+INFO:root:	plot
+INFO:root:0:00:52.678538
+INFO:root:fnum = 4280
+INFO:root:	plot
+INFO:root:0:00:52.886663
+INFO:root:fnum = 4282
+INFO:root:	plot
+INFO:root:0:00:53.157957
+INFO:root:fnum = 4284
+INFO:root:	plot
+INFO:root:0:00:52.511634
+INFO:root:fnum = 4286
+INFO:root:	plot
+INFO:root:0:00:52.681018
+INFO:root:fnum = 4288
+INFO:root:	plot
+INFO:root:0:00:51.827843
+INFO:root:fnum = 4290
