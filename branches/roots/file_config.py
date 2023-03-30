@@ -6,7 +6,7 @@ class File:
         self.athena_analysis_directory = str(Path(__file__).parents[2])
         self.logs_loc = self.athena_analysis_directory + "/branches/logs"
 
-        #save point and data sources (YOU FILL THIS OUT)
+        #save point and data sources (YOU FILL THIS OUT WITH THE APPROPRIATE FILE PATHS)
         #save_dir should be a general directory for all the results, Athena_Analysis will build and organize all the subdirectories itself.
         self.savedir = "/mnt/c/Users/morga/Desktop/School/research_stuff/processed_data/"
         #Athena_Analysis will expect the data for each dataset to be in a directory called data_loc+dname
@@ -22,7 +22,7 @@ class File:
         self.grid_types["Cyl_6"] = "Cylindrical"
         self.grid_types["Cyl_7"] = "Cylindrical"
 
-        #my weird shit
+        #my weird shit (I told myself I'd remove this before sharing the github with anyone, if somehow you see this you can safely delete this block of code.)
         self.data_loc_D = "/mnt/d/Research_Data/"
         self.mkitp = "/home/morgan/mnt/kitp/"
         self.medd = "/home/morgan/mnt/edd/"
