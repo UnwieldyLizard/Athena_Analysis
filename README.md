@@ -1,2 +1,4 @@
 # Athena_Analysis
-Python code base for analyzing Athena++ data efficiently 
+A Python code base for analyzing Athena++ data efficiently 
+
+*Install Instructions*
