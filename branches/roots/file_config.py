@@ -2,24 +2,31 @@ from pathlib import Path
 
 class File:
     def __init__(self):
-        #save point and data sources
+        #Self and Log locations (YOU DON'T NEED TO TOUCH THIS)
         self.athena_analysis_directory = str(Path(__file__).parents[2])
-        self.savedir = "/mnt/c/Users/morga/Desktop/School/research_stuff/processed_data/"
-        self.data_loc_D = "/mnt/d/Research_Data/"
-        self.data_loc = "/mnt/e/Research_Data/"
         self.logs_loc = self.athena_analysis_directory + "/branches/logs"
+
+        #save point and data sources (YOU FILL THIS OUT)
+        #save_dir should be a general directory for all the results, Athena_Analysis will build and organize all the subdirectories itself.
+        self.savedir = "/mnt/c/Users/morga/Desktop/School/research_stuff/processed_data/"
+        #Athena_Analysis will expect the data for each dataset to be in a directory called data_loc+dname
+        self.data_loc = "/mnt/e/Research_Data/"    
+
+        #set up dictionaries (YOU FILL THIS OUT)
+        #for each item of the dictionary the key should be the dname and the value the grid type
+        #grid types should be either "Spherical" or "Cylindrical"
+        self.grid_types = {}
+        self.grid_types["example_dname"] = "Cylindrical"
+        self.grid_types["Cyl_1"] = "Cylindrical"
+        self.grid_types["Cyl_2"] = "Cylindrical"
+        self.grid_types["Cyl_6"] = "Cylindrical"
+        self.grid_types["Cyl_7"] = "Cylindrical"
+
+        #my weird shit
+        self.data_loc_D = "/mnt/d/Research_Data/"
         self.mkitp = "/home/morgan/mnt/kitp/"
         self.medd = "/home/morgan/mnt/edd/"
         #The data set bryance left us
         self.cvthin2 = "data2/cvdisk/CVThin2/Data"
         self.cvthick3 = "data/cvdisk/CVThick3"
         self.alpha3 = "data/cvdisk/superhump_3d_alpha03"
-
-        #set up dictionaries
-        self.grid_types = {}
-        self.grid_types["Cyl_1"] = "Cylindrical"
-        self.grid_types["Cyl_2"] = "Cylindrical"
-        self.grid_types["Cyl_6"] = "Cylindrical"
-        self.grid_types["Cyl_7"] = "Cylindrical"
-
-5
