@@ -7,13 +7,26 @@
 
 from branches.waves import *
 #fourier_waves_loop("Cyl_1", [5200, 10000], 10, [0,5],"Cylindrical")
-F = Fourier_Waves("Cyl_1")
-F.collect_data(start_fnum=4950)
+dname = "Cyl_1"
+F = Fourier_Waves(dname)
+F.collect_data(start_fnum=950)
 F.plot([950, 1056])
-#F.plot("Cyl_1", [1950, 2056])
-#F.plot("Cyl_1", [2950, 3056])
-#F.plot("Cyl_1", [3950, 4056], bounds=[0,25])
-#F.plot("Cyl_1", [4950, 5056], bounds=[0,30])
+del F
+F = Fourier_Waves(dname)
+F.collect_data(start_fnum=1950)
+F.plot("Cyl_1", [1950, 2056])
+del F
+F = Fourier_Waves(dname)
+F.collect_data(start_fnum=2950)
+F.plot("Cyl_1", [2950, 3056])
+del F
+F = Fourier_Waves(dname)
+F.collect_data(start_fnum=3950)
+F.plot("Cyl_1", [3950, 4056], bounds=[0,25])
+del F
+F = Fourier_Waves(dname)
+F.collect_data(start_fnum=4950)
+F.plot("Cyl_1", [4950, 5056], bounds=[0,30])
 
 #from orbital import *
 #orbital_velocity_analysis("Cyl_1", 5000, "Cylindrical", alpha = 0.1)#, phi_slicepoint=((1)*np.pi/2))

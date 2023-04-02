@@ -10,7 +10,7 @@ class File:
         #save_dir should be a general directory for all the results, Athena_Analysis will build and organize all the subdirectories itself.
         self.savedir = "/mnt/c/Users/morga/Desktop/School/research_stuff/processed_data/"
         #Athena_Analysis will expect the data for each dataset to be in a directory called data_loc+dname
-        self.data_loc = "/mnt/e/Research_Data/"    
+        self.data_loc = "/mnt/e/Research_Data/"
 
         #set up dictionaries (YOU FILL THIS OUT)
         #for each item of the dictionary the key should be the dname and the value the grid type
