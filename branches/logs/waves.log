@@ -604,3 +604,387 @@ INFO:root:0:00:12.836865
 INFO:root:fnum = 4952
 INFO:root:0:00:06.452643
 INFO:root:fnum = 4954
+INFO:root:Finding files...
+INFO:root:Finding files...
+INFO:root:Finding files...
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [950, 1056], file_count: 27.5
+INFO:root:Found data, range: [950, 1056], file_count: 27.5
+INFO:root:Beginning collection...
+INFO:root:Beginning collection...
+INFO:root:0:00:00.013221
+INFO:root:0:00:00.014059
+INFO:root:fnum = 950
+INFO:root:fnum = 950
+INFO:root:Finding files...
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [952, 1060], file_count: 28.0
+INFO:root:Found data, range: [952, 1060], file_count: 28.0
+INFO:root:Beginning collection...
+INFO:root:Beginning collection...
+INFO:root:0:00:00.005686
+INFO:root:0:00:00.006017
+INFO:root:fnum = 952
+INFO:root:fnum = 952
+INFO:root:0:00:12.567150
+INFO:root:fnum = 956
+INFO:root:0:00:12.617961
+INFO:root:fnum = 956
+INFO:root:0:00:07.183740
+INFO:root:fnum = 960
+INFO:root:0:00:07.344707
+INFO:root:fnum = 960
+INFO:root:0:00:06.481468
+INFO:root:fnum = 964
+INFO:root:0:00:06.695739
+INFO:root:fnum = 964
+INFO:root:0:00:06.659437
+INFO:root:fnum = 968
+INFO:root:0:00:06.715252
+INFO:root:fnum = 968
+INFO:root:0:00:06.498691
+INFO:root:fnum = 972
+INFO:root:0:00:06.619322
+INFO:root:fnum = 972
+INFO:root:0:00:06.624531
+INFO:root:fnum = 976
+INFO:root:0:00:06.620469
+INFO:root:fnum = 976
+INFO:root:0:00:06.688873
+INFO:root:fnum = 980
+INFO:root:0:00:07.151677
+INFO:root:fnum = 980
+INFO:root:0:00:06.612369
+INFO:root:fnum = 984
+INFO:root:0:00:06.736726
+INFO:root:fnum = 984
+INFO:root:0:00:06.704796
+INFO:root:fnum = 988
+INFO:root:0:00:06.720195
+INFO:root:fnum = 988
+INFO:root:0:00:06.658819
+INFO:root:fnum = 992
+INFO:root:0:00:06.548969
+INFO:root:fnum = 992
+INFO:root:0:00:06.562125
+INFO:root:fnum = 996
+INFO:root:0:00:06.723473
+INFO:root:fnum = 996
+INFO:root:0:00:06.665873
+INFO:root:fnum = 1000
+INFO:root:0:00:07.061685
+INFO:root:fnum = 1000
+INFO:root:0:00:06.671595
+INFO:root:fnum = 1004
+INFO:root:0:00:06.701632
+INFO:root:fnum = 1004
+INFO:root:0:00:06.624075
+INFO:root:fnum = 1008
+INFO:root:0:00:06.740184
+INFO:root:fnum = 1008
+INFO:root:0:00:06.514630
+INFO:root:fnum = 1012
+INFO:root:0:00:06.894781
+INFO:root:fnum = 1012
+INFO:root:0:00:06.765048
+INFO:root:fnum = 1016
+INFO:root:0:00:06.916655
+INFO:root:fnum = 1016
+INFO:root:0:00:06.659832
+INFO:root:fnum = 1020
+INFO:root:0:00:06.906460
+INFO:root:fnum = 1020
+INFO:root:0:00:06.630589
+INFO:root:fnum = 1024
+INFO:root:0:00:06.840804
+INFO:root:fnum = 1024
+INFO:root:0:00:06.724036
+INFO:root:fnum = 1028
+INFO:root:0:00:06.949035
+INFO:root:fnum = 1028
+INFO:root:0:00:06.686733
+INFO:root:fnum = 1032
+INFO:root:0:00:06.767259
+INFO:root:fnum = 1032
+INFO:root:0:00:06.510091
+INFO:root:fnum = 1036
+INFO:root:0:00:06.610357
+INFO:root:fnum = 1036
+INFO:root:0:00:06.475513
+INFO:root:fnum = 1040
+INFO:root:0:00:06.799089
+INFO:root:fnum = 1040
+INFO:root:0:00:06.646065
+INFO:root:fnum = 1044
+INFO:root:0:00:06.632903
+INFO:root:fnum = 1044
+INFO:root:0:00:06.606404
+INFO:root:fnum = 1048
+INFO:root:0:00:06.660823
+INFO:root:fnum = 1048
+INFO:root:0:00:06.728099
+INFO:root:fnum = 1052
+INFO:root:0:00:06.856768
+INFO:root:fnum = 1052
+INFO:root:0:00:06.738853
+INFO:root:fnum = 1056
+INFO:root:0:00:06.668973
+INFO:root:fnum = 1056
+INFO:root:0:00:06.520695
+INFO:root:fnum = 1060
+INFO:root:0:00:07.155128
+INFO:root:fnum = 1060
+INFO:root:pickling up to 1060
+INFO:root:pickling up to 1060
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [1952, 2060], file_count: 28.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.004488
+INFO:root:fnum = 1952
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [1952, 2060], file_count: 28.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.005050
+INFO:root:fnum = 1952
+INFO:root:0:00:13.313600
+INFO:root:fnum = 1956
+INFO:root:0:00:12.733054
+INFO:root:fnum = 1956
+INFO:root:0:00:06.790064
+INFO:root:fnum = 1960
+INFO:root:0:00:06.543932
+INFO:root:fnum = 1960
+INFO:root:0:00:06.501567
+INFO:root:fnum = 1964
+INFO:root:0:00:06.781609
+INFO:root:fnum = 1964
+INFO:root:0:00:06.654005
+INFO:root:fnum = 1968
+INFO:root:0:00:06.694711
+INFO:root:fnum = 1968
+INFO:root:0:00:06.611223
+INFO:root:fnum = 1972
+INFO:root:0:00:06.707148
+INFO:root:fnum = 1972
+INFO:root:0:00:06.873958
+INFO:root:fnum = 1976
+INFO:root:0:00:06.878631
+INFO:root:fnum = 1976
+INFO:root:0:00:06.733702
+INFO:root:fnum = 1980
+INFO:root:0:00:06.987496
+INFO:root:fnum = 1980
+INFO:root:0:00:06.564078
+INFO:root:fnum = 1984
+INFO:root:0:00:06.660494
+INFO:root:fnum = 1984
+INFO:root:0:00:06.519861
+INFO:root:fnum = 1988
+INFO:root:0:00:06.464354
+INFO:root:fnum = 1988
+INFO:root:0:00:06.554909
+INFO:root:fnum = 1992
+INFO:root:0:00:06.541819
+INFO:root:fnum = 1992
+INFO:root:0:00:06.628808
+INFO:root:fnum = 1996
+INFO:root:0:00:06.571881
+INFO:root:fnum = 1996
+INFO:root:0:00:06.463079
+INFO:root:fnum = 2000
+INFO:root:0:00:06.574140
+INFO:root:fnum = 2000
+INFO:root:0:00:06.553068
+INFO:root:fnum = 2004
+INFO:root:0:00:06.791186
+INFO:root:fnum = 2004
+INFO:root:0:00:06.470024
+INFO:root:fnum = 2008
+INFO:root:0:00:06.533156
+INFO:root:fnum = 2008
+INFO:root:0:00:06.559655
+INFO:root:fnum = 2012
+INFO:root:0:00:06.711284
+INFO:root:fnum = 2012
+INFO:root:0:00:06.434537
+INFO:root:fnum = 2016
+INFO:root:0:00:06.546423
+INFO:root:fnum = 2016
+INFO:root:0:00:06.600952
+INFO:root:fnum = 2020
+INFO:root:0:00:06.935183
+INFO:root:fnum = 2020
+INFO:root:0:00:06.470878
+INFO:root:fnum = 2024
+INFO:root:0:00:06.459709
+INFO:root:fnum = 2024
+INFO:root:0:00:06.632063
+INFO:root:fnum = 2028
+INFO:root:0:00:06.970598
+INFO:root:fnum = 2028
+INFO:root:0:00:06.884867
+INFO:root:fnum = 2032
+INFO:root:0:00:06.882167
+INFO:root:fnum = 2032
+INFO:root:0:00:06.637378
+INFO:root:fnum = 2036
+INFO:root:0:00:06.503329
+INFO:root:fnum = 2036
+INFO:root:0:00:06.510820
+INFO:root:fnum = 2040
+INFO:root:0:00:06.561576
+INFO:root:fnum = 2040
+INFO:root:0:00:06.606821
+INFO:root:fnum = 2044
+INFO:root:0:00:06.832754
+INFO:root:fnum = 2044
+INFO:root:0:00:06.565259
+INFO:root:fnum = 2048
+INFO:root:0:00:06.949117
+INFO:root:fnum = 2048
+INFO:root:0:00:07.000534
+INFO:root:fnum = 2052
+INFO:root:0:00:06.385890
+INFO:root:fnum = 2052
+INFO:root:0:00:06.814013
+INFO:root:fnum = 2056
+INFO:root:0:00:06.604444
+INFO:root:fnum = 2056
+INFO:root:0:00:06.604153
+INFO:root:fnum = 2060
+INFO:root:0:00:06.507197
+INFO:root:fnum = 2060
+INFO:root:pickling up to 2060
+INFO:root:pickling up to 2060
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [2952, 3060], file_count: 28.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.004397
+INFO:root:fnum = 2952
+INFO:root:0:00:12.208449
+INFO:root:fnum = 2956
+INFO:root:0:00:06.832741
+INFO:root:fnum = 2960
+INFO:root:0:00:06.977932
+INFO:root:fnum = 2964
+INFO:root:0:00:06.550184
+INFO:root:fnum = 2968
+INFO:root:0:00:06.790917
+INFO:root:fnum = 2972
+INFO:root:0:00:06.719071
+INFO:root:fnum = 2976
+INFO:root:0:00:06.594864
+INFO:root:fnum = 2980
+INFO:root:0:00:06.451250
+INFO:root:fnum = 2984
+INFO:root:0:00:06.460193
+INFO:root:fnum = 2988
+INFO:root:0:00:06.408819
+INFO:root:fnum = 2992
+INFO:root:0:00:06.496541
+INFO:root:fnum = 2996
+INFO:root:0:00:06.481015
+INFO:root:fnum = 3000
+INFO:root:0:00:06.774853
+INFO:root:fnum = 3004
+INFO:root:0:00:06.632046
+INFO:root:fnum = 3008
+INFO:root:0:00:06.431663
+INFO:root:fnum = 3012
+INFO:root:0:00:06.754783
+INFO:root:fnum = 3016
+INFO:root:0:00:06.560970
+INFO:root:fnum = 3020
+INFO:root:0:00:06.736112
+INFO:root:fnum = 3024
+INFO:root:0:00:06.628315
+INFO:root:fnum = 3028
+INFO:root:0:00:06.488462
+INFO:root:fnum = 3032
+INFO:root:0:00:06.703502
+INFO:root:fnum = 3036
+INFO:root:0:00:06.936216
+INFO:root:fnum = 3040
+INFO:root:0:00:06.664267
+INFO:root:fnum = 3044
+INFO:root:0:00:06.496357
+INFO:root:fnum = 3048
+INFO:root:0:00:06.747918
+INFO:root:fnum = 3052
+INFO:root:0:00:06.525197
+INFO:root:fnum = 3056
+INFO:root:0:00:06.491361
+INFO:root:fnum = 3060
+INFO:root:pickling up to 3060
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
+INFO:root:Found data, range: [3952, 4060], file_count: 28.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.004907
+INFO:root:fnum = 3952
+INFO:root:0:00:12.211289
+INFO:root:fnum = 3956
+INFO:root:0:00:06.898619
+INFO:root:fnum = 3960
+INFO:root:0:00:06.826551
+INFO:root:fnum = 3964
+INFO:root:0:00:06.586696
+INFO:root:fnum = 3968
+INFO:root:0:00:06.570646
+INFO:root:fnum = 3972
+INFO:root:0:00:06.490394
+INFO:root:fnum = 3976
+INFO:root:0:00:06.677086
+INFO:root:fnum = 3980
+INFO:root:0:00:06.600806
+INFO:root:fnum = 3984
+INFO:root:0:00:06.391315
+INFO:root:fnum = 3988
+INFO:root:0:00:06.701607
+INFO:root:fnum = 3992
+INFO:root:0:00:06.448116
+INFO:root:fnum = 3996
+INFO:root:0:00:06.729719
+INFO:root:fnum = 4000
+INFO:root:0:00:06.815365
+INFO:root:fnum = 4004
+INFO:root:0:00:07.180627
+INFO:root:fnum = 4008
+INFO:root:0:00:06.697189
+INFO:root:fnum = 4012
+INFO:root:0:00:06.632617
+INFO:root:fnum = 4016
+INFO:root:0:00:06.519863
+INFO:root:fnum = 4020
+INFO:root:0:00:07.567768
+INFO:root:fnum = 4024
+INFO:root:0:00:06.435172
+INFO:root:fnum = 4028
+INFO:root:0:00:06.571705
+INFO:root:fnum = 4032
+INFO:root:0:00:06.743984
+INFO:root:fnum = 4036
+INFO:root:0:00:06.581356
+INFO:root:fnum = 4040
+INFO:root:0:00:07.137669
+INFO:root:fnum = 4044
+INFO:root:0:00:07.131610
+INFO:root:fnum = 4048
+INFO:root:0:00:06.847623
+INFO:root:fnum = 4052
+INFO:root:0:00:06.579598
+INFO:root:fnum = 4056
+INFO:root:0:00:06.884505
+INFO:root:fnum = 4060
+INFO:root:pickling up to 4060
+INFO:root:Finding files...
+INFO:root:Found file spacing: 4
