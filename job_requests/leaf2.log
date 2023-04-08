@@ -1,6 +1,17 @@
 Traceback (most recent call last):
-  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf2.py", line 28, in <module>
-    F.collect_data(start_fnum=4952)
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/waves.py", line 100, in collect_data
-    raise("Not enough data left, start further back")
-TypeError: exceptions must derive from BaseException
+  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf2.py", line 1, in <module>
+    from branches.mprofile import *
+  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/mprofile.py", line 591, in <module>
+    profile_movie(coordinates="Cylindrical", vertslice_center=0, MAGNETIC_FIELDS_ENABLED=False)
+  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/mprofile.py", line 286, in profile_movie
+    aa = Athena_Analysis(filename=filename, grid_type=coordinates)
+  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 49, in __init__
+    self.data = h5py.File(filename, 'r')
+  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/files.py", line 507, in __init__
+    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
+  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/files.py", line 220, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
+FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/home/mohana/mhd_superhump/data_raw/globus_dump/Data_backup/disk.out1.00000.athdf', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)

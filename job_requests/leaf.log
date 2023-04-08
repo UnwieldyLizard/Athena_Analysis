@@ -1,6 +1,35 @@
-Traceback (most recent call last):
-  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf.py", line 20, in <module>
-    F.collect_data(start_fnum=2952)
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/waves.py", line 100, in collect_data
-    raise("Not enough data left, start further back")
-TypeError: exceptions must derive from BaseException
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:132: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
+  ax_radalpha.set_yscale("log")
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:136: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
+  ax_vertalpha.set_yscale("log")
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
+Invalid limit will be ignored.
+  ax_radpress.set_ylim([0, 2000])
+slurmstepd: error: *** JOB 3040374 ON node64 CANCELLED AT 2023-04-08T12:22:06 ***

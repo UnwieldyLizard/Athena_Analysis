@@ -1,13 +1,15 @@
 from .roots.athena_analysis import *
 import logging
 
-logging.basicConfig(filename='/home/morgan/qresearch/profiles.log', encoding='utf-8', level=logging.INFO)
+#logging.basicConfig(filename='/home/morgan/qresearch/profiles.log', encoding='utf-8', level=logging.INFO)
 
-def main(starting_orbit = 35, filenum_seperation = 10, thetaslice_center = (np.pi/2), thetaslice_width = (np.pi/2), rslicepoint = 6, auto_clean=True):
-    dname = "CVThick3_Profile"
+def main(dname, starting_orbit = 35, filenum_seperation = 10, thetaslice_center = (np.pi/2), thetaslice_width = (np.pi/2), rslicepoint = 6, auto_clean=True):
+    dname = "Cyl_1"
     #data_location = "/home/morgan/mnt/kitp/data2/cvdisk/CVThin2/Data/"
-    data_location = "/home/morgan/mnt/kitp/data/cvdisk/CVThick3/"
-    savedir = "/mnt/c/Users/morga/Desktop/research_stuff/processed_data/%s" % (dname)
+    #data_location = "/home/morgan/mnt/kitp/data/cvdisk/CVThick3/"
+    data_location = file.data_loc + dname
+    savedir = file.savedir + dname + "/" + dname + aname
+    mkdir_if_not_exist(savedir)
     mkdir_if_not_exist(savedir)
 
     #computing usable params based on given params
@@ -589,4 +591,4 @@ def profile_movie(coordinates, filenum_seperation = 2, vertslice_center = (np.pi
         plt.close()
 
 #main(auto_clean=True)
-profile_movie(coordinates="Cylindrical", vertslice_center=0, MAGNETIC_FIELDS_ENABLED=False)
+#profile_movie(coordinates="Cylindrical", vertslice_center=0, MAGNETIC_FIELDS_ENABLED=False)

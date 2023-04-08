@@ -1,16 +1,16 @@
-from .mathena_analysis import *
+from .athena_analysis import *
 import numpy as np
 import logging
 from datetime import datetime
 
-def simple_loop(dname, fnum_range, file_spacing, grid_type, function):
+def simple_loop(fnum_range, file_spacing, function):
     now = datetime.now()
     fnum_range = np.arange(fnum_range[0], fnum_range[-1]+1, file_spacing)
     for fnum in fnum_range:
         logging.info(datetime.now()-now)
         now = datetime.now()
         logging.info("fnum = %d" % fnum)
-        function(dname, fnum, grid_type)
+        function(fnum)
 
 
 def radial_slice_loop(dname, fnum, grid_type, function, scale_factor=1, start_idx=0):
