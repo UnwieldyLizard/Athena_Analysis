@@ -89,7 +89,6 @@ class Fourier_Waves:
         logging.info("Finding files...")
         max_fnum = 1
         file_spacing = None
-        found_data = False
         while file_spacing is None:
             while not os.path.exists("%s/disk.out1.%05d.athdf" % (data_location, max_fnum)):
                 max_fnum += 1

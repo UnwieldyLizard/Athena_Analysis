@@ -12,9 +12,9 @@ class Vector:
         b : list of int
             The second vector
         """
-        [ar, at, ap] = a
-        [br, bt, bp] = b
-        return np.array([at*bp - ap*bt, ap*br - ar*bp, ar*bt - at*br], dtype=np.float32)
+        [a1, a2, a3] = a
+        [b1, b2, b3] = b
+        return np.array([a2*b3 - a3*b2, a3*b1 - a1*b3, a1*b2 - a2*b1], dtype=np.float32)
 
     def ortho_dot(self, a, b):
         """
@@ -29,7 +29,7 @@ class Vector:
         """
         [ar, at, ap] = a
         [br, bt, bp] = b
-        return (ar*br + at*bt + ap*bt)
+        return (ar*br + at*bt + ap*bp)
 
     def get_magnitude(self, a):
         """

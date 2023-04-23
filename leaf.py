@@ -1,12 +1,6 @@
-from branches.profile import *
+from branches.angular_momentum import *
 from branches.roots.misc_func import *
+from branches.roots.utility import *
 
-
-P = Profile("Cyl_7")
-simple_loop([4445,5013], 4, P.profile)
-#P.profile(fnum=5013, r_slicepoint=2)
-#P.profile(fnum=5013, r_slicepoint=4)
-#P.profile(fnum=5013, r_slicepoint=6)
-#P.profile(fnum=5013, r_slicepoint=8)
-#P.profile(fnum=5013, r_slicepoint=10)
-#P.profile(fnum=5013, r_slicepoint=12)
+L = AngularMomentum("Cyl_1")
+L.angular_momentum_history([500,2000])

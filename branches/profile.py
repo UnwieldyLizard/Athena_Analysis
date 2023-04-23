@@ -8,7 +8,8 @@ class Profile():
         self.dname = dname
         self.aname = "_profile" #a for analysis
         self.data_location = file.data_loc + dname
-        self.grid_type=file.grid_types[dname]
+        self.grid_type = file.grid_types[dname]
+        self.is_MHD = file.MHD[dname]
         self.savedir = file.savedir + dname + "/" + dname + self.aname
         mkdir_if_not_exist(self.savedir)
 
@@ -18,13 +19,17 @@ class Profile():
 
         aa.get_primaries(get_rho=True, get_vel_r=True, get_vel_phi=True, get_press=True)
         aa.get_face_areas(get_rcc_face_areas=True)
-        aa.get_Bfields()
         aa.native_grid()
+        if self.is_MHD:
+            aa.get_Bfields()
         r_idx = np.argmin(abs(aa.possible_r - r_slicepoint))
 
         radial = {}
         vert = {}
-        keys = ["rho", "mdot", "rhovr", "press", "Bpress", "max_stress", "reyn_stress"]
+        if self.is_MHD:
+            keys = ["rho", "mdot", "rhovr", "press", "Bpress", "max_stress", "reyn_stress"]
+        else:
+            keys = ["rho", "mdot", "rhovr", "press", "reyn_stress"]
 
         if self.grid_type=="Cylindrical":
             vert_axis = aa.possible_z
@@ -52,9 +57,11 @@ class Profile():
         radial["mdot"], vert["mdot"] = aa.integrate(aa.rho * aa.vel_r * aa.rcc_face_area, "shell", intermediates=True)
         radial["rhovr"], vert["rhovr"] = aa.integrate(aa.rho * aa.vel_r, "shell", intermediates=True)
         radial["press"], vert["press"] = aa.integrate(aa.press, "shell", intermediates=True)
-        radial["Bpress"], vert["Bpress"] = aa.integrate((aa.B_z**2+aa.B_phi**2+aa.B_z**2)/2, "shell", intermediates=True)
-        radial["max_stress"], vert["max_stress"] = aa.integrate(-aa.B_r * aa.B_phi, "shell", intermediates=True)
         radial["reyn_stress"], vert["reyn_stress"] = aa.integrate(aa.rho * aa.vel_r * turbulentvphi, variable="shell", intermediates=True)
+        if self.is_MHD:
+            radial["Bpress"], vert["Bpress"] = aa.integrate((aa.B_z**2+aa.B_phi**2+aa.B_z**2)/2, "shell", intermediates=True)
+            radial["max_stress"], vert["max_stress"] = aa.integrate(-aa.B_r * aa.B_phi, "shell", intermediates=True)
+
         
         shell_normalization = aa.integrate(1, "shell")
         loop_normalization = (2*np.pi*aa.possible_r[r_idx])
@@ -62,10 +69,11 @@ class Profile():
             radial[key] = radial[key] / shell_normalization
             vert[key] = vert[key][:, r_idx] / loop_normalization
 
-        radial["max_alpha"] = (2/3) * (radial["max_stress"] / radial["press"])
-        vert["max_alpha"] = (2/3) * (vert["max_stress"] / vert["press"])
         radial["reyn_alpha"] = (2/3) * (radial["reyn_stress"] / radial["press"])
         vert["reyn_alpha"] = (2/3) * (vert["reyn_stress"] / vert["press"])
+        if self.is_MHD:
+            radial["max_alpha"] = (2/3) * (radial["max_stress"] / radial["press"])
+            vert["max_alpha"] = (2/3) * (vert["max_stress"] / vert["press"])
 
         vert_num = 4
         horz_num = 2
@@ -93,10 +101,11 @@ class Profile():
 
         ax_radrho.plot(aa.possible_r, radial["rho"])
         ax_radmdot.plot(aa.possible_r, radial["mdot"])
-        ax_radpress.plot(aa.possible_r, radial["press"], label="Gas")
-        ax_radpress.plot(aa.possible_r, radial["Bpress"], label="B")
-        ax_radalpha.plot(aa.possible_r, radial["max_alpha"], label="Maxwell")
+        ax_radpress.plot(aa.possible_r, radial["press"], label="Gas")    
         ax_radalpha.plot(aa.possible_r, radial["reyn_alpha"], label="Reynolds")
+        if self.is_MHD:
+            ax_radpress.plot(aa.possible_r, radial["Bpress"], label="B")
+            ax_radalpha.plot(aa.possible_r, radial["max_alpha"], label="Maxwell")
 
         ax_radrho.axvline(sim.three_one_res, c="red", linestyle="dashed", label="Resonant Radius")
         ax_radmdot.axvline(sim.three_one_res, c="red", linestyle="dashed", label="Resonant Radius")
@@ -106,9 +115,10 @@ class Profile():
         ax_vertrho.plot(vert_axis, vert["rho"])
         ax_vertrhovr.plot(vert_axis, vert["rhovr"])
         ax_vertpress.plot(vert_axis, vert["press"], label="Gas")
-        ax_vertpress.plot(vert_axis, vert["Bpress"], label="B")
-        ax_vertalpha.plot(vert_axis, vert["max_alpha"], label="Maxwell")
         ax_vertalpha.plot(vert_axis, vert["reyn_alpha"], label="Reynolds")
+        if self.is_MHD:
+            ax_vertpress.plot(vert_axis, vert["Bpress"], label="B")
+            ax_vertalpha.plot(vert_axis, vert["max_alpha"], label="Maxwell")
 
         ax_radrho.set_ylim([1e-3,1e3])
         ax_radrho.set_yscale("log")
@@ -124,7 +134,7 @@ class Profile():
         ax_radpress.set_title("Radial Pressures (log scale)")
         ax_radpress.set_yscale("log")
         ax_radpress.legend()
-        ax_radpress.set_ylim([0, 2000])
+        ax_radpress.set_ylim([1e-2, 5e3])
         ax_vertpress.set_title(r"Vertical Pressures")
         ax_vertpress.legend()
         ax_vertpress.set_ylim([0,250])
@@ -141,7 +151,7 @@ class Profile():
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
         fig.suptitle(f"orbit: {orbit:.2f}")
-        plt.savefig("%s/%s_density%s%05d_r=%01d.png" % (self.savedir, self.dname, self.aname, fnum, r_slicepoint))
+        plt.savefig("%s/%s%s%05d_r=%01d.png" % (self.savedir, self.dname, self.aname, fnum, r_slicepoint))
         plt.close()
 
     def plasma_beta(self, fnum):

@@ -386,7 +386,7 @@ class Athena_Analysis():
                 zpart = (self.zf_primitive[i][1:] - self.zf_primitive[i][:-1])
                 self.cell_vol[i] = np.einsum("k,j,i->kji", zpart, ppart, rpart)
 
-    def get_face_areas(self, get_rcc_face_areas = False):
+    def get_face_areas(self, get_rcc_face_areas = False, get_r_face_areas = False):
         """
         Gets r cell centered face areas.
         """
@@ -406,6 +406,23 @@ class Athena_Analysis():
                 ppart = (self.phif_primitive[i][1:] - self.phif_primitive[i][:-1])
                 zpart = (self.zf_primitive[i][1:] - self.zf_primitive[i][:-1])
                 self.rcc_face_area[i] = np.einsum("k,j,i->kji", zpart, ppart, rpart)
+
+        self._axes()
+        if get_r_face_areas == True and self.gridtype == "Spherical":
+            self.r_face_area = np.zeros(self.array_size + np.array([0,0,0,1])) # adding 1 to radial cuz one more faces than cells
+            for i in range(self.NumMeshBlocks):
+                rpart = self.rf_primitive[i] ** 2
+                tpart = -(np.cos(self.thetaf_primitive[i][1:]) - np.cos(self.thetaf_primitive[i][:-1]))
+                ppart = (self.phif_primitive[i][1:] - self.phif_primitive[i][:-1])
+                self.r_face_area[i] = np.einsum("k,j,i->kji", ppart, tpart, rpart)
+
+        if get_r_face_areas == True and self.gridtype == "Cylindrical":
+            self.r_face_area = np.zeros(self.array_size + np.array([0,0,0,1])) # adding 1 to radial cuz one more faces than cells
+            for i in range(self.NumMeshBlocks):
+                rpart = self.rf_primitive[i]
+                ppart = (self.phif_primitive[i][1:] - self.phif_primitive[i][:-1])
+                zpart = (self.zf_primitive[i][1:] - self.zf_primitive[i][:-1])
+                self.r_face_area[i] = np.einsum("k,j,i->kji", zpart, ppart, rpart)
 
     def cart_grid(self, projection):
         """
@@ -1462,6 +1479,39 @@ class Athena_Analysis():
         if coordinates == 'Cartesian' or coordinates == 'cartesian':
             raise Exception("use spherical/cylindrical lol cartesian is borked")
 
+    def divergence(self, q, coordinates=None):
+        """
+        Computes the divergence of a vector
+
+        Parameters
+        ----------
+        q : list
+            The data to be differentiated, must be an Athena data array.
+        
+        Returns
+        -------
+        list
+            A 4 dimensional array that contains the divergence, with indices of meshblock and coords as normal.
+        """
+        if coordinates is None:
+            coordinates = self.gridtype
+        if coordinates == 'Spherical' or coordinates == 'spherical':
+            [qp, qt, qr] = q
+            self.spherical_grid(get_r=True, get_theta=True)
+            divq_phi = (self.differentiate(qp, 'phi')) / (self.r * np.sin(self.theta))
+            divq_theta = (self.differentiate(qt*np.sin(self.theta), 'theta')) / (self.r * np.sin(self.theta))
+            divq_r = self.differentiate(qr*(aa.r**2), 'r') / (aa.r**2)
+            return divq_phi + divq_theta + divq_r
+        if coordinates == 'Cylindrical' or coordinates == 'cylindrical':
+            [qz, qp, qr] = q
+            self.native_grid(get_r=True)
+            gradq_z = self.differentiate(qz, 'z')
+            gradq_phi = (self.differentiate(qp, 'phi')) / (self.r)
+            gradq_r = self.differentiate(qr*self.r, 'r') / (self.r)
+            return divq_z + divq_phi + divq_r
+        if coordinates == 'Cartesian' or coordinates == 'cartesian':
+            raise Exception("use spherical/cylindrical lol cartesian is borked")
+
     def material_derivative(self, a, b, coordinates=None):
         """
         Computes the spacial part of a material derivative: (a・∇)・b
@@ -1523,6 +1573,29 @@ class Athena_Analysis():
             if coordinates == 'Cartesian' or coordinates == 'cartesian':
                 raise Exception("use spherical lol cartesian is borked")
 
+    def radial_transport(self, q):
+        """
+        Computes radial transport of q calculated flux of material out of a cell from radial sides
+        """
+        self.get_primaries(get_vel_r=True)
+        self.get_face_areas(get_r_face_areas=True)
+        q_face = self.assign_to_face(q)
+        vr_face = self.assign_to_face(self.vel_r)
+        q_transport = np.zeros(self.array_size)
+        q_transport = (q_face*vr_face*self.r_face_area)[:,:,:,1:] - (q_face*vr_face*self.r_face_area)[:,:,:,:-1]
+        return q_transport
+
+    def assign_to_face(self, q):
+        """
+        takes a cell center defined quantity and defines it on r faces by averaging between adjacent cells
+        """
+        self.native_grid()
+        q_face = np.zeros(self.array_size + np.array([0,0,0,1]))
+        q_face[:,:,:,1:-1] = (1/2)*(q[:,:,:,1:] + q[:,:,:,:-1])
+        q_face[:,:,:,0] = q_face[:,:,:,1] - ((q_face[:,:,:,2]-q_face[:,:,:,1])/(self.r[:,:,:,2]-self.r[:,:,:,1])) * ((self.r[:,:,:,1]-self.r[:,:,:,0]))
+        q_face[:,:,:,-1] = q_face[:,:,:,-2] + ((q_face[:,:,:,-2]-q_face[:,:,:,-3])/(self.r[:,:,:,-2]-self.r[:,:,:,-3])) * ((self.r[:,:,:,-1]-self.r[:,:,:,-2]))
+        return q_face
+
     def alpha_visc(self, alpha):
         '''
         f = alpha (dP/dr phi_hat + 1/r dP/dphi r_hat)
@@ -1530,16 +1603,22 @@ class Athena_Analysis():
         self.native_grid()
         self.get_primaries(get_press=True)
 
-        scaling_factor = -1*(3/2)*alpha / np.sqrt(sim.gm1)
+        scaling_factor = -1*(3/2)*alpha
 
         f_r = self.differentiate(self.press, 'phi') / self.r
         f_phi = self.differentiate(self.press, 'r') + (2*self.press / self.r)
-        if self.gridtype == 'Spherical':
+        if self.gridtype == 'Spherical': #unconvinced this is true in spherical
+            warnings.warn("check this is correct for spherical")
             f_unscaled = np.array([f_phi, np.zeros(self.array_size), f_r])
             return (scaling_factor* f_unscaled)
         if self.gridtype == 'Cylindrical':
             f_unscaled = np.array([np.zeros(self.array_size), f_phi, f_r])
             return (scaling_factor * f_unscaled)
+
+    def alpha_torque(self, alpha):
+        f = self.alpha_visc(alpha)
+        torque_density = self.r*f[1] #z hat, there is only a z component to torque density
+        return torque_density
 
     def get_boundary_flux(self, q, intermediates=False):
         """
@@ -1644,7 +1723,7 @@ class Athena_Analysis():
             return total_flux, inner_flux, outer_flux
         else:
             return total_flux
-    
+
     def build_vectors(self):
         """
         Builds r, v, and r_hat vectors

@@ -10,7 +10,11 @@ def simple_loop(fnum_range, file_spacing, function):
         logging.info(datetime.now()-now)
         now = datetime.now()
         logging.info("fnum = %d" % fnum)
-        function(fnum)
+        try:
+            function(fnum)
+        except:
+            logging.info(f"operation failed on fnum = {fnum}, exiting... (Don't panic this probably just means you've gone through all the data)")
+            break
 
 
 def radial_slice_loop(dname, fnum, grid_type, function, scale_factor=1, start_idx=0):
