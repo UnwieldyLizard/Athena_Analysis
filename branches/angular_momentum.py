@@ -1,4 +1,5 @@
 from .roots.athena_analysis import *
+from .roots.misc_func import *
 
 logging.basicConfig(filename=file.logs_loc+"/angular_momentum.log", encoding='utf-8', level=logging.INFO)
 
@@ -18,6 +19,7 @@ class AngularMomentum():
 
     def angular_momentum_profile(self, fnum, plot=True):
         self.torques = {}
+        self.total_torques = {}
         if self.is_MHD:
             self.torque_list = ["tidal", "press", "flow", "Bpress", "Btens"]
         else:
@@ -31,7 +33,8 @@ class AngularMomentum():
 
         aa.get_primaries(get_rho=True, get_press=True, get_vel_phi=True)
         aa.get_potentials(get_companion_grav=True, get_accel=True)
-        aa.get_Bfields()
+        if self.is_MHD:
+            aa.get_Bfields()
 
         #angular momentum
         self.L_z = aa.r*aa.rho*aa.vel_phi
@@ -49,28 +52,15 @@ class AngularMomentum():
         #Shell ave
         normalization_weight = aa.integrate(1, "shell")
         for key in self.torque_list:
-            self.torques[key] = aa.integrate(self.torques[key], "shell") / normalization_weight
-        self.L_z = aa.integrate(self.L_z, "shell") / normalization_weight
+            self.total_torques[key], self.torques[key], azimuthal_integral = aa.integrate(self.torques[key], "All", intermediates=True) #azimuthal will be ignored
+            self.torques[key] = self.torques[key] #/ normalization_weight
+        self.L_z = aa.integrate(self.L_z, "shell") #/ normalization_weight
 
         self.r_axis = aa.possible_r
 
         if plot:
             #plot
-            vert_num = 2
-            horz_num = 1
-            gs = gridspec.GridSpec(vert_num, horz_num)
-            fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
-            
-            ax_L_z = fig.add_subplot(gs[0, 0])
-            ax_torques = fig.add_subplot(gs[1, 0])
-
-            ax_L_z.plot(aa.possible_r, self.L_z)
-            for k, key in enumerate(self.torque_list):
-                ax_torques.plot(aa.possible_r, self.torques[key], f"C{k}-", label=key)
-
-            plt.legend()
-            plt.savefig("%s/%s%s%05dtest.png" % (self.savedir, self.dname, self.aname, fnum))
-            plt.close()
+            self.plot(fnum)
 
     def angular_momentum_history(self, fnum_range, step=None):
         if step is None:
@@ -98,25 +88,32 @@ class AngularMomentum():
             self.dL_zdt = dL_zdt
 
             #plot
-            vert_num = 2
-            horz_num = 1
-            gs = gridspec.GridSpec(vert_num, horz_num)
-            fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
-            
-            ax_L_z = fig.add_subplot(gs[0, 0])
-            ax_torques = fig.add_subplot(gs[1, 0])
+            self.plot(fnum, plot_int_L_z=True)
+    
+    def plot(self, fnum, plot_int_L_z=False):
+        #plot
+        vert_num = 2
+        horz_num = 1
+        gs = gridspec.GridSpec(vert_num, horz_num)
+        fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
+        
+        ax_L_z = fig.add_subplot(gs[0, 0])
+        ax_torques = fig.add_subplot(gs[1, 0])
 
-            ax_L_z.plot(self.r_axis, self.L_z, "C2-", label="measured")
+        ax_L_z.plot(self.r_axis, self.L_z, "C2-", label="measured")
+        if plot_int_L_z:
             ax_L_z.plot(self.r_axis, self.int_L_z, "C9--", label="integrated")
-            ax_L_z.set_ylabel(r"$L_z$")
-            for k, key in enumerate(self.torque_list):
-                ax_torques.plot(self.r_axis, self.torques[key], f"C{k}-", label=key)
-            ax_torques.set_ylabel(r"$\tau$")
-            ax_torques.set_xlabel("r")
+        ax_L_z.set_ylabel(r"$L_z$")
+        for k, key in enumerate(self.torque_list): 
+            ax_torques.plot(self.r_axis, self.torques[key], f"C{k}-", label=key+r" $\tau$="+f"{self.total_torques[key]:.2}")
+            ax_torques.axhline(self.total_torques[key], c=f"C{k}", linestyle="dashed")
+        ax_torques.set_ylabel(r"$\tau$")
+        ax_torques.set_xlabel("r")
 
-            orbit = (self.time / sim.binary_period)
-            plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
-            fig.suptitle(f"orbit: {orbit:.2f}")
-            plt.legend()
-            plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, self.aname, fnum))
-            plt.close()
+        orbit = (self.time / sim.binary_period)
+        plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
+        fig.suptitle(f"orbit: {orbit:.2f}")
+        plt.legend()
+        plt.savefig("%s/%s%s%05d_int_not_ave.png" % (self.savedir, self.dname, self.aname, fnum))
+        plt.close()
+    
