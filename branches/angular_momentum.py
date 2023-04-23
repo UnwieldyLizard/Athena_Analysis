@@ -104,11 +104,13 @@ class AngularMomentum():
         if plot_int_L_z:
             ax_L_z.plot(self.r_axis, self.int_L_z, "C9--", label="integrated")
         ax_L_z.set_ylabel(r"$L_z$")
+        ax_L_z.set_title(r"$Angular Momentum$")
         for k, key in enumerate(self.torque_list): 
             ax_torques.plot(self.r_axis, self.torques[key], f"C{k}-", label=key+r" $\tau$="+f"{self.total_torques[key]:.2}")
             ax_torques.axhline(self.total_torques[key], c=f"C{k}", linestyle="dashed")
         ax_torques.set_ylabel(r"$\tau$")
         ax_torques.set_xlabel("r")
+        ax_torques.set_title("Torques")
 
         orbit = (self.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
