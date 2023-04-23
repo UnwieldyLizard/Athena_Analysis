@@ -44,8 +44,8 @@ class AngularMomentum():
         self.torques["press"] = aa.r * (-1 * aa.gradient(aa.press, coordinates=self.grid_type))[1]
         self.torques["flow"] = -1 *aa.radial_transport(self.L_z)
         if self.is_MHD:
-            self.torques["Bpress"] = aa.r * (-1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=self.grid_type))[1]
-            self.torques["Btens"] = aa.r * (aa.material_derivative([aa.B_phi, aa.B_theta, aa.B_r], [aa.B_phi, aa.B_theta, aa.B_r]))[1]
+            self.torques["Bpress"] = aa.r * (-1 * aa.gradient(((aa.B_z ** 2) + (aa.B_phi ** 2) + (aa.B_r ** 2)) / 2, coordinates=self.grid_type))[1]
+            self.torques["Btens"] = aa.r * (aa.material_derivative([aa.B_z, aa.B_phi, aa.B_r], [aa.B_z, aa.B_phi, aa.B_r]))[1]
         else:
             self.torques["alpha"] = aa.alpha_torque(self.alpha)
 

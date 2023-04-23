@@ -1,9 +1,6 @@
-/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
-Invalid limit will be ignored.
-  ax_radpress.set_ylim([0, 2000])
-/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
-Invalid limit will be ignored.
-  ax_radpress.set_ylim([0, 2000])
-/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:127: UserWarning: Attempted to set non-positive bottom ylim on a log-scaled axis.
-Invalid limit will be ignored.
-  ax_radpress.set_ylim([0, 2000])
+Traceback (most recent call last):
+  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf.py", line 6, in <module>
+    L.angular_momentum_profile(2000)
+  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/angular_momentum.py", line 47, in angular_momentum_profile
+    self.torques["Bpress"] = aa.r * (-1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=self.grid_type))[1]
+AttributeError: 'Athena_Analysis' object has no attribute 'B_theta'
