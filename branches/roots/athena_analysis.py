@@ -37,10 +37,6 @@ vec = Vector()
 
 DISABLE_VERTICAL_GRAVITY_IN_CYL = True
 
-def mkdir_if_not_exist(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
-
 class Athena_Analysis():
     def __init__(self, filename, grid_type="Spherical"):
         """

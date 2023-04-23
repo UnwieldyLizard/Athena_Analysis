@@ -12,15 +12,8 @@ class AngularMomentum():
         self.alpha = file.alpha[dname]
         self.savedir = file.savedir + dname + "/" + dname + self.aname
         mkdir_if_not_exist(self.savedir)
-
-        #finding file spacing
-        max_fnum = 1
-        self.file_spacing = None
-        while self.file_spacing is None:
-            while not os.path.exists("%s/disk.out1.%05d.athdf" % (self.data_location, max_fnum)):
-                max_fnum += 1
-            self.file_spacing = max_fnum
-
+        self.file_spacing = find_file_spacing(self.dname)
+        
         self.time = None
 
     def angular_momentum_profile(self, fnum, plot=True):
@@ -38,6 +31,7 @@ class AngularMomentum():
 
         aa.get_primaries(get_rho=True, get_press=True, get_vel_phi=True)
         aa.get_potentials(get_companion_grav=True, get_accel=True)
+        aa.get_Bfields()
 
         #angular momentum
         self.L_z = aa.r*aa.rho*aa.vel_phi

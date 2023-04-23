@@ -3,6 +3,22 @@ import numpy as np
 import logging
 from datetime import datetime
 
+def mkdir_if_not_exist(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+def find_file_spacing(dname):
+    data_location = file.data_loc + dname
+    max_fnum = 1
+    file_spacing = None
+    while file_spacing is None:
+        while not os.path.exists("%s/disk.out1.%05d.athdf" % (data_location, max_fnum)):
+            if max_fnum > 50:
+                raise("didn't find any of first 50 files, I suspect your file path is wrong")
+            max_fnum += 1
+        file_spacing = max_fnum
+    return max_fnum
+
 def simple_loop(fnum_range, file_spacing, function):
     now = datetime.now()
     fnum_range = np.arange(fnum_range[0], fnum_range[-1]+1, file_spacing)
