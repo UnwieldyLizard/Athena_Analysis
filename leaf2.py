@@ -3,4 +3,4 @@ from branches.roots.misc_func import *
 from branches.roots.utility import *
 
 L = AngularMomentum("Cyl_1")
-L.angular_momentum_profile(2000)
+L.angular_momentum_history([500,1000])

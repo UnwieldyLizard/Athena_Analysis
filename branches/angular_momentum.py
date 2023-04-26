@@ -21,9 +21,9 @@ class AngularMomentum():
         self.torques = {}
         self.total_torques = {}
         if self.is_MHD:
-            self.torque_list = ["tidal", "press", "flow", "Bpress", "Btens"]
+            self.torque_list = ["tidal", "reynold", "maxwell"]
         else:
-            self.torque_list = ["tidal", "press", "flow", "alpha"]
+            self.torque_list = ["tidal", "reynold", "alpha"]
         
         filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
         aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
@@ -31,7 +31,7 @@ class AngularMomentum():
             self.previous_time = self.time
         self.time = aa.time
 
-        aa.get_primaries(get_rho=True, get_press=True, get_vel_phi=True)
+        aa.get_primaries(get_rho=True, get_press=True, get_vel_r=True, get_vel_phi=True)
         aa.get_potentials(get_companion_grav=True, get_accel=True)
         if self.is_MHD:
             aa.get_Bfields()
@@ -41,13 +41,11 @@ class AngularMomentum():
 
         #computing torque densities for z direction, ie for each force density (r x f)_z = r*f_phi. Recall vectors in [z, phi, r] order
         self.torques["tidal"] = aa.r * (-1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=self.grid_type))[1]
-        self.torques["press"] = aa.r * (-1 * aa.gradient(aa.press, coordinates=self.grid_type))[1]
-        self.torques["flow"] = -1 *aa.radial_transport(self.L_z)
+        self.torques["reynold"] = -1 * aa.differentiate(aa.r*aa.r*aa.rho*aa.vel_phi*aa.vel_r, 'r') / aa.r
         if self.is_MHD:
-            self.torques["Bpress"] = aa.r * (-1 * aa.gradient(((aa.B_z ** 2) + (aa.B_phi ** 2) + (aa.B_r ** 2)) / 2, coordinates=self.grid_type))[1]
-            self.torques["Btens"] = aa.r * (aa.material_derivative([aa.B_z, aa.B_phi, aa.B_r], [aa.B_z, aa.B_phi, aa.B_r]))[1]
+            self.torques["maxwell"] = aa.differentiate(aa.r*aa.r*aa.B_r*aa.B_phi, 'r') / aa.r
         else:
-            self.torques["alpha"] = aa.alpha_torque(self.alpha)
+            self.torques["alpha"] = -1 * aa.differentiate(aa.r*aa.r*(3/2)*self.alpha*aa.press, 'r') / aa.r
 
         #Shell ave
         normalization_weight = aa.integrate(1, "shell")
@@ -104,11 +102,16 @@ class AngularMomentum():
         if plot_int_L_z:
             ax_L_z.plot(self.r_axis, self.int_L_z, "C9--", label="integrated")
         ax_L_z.set_ylabel(r"$L_z$")
-        ax_L_z.set_title("Angular Momentum")
+        ax_L_z.set_ylim([1e2,1e6])
+        ax_L_z.set_yscale("log")
+        ax_L_z.set_title("Angular Momentum (log scale)")
         for k, key in enumerate(self.torque_list): 
-            ax_torques.plot(self.r_axis, self.torques[key], f"C{k}-", label=key+r" $\tau$="+f"{self.total_torques[key]:.2}")
-            ax_torques.axhline(self.total_torques[key], c=f"C{k}", linestyle="dashed")
+            if k == 0: c = 0 #skipping the ugly orange at c=1 LOL
+            else: c = k + 1
+            ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key+r" $\tau$="+f"{self.total_torques[key]:.2}")
+            ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
         ax_torques.set_ylabel(r"$\tau$")
+        ax_torques.set_ylim([-10000,10000])
         ax_torques.set_xlabel("r")
         ax_torques.set_title("Torques")
 
@@ -116,6 +119,6 @@ class AngularMomentum():
         plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
         fig.suptitle(f"orbit: {orbit:.2f}")
         plt.legend()
-        plt.savefig("%s/%s%s%05d_int_not_ave.png" % (self.savedir, self.dname, self.aname, fnum))
+        plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, self.aname, fnum))
         plt.close()
     
