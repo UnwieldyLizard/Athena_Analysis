@@ -7,6 +7,7 @@ class AngularMomentum():
     def __init__(self, dname):
         self.dname = dname
         self.aname = "_angular_momentum" #a for analysis
+        self.sname = ""
         self.data_location = file.data_loc + dname
         self.grid_type = file.grid_types[dname]
         self.is_MHD = file.MHD[dname]
@@ -17,7 +18,7 @@ class AngularMomentum():
         
         self.time = None
 
-    def angular_momentum_profile(self, fnum, plot=True):
+    def profile(self, fnum, plot=True):
         self.torques = {}
         self.total_torques = {}
         if self.is_MHD:
@@ -60,7 +61,7 @@ class AngularMomentum():
             #plot
             self.plot(fnum)
 
-    def angular_momentum_history(self, fnum_range, step=None):
+    def history(self, fnum_range, step=None):
         if step is None:
             step = self.file_spacing
         fnum_range = np.arange(fnum_range[0], fnum_range[-1]+1, step)
@@ -69,7 +70,7 @@ class AngularMomentum():
             logging.info(f"fnum = {fnum}")
             logging.info(datetime.now()-now)
             now = datetime.now()
-            self.angular_momentum_profile(fnum, plot=False)
+            self.profile(fnum, plot=False)
             if i == 0 or i == 1:
                 self.int_L_z = np.copy(self.L_z)
                 dL_zdt = np.zeros(self.L_z.shape)
@@ -87,8 +88,41 @@ class AngularMomentum():
 
             #plot
             self.plot(fnum, plot_int_L_z=True)
+
+    def time_average_profile(self, start_fnum, duration):
+        file_duration = duration * sim.filenums_per_orbit
+        fnum_range = np.arange(start_fnum, start_fnum+file_duration, self.file_spacing)
+        self.averaged_profile = {}
+        self.averaged_totals = {}
+        now = datetime.now()
+        for i, fnum in enumerate(fnum_range):
+            logging.info(f"fnum = {fnum}, {i}/{len(fnum_range)-1}")
+            logging.info(datetime.now()-now)
+            now = datetime.now()
+            self.profile(fnum, plot=False)
+            if i == 0:
+                for key in self.torque_list:
+                    self.averaged_profile[key] = self.torques[key] / len(fnum_range)
+                    self.averaged_totals[key] = self.total_torques[key] / len(fnum_range)
+                self.averaged_L_z = self.L_z / len(fnum_range)
+                time = self.time
+            else:
+                for key in self.torque_list:
+                    self.averaged_profile[key] += self.torques[key] / len(fnum_range)
+                    self.averaged_totals[key] += self.total_torques[key] / len(fnum_range)
+                self.averaged_L_z += self.L_z / len(fnum_range)
+
+        #reassignment for plotting
+        for key in self.torque_list:
+            self.torques[key] = self.averaged_profile[key]
+            self.total_torques[key] = self.averaged_totals[key]
+        self.L_z = self.averaged_L_z
+
+        #plot
+        self.sname = "_averaged"
+        self.plot(start_fnum, times=[time, self.time])
     
-    def plot(self, fnum, plot_int_L_z=False):
+    def plot(self, fnum, times=None ,plot_int_L_z=False):
         #plot
         vert_num = 2
         horz_num = 1
@@ -115,10 +149,14 @@ class AngularMomentum():
         ax_torques.set_xlabel("r")
         ax_torques.set_title("Torques")
 
-        orbit = (self.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
-        fig.suptitle(f"orbit: {orbit:.2f}")
+        if times is None:
+            orbit = (self.time / sim.binary_period)
+            fig.suptitle(f"Orbit: {orbit:.2f}")
+        else:
+            orbits = (times / sim.binary_period)
+            fig.suptitle(f"Averaged from Orbit {orbits[0]:.2f} to {orbits[1]:.2f}")
         plt.legend()
-        plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, self.aname, fnum))
+        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
     
