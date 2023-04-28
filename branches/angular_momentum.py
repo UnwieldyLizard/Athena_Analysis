@@ -119,7 +119,7 @@ class AngularMomentum():
         self.L_z = self.averaged_L_z
 
         #plot
-        self.sname = "_averaged"
+        self.sname = f"_averaged_{duration}"
         self.plot(start_fnum, times=[time, self.time])
     
     def plot(self, fnum, times=None ,plot_int_L_z=False):
