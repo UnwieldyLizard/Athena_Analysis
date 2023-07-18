@@ -24,6 +24,8 @@ class File:
         self.grid_types["Cyl_11"]= "Cylindrical"
         self.grid_types["Cyl_12"]= "Cylindrical"
         self.grid_types["Cyl_13"]= "Cylindrical"
+        self.grid_types["Cyl_14"]= "Cylindrical"
+        self.grid_types["Cyl_15"]= "Cylindrical"
 
         self.MHD = {}
         self.MHD["Cyl_1"] = False
@@ -32,6 +34,8 @@ class File:
         self.MHD["Cyl_11"]= True
         self.MHD["Cyl_12"]= True
         self.MHD["Cyl_13"]= True
+        self.MHD["Cyl_14"]= True
+        self.MHD["Cyl_15"]= True
 
         self.alpha = {}
         self.alpha["Cyl_1"] = 0.1
@@ -40,6 +44,8 @@ class File:
         self.alpha["Cyl_11"]= None
         self.alpha["Cyl_12"]= None
         self.alpha["Cyl_13"]= None
+        self.alpha["Cyl_14"]= None
+        self.alpha["Cyl_15"]= None
 
         #my weird shit (I told myself I'd remove this before sharing the github with anyone, if somehow you see this you can safely delete this block of code.)
         self.data_loc_D = "/mnt/d/Research_Data/"
