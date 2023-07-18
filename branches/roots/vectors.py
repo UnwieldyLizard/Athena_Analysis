@@ -51,10 +51,10 @@ class Vector:
         [ax, ay, az] = dvdt
         [vx, vy, vz] = v
 
-        vmag = get_magnitude(v)
+        vmag = self.get_magnitude(v)
 
         # growth part
-        growth = ortho_dot(v, dvdt) / vmag
+        growth = self.ortho_dot(v, dvdt) / vmag
 
         # precession part
         prec = (vx*ay - vy*ax) / (vx**2 + vy**2)

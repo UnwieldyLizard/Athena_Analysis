@@ -1,13 +1,16 @@
 from .roots.athena_analysis import *
+from .roots.misc_func import *
 import logging
 import pickle
 
 logging.basicConfig(filename=file.logs_loc+"/meccentricity_profile.log", encoding='utf-8', level=logging.INFO)
 
 
-def main(dname, fnum_limits, file_spacing, plot_every=100, pickle_every=None, MHD = True, coordinates = 'Spherical', pickle_flags=[], restart=False, alpha=None):
+def eccentricity_profile(dname, fnum_limits, file_spacing, plot_every=100, pickle_every=None, pickle_flags=[], restart=False, alpha=None):
     aname = "_eccent_growth_prec" #a for analysis
     data_location = file.data_loc + dname
+    coordinates = file.grid_types[dname]
+    MHD = file.MHD[dname]
     #data_location = file.mkitp + file.alpha3
     savedir = file.savedir + dname + "/" + dname + aname
     mkdir_if_not_exist(savedir)
@@ -546,6 +549,233 @@ def tidal_profile(dname, fnum, grid_type, phi_slicepoint=None, radial_slice_loop
     else:
         fig.suptitle(f"orbit: {orbit:.2f}, phi={aa.possible_phi[phi_idx]/np.pi:.2f}pi")
         plt.savefig("%s/%s%s%05d_phi=" % (savedir, dname, aname, fnum) +f"{aa.possible_phi[phi_idx]/np.pi:.2f}pi"+".png")
+    plt.close()
+
+def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_every=None, pickle_flags=[], restart=False, alpha=None):
+    aname = "_eccent_growth_prec" #a for analysis
+    sname = "_split"
+    data_location = file.data_loc + dname
+    coordinates = file.grid_types[dname]
+    MHD = file.MHD[dname]
+    #data_location = file.mkitp + file.alpha3
+    savedir = file.savedir + dname + "/" + dname + aname
+    mkdir_if_not_exist(savedir)
+    mkdir_if_not_exist(savedir + "/"+sname+"_pickles")
+    if pickle_every == None:
+        pickle_every = plot_every
+    file_spacing = find_file_spacing(dname)
+    fnum_range = list(range(fnum_limits[0], fnum_limits[1], file_spacing))
+    pickle_flags = np.array(pickle_flags)
+    pickle_flags = np.append(pickle_flags, fnum_limits[1])
+    if restart == True:
+        dname = dname + "_%ssrt" % fnum_range[0]
+    
+    orbit_series = np.zeros(len(fnum_range))
+    time_series = np.zeros(len(fnum_range))
+    in_eccent_series = np.zeros(len(fnum_range))
+    in_eccent_phase_series = np.zeros(len(fnum_range))
+    out_eccent_series = np.zeros(len(fnum_range))
+    out_eccent_phase_series = np.zeros(len(fnum_range))
+
+    now = datetime.now()
+    for i, fnum in enumerate(fnum_range):
+
+        if (i == 0) and (fnum != 0) and (restart == False):
+            logging.info("setting up")
+            found_load_point = False
+            load_point = fnum - file_spacing
+            while found_load_point == False:
+                if os.path.exists("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point)):
+                    logging.info("Found data, loading from: %s" % load_point)
+                    found_load_point = True
+                else:
+                    load_point -= file_spacing
+                if load_point <= 0:
+                    raise("No load point, you need to restart")
+            with open("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point), "rb") as pickle_file:
+                data = pickle.load(pickle_file)
+            i_0 = data["offset"]
+
+            orbit_series = np.zeros(len(fnum_range)+i_0)
+            time_series = np.zeros(len(fnum_range)+i_0)
+            in_eccent_series = np.zeros(len(fnum_range)+i_0)
+            in_eccent_phase_series = np.zeros(len(fnum_range)+i_0)
+            out_eccent_series = np.zeros(len(fnum_range)+i_0)
+            out_eccent_phase_series = np.zeros(len(fnum_range)+i_0)
+
+            logging.info(str(i_0))
+            logging.info(str(len(fnum_range)))
+
+            time_series[:i_0+1] = data["time_series"]
+            orbit_series[:i_0+1] = data["orbit_series"]
+            in_eccent_series[:i_0+1] = data["in_eccent_series"]
+            in_eccent_phase_series[:i_0+1] = data["in_eccent_phase_series"]
+            out_eccent_series[:i_0+1] = data["out_eccent_series"]
+            out_eccent_phase_series[:i_0+1] = data["out_eccent_phase_series"]
+            
+            logging.info("set up done")
+        elif i == 0:
+            i_0 = -1
+
+        j = i + i_0 + 1     
+
+        logging.info(datetime.now()-now)
+        now = datetime.now()
+
+        logging.info("fnum = %d" % fnum)
+        logging.info("i: "+ " ".join(map(str, [i])) + " j: " + " ".join(map(str, [j]))) 
+        filename = "%s/disk.out1.%05d.athdf" % (data_location, fnum)
+        
+        aa = Athena_Analysis(filename=filename, grid_type= coordinates)
+        
+        orbit_series[j] = (aa.time / sim.binary_period)
+        time_series[j] = (aa.time)
+
+        #Mass Weighted Eccentricity
+        aa.get_primaries(get_rho=True)
+        lrl_native, lrl_cart = aa.get_lrl(components = True)        
+        in_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[0, radial_cutoff])
+        out_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]) 
+        #over and undershooting endpoints should be fine
+        rhoxlrl = np.array([aa.rho*lrl_cart[0], aa.rho*lrl_cart[1], np.zeros(aa.array_size)])
+        in_rhoxlrl = np.array([aa.integrate(rhoxlrl[0], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff]), aa.integrate(rhoxlrl[1], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff]), aa.integrate(rhoxlrl[2], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff])])
+        out_rhoxlrl = np.array([aa.integrate(rhoxlrl[0], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]), aa.integrate(rhoxlrl[1], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]), aa.integrate(rhoxlrl[2], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100])])
+        in_mass_weighted_eccent = in_rhoxlrl / in_mass
+        out_mass_weighted_eccent = out_rhoxlrl / out_mass
+
+        in_eccent_series[j] = vec.get_magnitude(in_mass_weighted_eccent)
+        in_eccent_phase_series[j] = np.arctan2(in_mass_weighted_eccent[1], in_mass_weighted_eccent[0]) + sim.orbital_Omega * aa.time
+        out_eccent_series[j] = vec.get_magnitude(out_mass_weighted_eccent)
+        out_eccent_phase_series[j] = np.arctan2(out_mass_weighted_eccent[1], out_mass_weighted_eccent[0]) + sim.orbital_Omega * aa.time
+        
+        
+        # set up plot
+        if j % plot_every == 0 or i == 0:
+            logging.info("\tplot")
+
+            # growth plot
+            vert = 2
+            horz = 1
+            gs = gridspec.GridSpec(vert, horz)
+            fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
+
+            ax = fig.add_subplot(gs[0, 0])
+            ax.plot(orbit_series[:j+1], in_eccent_series[:j+1], "C2-", label="inner disk")
+            ax.plot(orbit_series[:j+1], out_eccent_series[:j+1], "C9-", label="outer disk")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent magnitude")
+            ax.set_ylim([1e-4, 1])
+            ax.set_yscale("log")
+            #ax.set_title("mhd_3d eccent magnitude")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            ax = fig.add_subplot(gs[1, 0])
+            ax.plot(orbit_series[:j+1], wrap_phase(in_eccent_phase_series[:j+1]) / np.pi, "C3-", label="inner disk")
+            ax.plot(orbit_series[:j+1], wrap_phase(out_eccent_phase_series[:j+1]) / np.pi, "C1-", label="outer disk")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent phase")
+            ax.set_ylim([-1, 1])
+            #ax.set_yscale("log")
+            ax.set_title("mhd_3d eccent phase")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+            #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            plt.tight_layout()
+            plt.savefig("%s/%s_prec_%05d%s.png" % (savedir, dname, fnum, sname))
+            plt.close()
+
+        if (j % pickle_every == 0) or (fnum in pickle_flags):
+            logging.info("pickling up to %s" % fnum)
+            with open("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, fnum), "wb") as pickle_file:
+                pickle.dump({
+                    "offset": j,
+                    "time_series": time_series[:j+1],
+                    "orbit_series": orbit_series[:j+1],
+                    "in_eccent_series": in_eccent_series[:j+1],
+                    "in_eccent_phase_series": in_eccent_phase_series[:j+1],
+                    "out_eccent_series": out_eccent_series[:j+1],
+                    "out_eccent_phase_series": out_eccent_phase_series[:j+1],
+                }, pickle_file)
+
+def split_profile_replot(dname, fnum, pname="", aspect_ratio=2):
+    """
+    replots data
+
+    Parameters
+    ----------
+    dname, str:
+        The name of the data set
+    fnum, int:
+        The filenumber where you'd like to replot
+    pname, str:
+        Special prefix for output file names
+    aspect_ratio, float:
+        Length over height
+    MHD, bool:
+        If it's MHD or not
+    """
+    aname = "_eccent_growth_prec" #a for analysis
+    sname = "_split"
+    savedir = file.savedir + dname + "/" + dname + aname
+    logging.info("looking for file")
+    found_load_point = False
+    load_point = fnum
+    while found_load_point == False:
+        if os.path.exists("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point)):
+            logging.info("Found data, plotting from: %s" % load_point)
+            found_load_point = True
+        else:
+            load_point -= 1
+        if load_point <= 0:
+            raise("No data found to plot")
+    with open("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point), "rb") as pickle_file:
+        data = pickle.load(pickle_file)
+
+    # growth plot
+    vert = 2
+    horz = 1
+
+    if aspect_ratio >= 1:
+        vert_scale = 1
+        horz_scale = aspect_ratio
+    else:
+        vert_scale = 1 / aspect_ratio
+        horz_scale = 1
+
+    gs = gridspec.GridSpec(vert, horz)
+    fig = plt.figure(figsize=(horz_scale * horz*3, vert_scale * vert*3), dpi=300)
+
+    ax = fig.add_subplot(gs[0, 0])
+    ax.plot(data["orbit_series"], data["in_eccent_series"], "C2-", label="inner disk")
+    ax.plot(data["orbit_series"], data["out_eccent_series"], "C9-", label="outer disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent magnitude")
+    ax.set_ylim([1e-4, 1])
+    ax.set_yscale("log")
+    #ax.set_title("mhd_3d eccent magnitude")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 0])
+    ax.plot(data["orbit_series"], wrap_phase(data["in_eccent_phase_series"]) / np.pi, "C3-", label="inner disk")
+    ax.plot(data["orbit_series"], wrap_phase(data["out_eccent_phase_series"]) / np.pi, "C1-", label="outer disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent phase")
+    ax.set_ylim([-1, 1])
+    #ax.set_yscale("log")
+    ax.set_title("mhd_3d eccent phase")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    plt.tight_layout()
+    plt.savefig("%s/%s_prec_%05d%s.png" % (savedir, dname, fnum, sname))
     plt.close()
 
 def tidal_profile_cmap(dname, fnum, grid_type):

@@ -1,5 +1,6 @@
 from .roots.athena_analysis import *
 from .roots.misc_func import *
+import pickle
 
 logging.basicConfig(filename=file.logs_loc+"/angular_momentum.log", encoding='utf-8', level=logging.INFO)
 
@@ -22,9 +23,9 @@ class AngularMomentum():
         self.torques = {}
         self.total_torques = {}
         if self.is_MHD:
-            self.torque_list = ["tidal", "reynold", "maxwell"]
+            self.torque_list = ["tidal", "maxwell"]#["tidal", "reynold", "maxwell"]
         else:
-            self.torque_list = ["tidal", "reynold", "alpha"]
+            self.torque_list = ["tidal", "alpha"]#["tidal", "reynold", "alpha"]
         
         filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
         aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
@@ -119,7 +120,7 @@ class AngularMomentum():
         self.L_z = self.averaged_L_z
 
         #plot
-        self.sname = "_averaged"
+        self.sname = f"_averaged_{duration}"
         self.plot(start_fnum, times=[time, self.time])
     
     def plot(self, fnum, times=None ,plot_int_L_z=False):
@@ -145,7 +146,8 @@ class AngularMomentum():
             ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key+r" $\tau$="+f"{self.total_torques[key]:.2}")
             ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
         ax_torques.set_ylabel(r"$\tau$")
-        ax_torques.set_ylim([-10000,10000])
+        ax_torques.set_ylim([-100, 500])
+        #ax_torques.set_ylim([-10000,10000])
         ax_torques.set_xlabel("r")
         ax_torques.set_title("Torques")
 
@@ -159,4 +161,160 @@ class AngularMomentum():
         plt.legend()
         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
-    
+
+    def alpha_analysis(self, start_fnum, duration):
+        file_duration = duration * sim.filenums_per_orbit
+        fnum_range = np.arange(start_fnum, start_fnum+file_duration, self.file_spacing)
+        now = datetime.now()
+        for i, fnum in enumerate(fnum_range):
+            logging.info(f"fnum = {fnum}, {i}/{len(fnum_range)-1}")
+            logging.info(datetime.now()-now)
+            now = datetime.now()
+
+            filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
+            aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
+            aa.get_Bfields()
+            Bpress = (aa.B_r*aa.B_r + aa.B_phi*aa.B_phi + aa.B_z*aa.B_z)/2
+            aa.get_primaries(get_press=True)
+
+            if i == 0:
+                normalization_weight = aa.integrate(1, "shell")
+                self.averaged_Maxwell = aa.integrate((-2/3)*(aa.B_r*aa.B_phi)/(aa.press+Bpress), "shell") / (normalization_weight*len(fnum_range))
+                start_time = aa.time
+                self.r_axis = aa.possible_r
+            else:
+                self.averaged_Maxwell += aa.integrate((-2/3)*(aa.B_r*aa.B_phi)/(aa.press+Bpress), "shell") / (normalization_weight*len(fnum_range))
+                end_time = aa.time
+
+        #plot
+        times = [start_time, end_time]
+        self.sname = f"_averaged_Balpha_{duration}"
+
+        vert_num = 1
+        horz_num = 2
+        gs = gridspec.GridSpec(vert_num, horz_num)
+        fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
+        
+        ax = fig.add_subplot(gs[0, 0])
+        ax_zoom = fig.add_subplot(gs[0, 1])
+
+        ax.plot(self.r_axis, self.averaged_Maxwell, "C2-", label=r"$\alpha$")
+        ax.set_ylabel(r"$\alpha$")
+        ax.set_title(r"$\alpha$ Due to Maxwell Stess")
+
+        ax_zoom.plot(self.r_axis, self.averaged_Maxwell, "C2-", label=r"$\alpha$")
+        ax.set_title(r"$\alpha$ Zoomed Way in")
+        ax.set_ylim([0,1])
+
+        plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
+        orbits = (times / sim.binary_period)
+        fig.suptitle(f"Averaged from Orbit {orbits[0]:.2f} to {orbits[1]:.2f}")
+        plt.legend()
+        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, start_fnum, self.sname))
+        plt.close()
+
+    def time_evolution(self, cutoff_radius, fnum_range, plot_every=10, step=None):
+        self.sname = "_time_evolution"
+        if step is None:
+            step = self.file_spacing
+        fnum_range = np.arange(fnum_range[0], fnum_range[-1]+1, step)
+        now = datetime.now()
+        orbits = np.zeros(len(fnum_range))
+        cutoff_integrated_torque_max = np.zeros(len(fnum_range))
+        cutoff_integrated_torque_tid = np.zeros(len(fnum_range))
+        square_integrated_torque_max = np.zeros(len(fnum_range))
+        square_integrated_torque_tid = np.zeros(len(fnum_range))
+        alpha = np.zeros(len(fnum_range))
+        for i, fnum in enumerate(fnum_range):
+            logging.info(f"fnum = {fnum}")
+            logging.info(datetime.now()-now)
+            now = datetime.now()
+
+            if i == 0 and fnum != 0:
+                logging.info("setting up")
+                found_load_point = False
+                load_point = fnum - self.file_spacing
+                while found_load_point == False:
+                    if os.path.exists("%s/pickles/%s_pickle_%05d%s.dat" % (self.savedir, self.dname, load_point, self.sname)):
+                        logging.info("Found data, loading from: %s" % load_point)
+                        found_load_point = True
+                    else:
+                        load_point -= self.file_spacing
+                    if load_point <= 0:
+                        raise("No load point, you need to restart")
+                with open("%s/pickles/%s_pickle_%05d%s.dat" % (self.savedir, self.dname, load_point, self.sname), "rb") as pickle_file:
+                    data = pickle.load(pickle_file)
+                i_0 = len(data["orbits"])
+                orbits = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                cutoff_integrated_torque_max = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                cutoff_integrated_torque_tid = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                square_integrated_torque_max = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                square_integrated_torque_tid = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                alpha = np.zeros(len(np.arange(0, fnum_range[-1]+1, step)))
+                orbits[:i_0] = data["orbits"]
+                alpha[:i_0] = data["alpha"]
+                cutoff_integrated_torque_max[:i_0] = data["cutoff_integrated_torque_max"]
+                cutoff_integrated_torque_tid[:i_0] = data["cutoff_integrated_torque_tid"]
+                square_integrated_torque_max[:i_0] = data["square_integrated_torque_max"]
+                square_integrated_torque_tid[:i_0] = data["square_integrated_torque_tid"]
+            elif i==0:
+                i_0 = 0
+            j = i + i_0
+            
+            filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
+            aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
+            aa.get_Bfields()
+            Bpress = (aa.B_r*aa.B_r + aa.B_phi*aa.B_phi + aa.B_z*aa.B_z)/2
+            aa.get_primaries(get_press=True, get_rho=True)
+            aa.get_potentials(get_companion_grav=True, get_accel=True)
+            cutoff_idx = np.argmin(abs(aa.possible_r - cutoff_radius))
+
+            tidal_torque = aa.r * (-1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=self.grid_type))[1]
+            maxwell_torque = aa.differentiate(aa.r*aa.r*aa.B_r*aa.B_phi, 'r') / aa.r
+            tidal_torque = aa.integrate(tidal_torque, "shell")
+            maxwell_torque = aa.integrate(maxwell_torque, "shell")
+            orbits[j] = aa.time / sim.binary_period
+            normalization_weight = aa.integrate(1, "All")
+            alpha[j] = aa.integrate((-2/3)*(aa.B_r*aa.B_phi)/(aa.press+Bpress), "All") / (normalization_weight)
+            cutoff_integrated_torque_max[j] = np.sum((maxwell_torque*aa.possible_dr_primitive)[cutoff_idx:])
+            cutoff_integrated_torque_tid[j] = np.sum((tidal_torque*aa.possible_dr_primitive)[cutoff_idx:])
+            square_integrated_torque_max[j] = np.sum(maxwell_torque*maxwell_torque*aa.possible_dr_primitive)
+            square_integrated_torque_tid[j] = np.sum(tidal_torque*tidal_torque*aa.possible_dr_primitive)
+
+            if (i % plot_every == 0):
+                #pickle
+                logging.info("pickling up to %s" % fnum)
+                mkdir_if_not_exist("%s/pickles" % (self.savedir))
+                with open("%s/pickles/%s_pickle_%05d%s.dat" % (self.savedir, self.dname, fnum, self.sname), "wb") as pickle_file:
+                    pickle.dump({
+                        "orbits": orbits[:j+1],
+                        "alpha": alpha[:j+1],
+                        "cutoff_integrated_torque_max": cutoff_integrated_torque_max[:j+1],
+                        "cutoff_integrated_torque_tid": cutoff_integrated_torque_tid[:j+1],
+                        "square_integrated_torque_max": square_integrated_torque_max[:j+1],
+                        "square_integrated_torque_tid": square_integrated_torque_tid[:j+1],
+                    }, pickle_file)
+                #plot
+                vert_num = 2
+                horz_num = 2
+                gs = gridspec.GridSpec(vert_num, horz_num)
+                fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
+                
+                ax_alpha = fig.add_subplot(gs[0, 0])
+                ax_cutoff = fig.add_subplot(gs[0, 1])
+                ax_square = fig.add_subplot(gs[1, 1])
+
+                ax_alpha.plot(orbits[:j+1], alpha[:j+1])
+                ax_alpha.set_title(r"$\alpha$")
+                ax_cutoff.plot(orbits[:j+1], cutoff_integrated_torque_tid[:j+1], label="Tid")
+                ax_cutoff.plot(orbits[:j+1], cutoff_integrated_torque_max[:j+1], label="Max")
+                ax_cutoff.set_title(f"total torque on disk outside r={cutoff_radius}")
+                ax_cutoff.legend()
+                ax_square.plot(orbits[:j+1], square_integrated_torque_tid[:j+1], label="Tid")
+                ax_square.plot(orbits[:j+1], square_integrated_torque_max[:j+1], label="Max")
+                ax_square.set_title("square integrated torques")
+                ax_square.legend()
+
+                plt.tight_layout()
+                plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
+                plt.close()

@@ -1,5 +1,8 @@
 #Eventually needs to contain rewrite of mprofile code
 from .roots.athena_analysis import *
+from .roots.misc_func import *
+import pickle
+
 
 logging.basicConfig(filename=file.logs_loc+"/profile.log", encoding='utf-8', level=logging.INFO)
 
@@ -172,7 +175,180 @@ class Profile():
         ax = fig.add_subplot(gs[0, 0])
         ax_vert = fig.add_subplot(gs[0, 1])
 
-        aa.midplane_colorplot(plasma_beta, ax, vbound=[0,2], log=False)
-        aa.midplane_colorplot(plasma_beta, ax_vert, vbound=[0,2], log=False, slicetype='y')
+        aa.midplane_colorplot(plasma_beta, ax, vbound=[1e-3,1e5], log=True)
+        aa.midplane_colorplot(plasma_beta, ax_vert, vbound=[1e-3,1e5], log=True, slicetype='y')
 
-        plt.savefig("%s/%s%s%05d.png" % (savedir, dname, aname, fnum))
+        orbit = (aa.time / sim.binary_period)
+        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+        fig.suptitle(f"orbit: {orbit:.2f}")
+        plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, aname, fnum))
+        plt.close()
+
+def compare_beta(dnames, fnum_range, inverse=False):
+    if inverse:
+        aname = "inverse_beta" #a for analysis
+    else:
+        aname = "beta"
+    file_spacings = np.zeros(len(dnames), dtype=int)
+    for d in range(len(dnames)):
+        file_spacings[d] = find_file_spacing(dnames[d])
+    savedir = file.savedir + "comparison" + "/" + aname
+    pickldir = savedir + "/pickles"
+    mkdir_if_not_exist(savedir)
+    mkdir_if_not_exist(pickldir)
+    file_spacing = np.gcd.reduce(file_spacings)
+
+    logging.info("setting up")
+    found_load_point = False
+    load_point = fnum_range[0] - file_spacing
+    while found_load_point == False:
+        if os.path.exists("%s/pickles/pickle_%05d.dat" % (savedir, load_point)):
+            logging.info("Found data, loading from: %s" % load_point)
+            found_load_point = True
+        else:
+            load_point -= file_spacing
+        if load_point <= 0:
+            load_point = 0
+            logging.info("No load point found, restarting")
+            break
+    if load_point != 0:
+        with open("%s/pickles/pickle_%05d.dat" % (savedir, load_point), "rb") as pickle_file:
+            data = pickle.load(pickle_file)
+        offset = len(data["orbits"])
+    else:
+        offset = 0
+
+    orbits = np.zeros([(fnum_range[1] - fnum_range[0] + offset)])
+    betas = np.zeros([len(dnames), (fnum_range[1] - fnum_range[0] + offset)])
+
+    if dnames != data["dnames"]:
+        raise("this functionality doesn't exist yet, please use consistent dnames")
+    if load_point != 0:
+        orbits[:offset] = data["orbits"]
+        betas[:, :offset] = data["betas"][:,:offset]
+
+    for j, f in enumerate(np.arange(fnum_range[0], fnum_range[1], file_spacing)):
+        i = j + offset
+        vert = 1
+        horz = 1
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+        ax = fig.add_subplot(gs[0, 0])
+        ax.set_xlabel("orbits")
+        ax.set_yscale("log")
+        if inverse:
+            ax.set_ylabel(r"$\frac{1}{\beta}$")
+            ax.set_title(r"Mass Weighted Average $\frac{1}{\beta}$")
+        else:
+            ax.set_ylabel(r"$\beta$")
+            ax.set_title(r"Mass Weighted Average $\beta$")
+        for d in range(len(dnames)):
+            filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + dnames[d], f)
+            aa = Athena_Analysis(filename=filename, grid_type=file.grid_types[dnames[d]])
+            
+            aa.get_primaries(get_press=True, get_rho=True)
+            aa.get_Bfields()
+            B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
+
+            if inverse:
+                plasma_beta = B_press / aa.press
+            else:
+                plasma_beta = aa.press / B_press
+            mass = aa.integrate(aa.rho, "All")
+
+            betas[d, i] = aa.integrate((aa.rho/mass) * plasma_beta, "All")
+            orbits[i] = aa.time / sim.binary_period
+
+            ax.plot(orbits[:i+1], betas[d, :i+1], f"C{d}-", label=dnames[d])
+
+            with open("%s/pickles/pickle_%05d.dat" % (savedir, f), "wb") as pickle_file:
+                pickle.dump({
+                    "inverse": inverse,
+                    "dnames": dnames,
+                    "orbits": orbits[:+i],
+                    "betas": betas[:,:+1],
+                }, pickle_file)
+
+        plt.legend()
+        plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
+        plt.close()
+
+def compare_alpha(dnames, fnum_range):
+    aname = "alpha"
+    file_spacings = np.zeros(len(dnames), dtype=int)
+    for d in range(len(dnames)):
+        file_spacings[d] = find_file_spacing(dnames[d])
+    savedir = file.savedir + "comparison" + "/" + aname
+    pickldir = savedir + "/pickles"
+    mkdir_if_not_exist(savedir)
+    mkdir_if_not_exist(pickldir)
+    file_spacing = np.gcd.reduce(file_spacings)
+
+    logging.info("setting up")
+    found_load_point = False
+    load_point = fnum_range[0] - file_spacing
+    while found_load_point == False:
+        if os.path.exists("%s/pickles/pickle_%05d.dat" % (savedir, load_point)):
+            logging.info("Found data, loading from: %s" % load_point)
+            found_load_point = True
+        else:
+            load_point -= file_spacing
+        if load_point <= 0:
+            load_point = 0
+            logging.info("No load point found, restarting")
+            break
+    if load_point != 0:
+        with open("%s/pickles/pickle_%05d.dat" % (savedir, load_point), "rb") as pickle_file:
+            data = pickle.load(pickle_file)
+        offset = len(data["orbits"])
+    else:
+        offset = 0
+
+    orbits = np.zeros([(fnum_range[1] - fnum_range[0] + offset)])
+    alphas = np.zeros([len(dnames), (fnum_range[1] - fnum_range[0] + offset)])
+    
+    if load_point != 0:
+        if dnames != data["dnames"]:
+            raise("this functionality doesn't exist yet, please use consistent dnames")
+        orbits[:offset] = data["orbits"]
+        alphas[:, :offset] = data["alphas"][:,:offset]
+
+    for j, f in enumerate(np.arange(fnum_range[0], fnum_range[1], file_spacing)):
+        i = j + offset
+        vert = 1
+        horz = 1
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+        ax = fig.add_subplot(gs[0, 0])
+        ax.set_xlabel("orbits")
+        #ax.set_yscale("log")
+        ax.set_ylabel(r"$\alpha$")
+        ax.set_title(r"Mass Weighted Average $\alpha$")
+        for d in range(len(dnames)):
+            filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + dnames[d], f)
+            aa = Athena_Analysis(filename=filename, grid_type=file.grid_types[dnames[d]])
+            
+            aa.get_primaries(get_press=True, get_rho=True)
+            aa.get_Bfields()
+            B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
+
+            averaged_Maxwell = aa.integrate(aa.rho*(-2/3)*(aa.B_r*aa.B_phi)/(aa.press+B_press), "All") / aa.integrate(aa.rho, "All")
+            
+            alphas[d, i] = averaged_Maxwell
+            orbits[i] = aa.time / sim.binary_period
+
+            ax.plot(orbits[:i+1], alphas[d, :i+1], f"C{d}-", label=dnames[d])
+
+            print(alphas[d,:i+1])
+
+            with open("%s/pickles/pickle_%05d.dat" % (savedir, f), "wb") as pickle_file:
+                pickle.dump({
+                    "dnames": dnames,
+                    "orbits": orbits[:i+1],
+                    "alphas": alphas[:,:i+1],
+                }, pickle_file)
+
+        plt.legend()
+        plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
+        plt.close()
+    

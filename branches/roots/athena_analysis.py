@@ -1080,8 +1080,8 @@ class Athena_Analysis():
                             if third_bounds == "Full":
                                 [lower_bound, upper_bound] = [0, -1]
                             if third_bounds != "Full":
-                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                                lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
                             intq3_dr = np.sum(intq2_dz[lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
                             if intermediates == True:
                                 return intq3_dr, intq2_dz, intq_r_dphi
@@ -1764,7 +1764,8 @@ class Athena_Analysis():
         components : bool
             Determings if componenents are also returned or if only magnitude and orientation are returned
         '''
-
+    
+        self._axes()
         lrl = np.zeros(self.vector_array_size)
         eccent = np.zeros(self.array_size)
 
@@ -1817,6 +1818,7 @@ class Athena_Analysis():
         '''
         Converts vectors from native grid basis to cartesian basis.
         '''
+        
         if self.gridtype == "Spherical":
             [p, t, r] = vector
             if flat == True:
@@ -1829,6 +1831,7 @@ class Athena_Analysis():
                 z = r*np.cos(self.theta) - t*np.sin(self.theta)
                 return np.array([x, y, z])
         if self.gridtype == "Cylindrical":
+            self.native_grid(get_r=True, get_phi=True)
             [z, p, r] = vector
             x = r*np.cos(self.phi) - p*np.sin(self.phi)
             y = r*np.sin(self.phi) + p*np.cos(self.phi)

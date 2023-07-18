@@ -1,13 +1,14 @@
 from .roots.athena_analysis import *
+from branches.roots.misc_func import *
 import pickle
 import scipy.fft
 
 logging.basicConfig(filename=file.logs_loc+"/waves.log", encoding='utf-8', level=logging.INFO)
 
-def fourier_waves(dname, fnum, m_range, grid_type):
+def fourier_waves(dname, fnum, m_range):
     aname = "_waves" #a for analysis
     data_location = file.data_loc + dname
-    grid_type=grid_type
+    grid_type=file.grid_types[dname]
     savedir = file.savedir + dname + "/" + dname + aname
     mkdir_if_not_exist(savedir)
     filename = "%s/disk.out1.%05d.athdf" % (data_location, fnum)
@@ -78,7 +79,7 @@ class Fourier_Waves:
         if dname is None:
             dname = self.dname
         data_location = file.data_loc + dname
-        grid_type=file.grid_types["Cyl_1"]
+        grid_type=file.grid_types[dname]
         savedir = file.savedir + dname + "/" + dname + self.aname
         mkdir_if_not_exist(savedir)
         pickldir = savedir + "/pickles"
@@ -133,7 +134,7 @@ class Fourier_Waves:
         if dname is None:
             dname = self.dname
         data_location = file.data_loc + dname
-        grid_type=file.grid_types["Cyl_1"]
+        grid_type=file.grid_types[dname]
         savedir = file.savedir + dname + "/" + dname + self.aname
         mkdir_if_not_exist(savedir)
         pickldir = savedir + "/pickles"
@@ -185,11 +186,13 @@ class Fourier_Waves:
         if log == True:
             norm = colors.LogNorm(bounds[0], bounds[1], clip)
             normt = colors.LogNorm(bounds[0], bounds[1]/2, clip)
+            normrho = colors.LogNorm(bounds[0], bounds[1]/2, clip)
         else:
             norm = colors.Normalize(bounds[0], bounds[1], clip)
             normt = colors.Normalize(bounds[0], bounds[1]/2, clip)
+            normrho = colors.Normalize(bounds[0], bounds[1]/2, clip)
 
-        im = ax.pcolormesh(phi_ax, time_ax, data[:,:,r_idx], cmap="viridis", norm=norm, clip_on=True, shading="auto")
+        im = ax.pcolormesh(phi_ax, time_ax, data[:,:,r_idx], cmap="viridis", norm=normrho, clip_on=True, shading="auto")
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="5%", pad=0.05)
         ax.grid(False)

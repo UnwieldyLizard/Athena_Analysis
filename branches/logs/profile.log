@@ -1050,3 +1050,10 @@ INFO:root:0:01:01.317964
 INFO:root:fnum = 5240
 INFO:root:operation failed on fnum = 5240, exiting
 INFO:root:renumbered up to n=4448, i=-1
+INFO:root:setting up
+INFO:root:setting up
+INFO:root:Found data, loading from: 555
+INFO:root:setting up
+INFO:root:Found data, loading from: 555
+INFO:root:setting up
+INFO:root:Found data, loading from: 555
