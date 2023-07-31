@@ -175,8 +175,8 @@ class Profile():
         ax = fig.add_subplot(gs[0, 0])
         ax_vert = fig.add_subplot(gs[0, 1])
 
-        aa.midplane_colorplot(plasma_beta, ax, vbound=[1e-3,1e5], log=True)
-        aa.midplane_colorplot(plasma_beta, ax_vert, vbound=[1e-3,1e5], log=True, slicetype='y')
+        aa.midplane_colorplot(plasma_beta, ax, vbound=[1e-4,1e4], log=True, cmap="seismic")
+        aa.midplane_colorplot(plasma_beta, ax_vert, vbound=[1e-4,1e4], log=True, slicetype='y', cmap="seismic")
 
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
@@ -273,8 +273,11 @@ def compare_beta(dnames, fnum_range, inverse=False):
         plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
         plt.close()
 
-def compare_alpha(dnames, fnum_range):
-    aname = "alpha"
+def compare_alpha(dnames, fnum_range, plot_every=10, pickle_every = 100, res = False):
+    if res:
+        aname = "alpha_res"
+    else:
+        aname = "alpha"
     file_spacings = np.zeros(len(dnames), dtype=int)
     for d in range(len(dnames)):
         file_spacings[d] = find_file_spacing(dnames[d])
@@ -305,7 +308,7 @@ def compare_alpha(dnames, fnum_range):
         offset = 0
 
     orbits = np.zeros([(fnum_range[1] - fnum_range[0] + offset)])
-    alphas = np.zeros([len(dnames), (fnum_range[1] - fnum_range[0] + offset)])
+    alphas = np.zeros([len(dnames), (fnum_range[1] - fnum_range[0] + offset), 4])
     
     if load_point != 0:
         if dnames != data["dnames"]:
@@ -313,42 +316,357 @@ def compare_alpha(dnames, fnum_range):
         orbits[:offset] = data["orbits"]
         alphas[:, :offset] = data["alphas"][:,:offset]
 
+    def mass_weighted_ave(aa, value):
+        aa.get_primaries(get_rho=True)
+        if res:
+            flat = aa.integrate(aa.rho * value, "z")
+            flat_rho = aa.integrate(aa.rho, "z")
+            res_r_idx = np.argmin(abs(aa.possible_r - sim.three_one_res))
+            res_loop = flat[:, res_r_idx]
+            res_loop_rho = flat_rho[:, res_r_idx]
+            ave = np.sum(res_loop) / np.sum(res_loop_rho)
+        else:
+            ave = aa.integrate(aa.rho * value, "All") / aa.integrate(aa.rho, "All")
+        return ave
+
+    final_points = np.zeros(len(dnames))
     for j, f in enumerate(np.arange(fnum_range[0], fnum_range[1], file_spacing)):
+        print(j, " file: ", f)
         i = j + offset
-        vert = 1
-        horz = 1
-        gs = gridspec.GridSpec(vert, horz)
-        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
-        ax = fig.add_subplot(gs[0, 0])
-        ax.set_xlabel("orbits")
-        #ax.set_yscale("log")
-        ax.set_ylabel(r"$\alpha$")
-        ax.set_title(r"Mass Weighted Average $\alpha$")
+        if f % plot_every == 0:
+            vert = 2
+            horz = 2
+            gs = gridspec.GridSpec(vert, horz)
+            fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+            
+            ax_max = fig.add_subplot(gs[0, 0])
+            ax_max.set_xlabel("orbits")
+            ax_max.set_ylabel(r"$\alpha$")
+            ax_max.set_title(r"$\alpha_M$")
+
+            ax_freyn = fig.add_subplot(gs[1, 0])
+            ax_freyn.set_xlabel("orbits")
+            ax_freyn.set_ylabel(r"$\alpha$")
+            ax_freyn.set_title(r"$\rho v_r v_{\phi}$")
+
+            ax_treyn = fig.add_subplot(gs[0, 1])
+            ax_treyn.set_xlabel("orbits")
+            ax_treyn.set_ylabel(r"$\alpha$")
+            ax_treyn.set_title(r"$\rho \left(v_r - \left<v_r\right>\right) \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+
+            ax_creyn = fig.add_subplot(gs[1, 1])
+            ax_creyn.set_xlabel("orbits")
+            ax_creyn.set_ylabel(r"$\alpha$")
+            ax_creyn.set_title(r"$\rho v_r \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+        
         for d in range(len(dnames)):
             filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + dnames[d], f)
-            aa = Athena_Analysis(filename=filename, grid_type=file.grid_types[dnames[d]])
-            
-            aa.get_primaries(get_press=True, get_rho=True)
-            aa.get_Bfields()
-            B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
+            try:
+                aa = Athena_Analysis(filename=filename, grid_type=file.grid_types[dnames[d]])
+            except:
+                logging.info(f"{dnames[d]} ended at f = {f}")
+                print(f"{dnames[d]} ended at f = {f}")
+                if np.all(final_points):
+                    logging.info("All series terminated, pickling")
+                    with open("%s/pickles/pickle_%05d.dat" % (savedir, f-1), "wb") as pickle_file:
+                        pickle.dump({
+                            "dnames": dnames,
+                            "orbits": orbits[:i],
+                            "alphas": alphas[:,:i],
+                            "final_points": final_points,
+                        }, pickle_file)
+                    return
 
-            averaged_Maxwell = aa.integrate(aa.rho*(-2/3)*(aa.B_r*aa.B_phi)/(aa.press+B_press), "All") / aa.integrate(aa.rho, "All")
+            aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
+            aa.get_Bfields()
+            #B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
             
-            alphas[d, i] = averaged_Maxwell
+            azavgvphi = aa.integrate(aa.rho * aa.vel_phi, "phi") / aa.integrate(aa.rho, "phi")
+            turbulentvphi = np.zeros(aa.array_size)
+            azavgvr = aa.integrate(aa.rho * aa.vel_r, "phi") / aa.integrate(aa.rho, "phi")
+            turbulentvr = np.zeros(aa.array_size)
+            if file.grid_types[dnames[d]] == "Cylindrical":
+                for n in range(aa.NumMeshBlocks):
+                    for k in range(aa.z_len):
+                        z = np.argwhere(aa.possible_z == aa.z_primitive[n, k])
+                        for j in range(aa.r_len):
+                            r = np.argwhere(aa.possible_r == aa.r_primitive[n, j])
+                            turbulentvphi[n, k, :, j] = aa.vel_phi[n, k, :, j] - azavgvphi[z, r]
+                            turbulentvr[n, k, :, j] = aa.vel_r[n, k, :, j] - azavgvr[z, r]
+            
+            maxwell_stress = (aa.B_r*aa.B_phi)
+            turbulent_stress = (aa.rho * turbulentvr * turbulentvphi)
+            full_reyn = (aa.rho*aa.vel_r*aa.vel_phi)
+            circl_reyn = (aa.rho*aa.vel_r*turbulentvphi)
+            average_press = mass_weighted_ave(aa, aa.press)
+
+            alphas[d, i, 0] = (-2/3)*mass_weighted_ave(aa, maxwell_stress) / average_press
+            alphas[d, i, 1] = (-2/3)*mass_weighted_ave(aa, turbulent_stress) / average_press
+            alphas[d, i, 2] = (-2/3)*mass_weighted_ave(aa, full_reyn) / average_press
+            alphas[d, i, 3] = (-2/3)*mass_weighted_ave(aa, circl_reyn) / average_press
             orbits[i] = aa.time / sim.binary_period
 
-            ax.plot(orbits[:i+1], alphas[d, :i+1], f"C{d}-", label=dnames[d])
+            if f % plot_every == 0:
+                if final_points[d] == 0:
+                    ax_max.plot(orbits[:i+1], alphas[d, :i+1, 0], f"C{d}-", label=dnames[d])
+                    ax_treyn.plot(orbits[:i+1], alphas[d, :i+1, 1], f"C{d}-", label=dnames[d])
+                    ax_freyn.plot(orbits[:i+1], alphas[d, :i+1, 2], f"C{d}-", label=dnames[d])
+                    ax_creyn.plot(orbits[:i+1], alphas[d, :i+1, 3], f"C{d}-", label=dnames[d])
+                else:
+                    ax_max.plot(orbits[:i+1], alphas[d, :final_points[d], 0], f"C{d}-", label=dnames[d])
+                    ax_treyn.plot(orbits[:i+1], alphas[d, :final_points[d], 1], f"C{d}-", label=dnames[d])
+                    ax_freyn.plot(orbits[:i+1], alphas[d, :final_points[d], 2], f"C{d}-", label=dnames[d])
+                    ax_creyn.plot(orbits[:i+1], alphas[d, :final_points[d], 3], f"C{d}-", label=dnames[d])
 
-            print(alphas[d,:i+1])
+            if f % pickle_every == 0:
+                with open("%s/pickles/pickle_%05d.dat" % (savedir, f), "wb") as pickle_file:
+                    pickle.dump({
+                        "dnames": dnames,
+                        "orbits": orbits[:i+1],
+                        "alphas": alphas[:,:i+1],
+                        "final_points" : final_points,
+                    }, pickle_file)
 
-            with open("%s/pickles/pickle_%05d.dat" % (savedir, f), "wb") as pickle_file:
-                pickle.dump({
-                    "dnames": dnames,
-                    "orbits": orbits[:i+1],
-                    "alphas": alphas[:,:i+1],
-                }, pickle_file)
+        if f % plot_every == 0:
+            plt.legend()
+            plt.subplots_adjust(top=(1-0.01*(16/vert)))
+            if res:
+                fig.suptitle(r"Mass Weighted Average $\alpha$s at Resonant Radius")
+            else:
+                fig.suptitle(r"Mass Weighted Average $\alpha$s")
+            plt.tight_layout()
+            plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
+            plt.close()
 
-        plt.legend()
-        plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
-        plt.close()
+def append_dataset_alpha(new_dnames, fnum_range, plot_every=10, pickle_every = 100, res = False):
+    if res:
+        aname = "alpha_res"
+    else:
+        aname = "alpha"
+    file_spacings = np.zeros(len(new_dnames), dtype=int)
+    for d in range(len(new_dnames)):
+        file_spacings[d] = find_file_spacing(new_dnames[d])
+    savedir = file.savedir + "comparison" + "/" + aname
+    pickldir = savedir + "/pickles"
+    mkdir_if_not_exist(savedir)
+    mkdir_if_not_exist(pickldir)
+    file_spacing = np.gcd.reduce(file_spacings)
+
+    logging.info("setting up")
+    found_load_point = False
+    load_point = 2500 - file_spacing
+    while found_load_point == False:
+        if os.path.exists("%s/pickles/pickle_%05d.dat" % (savedir, load_point)):
+            logging.info("Found data, loading from: %s" % load_point)
+            found_load_point = True
+        else:
+            load_point -= file_spacing
+        if load_point <= 0:
+            load_point = 0
+            logging.info("No load point found, restarting")
+            break
+    if load_point != 0:
+        with open("%s/pickles/pickle_%05d.dat" % (savedir, load_point), "rb") as pickle_file:
+            data = pickle.load(pickle_file)
+        offset = len(data["orbits"])
+    else:
+        offset = 0
+
+    old_dnames = data["dnames"]
+    if offset > fnum_range[1]:
+        max_orbit = offset
+    else:
+        max_orbit = fnum_range[1]
+    dnames = np.concatenate([old_dnames, new_dnames])
+    orbits = np.zeros([max_orbit])
+    alphas = np.zeros([len(dnames), max_orbit, 4])
     
+    orbits[:offset] = data["orbits"]
+    alphas[:len(old_dnames), :offset, :] = data["alphas"][:,:offset, :]
+
+    def mass_weighted_ave(aa, value):
+        aa.get_primaries(get_rho=True)
+        if res:
+            flat = aa.integrate(aa.rho * value, "z")
+            flat_rho = aa.integrate(aa.rho, "z")
+            res_r_idx = np.argmin(abs(aa.possible_r - sim.three_one_res))
+            res_loop = flat[:, res_r_idx]
+            res_loop_rho = flat_rho[:, res_r_idx]
+            ave = np.sum(res_loop) / np.sum(res_loop_rho)
+        else:
+            ave = aa.integrate(aa.rho * value, "All") / aa.integrate(aa.rho, "All")
+        return ave
+
+    final_points = np.zeros(len(dnames))
+    for j, f in enumerate(np.arange(fnum_range[0], fnum_range[1], file_spacing)):
+        print(j, " file: ", f)
+        i = j #+ offset
+        if f % plot_every == 0:
+            vert = 2
+            horz = 2
+            gs = gridspec.GridSpec(vert, horz)
+            fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+            
+            ax_max = fig.add_subplot(gs[0, 0])
+            ax_max.set_xlabel("orbits")
+            ax_max.set_ylabel(r"$\alpha$")
+            ax_max.set_title(r"$\alpha_M$")
+
+            ax_freyn = fig.add_subplot(gs[1, 0])
+            ax_freyn.set_xlabel("orbits")
+            ax_freyn.set_ylabel(r"$\alpha$")
+            ax_freyn.set_title(r"$\rho v_r v_{\phi}$")
+
+            ax_treyn = fig.add_subplot(gs[0, 1])
+            ax_treyn.set_xlabel("orbits")
+            ax_treyn.set_ylabel(r"$\alpha$")
+            ax_treyn.set_title(r"$\rho \left(v_r - \left<v_r\right>\right) \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+
+            ax_creyn = fig.add_subplot(gs[1, 1])
+            ax_creyn.set_xlabel("orbits")
+            ax_creyn.set_ylabel(r"$\alpha$")
+            ax_creyn.set_title(r"$\rho v_r \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+        
+        for d in range(len(dnames)):
+            if d >= len(old_dnames):
+                filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + dnames[d], f)
+                try:
+                    aa = Athena_Analysis(filename=filename, grid_type=file.grid_types[dnames[d]])
+                except:
+                    logging.info(f"{dnames[d]} ended at f = {f}")
+                    print(f"{dnames[d]} ended at f = {f}")
+                    if np.all(final_points[len(old_dnames):]):
+                        logging.info("All new series terminated, pickling")
+                        with open("%s/pickles/pickle_%05d.dat" % (savedir, max_orbit), "wb") as pickle_file:
+                            pickle.dump({
+                                "dnames": dnames,
+                                "orbits": orbits[:max_orbit],
+                                "alphas": alphas[:,:max_orbit],
+                                "final_points": final_points,
+                            }, pickle_file)
+                        vert = 2
+                        horz = 2
+                        gs = gridspec.GridSpec(vert, horz)
+                        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+                        
+                        ax_max = fig.add_subplot(gs[0, 0])
+                        ax_max.set_xlabel("orbits")
+                        ax_max.set_ylabel(r"$\alpha$")
+                        ax_max.set_title(r"$\alpha_M$")
+
+                        ax_freyn = fig.add_subplot(gs[1, 0])
+                        ax_freyn.set_xlabel("orbits")
+                        ax_freyn.set_ylabel(r"$\alpha$")
+                        ax_freyn.set_title(r"$\rho v_r v_{\phi}$")
+
+                        ax_treyn = fig.add_subplot(gs[0, 1])
+                        ax_treyn.set_xlabel("orbits")
+                        ax_treyn.set_ylabel(r"$\alpha$")
+                        ax_treyn.set_title(r"$\rho \left(v_r - \left<v_r\right>\right) \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+
+                        ax_creyn = fig.add_subplot(gs[1, 1])
+                        ax_creyn.set_xlabel("orbits")
+                        ax_creyn.set_ylabel(r"$\alpha$")
+                        ax_creyn.set_title(r"$\rho v_r \left(v_{\phi} - \left<v_{\phi}\right>\right)$")
+                        for dname in range(len(dnames)):
+                            ax_max.plot(orbits[:max_orbit], alphas[dname, :final_points[dname], 0], f"C{dname}-", label=dnames[dname])
+                            ax_treyn.plot(orbits[:max_orbit], alphas[dname, :final_points[dname], 1], f"C{dname}-", label=dnames[dname])
+                            ax_freyn.plot(orbits[:max_orbit], alphas[dname, :final_points[dname], 2], f"C{dname}-", label=dnames[dname])
+                            ax_creyn.plot(orbits[:max_orbit], alphas[dname, :final_points[dname], 3], f"C{dname}-", label=dnames[dname])
+                        plt.legend()
+                        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+                        if res:
+                            fig.suptitle(r"Mass Weighted Average $\alpha$s at Resonant Radius")
+                        else:
+                            fig.suptitle(r"Mass Weighted Average $\alpha$s")
+                        plt.tight_layout()
+                        plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
+                        plt.close()
+                        return
+
+                aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
+                aa.get_Bfields()
+                #B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
+                
+                azavgvphi = aa.integrate(aa.rho * aa.vel_phi, "phi") / aa.integrate(aa.rho, "phi")
+                turbulentvphi = np.zeros(aa.array_size)
+                azavgvr = aa.integrate(aa.rho * aa.vel_r, "phi") / aa.integrate(aa.rho, "phi")
+                turbulentvr = np.zeros(aa.array_size)
+                if file.grid_types[dnames[d]] == "Cylindrical":
+                    for n in range(aa.NumMeshBlocks):
+                        for k in range(aa.z_len):
+                            z = np.argwhere(aa.possible_z == aa.z_primitive[n, k])
+                            for j in range(aa.r_len):
+                                r = np.argwhere(aa.possible_r == aa.r_primitive[n, j])
+                                turbulentvphi[n, k, :, j] = aa.vel_phi[n, k, :, j] - azavgvphi[z, r]
+                                turbulentvr[n, k, :, j] = aa.vel_r[n, k, :, j] - azavgvr[z, r]
+                
+                maxwell_stress = (aa.B_r*aa.B_phi)
+                turbulent_stress = (aa.rho * turbulentvr * turbulentvphi)
+                full_reyn = (aa.rho*aa.vel_r*aa.vel_phi)
+                circl_reyn = (aa.rho*aa.vel_r*turbulentvphi)
+                average_press = mass_weighted_ave(aa, aa.press)
+
+                alphas[d, i, 0] = (-2/3)*mass_weighted_ave(aa, maxwell_stress) / average_press
+                alphas[d, i, 1] = (-2/3)*mass_weighted_ave(aa, turbulent_stress) / average_press
+                alphas[d, i, 2] = (-2/3)*mass_weighted_ave(aa, full_reyn) / average_press
+                alphas[d, i, 3] = (-2/3)*mass_weighted_ave(aa, circl_reyn) / average_press
+                orbits[i] = aa.time / sim.binary_period
+
+            if f % plot_every == 0:
+                if final_points[d] == 0:
+                    ax_max.plot(orbits[:i+1], alphas[d, :i+1, 0], f"C{d}-", label=dnames[d])
+                    ax_treyn.plot(orbits[:i+1], alphas[d, :i+1, 1], f"C{d}-", label=dnames[d])
+                    ax_freyn.plot(orbits[:i+1], alphas[d, :i+1, 2], f"C{d}-", label=dnames[d])
+                    ax_creyn.plot(orbits[:i+1], alphas[d, :i+1, 3], f"C{d}-", label=dnames[d])
+                else:
+                    ax_max.plot(orbits[:i+1], alphas[d, :final_points[d], 0], f"C{d}-", label=dnames[d])
+                    ax_treyn.plot(orbits[:i+1], alphas[d, :final_points[d], 1], f"C{d}-", label=dnames[d])
+                    ax_freyn.plot(orbits[:i+1], alphas[d, :final_points[d], 2], f"C{d}-", label=dnames[d])
+                    ax_creyn.plot(orbits[:i+1], alphas[d, :final_points[d], 3], f"C{d}-", label=dnames[d])
+
+
+            if (f % pickle_every == 0):
+                with open("%s/pickles/pickle_%05d_new.dat" % (savedir, max_orbit), "wb") as pickle_file:
+                    pickle.dump({
+                        "dnames": dnames,
+                        "orbits": orbits[:max_orbit],
+                        "alphas": alphas[:,:max_orbit],
+                        "final_points" : final_points,
+                    }, pickle_file)
+
+        if f % plot_every == 0:
+            plt.legend()
+            plt.subplots_adjust(top=(1-0.01*(16/vert)))
+            if res:
+                fig.suptitle(r"Mass Weighted Average $\alpha$s at Resonant Radius")
+            else:
+                fig.suptitle(r"Mass Weighted Average $\alpha$s")
+            plt.tight_layout()
+            plt.savefig("%s/%s%05d.png" % (savedir, aname, f))
+            plt.close()
+
+def replot_compare_alpha(fnum):
+    aname = "alpha"
+    savedir = file.savedir + "comparison" + "/" + aname
+    with open("%s/pickles/pickle_%05d.dat" % (savedir, fnum), "rb") as pickle_file:
+        data = pickle.load(pickle_file)
+
+    vert = 1
+    horz = 1
+    gs = gridspec.GridSpec(vert, horz)
+    fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+    ax = fig.add_subplot(gs[0, 0])
+    ax.set_xlabel("orbits")
+    #ax.set_yscale("log")
+    ax.set_ylim([-0.01,0.05])
+    ax.set_ylabel(r"$\alpha$")
+    ax.set_title(r"Mass Weighted Average $\alpha$")
+    
+    for d in range(len(data["dnames"])):
+        ax.plot(data["orbits"], data["alphas"][d,:], f"C{d}-", label=data["dnames"][d])
+
+    plt.legend()
+    plt.savefig("%s/%s%05d.png" % (savedir, aname, fnum))
+    plt.close()
+

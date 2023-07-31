@@ -1,2 +1,2 @@
 /home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py:706: UserWarning: FixedFormatter should only be used together with FixedLocator
-  cbar.ax.set_yticklabels(['0',r'$\frac{\pi}{2}$',r'$\pi$',r'$\frac{3\pi}{2}$',r'2$\pi$'])
+  if angular == True:

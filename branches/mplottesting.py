@@ -3,10 +3,10 @@ from .roots.misc_func import *
 import logging
 import scipy.fft
 
-logging.basicConfig(filename='/home/morgan/mresearch/testing.log', encoding='utf-8', level=logging.INFO)
+#logging.basicConfig(filename='/home/morgan/mresearch/testing.log', encoding='utf-8', level=logging.INFO)
 
 def main(dname, fnum_range, file_spacing=1):
-    aname = "_press"
+    aname = "_alpha"
     #data_location = "/home/morgan/mnt/kitp/data/cvdisk/superhump_3d_alpha03"
     #data_location = "/home/morgan/mnt/kitp/data2/cvdisk/CVThin2/Data"
     data_location = file.data_loc + dname
@@ -56,16 +56,16 @@ def main(dname, fnum_range, file_spacing=1):
 
         #plot stuff 
         vert = 2
-        horz = 3
+        horz = 1
         gs = gridspec.GridSpec(vert, horz)
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
 
         ax1 = fig.add_subplot(gs[0, 0])
         ax2 = fig.add_subplot(gs[1, 0])
-        ax3 = fig.add_subplot(gs[0, 1])
-        ax4 = fig.add_subplot(gs[1, 1])
-        ax5 = fig.add_subplot(gs[0, 2])
-        ax6 = fig.add_subplot(gs[1, 2])
+        #ax3 = fig.add_subplot(gs[0, 1])
+        #ax4 = fig.add_subplot(gs[1, 1])
+        #ax5 = fig.add_subplot(gs[0, 2])
+        #ax6 = fig.add_subplot(gs[1, 2])
 
         #rho_gridded = np.copy(aa.rho)
         #rho_gridded[:,:,0,:] = 1000
@@ -95,15 +95,20 @@ def main(dname, fnum_range, file_spacing=1):
 
         #mass_weighted_eccent = total_rhoxlrl / total_mass
 
-        aa.get_primaries(get_press=True)
+        aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
         aa.get_Bfields()
+        #B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
+        alpha_Maxwell = (-2/3)*(aa.B_r*aa.B_phi)/(aa.press)
+            
+        # aa.get_primaries(get_press=True)
+        #aa.get_Bfields()
 
-        aa.midplane_colorplot(aa.press, ax2, slicetype='z', log=True, vbound=[1e-5,1e2])
+        aa.midplane_colorplot(alpha_Maxwell, ax2, slicetype='z', log=False, vbound=[-0.05,0.05], cmap="PRGn")
         aa.midplane_colorplot(aa.rho, ax1, slicetype='z', log=True, vbound=[1e-5,1e2])
-        aa.midplane_colorplot(aa.B_r**2 + aa.B_phi**2 + aa.B_z**2, ax3, slicetype='z', log=True, vbound=[1e-5,1e2])
-        aa.midplane_colorplot(aa.B_r**2, ax4, slicetype='z', log=True, vbound=[1e-5,1e2])
-        aa.midplane_colorplot(aa.B_phi**2, ax5, slicetype='z', log=True, vbound=[1e-5,1e2])
-        aa.midplane_colorplot(aa.B_z**2, ax6, slicetype='z', log=True, vbound=[1e-5,1e2])
+        #aa.midplane_colorplot(aa.B_r**2 + aa.B_phi**2 + aa.B_z**2, ax3, slicetype='z', log=True, vbound=[1e-5,1e2])
+        #aa.midplane_colorplot(aa.B_r**2, ax4, slicetype='z', log=True, vbound=[1e-5,1e2])
+        #aa.midplane_colorplot(aa.B_phi**2, ax5, slicetype='z', log=True, vbound=[1e-5,1e2])
+        #aa.midplane_colorplot(aa.B_z**2, ax6, slicetype='z', log=True, vbound=[1e-5,1e2])
         #aa.midplane_colorplot(tidal_c[1], ax3, slicetype='z', log=False, vbound=[-1e0,1e0])
         #aa.midplane_colorplot(lrl_orient, ax4, slicetype='z', log=False, vbound=[0,2], angular=True) 
         #aa.midplane_colorplot(aa.rho, ax2, log=True, vbound=[1e-5,1e1])
@@ -113,15 +118,18 @@ def main(dname, fnum_range, file_spacing=1):
         #aa.midplane_colorplot(drhodphi, ax5, log=False, vbound=[-2,2])
 
         ax1.set_title(r"Density")
-        ax2.set_title(r"Pressure")
-        ax3.set_title(r"B Pressure")
-        ax4.set_title(r"B Pressure (r)")
-        ax5.set_title(r"B Pressure ($\phi$)")
-        ax6.set_title(r"B Pressure (z)")
+        ax2.set_title(r"$\alpha$")
+        #ax3.set_title(r"B Pressure")
+        #ax4.set_title(r"B Pressure (r)")
+        #ax5.set_title(r"B Pressure ($\phi$)")
+        #x6.set_title(r"B Pressure (z)")
         
         #ax1.set_yticks(ticks=[-12, -6, 0, 6, 12], labels=[-0.5, -0.25, 'test', 0.25, 0.5])
 
         plt.tight_layout()
+        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+        orbit = (aa.time / sim.binary_period)
+        fig.suptitle(f"Orbit: {orbit:.2f}")
         plt.savefig("%s/%s%s_test_plot%05d.png" % (savedir, dname, aname, fnum))
         plt.close()
 

@@ -7,21 +7,21 @@ import gc
 
 logging.basicConfig(filename=file.logs_loc+"/meccentricity_plot.log", encoding='utf-8', level=logging.INFO)
 
-def main():
+def eccentricity_plot(dname, fnum_range, inertial=False):
     aname = "_eccent" #a for analysis
-    dname = "Cyl_11"
     #data_location = file.mkitp + file.cvthin2
     #data_location = file.mkitp + file.alpha3
     #data_location = "/home/mohana/Globus_data_dump/Data_backup/"
     #data_location = file.medd+"home/mohana/Globus_data_dump/Data_backup"
     #data_location = file.medd+"tmp/Data_backup"
+    file_spacing = find_file_spacing(dname)
     data_location = file.data_loc + dname
     grid_type = file.grid_types[dname]
     savedir = file.savedir + dname + "/" + dname + aname
     mkdir_if_not_exist(savedir)
     now = datetime.now()
 
-    for i, fnum in enumerate(range(0, 5000, 1)):
+    for i, fnum in enumerate(range(fnum_range[0], fnum_range[1], file_spacing)):
         #2252 - 2258 scuffed
         logging.info(datetime.now()-now)
         now = datetime.now()
@@ -80,6 +80,14 @@ def main():
         ave_lrl_orient = (sum_lrl_orient / (i+1))
         ave_eccent = (sum_eccent / (i+1))
         '''
+
+        #Transforming to inertial frame
+        if inertial:
+            rotation = -1*sim.orbital_Omega * aa.time
+            lrl_orient = (lrl_orient + rotation) % (2*np.pi)
+        else:
+            rotation = 0
+
         vert = 2
         horz = 2
         gs = gridspec.GridSpec(vert, horz)
@@ -91,10 +99,10 @@ def main():
         ax_rho = fig.add_subplot(gs[1, 1])
         ax_rhv = fig.add_subplot(gs[1, 0])
 
-        aa.midplane_colorplot(eccent, ax_mag, log=False, vbound=[0,1], slicetype='z')
-        aa.midplane_colorplot(lrl_orient, ax_dir, log=False, vbound=[0,2], angular=True, slicetype='z')
-        aa.midplane_colorplot(aa.rho, ax_rho, plot_COM=True, vbound=[1e-5,1e2], slicetype='z')
-        aa.midplane_colorplot(aa.rho, ax_rhv, plot_COM=False, vbound=[1e-5,1e2], slicetype='y')
+        aa.midplane_colorplot(eccent, ax_mag, log=False, vbound=[0,1], slicetype='z', rotation=rotation)
+        aa.midplane_colorplot(lrl_orient, ax_dir, log=False, vbound=[0,2], angular=True, slicetype='z', rotation=rotation)
+        aa.midplane_colorplot(aa.rho, ax_rho, plot_COM=True, vbound=[1e-5,1e2], slicetype='z', rotation=rotation)
+        aa.midplane_colorplot(aa.rho, ax_rhv, plot_COM=False, vbound=[1e-5,1e2], slicetype='y', rotation=rotation)
         ax_mag.set_title("Eccentricity Magnitude")
         ax_dir.set_title("LRL Angle from X Axis")
         ax_rho.set_title("Density Midplane Slice")

@@ -1,1059 +1,610 @@
-INFO:root:0:00:00.000032
-INFO:root:fnum = 0
-INFO:root:0:01:07.155117
-INFO:root:fnum = 10
-INFO:root:0:01:03.214863
-INFO:root:fnum = 20
-INFO:root:0:01:03.887410
-INFO:root:fnum = 30
-INFO:root:0:01:03.439916
-INFO:root:fnum = 40
-INFO:root:0:01:04.826701
-INFO:root:fnum = 50
-INFO:root:0:01:05.397246
-INFO:root:fnum = 60
-INFO:root:0:01:04.926339
-INFO:root:fnum = 70
-INFO:root:0:01:04.165299
-INFO:root:fnum = 80
-INFO:root:0:01:04.487983
-INFO:root:fnum = 90
-INFO:root:0:01:04.070527
-INFO:root:fnum = 100
-INFO:root:0:01:04.704526
-INFO:root:fnum = 110
-INFO:root:0:01:04.714495
-INFO:root:fnum = 120
-INFO:root:0:01:03.703590
-INFO:root:fnum = 130
-INFO:root:0:01:01.967208
-INFO:root:fnum = 140
-INFO:root:0:01:02.270414
-INFO:root:fnum = 150
-INFO:root:0:01:02.223750
-INFO:root:fnum = 160
-INFO:root:0:01:03.108492
-INFO:root:fnum = 170
-INFO:root:0:01:07.778428
-INFO:root:fnum = 180
-INFO:root:0:01:35.518237
-INFO:root:fnum = 190
-INFO:root:0:01:11.716179
-INFO:root:fnum = 200
-INFO:root:0:01:05.376461
-INFO:root:fnum = 210
-INFO:root:0:01:13.170882
-INFO:root:fnum = 220
-INFO:root:0:01:13.560381
-INFO:root:fnum = 230
-INFO:root:0:01:14.784044
-INFO:root:fnum = 240
-INFO:root:0:01:08.783365
-INFO:root:fnum = 250
-INFO:root:0:01:08.488000
-INFO:root:fnum = 260
-INFO:root:0:01:10.121633
-INFO:root:fnum = 270
-INFO:root:0:01:08.804711
-INFO:root:fnum = 280
-INFO:root:0:01:07.682227
-INFO:root:fnum = 290
-INFO:root:0:01:08.124537
-INFO:root:fnum = 300
-INFO:root:0:01:08.292562
-INFO:root:fnum = 310
-INFO:root:0:01:07.397442
-INFO:root:fnum = 320
-INFO:root:0:01:06.245422
-INFO:root:fnum = 330
-INFO:root:0:01:04.952727
-INFO:root:fnum = 340
-INFO:root:0:01:04.356221
-INFO:root:fnum = 350
-INFO:root:0:01:03.664310
-INFO:root:fnum = 360
-INFO:root:0:01:04.046213
-INFO:root:fnum = 370
-INFO:root:0:01:03.702364
-INFO:root:fnum = 380
-INFO:root:0:01:03.612449
-INFO:root:fnum = 390
-INFO:root:0:01:03.805149
-INFO:root:fnum = 400
-INFO:root:0:01:02.985279
-INFO:root:fnum = 410
-INFO:root:0:01:02.743579
-INFO:root:fnum = 420
-INFO:root:0:01:02.907331
-INFO:root:fnum = 430
-INFO:root:0:01:02.243964
-INFO:root:fnum = 440
-INFO:root:0:01:05.097610
-INFO:root:fnum = 450
-INFO:root:0:01:02.508607
-INFO:root:fnum = 460
-INFO:root:0:01:02.787747
-INFO:root:fnum = 470
-INFO:root:0:01:01.860519
-INFO:root:fnum = 480
-INFO:root:0:01:04.411598
-INFO:root:fnum = 490
-INFO:root:0:01:11.136617
-INFO:root:fnum = 500
-INFO:root:0:01:09.150852
-INFO:root:fnum = 510
-INFO:root:0:01:07.772636
-INFO:root:fnum = 520
-INFO:root:0:01:09.709919
-INFO:root:fnum = 530
-INFO:root:0:01:07.484537
-INFO:root:fnum = 540
-INFO:root:0:01:07.250070
-INFO:root:fnum = 550
-INFO:root:0:01:08.114571
-INFO:root:fnum = 560
-INFO:root:0:01:07.203019
-INFO:root:fnum = 570
-INFO:root:0:01:08.089888
-INFO:root:fnum = 580
-INFO:root:0:01:07.576817
-INFO:root:fnum = 590
-INFO:root:0:01:08.236959
-INFO:root:fnum = 600
-INFO:root:0:01:07.722255
-INFO:root:fnum = 610
-INFO:root:0:01:07.610028
-INFO:root:fnum = 620
-INFO:root:0:01:07.535221
-INFO:root:fnum = 630
-INFO:root:0:01:07.983432
-INFO:root:fnum = 640
-INFO:root:0:01:08.101404
-INFO:root:fnum = 650
-INFO:root:0:01:08.026360
-INFO:root:fnum = 660
-INFO:root:0:01:07.227400
-INFO:root:fnum = 670
-INFO:root:0:01:06.780330
-INFO:root:fnum = 680
-INFO:root:0:01:07.340847
-INFO:root:fnum = 690
-INFO:root:0:01:06.701546
-INFO:root:fnum = 700
-INFO:root:0:01:06.842389
-INFO:root:fnum = 710
-INFO:root:0:01:07.074572
-INFO:root:fnum = 720
-INFO:root:0:01:08.025794
-INFO:root:fnum = 730
-INFO:root:0:01:07.417828
-INFO:root:fnum = 740
-INFO:root:0:01:06.996544
-INFO:root:fnum = 750
-INFO:root:0:01:07.706264
-INFO:root:fnum = 760
-INFO:root:0:01:06.976703
-INFO:root:fnum = 770
-INFO:root:0:01:08.171743
-INFO:root:fnum = 780
-INFO:root:0:01:07.879800
-INFO:root:fnum = 790
-INFO:root:0:01:08.385078
-INFO:root:fnum = 800
-INFO:root:0:01:07.186845
-INFO:root:fnum = 810
-INFO:root:0:01:08.280999
-INFO:root:fnum = 820
-INFO:root:0:01:07.446649
-INFO:root:fnum = 830
-INFO:root:0:01:08.209425
-INFO:root:fnum = 840
-INFO:root:0:01:07.610358
-INFO:root:fnum = 850
-INFO:root:0:01:07.774821
-INFO:root:fnum = 860
-INFO:root:0:01:07.823518
-INFO:root:fnum = 870
-INFO:root:0:01:07.545807
-INFO:root:fnum = 880
-INFO:root:0:01:07.169840
-INFO:root:fnum = 890
-INFO:root:0:01:07.721748
-INFO:root:fnum = 900
-INFO:root:0:01:07.495437
-INFO:root:fnum = 910
-INFO:root:0:01:08.155228
-INFO:root:fnum = 920
-INFO:root:0:01:07.065384
-INFO:root:fnum = 930
-INFO:root:0:01:06.858931
-INFO:root:fnum = 940
-INFO:root:0:01:07.343702
-INFO:root:fnum = 950
-INFO:root:0:01:06.607281
-INFO:root:fnum = 960
-INFO:root:0:01:08.049519
-INFO:root:fnum = 970
-INFO:root:0:01:07.399026
-INFO:root:fnum = 980
-INFO:root:0:01:08.293035
-INFO:root:fnum = 990
-INFO:root:0:01:08.220990
-INFO:root:fnum = 1000
-INFO:root:0:01:08.858834
-INFO:root:fnum = 1010
-INFO:root:0:01:09.955296
-INFO:root:fnum = 1020
-INFO:root:0:01:09.980620
-INFO:root:fnum = 1030
-INFO:root:0:01:09.623079
-INFO:root:fnum = 1040
-INFO:root:0:01:09.442030
-INFO:root:fnum = 1050
-INFO:root:0:01:09.167900
-INFO:root:fnum = 1060
-INFO:root:0:01:09.746944
-INFO:root:fnum = 1070
-INFO:root:0:01:08.599311
-INFO:root:fnum = 1080
-INFO:root:0:01:09.194144
-INFO:root:fnum = 1090
-INFO:root:0:01:04.658239
-INFO:root:fnum = 1100
-INFO:root:0:01:06.292370
-INFO:root:fnum = 1110
-INFO:root:0:01:08.394309
-INFO:root:fnum = 1120
-INFO:root:0:01:12.112911
-INFO:root:fnum = 1130
-INFO:root:0:01:09.114286
-INFO:root:fnum = 1140
-INFO:root:0:01:05.174579
-INFO:root:fnum = 1150
-INFO:root:0:01:02.921309
-INFO:root:fnum = 1160
-INFO:root:0:01:04.647043
-INFO:root:fnum = 1170
-INFO:root:0:01:02.650843
-INFO:root:fnum = 1180
-INFO:root:0:01:02.354001
-INFO:root:fnum = 1190
-INFO:root:0:01:02.225350
-INFO:root:fnum = 1200
-INFO:root:0:01:02.542729
-INFO:root:fnum = 1210
-INFO:root:0:01:09.164773
-INFO:root:fnum = 1220
-INFO:root:0:01:10.902518
-INFO:root:fnum = 1230
-INFO:root:0:01:08.708752
-INFO:root:fnum = 1240
-INFO:root:0:01:08.608704
-INFO:root:fnum = 1250
-INFO:root:0:01:08.977318
-INFO:root:fnum = 1260
-INFO:root:0:01:09.114616
-INFO:root:fnum = 1270
-INFO:root:0:01:05.599732
-INFO:root:fnum = 1280
-INFO:root:0:01:03.960168
-INFO:root:fnum = 1290
-INFO:root:0:01:00.833420
-INFO:root:fnum = 1300
-INFO:root:0:01:00.707905
-INFO:root:fnum = 1310
-INFO:root:0:01:01.060428
-INFO:root:fnum = 1320
-INFO:root:0:01:00.620875
-INFO:root:fnum = 1330
-INFO:root:0:01:00.508400
-INFO:root:fnum = 1340
-INFO:root:0:01:00.078368
-INFO:root:fnum = 1350
-INFO:root:0:01:00.909132
-INFO:root:fnum = 1360
-INFO:root:0:01:01.107844
-INFO:root:fnum = 1370
-INFO:root:0:01:00.755398
-INFO:root:fnum = 1380
-INFO:root:0:01:01.354825
-INFO:root:fnum = 1390
-INFO:root:0:01:00.528361
-INFO:root:fnum = 1400
-INFO:root:0:01:00.576337
-INFO:root:fnum = 1410
-INFO:root:0:01:01.370631
-INFO:root:fnum = 1420
-INFO:root:0:01:01.092416
-INFO:root:fnum = 1430
-INFO:root:0:01:00.899421
-INFO:root:fnum = 1440
-INFO:root:0:01:00.662869
-INFO:root:fnum = 1450
-INFO:root:0:01:00.765538
-INFO:root:fnum = 1460
-INFO:root:0:01:00.173853
-INFO:root:fnum = 1470
-INFO:root:0:01:00.733375
-INFO:root:fnum = 1480
-INFO:root:0:01:00.145572
-INFO:root:fnum = 1490
-INFO:root:0:01:01.002077
-INFO:root:fnum = 1500
-INFO:root:0:01:00.488017
-INFO:root:fnum = 1510
-INFO:root:0:01:01.048323
-INFO:root:fnum = 1520
-INFO:root:0:01:00.286134
-INFO:root:fnum = 1530
-INFO:root:0:01:00.398498
-INFO:root:fnum = 1540
-INFO:root:0:01:00.732005
-INFO:root:fnum = 1550
-INFO:root:0:01:01.082906
-INFO:root:fnum = 1560
-INFO:root:0:01:00.748986
-INFO:root:fnum = 1570
-INFO:root:0:01:00.745531
-INFO:root:fnum = 1580
-INFO:root:0:01:00.819364
-INFO:root:fnum = 1590
-INFO:root:0:01:00.311235
-INFO:root:fnum = 1600
-INFO:root:0:01:00.787686
-INFO:root:fnum = 1610
-INFO:root:0:01:00.607919
-INFO:root:fnum = 1620
-INFO:root:0:01:00.394285
-INFO:root:fnum = 1630
-INFO:root:0:01:00.830086
-INFO:root:fnum = 1640
-INFO:root:0:01:04.906985
-INFO:root:fnum = 1650
-INFO:root:0:01:03.554371
-INFO:root:fnum = 1660
-INFO:root:0:01:03.410770
-INFO:root:fnum = 1670
-INFO:root:0:01:03.096545
-INFO:root:fnum = 1680
-INFO:root:0:01:03.359999
-INFO:root:fnum = 1690
-INFO:root:0:01:03.348932
-INFO:root:fnum = 1700
-INFO:root:0:01:03.374102
-INFO:root:fnum = 1710
-INFO:root:0:01:03.631446
-INFO:root:fnum = 1720
-INFO:root:0:01:03.381383
-INFO:root:fnum = 1730
-INFO:root:0:01:02.855472
-INFO:root:fnum = 1740
-INFO:root:0:01:02.926142
-INFO:root:fnum = 1750
-INFO:root:0:01:03.443060
-INFO:root:fnum = 1760
-INFO:root:0:01:02.810542
-INFO:root:fnum = 1770
-INFO:root:0:01:03.114515
-INFO:root:fnum = 1780
-INFO:root:0:01:02.955656
-INFO:root:fnum = 1790
-INFO:root:0:01:03.209804
-INFO:root:fnum = 1800
-INFO:root:0:01:00.932952
-INFO:root:fnum = 1810
-INFO:root:0:01:00.355109
-INFO:root:fnum = 1820
-INFO:root:0:01:01.225840
-INFO:root:fnum = 1830
-INFO:root:0:01:00.259162
-INFO:root:fnum = 1840
-INFO:root:0:01:00.550222
-INFO:root:fnum = 1850
-INFO:root:0:00:59.598761
-INFO:root:fnum = 1860
-INFO:root:0:01:00.218236
-INFO:root:fnum = 1870
-INFO:root:0:01:00.466704
-INFO:root:fnum = 1880
-INFO:root:0:01:00.075681
-INFO:root:fnum = 1890
-INFO:root:0:00:59.750789
-INFO:root:fnum = 1900
-INFO:root:0:00:59.625804
-INFO:root:fnum = 1910
-INFO:root:0:01:00.100299
-INFO:root:fnum = 1920
-INFO:root:0:01:00.107222
-INFO:root:fnum = 1930
-INFO:root:0:01:00.484725
-INFO:root:fnum = 1940
-INFO:root:0:01:00.154549
-INFO:root:fnum = 1950
-INFO:root:0:00:59.876398
-INFO:root:fnum = 1960
-INFO:root:0:01:00.246821
-INFO:root:fnum = 1970
-INFO:root:0:01:00.811973
-INFO:root:fnum = 1980
-INFO:root:0:01:00.907421
-INFO:root:fnum = 1990
-INFO:root:0:01:00.213640
-INFO:root:fnum = 2000
-INFO:root:0:01:00.900404
-INFO:root:fnum = 2010
-INFO:root:0:00:59.596606
-INFO:root:fnum = 2020
-INFO:root:0:01:00.257790
-INFO:root:fnum = 2030
-INFO:root:0:01:00.139645
-INFO:root:fnum = 2040
-INFO:root:0:01:00.769209
-INFO:root:fnum = 2050
-INFO:root:0:00:59.602663
-INFO:root:fnum = 2060
-INFO:root:0:01:00.145449
-INFO:root:fnum = 2070
-INFO:root:0:01:00.486358
-INFO:root:fnum = 2080
-INFO:root:0:01:00.276256
-INFO:root:fnum = 2090
-INFO:root:0:01:00.112568
-INFO:root:fnum = 2100
-INFO:root:0:00:59.764191
-INFO:root:fnum = 2110
-INFO:root:0:01:00.226771
-INFO:root:fnum = 2120
-INFO:root:0:00:59.724667
-INFO:root:fnum = 2130
-INFO:root:0:01:00.472045
-INFO:root:fnum = 2140
-INFO:root:0:01:00.824416
-INFO:root:fnum = 2150
-INFO:root:0:01:00.522060
-INFO:root:fnum = 2160
-INFO:root:0:01:00.260114
-INFO:root:fnum = 2170
-INFO:root:0:01:00.139911
-INFO:root:fnum = 2180
-INFO:root:0:01:00.282129
-INFO:root:fnum = 2190
-INFO:root:0:01:00.571080
-INFO:root:fnum = 2200
-INFO:root:0:00:59.741703
-INFO:root:fnum = 2210
-INFO:root:0:00:59.773339
-INFO:root:fnum = 2220
-INFO:root:0:01:00.404655
-INFO:root:fnum = 2230
-INFO:root:0:01:00.411271
-INFO:root:fnum = 2240
-INFO:root:0:01:00.324670
-INFO:root:fnum = 2250
-INFO:root:0:00:59.813884
-INFO:root:fnum = 2260
-INFO:root:0:01:00.771123
-INFO:root:fnum = 2270
-INFO:root:0:01:00.266041
-INFO:root:fnum = 2280
-INFO:root:0:00:59.995254
-INFO:root:fnum = 2290
-INFO:root:0:01:00.534792
-INFO:root:fnum = 2300
-INFO:root:0:01:00.534036
-INFO:root:fnum = 2310
-INFO:root:0:01:00.768044
-INFO:root:fnum = 2320
-INFO:root:0:00:59.873359
-INFO:root:fnum = 2330
-INFO:root:0:01:00.281577
-INFO:root:fnum = 2340
-INFO:root:0:00:59.541454
-INFO:root:fnum = 2350
-INFO:root:0:01:00.616274
-INFO:root:fnum = 2360
-INFO:root:0:01:00.365846
-INFO:root:fnum = 2370
-INFO:root:0:01:00.070545
-INFO:root:fnum = 2380
-INFO:root:0:01:00.271581
-INFO:root:fnum = 2390
-INFO:root:0:01:01.069474
-INFO:root:fnum = 2400
-INFO:root:0:01:00.609394
-INFO:root:fnum = 2410
-INFO:root:0:01:00.289293
-INFO:root:fnum = 2420
-INFO:root:0:01:00.471222
-INFO:root:fnum = 2430
-INFO:root:0:00:59.686473
-INFO:root:fnum = 2440
-INFO:root:0:01:00.431301
-INFO:root:fnum = 2450
-INFO:root:0:00:59.440137
-INFO:root:fnum = 2460
-INFO:root:0:01:00.444065
-INFO:root:fnum = 2470
-INFO:root:0:01:00.001929
-INFO:root:fnum = 2480
-INFO:root:0:00:59.283370
-INFO:root:fnum = 2490
-INFO:root:0:00:59.787808
-INFO:root:fnum = 2500
-INFO:root:0:00:59.842324
-INFO:root:fnum = 2510
-INFO:root:0:00:59.942960
-INFO:root:fnum = 2520
-INFO:root:0:01:00.117091
-INFO:root:fnum = 2530
-INFO:root:0:01:00.687182
-INFO:root:fnum = 2540
-INFO:root:0:00:59.899683
-INFO:root:fnum = 2550
-INFO:root:0:01:00.818546
-INFO:root:fnum = 2560
-INFO:root:0:00:59.620431
-INFO:root:fnum = 2570
-INFO:root:0:01:00.772894
-INFO:root:fnum = 2580
-INFO:root:0:01:00.256510
-INFO:root:fnum = 2590
-INFO:root:0:01:00.319750
-INFO:root:fnum = 2600
-INFO:root:0:01:00.050734
-INFO:root:fnum = 2610
-INFO:root:0:01:00.449792
-INFO:root:fnum = 2620
-INFO:root:0:01:00.114598
-INFO:root:fnum = 2630
-INFO:root:0:01:00.001499
-INFO:root:fnum = 2640
-INFO:root:0:01:00.234923
-INFO:root:fnum = 2650
-INFO:root:0:00:59.743398
-INFO:root:fnum = 2660
-INFO:root:0:01:00.824280
-INFO:root:fnum = 2670
-INFO:root:0:01:00.049687
-INFO:root:fnum = 2680
-INFO:root:0:01:00.481341
-INFO:root:fnum = 2690
-INFO:root:0:00:59.957382
-INFO:root:fnum = 2700
-INFO:root:0:01:00.570283
-INFO:root:fnum = 2710
-INFO:root:0:00:59.576187
-INFO:root:fnum = 2720
-INFO:root:0:01:00.682390
-INFO:root:fnum = 2730
-INFO:root:0:00:59.761299
-INFO:root:fnum = 2740
-INFO:root:0:01:00.929915
-INFO:root:fnum = 2750
-INFO:root:0:01:00.791214
-INFO:root:fnum = 2760
-INFO:root:0:01:00.303891
-INFO:root:fnum = 2770
-INFO:root:0:01:00.859970
-INFO:root:fnum = 2780
-INFO:root:0:00:59.998784
-INFO:root:fnum = 2790
-INFO:root:0:01:00.679007
-INFO:root:fnum = 2800
-INFO:root:0:01:00.678725
-INFO:root:fnum = 2810
-INFO:root:0:01:00.689456
-INFO:root:fnum = 2820
-INFO:root:0:01:00.282066
-INFO:root:fnum = 2830
-INFO:root:0:01:00.866717
-INFO:root:fnum = 2840
-INFO:root:0:01:00.325407
-INFO:root:fnum = 2850
-INFO:root:0:01:01.017515
-INFO:root:fnum = 2860
-INFO:root:0:00:59.895409
-INFO:root:fnum = 2870
-INFO:root:0:01:00.328758
-INFO:root:fnum = 2880
-INFO:root:0:01:00.571812
-INFO:root:fnum = 2890
-INFO:root:0:01:00.673051
-INFO:root:fnum = 2900
-INFO:root:0:01:00.361299
-INFO:root:fnum = 2910
-INFO:root:0:01:00.023864
-INFO:root:fnum = 2920
-INFO:root:0:01:04.443633
-INFO:root:fnum = 2930
-INFO:root:0:01:01.290328
-INFO:root:fnum = 2940
-INFO:root:0:01:00.908425
-INFO:root:fnum = 2950
-INFO:root:0:01:00.363798
-INFO:root:fnum = 2960
-INFO:root:0:01:01.021012
-INFO:root:fnum = 2970
-INFO:root:0:01:00.855464
-INFO:root:fnum = 2980
-INFO:root:0:01:00.305945
-INFO:root:fnum = 2990
-INFO:root:0:01:00.944242
-INFO:root:fnum = 3000
-INFO:root:0:01:00.577027
-INFO:root:fnum = 3010
-INFO:root:0:01:01.248853
-INFO:root:fnum = 3020
-INFO:root:0:01:00.363059
-INFO:root:fnum = 3030
-INFO:root:0:01:00.914083
-INFO:root:fnum = 3040
-INFO:root:0:01:00.662919
-INFO:root:fnum = 3050
-INFO:root:0:01:00.357067
-INFO:root:fnum = 3060
-INFO:root:0:01:00.800103
-INFO:root:fnum = 3070
-INFO:root:0:01:00.864982
-INFO:root:fnum = 3080
-INFO:root:0:01:00.542508
-INFO:root:fnum = 3090
-INFO:root:0:01:00.727559
-INFO:root:fnum = 3100
-INFO:root:0:01:00.556357
-INFO:root:fnum = 3110
-INFO:root:0:01:01.016334
-INFO:root:fnum = 3120
-INFO:root:0:01:00.886623
-INFO:root:fnum = 3130
-INFO:root:0:01:00.739421
-INFO:root:fnum = 3140
-INFO:root:0:01:01.521676
-INFO:root:fnum = 3150
-INFO:root:0:01:00.698766
-INFO:root:fnum = 3160
-INFO:root:0:01:01.558087
-INFO:root:fnum = 3170
-INFO:root:0:01:00.571410
-INFO:root:fnum = 3180
-INFO:root:0:01:01.254674
-INFO:root:fnum = 3190
-INFO:root:0:01:01.501196
-INFO:root:fnum = 3200
-INFO:root:0:01:00.855135
-INFO:root:fnum = 3210
-INFO:root:0:01:01.065347
-INFO:root:fnum = 3220
-INFO:root:0:01:00.584482
-INFO:root:fnum = 3230
-INFO:root:0:01:01.513553
-INFO:root:fnum = 3240
-INFO:root:0:01:00.295843
-INFO:root:fnum = 3250
-INFO:root:0:01:00.755253
-INFO:root:fnum = 3260
-INFO:root:0:01:00.918931
-INFO:root:fnum = 3270
-INFO:root:0:01:00.422821
-INFO:root:fnum = 3280
-INFO:root:0:01:00.505508
-INFO:root:fnum = 3290
-INFO:root:0:01:00.899612
-INFO:root:fnum = 3300
-INFO:root:0:01:01.010895
-INFO:root:fnum = 3310
-INFO:root:0:01:00.569998
-INFO:root:fnum = 3320
-INFO:root:0:01:00.524823
-INFO:root:fnum = 3330
-INFO:root:0:01:01.340504
-INFO:root:fnum = 3340
-INFO:root:0:01:00.383596
-INFO:root:fnum = 3350
-INFO:root:0:01:00.537492
-INFO:root:fnum = 3360
-INFO:root:0:01:00.931349
-INFO:root:fnum = 3370
-INFO:root:0:01:00.635421
-INFO:root:fnum = 3380
-INFO:root:0:01:00.663740
-INFO:root:fnum = 3390
-INFO:root:0:01:00.780072
-INFO:root:fnum = 3400
-INFO:root:0:01:00.706318
-INFO:root:fnum = 3410
-INFO:root:0:01:01.130474
-INFO:root:fnum = 3420
-INFO:root:0:01:00.613306
-INFO:root:fnum = 3430
-INFO:root:0:01:00.610765
-INFO:root:fnum = 3440
-INFO:root:0:01:00.916425
-INFO:root:fnum = 3450
-INFO:root:0:01:00.510870
-INFO:root:fnum = 3460
-INFO:root:0:01:00.677093
-INFO:root:fnum = 3470
-INFO:root:0:01:00.228925
-INFO:root:fnum = 3480
-INFO:root:0:01:00.719702
-INFO:root:fnum = 3490
-INFO:root:0:01:01.325885
-INFO:root:fnum = 3500
-INFO:root:0:01:01.140894
-INFO:root:fnum = 3510
-INFO:root:0:01:01.163388
-INFO:root:fnum = 3520
-INFO:root:0:01:00.721972
-INFO:root:fnum = 3530
-INFO:root:0:01:00.774088
-INFO:root:fnum = 3540
-INFO:root:0:01:01.405357
-INFO:root:fnum = 3550
-INFO:root:0:01:01.160894
-INFO:root:fnum = 3560
-INFO:root:0:01:00.420627
-INFO:root:fnum = 3570
-INFO:root:0:01:00.495789
-INFO:root:fnum = 3580
-INFO:root:0:01:00.556122
-INFO:root:fnum = 3590
-INFO:root:0:01:00.628553
-INFO:root:fnum = 3600
-INFO:root:0:01:01.299800
-INFO:root:fnum = 3610
-INFO:root:0:01:00.850474
-INFO:root:fnum = 3620
-INFO:root:0:01:00.828774
-INFO:root:fnum = 3630
-INFO:root:0:01:01.692702
-INFO:root:fnum = 3640
-INFO:root:0:01:00.773410
-INFO:root:fnum = 3650
-INFO:root:0:01:01.325669
-INFO:root:fnum = 3660
-INFO:root:0:01:00.625225
-INFO:root:fnum = 3670
-INFO:root:0:01:01.396999
-INFO:root:fnum = 3680
-INFO:root:0:01:00.849749
-INFO:root:fnum = 3690
-INFO:root:0:01:00.822638
-INFO:root:fnum = 3700
-INFO:root:0:01:00.993972
-INFO:root:fnum = 3710
-INFO:root:0:01:00.625382
-INFO:root:fnum = 3720
-INFO:root:0:01:01.041749
-INFO:root:fnum = 3730
-INFO:root:0:01:00.377850
-INFO:root:fnum = 3740
-INFO:root:0:01:01.068803
-INFO:root:fnum = 3750
-INFO:root:0:01:00.846622
-INFO:root:fnum = 3760
-INFO:root:0:01:01.223461
-INFO:root:fnum = 3770
-INFO:root:0:01:00.297536
-INFO:root:fnum = 3780
-INFO:root:0:01:01.854366
-INFO:root:fnum = 3790
-INFO:root:0:01:00.499413
-INFO:root:fnum = 3800
-INFO:root:0:01:00.876808
-INFO:root:fnum = 3810
-INFO:root:0:01:00.508815
-INFO:root:fnum = 3820
-INFO:root:0:01:00.649386
-INFO:root:fnum = 3830
-INFO:root:0:01:00.801300
-INFO:root:fnum = 3840
-INFO:root:0:01:01.049132
-INFO:root:fnum = 3850
-INFO:root:0:01:01.412053
-INFO:root:fnum = 3860
-INFO:root:0:01:00.810603
-INFO:root:fnum = 3870
-INFO:root:0:01:01.040493
-INFO:root:fnum = 3880
-INFO:root:0:01:00.694606
-INFO:root:fnum = 3890
-INFO:root:0:01:00.926800
-INFO:root:fnum = 3900
-INFO:root:0:01:01.541554
-INFO:root:fnum = 3910
-INFO:root:0:01:00.132554
-INFO:root:fnum = 3920
-INFO:root:0:01:00.728658
-INFO:root:fnum = 3930
-INFO:root:0:01:00.319416
-INFO:root:fnum = 3940
-INFO:root:0:01:00.700886
-INFO:root:fnum = 3950
-INFO:root:0:01:00.516917
-INFO:root:fnum = 3960
-INFO:root:0:01:00.893502
-INFO:root:fnum = 3970
-INFO:root:0:01:00.663715
-INFO:root:fnum = 3980
-INFO:root:0:01:00.900433
-INFO:root:fnum = 3990
-INFO:root:0:01:01.108661
-INFO:root:fnum = 4000
-INFO:root:0:01:02.916426
-INFO:root:fnum = 4010
-INFO:root:0:01:00.563046
-INFO:root:fnum = 4020
-INFO:root:0:01:01.182106
-INFO:root:fnum = 4030
-INFO:root:0:01:00.689814
-INFO:root:fnum = 4040
-INFO:root:0:01:01.542367
-INFO:root:fnum = 4050
-INFO:root:0:01:01.516271
-INFO:root:fnum = 4060
-INFO:root:0:01:01.433799
-INFO:root:fnum = 4070
-INFO:root:0:01:02.175005
-INFO:root:fnum = 4080
-INFO:root:0:01:01.134896
-INFO:root:fnum = 4090
-INFO:root:0:01:00.578309
-INFO:root:fnum = 4100
-INFO:root:0:01:01.545669
-INFO:root:fnum = 4110
-INFO:root:0:01:00.674497
-INFO:root:fnum = 4120
-INFO:root:0:01:01.154573
-INFO:root:fnum = 4130
-INFO:root:0:01:00.718301
-INFO:root:fnum = 4140
-INFO:root:0:01:00.962833
-INFO:root:fnum = 4150
-INFO:root:0:01:00.828073
-INFO:root:fnum = 4160
-INFO:root:0:01:00.653344
-INFO:root:fnum = 4170
-INFO:root:0:01:00.697506
-INFO:root:fnum = 4180
-INFO:root:0:01:00.574551
-INFO:root:fnum = 4190
-INFO:root:0:01:00.671533
-INFO:root:fnum = 4200
-INFO:root:0:01:01.055146
-INFO:root:fnum = 4210
-INFO:root:0:01:00.422168
-INFO:root:fnum = 4220
-INFO:root:0:01:01.215163
-INFO:root:fnum = 4230
-INFO:root:0:01:00.334985
-INFO:root:fnum = 4240
-INFO:root:0:01:00.619657
-INFO:root:fnum = 4250
-INFO:root:0:01:00.618467
-INFO:root:fnum = 4260
-INFO:root:0:01:00.676222
-INFO:root:fnum = 4270
-INFO:root:0:01:00.123054
-INFO:root:fnum = 4280
-INFO:root:0:01:00.726544
-INFO:root:fnum = 4290
-INFO:root:0:01:00.756951
-INFO:root:fnum = 4300
-INFO:root:0:01:00.228811
-INFO:root:fnum = 4310
-INFO:root:0:01:00.773016
-INFO:root:fnum = 4320
-INFO:root:0:01:00.317628
-INFO:root:fnum = 4330
-INFO:root:0:01:01.375672
-INFO:root:fnum = 4340
-INFO:root:0:01:00.852509
-INFO:root:fnum = 4350
-INFO:root:0:01:00.249396
-INFO:root:fnum = 4360
-INFO:root:0:01:01.058704
-INFO:root:fnum = 4370
-INFO:root:0:01:00.900584
-INFO:root:fnum = 4380
-INFO:root:0:01:00.260946
-INFO:root:fnum = 4390
-INFO:root:0:01:00.781864
-INFO:root:fnum = 4400
-INFO:root:0:01:00.589936
-INFO:root:fnum = 4410
-INFO:root:0:01:00.767527
-INFO:root:fnum = 4420
-INFO:root:0:01:00.551344
-INFO:root:fnum = 4430
-INFO:root:0:01:00.518274
-INFO:root:fnum = 4440
-INFO:root:0:01:01.085331
-INFO:root:fnum = 4450
-INFO:root:0:01:00.976653
-INFO:root:fnum = 4460
-INFO:root:0:01:01.029525
-INFO:root:fnum = 4470
-INFO:root:0:01:00.473740
-INFO:root:fnum = 4480
-INFO:root:0:01:01.026581
-INFO:root:fnum = 4490
-INFO:root:0:01:00.782191
-INFO:root:fnum = 4500
-INFO:root:0:01:01.078552
-INFO:root:fnum = 4510
-INFO:root:0:01:01.244919
-INFO:root:fnum = 4520
-INFO:root:0:01:01.066689
-INFO:root:fnum = 4530
-INFO:root:0:01:01.403086
-INFO:root:fnum = 4540
-INFO:root:0:01:00.888339
-INFO:root:fnum = 4550
-INFO:root:0:01:01.165207
-INFO:root:fnum = 4560
-INFO:root:0:01:01.269071
-INFO:root:fnum = 4570
-INFO:root:0:01:01.080149
-INFO:root:fnum = 4580
-INFO:root:0:01:00.464598
-INFO:root:fnum = 4590
-INFO:root:0:01:01.226025
-INFO:root:fnum = 4600
-INFO:root:0:01:00.634030
-INFO:root:fnum = 4610
-INFO:root:0:01:00.833577
-INFO:root:fnum = 4620
-INFO:root:0:01:00.765362
-INFO:root:fnum = 4630
-INFO:root:0:01:00.748573
-INFO:root:fnum = 4640
-INFO:root:0:01:00.529502
-INFO:root:fnum = 4650
-INFO:root:0:01:00.888214
-INFO:root:fnum = 4660
-INFO:root:0:01:00.722753
-INFO:root:fnum = 4670
-INFO:root:0:01:01.107099
-INFO:root:fnum = 4680
-INFO:root:0:01:00.679974
-INFO:root:fnum = 4690
-INFO:root:0:01:01.284046
-INFO:root:fnum = 4700
-INFO:root:0:01:01.127630
-INFO:root:fnum = 4710
-INFO:root:0:01:00.565534
-INFO:root:fnum = 4720
-INFO:root:0:01:00.743104
-INFO:root:fnum = 4730
-INFO:root:0:01:00.585359
-INFO:root:fnum = 4740
-INFO:root:0:01:00.186900
-INFO:root:fnum = 4750
-INFO:root:0:01:00.126221
-INFO:root:fnum = 4760
-INFO:root:0:01:01.271271
-INFO:root:fnum = 4770
-INFO:root:0:01:01.353730
-INFO:root:fnum = 4780
-INFO:root:0:01:00.522397
-INFO:root:fnum = 4790
-INFO:root:0:01:00.621347
-INFO:root:fnum = 4800
-INFO:root:0:01:00.287561
-INFO:root:fnum = 4810
-INFO:root:0:01:00.803777
-INFO:root:fnum = 4820
-INFO:root:0:01:00.623476
-INFO:root:fnum = 4830
-INFO:root:0:01:00.333530
-INFO:root:fnum = 4840
-INFO:root:0:01:01.318626
-INFO:root:fnum = 4850
-INFO:root:0:01:00.682497
-INFO:root:fnum = 4860
-INFO:root:0:01:01.008508
-INFO:root:fnum = 4870
-INFO:root:0:01:00.554142
-INFO:root:fnum = 4880
-INFO:root:0:01:00.651256
-INFO:root:fnum = 4890
-INFO:root:0:01:00.537237
-INFO:root:fnum = 4900
-INFO:root:0:01:00.167482
-INFO:root:fnum = 4910
-INFO:root:0:01:00.181158
-INFO:root:fnum = 4920
-INFO:root:0:01:00.779896
-INFO:root:fnum = 4930
-INFO:root:0:01:00.856711
-INFO:root:fnum = 4940
-INFO:root:0:01:00.800737
-INFO:root:fnum = 4950
-INFO:root:0:01:00.712805
-INFO:root:fnum = 4960
-INFO:root:0:01:01.576178
-INFO:root:fnum = 4970
-INFO:root:0:01:01.591168
-INFO:root:fnum = 4980
-INFO:root:0:01:00.740124
-INFO:root:fnum = 4990
-INFO:root:0:01:01.028255
-INFO:root:fnum = 5000
-INFO:root:0:01:00.884983
-INFO:root:fnum = 5010
-INFO:root:0:01:01.431458
-INFO:root:fnum = 5020
-INFO:root:0:01:01.072947
-INFO:root:fnum = 5030
-INFO:root:0:01:00.642102
-INFO:root:fnum = 5040
-INFO:root:0:01:01.413295
-INFO:root:fnum = 5050
-INFO:root:0:01:00.825859
-INFO:root:fnum = 5060
-INFO:root:0:01:00.667431
-INFO:root:fnum = 5070
-INFO:root:0:01:00.626958
-INFO:root:fnum = 5080
-INFO:root:0:01:01.034575
-INFO:root:fnum = 5090
-INFO:root:0:01:00.646472
-INFO:root:fnum = 5100
-INFO:root:0:01:01.048483
-INFO:root:fnum = 5110
-INFO:root:0:01:01.121832
-INFO:root:fnum = 5120
-INFO:root:0:01:00.787044
-INFO:root:fnum = 5130
-INFO:root:0:01:00.661362
-INFO:root:fnum = 5140
-INFO:root:0:01:01.308761
-INFO:root:fnum = 5150
-INFO:root:0:01:00.597435
-INFO:root:fnum = 5160
-INFO:root:0:01:00.742465
-INFO:root:fnum = 5170
-INFO:root:0:01:01.083883
-INFO:root:fnum = 5180
-INFO:root:0:01:00.906554
-INFO:root:fnum = 5190
-INFO:root:0:01:00.852394
-INFO:root:fnum = 5200
-INFO:root:0:01:01.237276
-INFO:root:fnum = 5210
-INFO:root:0:01:02.519126
-INFO:root:fnum = 5220
-INFO:root:0:01:00.604548
-INFO:root:fnum = 5230
-INFO:root:0:01:01.317964
-INFO:root:fnum = 5240
-INFO:root:operation failed on fnum = 5240, exiting
-INFO:root:renumbered up to n=4448, i=-1
 INFO:root:setting up
+INFO:root:Found data, loading from: 49
 INFO:root:setting up
-INFO:root:Found data, loading from: 555
+INFO:root:Found data, loading from: 99
 INFO:root:setting up
-INFO:root:Found data, loading from: 555
+INFO:root:Found data, loading from: 149
 INFO:root:setting up
-INFO:root:Found data, loading from: 555
+INFO:root:Found data, loading from: 124
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:setting up
+INFO:root:Found data, loading from: 10
+INFO:root:setting up
+INFO:root:Found data, loading from: 10
+INFO:root:setting up
+INFO:root:Found data, loading from: 10
+INFO:root:setting up
+INFO:root:Found data, loading from: 10
+INFO:root:setting up
+INFO:root:Found data, loading from: 2100
+INFO:root:setting up
+INFO:root:Found data, loading from: 2100
+INFO:root:setting up
+INFO:root:Found data, loading from: 2200
+INFO:root:setting up
+INFO:root:No load point found, restarting
+INFO:root:Cyl_14 ended at f = 135
+INFO:root:Cyl_14 ended at f = 136
+INFO:root:Cyl_14 ended at f = 137
+INFO:root:Cyl_14 ended at f = 138
+INFO:root:Cyl_14 ended at f = 139
+INFO:root:Cyl_14 ended at f = 140
+INFO:root:Cyl_14 ended at f = 141
+INFO:root:Cyl_14 ended at f = 142
+INFO:root:Cyl_14 ended at f = 143
+INFO:root:Cyl_14 ended at f = 144
+INFO:root:Cyl_14 ended at f = 145
+INFO:root:Cyl_14 ended at f = 146
+INFO:root:Cyl_14 ended at f = 147
+INFO:root:Cyl_14 ended at f = 148
+INFO:root:Cyl_14 ended at f = 149
+INFO:root:Cyl_14 ended at f = 150
+INFO:root:Cyl_14 ended at f = 151
+INFO:root:Cyl_14 ended at f = 152
+INFO:root:Cyl_14 ended at f = 153
+INFO:root:Cyl_14 ended at f = 154
+INFO:root:Cyl_14 ended at f = 155
+INFO:root:Cyl_14 ended at f = 156
+INFO:root:Cyl_14 ended at f = 157
+INFO:root:Cyl_14 ended at f = 158
+INFO:root:Cyl_14 ended at f = 159
+INFO:root:Cyl_14 ended at f = 160
+INFO:root:Cyl_14 ended at f = 161
+INFO:root:Cyl_14 ended at f = 162
+INFO:root:Cyl_14 ended at f = 163
+INFO:root:Cyl_14 ended at f = 164
+INFO:root:Cyl_14 ended at f = 165
+INFO:root:Cyl_14 ended at f = 166
+INFO:root:Cyl_14 ended at f = 167
+INFO:root:Cyl_14 ended at f = 168
+INFO:root:Cyl_14 ended at f = 169
+INFO:root:Cyl_14 ended at f = 170
+INFO:root:Cyl_14 ended at f = 171
+INFO:root:Cyl_14 ended at f = 172
+INFO:root:Cyl_14 ended at f = 173
+INFO:root:Cyl_14 ended at f = 174
+INFO:root:Cyl_14 ended at f = 175
+INFO:root:Cyl_14 ended at f = 176
+INFO:root:Cyl_14 ended at f = 177
+INFO:root:Cyl_14 ended at f = 178
+INFO:root:Cyl_14 ended at f = 179
+INFO:root:Cyl_14 ended at f = 180
+INFO:root:Cyl_14 ended at f = 181
+INFO:root:Cyl_14 ended at f = 182
+INFO:root:Cyl_14 ended at f = 183
+INFO:root:Cyl_14 ended at f = 184
+INFO:root:Cyl_14 ended at f = 185
+INFO:root:Cyl_14 ended at f = 186
+INFO:root:Cyl_14 ended at f = 187
+INFO:root:Cyl_14 ended at f = 188
+INFO:root:Cyl_14 ended at f = 189
+INFO:root:Cyl_14 ended at f = 190
+INFO:root:Cyl_14 ended at f = 191
+INFO:root:Cyl_14 ended at f = 192
+INFO:root:Cyl_14 ended at f = 193
+INFO:root:Cyl_14 ended at f = 194
+INFO:root:Cyl_14 ended at f = 195
+INFO:root:Cyl_14 ended at f = 196
+INFO:root:Cyl_14 ended at f = 197
+INFO:root:Cyl_14 ended at f = 198
+INFO:root:Cyl_14 ended at f = 199
+INFO:root:Cyl_14 ended at f = 200
+INFO:root:setting up
+INFO:root:Found data, loading from: 2200
+INFO:root:Cyl_14 ended at f = 135
+INFO:root:Cyl_14 ended at f = 136
+INFO:root:Cyl_14 ended at f = 137
+INFO:root:Cyl_14 ended at f = 138
+INFO:root:Cyl_14 ended at f = 139
+INFO:root:Cyl_14 ended at f = 140
+INFO:root:Cyl_14 ended at f = 141
+INFO:root:Cyl_14 ended at f = 142
+INFO:root:Cyl_14 ended at f = 143
+INFO:root:Cyl_14 ended at f = 144
+INFO:root:Cyl_14 ended at f = 145
+INFO:root:Cyl_14 ended at f = 146
+INFO:root:Cyl_14 ended at f = 147
+INFO:root:Cyl_14 ended at f = 148
+INFO:root:Cyl_14 ended at f = 149
+INFO:root:Cyl_14 ended at f = 150
+INFO:root:Cyl_14 ended at f = 151
+INFO:root:Cyl_14 ended at f = 152
+INFO:root:Cyl_14 ended at f = 153
+INFO:root:Cyl_14 ended at f = 154
+INFO:root:Cyl_14 ended at f = 155
+INFO:root:Cyl_14 ended at f = 156
+INFO:root:Cyl_14 ended at f = 157
+INFO:root:Cyl_14 ended at f = 158
+INFO:root:Cyl_14 ended at f = 159
+INFO:root:Cyl_14 ended at f = 160
+INFO:root:Cyl_14 ended at f = 161
+INFO:root:Cyl_14 ended at f = 162
+INFO:root:Cyl_14 ended at f = 163
+INFO:root:Cyl_14 ended at f = 164
+INFO:root:Cyl_14 ended at f = 165
+INFO:root:Cyl_14 ended at f = 166
+INFO:root:Cyl_14 ended at f = 167
+INFO:root:Cyl_14 ended at f = 168
+INFO:root:Cyl_14 ended at f = 169
+INFO:root:Cyl_14 ended at f = 170
+INFO:root:Cyl_14 ended at f = 171
+INFO:root:Cyl_14 ended at f = 172
+INFO:root:Cyl_14 ended at f = 173
+INFO:root:Cyl_14 ended at f = 174
+INFO:root:Cyl_14 ended at f = 175
+INFO:root:Cyl_14 ended at f = 176
+INFO:root:Cyl_14 ended at f = 177
+INFO:root:Cyl_14 ended at f = 178
+INFO:root:Cyl_14 ended at f = 179
+INFO:root:Cyl_14 ended at f = 180
+INFO:root:Cyl_14 ended at f = 181
+INFO:root:Cyl_14 ended at f = 182
+INFO:root:Cyl_14 ended at f = 183
+INFO:root:Cyl_14 ended at f = 184
+INFO:root:Cyl_14 ended at f = 185
+INFO:root:Cyl_14 ended at f = 186
+INFO:root:Cyl_14 ended at f = 187
+INFO:root:Cyl_14 ended at f = 188
+INFO:root:Cyl_14 ended at f = 189
+INFO:root:Cyl_14 ended at f = 190
+INFO:root:Cyl_14 ended at f = 191
+INFO:root:Cyl_14 ended at f = 192
+INFO:root:Cyl_14 ended at f = 193
+INFO:root:Cyl_14 ended at f = 194
+INFO:root:Cyl_14 ended at f = 195
+INFO:root:Cyl_14 ended at f = 196
+INFO:root:Cyl_14 ended at f = 197
+INFO:root:Cyl_14 ended at f = 198
+INFO:root:Cyl_14 ended at f = 199
+INFO:root:Cyl_14 ended at f = 200
+INFO:root:Cyl_14 ended at f = 201
+INFO:root:Cyl_14 ended at f = 202
+INFO:root:Cyl_14 ended at f = 203
+INFO:root:Cyl_14 ended at f = 204
+INFO:root:Cyl_14 ended at f = 205
+INFO:root:Cyl_14 ended at f = 206
+INFO:root:Cyl_14 ended at f = 207
+INFO:root:Cyl_14 ended at f = 208
+INFO:root:Cyl_14 ended at f = 209
+INFO:root:Cyl_14 ended at f = 210
+INFO:root:Cyl_14 ended at f = 211
+INFO:root:Cyl_14 ended at f = 212
+INFO:root:Cyl_14 ended at f = 213
+INFO:root:Cyl_14 ended at f = 214
+INFO:root:Cyl_14 ended at f = 215
+INFO:root:Cyl_14 ended at f = 216
+INFO:root:Cyl_14 ended at f = 217
+INFO:root:Cyl_14 ended at f = 218
+INFO:root:Cyl_14 ended at f = 219
+INFO:root:Cyl_14 ended at f = 220
+INFO:root:Cyl_14 ended at f = 221
+INFO:root:Cyl_14 ended at f = 222
+INFO:root:Cyl_14 ended at f = 223
+INFO:root:Cyl_14 ended at f = 224
+INFO:root:Cyl_14 ended at f = 225
+INFO:root:Cyl_14 ended at f = 226
+INFO:root:Cyl_14 ended at f = 227
+INFO:root:Cyl_14 ended at f = 228
+INFO:root:Cyl_14 ended at f = 229
+INFO:root:Cyl_14 ended at f = 230
+INFO:root:Cyl_14 ended at f = 231
+INFO:root:Cyl_14 ended at f = 232
+INFO:root:Cyl_14 ended at f = 233
+INFO:root:Cyl_14 ended at f = 234
+INFO:root:Cyl_14 ended at f = 235
+INFO:root:Cyl_14 ended at f = 236
+INFO:root:Cyl_14 ended at f = 237
+INFO:root:Cyl_14 ended at f = 238
+INFO:root:Cyl_14 ended at f = 239
+INFO:root:Cyl_14 ended at f = 240
+INFO:root:Cyl_14 ended at f = 241
+INFO:root:Cyl_14 ended at f = 242
+INFO:root:Cyl_14 ended at f = 243
+INFO:root:Cyl_14 ended at f = 244
+INFO:root:Cyl_14 ended at f = 245
+INFO:root:Cyl_14 ended at f = 246
+INFO:root:Cyl_14 ended at f = 247
+INFO:root:Cyl_14 ended at f = 248
+INFO:root:Cyl_14 ended at f = 249
+INFO:root:Cyl_14 ended at f = 250
+INFO:root:Cyl_14 ended at f = 251
+INFO:root:Cyl_14 ended at f = 252
+INFO:root:Cyl_14 ended at f = 253
+INFO:root:Cyl_14 ended at f = 254
+INFO:root:Cyl_14 ended at f = 255
+INFO:root:Cyl_14 ended at f = 256
+INFO:root:Cyl_14 ended at f = 257
+INFO:root:Cyl_14 ended at f = 258
+INFO:root:Cyl_14 ended at f = 259
+INFO:root:Cyl_14 ended at f = 260
+INFO:root:Cyl_14 ended at f = 261
+INFO:root:Cyl_14 ended at f = 262
+INFO:root:Cyl_14 ended at f = 263
+INFO:root:Cyl_14 ended at f = 264
+INFO:root:Cyl_14 ended at f = 265
+INFO:root:Cyl_14 ended at f = 266
+INFO:root:Cyl_14 ended at f = 267
+INFO:root:Cyl_14 ended at f = 268
+INFO:root:Cyl_14 ended at f = 269
+INFO:root:Cyl_14 ended at f = 270
+INFO:root:Cyl_14 ended at f = 271
+INFO:root:Cyl_14 ended at f = 272
+INFO:root:Cyl_14 ended at f = 273
+INFO:root:Cyl_14 ended at f = 274
+INFO:root:Cyl_14 ended at f = 275
+INFO:root:Cyl_14 ended at f = 276
+INFO:root:Cyl_14 ended at f = 277
+INFO:root:Cyl_14 ended at f = 278
+INFO:root:Cyl_14 ended at f = 279
+INFO:root:Cyl_14 ended at f = 280
+INFO:root:Cyl_14 ended at f = 281
+INFO:root:Cyl_14 ended at f = 282
+INFO:root:Cyl_14 ended at f = 283
+INFO:root:Cyl_14 ended at f = 284
+INFO:root:Cyl_14 ended at f = 285
+INFO:root:Cyl_14 ended at f = 286
+INFO:root:Cyl_14 ended at f = 287
+INFO:root:Cyl_14 ended at f = 288
+INFO:root:Cyl_14 ended at f = 289
+INFO:root:Cyl_14 ended at f = 290
+INFO:root:Cyl_14 ended at f = 291
+INFO:root:Cyl_14 ended at f = 292
+INFO:root:Cyl_14 ended at f = 293
+INFO:root:Cyl_14 ended at f = 294
+INFO:root:Cyl_14 ended at f = 295
+INFO:root:Cyl_14 ended at f = 296
+INFO:root:Cyl_14 ended at f = 297
+INFO:root:Cyl_14 ended at f = 298
+INFO:root:Cyl_14 ended at f = 299
+INFO:root:Cyl_14 ended at f = 300
+INFO:root:Cyl_14 ended at f = 301
+INFO:root:Cyl_14 ended at f = 302
+INFO:root:Cyl_14 ended at f = 303
+INFO:root:Cyl_14 ended at f = 304
+INFO:root:Cyl_14 ended at f = 305
+INFO:root:Cyl_14 ended at f = 306
+INFO:root:Cyl_14 ended at f = 307
+INFO:root:Cyl_14 ended at f = 308
+INFO:root:Cyl_14 ended at f = 309
+INFO:root:Cyl_14 ended at f = 310
+INFO:root:Cyl_14 ended at f = 311
+INFO:root:Cyl_14 ended at f = 312
+INFO:root:Cyl_14 ended at f = 313
+INFO:root:Cyl_14 ended at f = 314
+INFO:root:Cyl_14 ended at f = 315
+INFO:root:Cyl_14 ended at f = 316
+INFO:root:Cyl_14 ended at f = 317
+INFO:root:Cyl_14 ended at f = 318
+INFO:root:Cyl_14 ended at f = 319
+INFO:root:Cyl_14 ended at f = 320
+INFO:root:Cyl_14 ended at f = 321
+INFO:root:Cyl_14 ended at f = 322
+INFO:root:Cyl_14 ended at f = 323
+INFO:root:Cyl_14 ended at f = 324
+INFO:root:Cyl_14 ended at f = 325
+INFO:root:Cyl_14 ended at f = 326
+INFO:root:Cyl_14 ended at f = 327
+INFO:root:Cyl_14 ended at f = 328
+INFO:root:Cyl_14 ended at f = 329
+INFO:root:Cyl_14 ended at f = 330
+INFO:root:Cyl_14 ended at f = 135
+INFO:root:Cyl_14 ended at f = 331
+INFO:root:Cyl_14 ended at f = 332
+INFO:root:Cyl_14 ended at f = 333
+INFO:root:Cyl_14 ended at f = 334
+INFO:root:Cyl_14 ended at f = 335
+INFO:root:Cyl_14 ended at f = 136
+INFO:root:Cyl_14 ended at f = 336
+INFO:root:Cyl_14 ended at f = 337
+INFO:root:Cyl_14 ended at f = 338
+INFO:root:Cyl_14 ended at f = 339
+INFO:root:Cyl_14 ended at f = 137
+INFO:root:Cyl_14 ended at f = 340
+INFO:root:Cyl_14 ended at f = 341
+INFO:root:Cyl_14 ended at f = 342
+INFO:root:Cyl_14 ended at f = 343
+INFO:root:Cyl_14 ended at f = 138
+INFO:root:Cyl_14 ended at f = 344
+INFO:root:Cyl_14 ended at f = 345
+INFO:root:Cyl_14 ended at f = 346
+INFO:root:Cyl_14 ended at f = 347
+INFO:root:Cyl_14 ended at f = 139
+INFO:root:Cyl_14 ended at f = 348
+INFO:root:Cyl_14 ended at f = 349
+INFO:root:Cyl_14 ended at f = 350
+INFO:root:Cyl_14 ended at f = 351
+INFO:root:Cyl_14 ended at f = 140
+INFO:root:Cyl_14 ended at f = 352
+INFO:root:Cyl_14 ended at f = 353
+INFO:root:Cyl_14 ended at f = 354
+INFO:root:Cyl_14 ended at f = 355
+INFO:root:Cyl_14 ended at f = 141
+INFO:root:Cyl_14 ended at f = 356
+INFO:root:Cyl_14 ended at f = 357
+INFO:root:Cyl_14 ended at f = 358
+INFO:root:Cyl_14 ended at f = 359
+INFO:root:Cyl_14 ended at f = 360
+INFO:root:Cyl_14 ended at f = 142
+INFO:root:Cyl_14 ended at f = 361
+INFO:root:Cyl_14 ended at f = 362
+INFO:root:Cyl_14 ended at f = 363
+INFO:root:Cyl_14 ended at f = 364
+INFO:root:Cyl_14 ended at f = 143
+INFO:root:Cyl_14 ended at f = 365
+INFO:root:Cyl_14 ended at f = 366
+INFO:root:Cyl_14 ended at f = 367
+INFO:root:Cyl_14 ended at f = 368
+INFO:root:Cyl_14 ended at f = 144
+INFO:root:Cyl_14 ended at f = 369
+INFO:root:Cyl_14 ended at f = 370
+INFO:root:Cyl_14 ended at f = 371
+INFO:root:Cyl_14 ended at f = 372
+INFO:root:Cyl_14 ended at f = 145
+INFO:root:Cyl_14 ended at f = 373
+INFO:root:Cyl_14 ended at f = 374
+INFO:root:Cyl_14 ended at f = 375
+INFO:root:Cyl_14 ended at f = 376
+INFO:root:Cyl_14 ended at f = 146
+INFO:root:Cyl_14 ended at f = 377
+INFO:root:Cyl_14 ended at f = 378
+INFO:root:Cyl_14 ended at f = 379
+INFO:root:Cyl_14 ended at f = 380
+INFO:root:Cyl_14 ended at f = 147
+INFO:root:Cyl_14 ended at f = 381
+INFO:root:Cyl_14 ended at f = 382
+INFO:root:Cyl_14 ended at f = 383
+INFO:root:Cyl_14 ended at f = 384
+INFO:root:Cyl_14 ended at f = 148
+INFO:root:Cyl_14 ended at f = 385
+INFO:root:Cyl_14 ended at f = 386
+INFO:root:Cyl_14 ended at f = 387
+INFO:root:Cyl_14 ended at f = 388
+INFO:root:Cyl_14 ended at f = 389
+INFO:root:Cyl_14 ended at f = 149
+INFO:root:Cyl_14 ended at f = 390
+INFO:root:Cyl_14 ended at f = 391
+INFO:root:Cyl_14 ended at f = 392
+INFO:root:Cyl_14 ended at f = 393
+INFO:root:Cyl_14 ended at f = 150
+INFO:root:Cyl_14 ended at f = 394
+INFO:root:Cyl_14 ended at f = 395
+INFO:root:Cyl_14 ended at f = 396
+INFO:root:Cyl_14 ended at f = 397
+INFO:root:Cyl_14 ended at f = 151
+INFO:root:Cyl_14 ended at f = 398
+INFO:root:Cyl_14 ended at f = 399
+INFO:root:Cyl_14 ended at f = 400
+INFO:root:Cyl_14 ended at f = 401
+INFO:root:Cyl_14 ended at f = 152
+INFO:root:Cyl_14 ended at f = 402
+INFO:root:Cyl_14 ended at f = 403
+INFO:root:Cyl_14 ended at f = 404
+INFO:root:Cyl_14 ended at f = 405
+INFO:root:Cyl_14 ended at f = 153
+INFO:root:Cyl_14 ended at f = 406
+INFO:root:Cyl_14 ended at f = 407
+INFO:root:Cyl_14 ended at f = 408
+INFO:root:Cyl_14 ended at f = 409
+INFO:root:Cyl_14 ended at f = 154
+INFO:root:Cyl_14 ended at f = 410
+INFO:root:Cyl_14 ended at f = 411
+INFO:root:Cyl_14 ended at f = 412
+INFO:root:Cyl_14 ended at f = 413
+INFO:root:Cyl_14 ended at f = 155
+INFO:root:Cyl_14 ended at f = 414
+INFO:root:Cyl_14 ended at f = 415
+INFO:root:Cyl_14 ended at f = 416
+INFO:root:Cyl_14 ended at f = 417
+INFO:root:Cyl_14 ended at f = 418
+INFO:root:Cyl_14 ended at f = 156
+INFO:root:Cyl_14 ended at f = 419
+INFO:root:Cyl_14 ended at f = 420
+INFO:root:Cyl_14 ended at f = 421
+INFO:root:Cyl_14 ended at f = 422
+INFO:root:Cyl_14 ended at f = 157
+INFO:root:Cyl_14 ended at f = 423
+INFO:root:Cyl_14 ended at f = 424
+INFO:root:Cyl_14 ended at f = 425
+INFO:root:Cyl_14 ended at f = 426
+INFO:root:Cyl_14 ended at f = 158
+INFO:root:Cyl_14 ended at f = 427
+INFO:root:Cyl_14 ended at f = 428
+INFO:root:Cyl_14 ended at f = 429
+INFO:root:Cyl_14 ended at f = 430
+INFO:root:Cyl_14 ended at f = 159
+INFO:root:Cyl_14 ended at f = 431
+INFO:root:Cyl_14 ended at f = 432
+INFO:root:Cyl_14 ended at f = 433
+INFO:root:Cyl_14 ended at f = 434
+INFO:root:Cyl_14 ended at f = 435
+INFO:root:Cyl_14 ended at f = 160
+INFO:root:Cyl_14 ended at f = 436
+INFO:root:Cyl_14 ended at f = 437
+INFO:root:Cyl_14 ended at f = 438
+INFO:root:Cyl_14 ended at f = 439
+INFO:root:Cyl_14 ended at f = 161
+INFO:root:Cyl_14 ended at f = 440
+INFO:root:Cyl_14 ended at f = 441
+INFO:root:Cyl_14 ended at f = 442
+INFO:root:Cyl_14 ended at f = 443
+INFO:root:Cyl_14 ended at f = 444
+INFO:root:Cyl_14 ended at f = 162
+INFO:root:Cyl_14 ended at f = 445
+INFO:root:Cyl_14 ended at f = 446
+INFO:root:Cyl_14 ended at f = 447
+INFO:root:Cyl_14 ended at f = 448
+INFO:root:Cyl_14 ended at f = 163
+INFO:root:Cyl_14 ended at f = 449
+INFO:root:Cyl_14 ended at f = 450
+INFO:root:Cyl_14 ended at f = 451
+INFO:root:Cyl_14 ended at f = 452
+INFO:root:Cyl_14 ended at f = 164
+INFO:root:Cyl_14 ended at f = 453
+INFO:root:Cyl_14 ended at f = 454
+INFO:root:Cyl_14 ended at f = 455
+INFO:root:Cyl_14 ended at f = 456
+INFO:root:Cyl_14 ended at f = 165
+INFO:root:Cyl_14 ended at f = 457
+INFO:root:Cyl_14 ended at f = 458
+INFO:root:Cyl_14 ended at f = 459
+INFO:root:Cyl_14 ended at f = 460
+INFO:root:Cyl_14 ended at f = 461
+INFO:root:Cyl_14 ended at f = 462
+INFO:root:Cyl_14 ended at f = 166
+INFO:root:Cyl_14 ended at f = 463
+INFO:root:Cyl_14 ended at f = 464
+INFO:root:Cyl_14 ended at f = 465
+INFO:root:Cyl_14 ended at f = 466
+INFO:root:Cyl_14 ended at f = 467
+INFO:root:Cyl_14 ended at f = 167
+INFO:root:Cyl_14 ended at f = 468
+INFO:root:Cyl_14 ended at f = 469
+INFO:root:Cyl_14 ended at f = 470
+INFO:root:Cyl_14 ended at f = 471
+INFO:root:Cyl_14 ended at f = 472
+INFO:root:Cyl_14 ended at f = 168
+INFO:root:Cyl_14 ended at f = 473
+INFO:root:Cyl_14 ended at f = 474
+INFO:root:Cyl_14 ended at f = 475
+INFO:root:Cyl_14 ended at f = 476
+INFO:root:Cyl_14 ended at f = 477
+INFO:root:Cyl_14 ended at f = 169
+INFO:root:Cyl_14 ended at f = 478
+INFO:root:Cyl_14 ended at f = 479
+INFO:root:Cyl_14 ended at f = 480
+INFO:root:Cyl_14 ended at f = 481
+INFO:root:Cyl_14 ended at f = 482
+INFO:root:Cyl_14 ended at f = 483
+INFO:root:Cyl_14 ended at f = 170
+INFO:root:Cyl_14 ended at f = 484
+INFO:root:Cyl_14 ended at f = 485
+INFO:root:Cyl_14 ended at f = 486
+INFO:root:Cyl_14 ended at f = 487
+INFO:root:Cyl_14 ended at f = 488
+INFO:root:Cyl_14 ended at f = 171
+INFO:root:Cyl_14 ended at f = 489
+INFO:root:Cyl_14 ended at f = 490
+INFO:root:Cyl_14 ended at f = 491
+INFO:root:Cyl_14 ended at f = 492
+INFO:root:Cyl_14 ended at f = 493
+INFO:root:Cyl_14 ended at f = 172
+INFO:root:Cyl_14 ended at f = 494
+INFO:root:Cyl_14 ended at f = 495
+INFO:root:Cyl_14 ended at f = 496
+INFO:root:Cyl_14 ended at f = 497
+INFO:root:Cyl_14 ended at f = 498
+INFO:root:Cyl_14 ended at f = 173
+INFO:root:Cyl_14 ended at f = 499
+INFO:root:Cyl_14 ended at f = 500
+INFO:root:Cyl_14 ended at f = 501
+INFO:root:Cyl_14 ended at f = 502
+INFO:root:Cyl_14 ended at f = 503
+INFO:root:Cyl_14 ended at f = 174
+INFO:root:Cyl_14 ended at f = 504
+INFO:root:Cyl_14 ended at f = 505
+INFO:root:Cyl_14 ended at f = 506
+INFO:root:Cyl_14 ended at f = 507
+INFO:root:Cyl_14 ended at f = 175
+INFO:root:Cyl_14 ended at f = 508
+INFO:root:Cyl_14 ended at f = 509
+INFO:root:Cyl_14 ended at f = 510
+INFO:root:Cyl_14 ended at f = 511
+INFO:root:Cyl_14 ended at f = 512
+INFO:root:Cyl_14 ended at f = 176
+INFO:root:Cyl_14 ended at f = 513
+INFO:root:Cyl_14 ended at f = 514
+INFO:root:Cyl_14 ended at f = 515
+INFO:root:Cyl_14 ended at f = 516
+INFO:root:Cyl_14 ended at f = 177
+INFO:root:Cyl_14 ended at f = 517
+INFO:root:Cyl_14 ended at f = 518
+INFO:root:Cyl_14 ended at f = 519
+INFO:root:Cyl_14 ended at f = 520
+INFO:root:Cyl_14 ended at f = 178
+INFO:root:Cyl_14 ended at f = 521
+INFO:root:Cyl_14 ended at f = 522
+INFO:root:Cyl_14 ended at f = 523
+INFO:root:Cyl_14 ended at f = 524
+INFO:root:Cyl_14 ended at f = 525
+INFO:root:Cyl_14 ended at f = 179
+INFO:root:Cyl_14 ended at f = 526
+INFO:root:Cyl_14 ended at f = 527
+INFO:root:Cyl_14 ended at f = 528
+INFO:root:Cyl_14 ended at f = 529
+INFO:root:Cyl_14 ended at f = 180
+INFO:root:Cyl_14 ended at f = 530
+INFO:root:Cyl_14 ended at f = 531
+INFO:root:Cyl_14 ended at f = 532
+INFO:root:Cyl_14 ended at f = 533
+INFO:root:Cyl_14 ended at f = 534
+INFO:root:Cyl_14 ended at f = 181
+INFO:root:Cyl_14 ended at f = 535
+INFO:root:Cyl_14 ended at f = 536
+INFO:root:Cyl_14 ended at f = 537
+INFO:root:Cyl_14 ended at f = 538
+INFO:root:Cyl_14 ended at f = 182
+INFO:root:Cyl_14 ended at f = 539
+INFO:root:Cyl_14 ended at f = 540
+INFO:root:Cyl_14 ended at f = 541
+INFO:root:Cyl_14 ended at f = 542
+INFO:root:Cyl_14 ended at f = 543
+INFO:root:Cyl_14 ended at f = 183
+INFO:root:Cyl_14 ended at f = 544
+INFO:root:Cyl_14 ended at f = 545
+INFO:root:Cyl_14 ended at f = 546
+INFO:root:Cyl_14 ended at f = 547
+INFO:root:Cyl_14 ended at f = 184
+INFO:root:Cyl_14 ended at f = 548
+INFO:root:Cyl_14 ended at f = 549
+INFO:root:Cyl_14 ended at f = 550
+INFO:root:Cyl_14 ended at f = 551
+INFO:root:Cyl_14 ended at f = 552
+INFO:root:Cyl_14 ended at f = 185
+INFO:root:Cyl_14 ended at f = 553
+INFO:root:Cyl_14 ended at f = 554
+INFO:root:Cyl_14 ended at f = 555
+INFO:root:Cyl_14 ended at f = 556
+INFO:root:Cyl_14 ended at f = 186
+INFO:root:Cyl_14 ended at f = 557
+INFO:root:Cyl_14 ended at f = 558
+INFO:root:Cyl_14 ended at f = 559
+INFO:root:Cyl_14 ended at f = 560
+INFO:root:Cyl_14 ended at f = 561
+INFO:root:Cyl_14 ended at f = 187
+INFO:root:Cyl_14 ended at f = 562
+INFO:root:Cyl_14 ended at f = 563
+INFO:root:Cyl_14 ended at f = 564
+INFO:root:Cyl_14 ended at f = 565
+INFO:root:Cyl_14 ended at f = 188
+INFO:root:Cyl_14 ended at f = 566
+INFO:root:Cyl_14 ended at f = 567
+INFO:root:Cyl_14 ended at f = 568
+INFO:root:Cyl_14 ended at f = 569
+INFO:root:Cyl_14 ended at f = 570
+INFO:root:Cyl_14 ended at f = 189
+INFO:root:Cyl_14 ended at f = 571
+INFO:root:Cyl_14 ended at f = 572
+INFO:root:Cyl_14 ended at f = 573
+INFO:root:Cyl_14 ended at f = 574
+INFO:root:Cyl_14 ended at f = 575
+INFO:root:Cyl_14 ended at f = 576
+INFO:root:Cyl_14 ended at f = 190

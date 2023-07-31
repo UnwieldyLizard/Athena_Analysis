@@ -1,12 +1,14 @@
 #from branches.angular_momentum import *
-from branches.meccentricity_profile import *
+#from branches.meccentricity_profile import *
 #from branches.meccentricity_plot import *
-#from branches.profile import *
-from branches.roots.misc_func import *
-from branches.roots.utility import *
+from branches.profile import *
+#from branches.roots.misc_func import *
+#from branches.roots.utility import *
 #from branches.mplottesting import *
 
-split_profile_replot("Cyl_13", 2200)
+append_dataset_alpha(["Cyl_14"], [0,2000])
+
+#main("Cyl_13", [0, 10000], 100)
 
 """
 P = Profile("Cyl_11")

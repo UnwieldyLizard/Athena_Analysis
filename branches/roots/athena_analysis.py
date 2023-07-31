@@ -559,7 +559,7 @@ class Athena_Analysis():
                 newcolors[n][3] = 1
             self.angular_cmap = colors.ListedColormap(newcolors, "angular")
 
-    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False):
+    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False, cmap="viridis", rotation = 0):
         """
         Makes a color plot of a value over the midplane
 
@@ -575,6 +575,8 @@ class Athena_Analysis():
             Determine if Log scaled axes are used
         vbound : list of int, default [1e-5, 10]
             Determins the bounds of the y axis.
+        rotation : float, default 0 
+            The angle in radians the image should be rotated (not it does this by rotating the coordinates the opposite amount)
         """
 
         if vbound[0] < 0 and log == True:
@@ -596,12 +598,15 @@ class Athena_Analysis():
             #print('zs', q.shape)
             x = self.x[tuple(self.slice_idx)]
             y = self.y[tuple(self.slice_idx)]
+            complex_position = (x + y*1j) * np.exp(-1j*rotation)
+            x = complex_position.real
+            y = complex_position.imag
             z = self.z[tuple(self.slice_idx)]
             ax.set_xlabel("x")
             ax.set_ylabel("y")
         #z slice end
 
-        #y slice profile??
+        #y slice profile
         if slicetype == 'y':
             self.cart_grid(projection='3D')
             self.get_slice_idx(slice_axis='y', slice_center=0, slice_width=0.6)
@@ -682,8 +687,6 @@ class Athena_Analysis():
         if angular == True:
             self._build_angular_cmap()
             cmap=self.angular_cmap
-        else:
-            cmap="viridis"
             
         ax.grid(False)
         if angular == True:

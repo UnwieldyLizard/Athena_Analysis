@@ -4,7 +4,7 @@ from branches.meccentricity_plot import*
 from branches.roots.misc_func import *
 #from branches.roots.utility import *
 
-eccentricity_plot("Cyl_13", [0, 10000], inertial=True)
+eccentricity_plot("Cyl_14", [0, 10000], inertial=True)
 """
 P = Profile("Cyl_11")
 P.plasma_beta(1500)
