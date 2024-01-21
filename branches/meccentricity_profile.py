@@ -6,12 +6,16 @@ import pickle
 logging.basicConfig(filename=file.logs_loc+"/meccentricity_profile.log", encoding='utf-8', level=logging.INFO)
 
 
-def eccentricity_profile(dname, fnum_limits, file_spacing, plot_every=100, pickle_every=None, pickle_flags=[], restart=False, alpha=None):
+def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, pickle_every=None, pickle_flags=[], restart=False, alpha=None, stress_test = False):
     aname = "_eccent_growth_prec" #a for analysis
+    if stress_test:
+        aname += "_stress"
     data_location = file.data_loc + dname
     coordinates = file.grid_types[dname]
     MHD = file.MHD[dname]
     #data_location = file.mkitp + file.alpha3
+    if file_spacing is None:
+        file_spacing = find_file_spacing(dname)
     savedir = file.savedir + dname + "/" + dname + aname
     mkdir_if_not_exist(savedir)
     mkdir_if_not_exist(savedir + "/pickles")
@@ -24,9 +28,14 @@ def eccentricity_profile(dname, fnum_limits, file_spacing, plot_every=100, pickl
         dname = dname + "_%ssrt" % fnum_range[0]
 
     if MHD == True:
-        terms = ["tidal", "press", "boundary", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress"]
-        sum_terms = ["tidal", "press", "boundary", "Bpress", "Btens"]
-        MAGNETIC_FIELDS_ENABLED = True
+        if stress_test:
+            terms = ["tidal", "press", "boundary", "B", "vpress", "hpress", "vB", "hB"]
+            sum_terms = ["tidal", "press", "boundary", "B"]
+            MAGNETIC_FIELDS_ENABLED = True
+        else:
+            terms = ["tidal", "press", "boundary", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress"]
+            sum_terms = ["tidal", "press", "boundary", "Bpress", "Btens"]
+            MAGNETIC_FIELDS_ENABLED = True
     else:
         terms = ["tidal", "press", "boundary", "visc", "vpress", "hpress", "tidal_vr"]
         sum_terms = ["tidal", "press", "boundary", "visc"]
@@ -151,9 +160,10 @@ def eccentricity_profile(dname, fnum_limits, file_spacing, plot_every=100, pickl
         if MAGNETIC_FIELDS_ENABLED:
             aa.get_Bfields()
         force = {}
+        
         force["tidal"] = -1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=coordinates)
-        force["press"] = -1 * aa.gradient(aa.press, coordinates=coordinates)
-        if MAGNETIC_FIELDS_ENABLED:
+        
+        if MAGNETIC_FIELDS_ENABLED and (not stress_test):
             if aa.gridtype == "Spherical":
                 force["Bpress"] = -1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=coordinates)
                 force["Btens"] = aa.material_derivative([aa.B_phi, aa.B_theta, aa.B_r], [aa.B_phi, aa.B_theta, aa.B_r])
@@ -167,9 +177,24 @@ def eccentricity_profile(dname, fnum_limits, file_spacing, plot_every=100, pickl
                 force["vBpress"][1, :] *= 0
                 force["vBpress"][2, :] *= 0
             force["hBpress"] = force["Bpress"] - force["vBpress"]
+        elif stress_test:
+            if aa.gridtype == "Sphereical":
+                logging.info("not implimented spherical stress calc in eccent prof")
+            if aa.gridtype == "Cylindrical":
+                B_sq = ((aa.B_z * aa.B_z) + (aa.B_phi * aa.B_phi) + (aa.B_r * aa.B_r))
+                max_stress = np.array([[aa.B_z * aa.B_z - (B_sq/2), aa.B_z * aa.B_phi             , aa.B_z * aa.B_r],
+                                        [aa.B_z * aa.B_phi        , aa.B_phi * aa.B_phi - (B_sq/2), aa.B_phi * aa.B_r],
+                                        [aa.B_z * aa.B_r          , aa.B_r * aa.B_phi             , aa.B_r * aa.B_r - (B_sq/2)]])
+                force["B"] = aa.tensor_divergence(max_stress)
+                force["vB"] = np.array(force["B"])
+                force["vB"][1, :] *= 0
+                force["vB"][2, :] *= 0
+            force["hB"] = force["B"] - force["vB"]
         else:
             force["visc"] = aa.alpha_visc(alpha)
             logging.info("alpha visc in testing")
+
+        force["press"] = -1 * aa.gradient(aa.press, coordinates=coordinates)    
         force["vpress"] = np.array(force["press"], dtype=np.float32)
         if aa.gridtype == "Spherical":
             force["vpress"][0, :] *= 0
@@ -496,6 +521,191 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
     plt.savefig("%s/%s%s_prec_%05d.png" % (savedir, pname, dname, fnum))
     plt.close()
 
+def eccentricity_radial_profile(dname, fnum):
+    aname = "_eccent_growth_prec" #a for analysis
+    sname = "radial"
+    data_location = file.data_loc + dname
+    coordinates = file.grid_types[dname]
+    MHD = file.MHD[dname]
+    alpha = file.alpha[dname]
+    #data_location = file.mkitp + file.alpha3
+    savedir = file.savedir + dname + "/" + dname + aname
+    mkdir_if_not_exist(savedir)
+    mkdir_if_not_exist(savedir + "/pickles")
+
+    if MHD == True:
+        terms = ["tidal", "press", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress", "flux"]
+        sum_terms = ["tidal", "press", "Bpress", "Btens", "flux"]
+        MAGNETIC_FIELDS_ENABLED = True
+    else:
+        terms = ["tidal", "press", "visc", "vpress", "hpress", "tidal_vr", "flux"]
+        sum_terms = ["tidal", "press", "visc", "flux"]
+        MAGNETIC_FIELDS_ENABLED = False
+    
+    eccent_term = {}
+    eccent_term_phase = {}
+
+    filename = "%s/disk.out1.%05d.athdf" % (data_location, fnum)
+    
+    aa = Athena_Analysis(filename=filename, grid_type= coordinates)
+    
+    orbit = (aa.time / sim.binary_period)
+
+    #calculate forces
+    aa.get_primaries(get_rho=True, get_press=True)
+    aa.get_potentials(get_companion_grav=True, get_accel=True, get_wd_grav=True)
+    aa.build_vectors()
+    if MAGNETIC_FIELDS_ENABLED:
+        aa.get_Bfields()
+    force = {}
+    force["tidal"] = -1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=coordinates)
+    force["press"] = -1 * aa.gradient(aa.press, coordinates=coordinates)
+    if MAGNETIC_FIELDS_ENABLED:
+        if aa.gridtype == "Spherical":
+            force["Bpress"] = -1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=coordinates)
+            force["Btens"] = aa.material_derivative([aa.B_phi, aa.B_theta, aa.B_r], [aa.B_phi, aa.B_theta, aa.B_r])
+            force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
+            force["vBpress"][0, :] *= 0
+            force["vBpress"][2, :] *= 0
+        elif aa.gridtype == "Cylindrical":
+            force["Bpress"] = -1 * aa.gradient(((aa.B_z ** 2) + (aa.B_phi ** 2) + (aa.B_r ** 2)) / 2, coordinates=coordinates)
+            force["Btens"] = aa.material_derivative([aa.B_z, aa.B_phi, aa.B_r], [aa.B_z, aa.B_phi, aa.B_r])
+            force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
+            force["vBpress"][1, :] *= 0
+            force["vBpress"][2, :] *= 0
+        force["hBpress"] = force["Bpress"] - force["vBpress"]
+    else:
+        force["visc"] = aa.alpha_visc(alpha)
+        logging.info("alpha visc in testing")
+    force["vpress"] = np.array(force["press"], dtype=np.float32)
+    if aa.gridtype == "Spherical":
+        force["vpress"][0, :] *= 0
+        force["vpress"][2, :] *= 0
+    elif aa.gridtype == "Cylindrical":
+        force["vpress"][1, :] *= 0
+        force["vpress"][2, :] *= 0
+    force["hpress"] = force["press"] - force["vpress"]
+
+    #Mass Weighted Eccentricity
+    lrl_native, lrl_cart = aa.get_lrl(components = True)        
+    shell_mass = aa.integrate(aa.rho, variable='shell')
+    rhoxlrl = np.array([aa.rho*lrl_cart[0], aa.rho*lrl_cart[1], np.zeros(aa.array_size)])
+    shell_rhoxlrl = aa.vec_shell_integrate(rhoxlrl)
+    mass_weighted_eccent = shell_rhoxlrl / shell_mass
+
+    vel = aa.native_to_cart(np.array([aa.vel_z, aa.vel_phi, aa.vel_r]))
+    eccent_flux = aa.rho * np.array([lrl_cart[0] * vel, lrl_cart[1] * vel, lrl_cart[2] * vel])  
+    flux_term = aa.vec_shell_integrate(-1 * np.array([aa.divergence(eccent_flux[0]), aa.divergence(eccent_flux[1]), aa.divergence(eccent_flux[2])])) / shell_mass
+    growth, prec = vec.growth_prec(flux_term, mass_weighted_eccent)
+    eccent_term["flux"] = growth
+    eccent_term_phase["flux"] = prec
+
+    eccent = vec.get_magnitude(mass_weighted_eccent)
+    eccent_phase = np.arctan2(mass_weighted_eccent[1], mass_weighted_eccent[0]) + sim.orbital_Omega * aa.time
+
+    # calculate C
+    aa.get_primaries(get_vel_r=True, get_vel_phi=True)
+    C = {}
+    for key in force:
+        C[key] = aa.get_C_vec(force[key])
+        C[key] = aa.native_to_cart(C[key])
+        evol_C = aa.vec_shell_integrate(C[key]) / shell_mass
+        growth, prec = vec.growth_prec(evol_C, mass_weighted_eccent)
+
+        eccent_term[key] = growth
+        eccent_term_phase[key] = prec
+
+    # #Boundary
+    # rhoxlrl_flux = np.array([aa.get_boundary_flux(rhoxlrl[0]), aa.get_boundary_flux(rhoxlrl[1]), 0])
+    # advect_evol = -1 * rhoxlrl_flux / total_mass
+    # adv_growth, adv_prec = vec.growth_prec(advect_evol, mass_weighted_eccent)
+
+    # mass_flux = aa.get_boundary_flux(aa.rho)
+
+    # massd_evol = mass_flux * np.array(mass_weighted_eccent) / total_mass
+    # growth, prec = vec.growth_prec(massd_evol, mass_weighted_eccent)
+
+    # eccent_term_series["boundary"][j] = adv_growth + growth
+    # eccent_term_phase_series["boundary"][j] = adv_prec + prec
+
+    # set up plot
+
+    r_axis = aa.possible_r
+
+    logging.info("\tplot")
+
+    # growth plot
+    vert = 2
+    horz = 1
+    gs = gridspec.GridSpec(vert, horz)
+    fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
+
+    ax = fig.add_subplot(gs[0, 0])
+    ax.plot(r_axis, eccent, "C2-", label="eccent")
+    ax.set_xlabel("r")
+    ax.set_ylabel("eccent magnitude")
+    #ax.set_ylim([1e-4, 1])
+    #ax.set_yscale("log")
+    #ax.set_title("mhd_3d eccent magnitude")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 0])
+    for k, key in enumerate(terms):
+        ax.plot(r_axis, eccent_term[key], f"C{k}-", label=key)
+    ax.set_xlabel("r")
+    ax.set_ylabel("eccent contribution")
+    #ax.set_title("mhd_3d time integrated sources")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    plt.subplots_adjust(top=(1-0.01*(16/vert)))
+    title = f"{dname}: orbit {orbit:.2f}" 
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.savefig("%s/%s_growth_%05d_rad.png" % (savedir, dname, fnum))
+    plt.close()
+
+    # precession plot
+    vert = 2
+    horz = 1
+    gs = gridspec.GridSpec(vert, horz)
+    fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
+
+    ax = fig.add_subplot(gs[0, 0])
+    ax.plot(r_axis, wrap_phase(eccent_phase) / np.pi, "C3-", label="measured")
+    ax.set_xlabel("r")
+    ax.set_ylabel("eccent phase")
+    ax.set_ylim([-1, 1])
+    #ax.set_yscale("log")
+    ax.set_title("mhd_3d eccent phase")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 0])
+    for k, key in enumerate(terms):
+        ax.plot(r_axis, (wrap_phase(eccent_term_phase[key])) / np.pi, f"C{k}-", label=key)
+    ax.set_xlabel("r")
+    ax.set_ylabel("eccent phase contribution")
+    ax.set_ylim([-1, 1])
+    ax.set_title("mhd_3d time integrated sources")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    plt.subplots_adjust(top=(1-0.01*(16/vert)))
+    title = f"{dname}: orbit {orbit:.2f}" 
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.savefig("%s/%s_prec_%05d_rad.png" % (savedir, dname, fnum))
+    plt.close()
+
+
 def tidal_profile(dname, fnum, grid_type, phi_slicepoint=None, radial_slice_loop=False):
     aname = "_tidal" #a for analysis
     tidal_profile.aname = aname
@@ -561,7 +771,7 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
     savedir = file.savedir + dname + "/" + dname + aname
     mkdir_if_not_exist(savedir)
     mkdir_if_not_exist(savedir + "/"+sname+"_pickles")
-    if pickle_every == None:
+    if pickle_every is None:
         pickle_every = plot_every
     file_spacing = find_file_spacing(dname)
     fnum_range = list(range(fnum_limits[0], fnum_limits[1], file_spacing))
@@ -585,14 +795,14 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
             found_load_point = False
             load_point = fnum - file_spacing
             while found_load_point == False:
-                if os.path.exists("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point)):
+                if os.path.exists("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, load_point)):
                     logging.info("Found data, loading from: %s" % load_point)
                     found_load_point = True
                 else:
                     load_point -= file_spacing
                 if load_point <= 0:
                     raise("No load point, you need to restart")
-            with open("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point), "rb") as pickle_file:
+            with open("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, load_point), "rb") as pickle_file:
                 data = pickle.load(pickle_file)
             i_0 = data["offset"]
 
@@ -725,14 +935,14 @@ def split_profile_replot(dname, fnum, pname="", aspect_ratio=2):
     found_load_point = False
     load_point = fnum
     while found_load_point == False:
-        if os.path.exists("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point)):
+        if os.path.exists("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, fnum)):
             logging.info("Found data, plotting from: %s" % load_point)
             found_load_point = True
         else:
             load_point -= 1
         if load_point <= 0:
             raise("No data found to plot")
-    with open("%s/pickles/%s_pickle_%05d.dat" % (savedir, dname, load_point), "rb") as pickle_file:
+    with open("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, fnum), "rb") as pickle_file:
         data = pickle.load(pickle_file)
 
     # growth plot
@@ -775,7 +985,171 @@ def split_profile_replot(dname, fnum, pname="", aspect_ratio=2):
     #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
     plt.tight_layout()
-    plt.savefig("%s/%s_prec_%05d%s.png" % (savedir, dname, fnum, sname))
+    plt.savefig("%s/%s%s_growth_%05d%s.png" % (savedir, pname, dname, fnum, sname))
+    plt.close()
+
+def split_profile_rates(dname, fnum, pname="", aspect_ratio=2, num_orbits_ave=1):
+    """
+    replots data + precession rates
+
+    Parameters
+    ----------
+    dname, str:
+        The name of the data set
+    fnum, int:
+        The filenumber where you'd like to replot
+    pname, str:
+        Special prefix for output file names
+    aspect_ratio, float:
+        Length over height
+    MHD, bool:
+        If it's MHD or not
+    """
+    aname = "_eccent_growth_prec" #a for analysis
+    sname = "_split"
+    savedir = file.savedir + dname + "/" + dname + aname
+    logging.info("looking for file")
+    found_load_point = False
+    load_point = fnum
+    while found_load_point == False:
+        if os.path.exists("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, fnum)):
+            logging.info("Found data, plotting from: %s" % load_point)
+            found_load_point = True
+        else:
+            load_point -= 1
+        if load_point <= 0:
+            raise("No data found to plot")
+    with open("%s/%spickles/%s_pickle_%05d.dat" % (savedir, sname+"_", dname, fnum), "rb") as pickle_file:
+        data = pickle.load(pickle_file)
+
+    num_files_ave = int(num_orbits_ave * sim.filenums_per_orbit)
+
+    # growth plot
+    vert = 2
+    horz = 3
+
+    if aspect_ratio >= 1:
+        vert_scale = 1
+        horz_scale = aspect_ratio
+    else:
+        vert_scale = 1 / aspect_ratio
+        horz_scale = 1
+
+    gs = gridspec.GridSpec(vert, horz)
+    fig = plt.figure(figsize=(horz_scale * horz*3, vert_scale * vert*3), dpi=300)
+
+    ax = fig.add_subplot(gs[0, 0])
+    ax.plot(data["orbit_series"], data["out_eccent_series"], "C9-", label="outer disk")
+    ax.plot(data["orbit_series"], data["in_eccent_series"], "C2-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent magnitude")
+    ax.set_ylim([1e-4, 1])
+    ax.set_yscale("log")
+    ax.set_title("eccent magnitude")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[0, 1])
+    dorbit = data["orbit_series"][1] - data["orbit_series"][0]
+    deccent_in = data["in_eccent_series"][1:] - data["in_eccent_series"][:-1]
+    deccent_out = data["out_eccent_series"][1:] - data["out_eccent_series"][:-1]
+    growth_rate_in = deccent_in/dorbit
+    growth_rate_out = deccent_out/dorbit
+    rate_orbit_axis = data["orbit_series"][1:] - dorbit
+    ax.plot(rate_orbit_axis, growth_rate_out, "C9-", label="outer disk")
+    ax.plot(rate_orbit_axis, growth_rate_in, "C2-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent growth rate")
+    ax.set_ylim([-0.5, 0.5])
+    #ax.set_yscale("log")
+    ax.set_title("eccent magnitude growth rate")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g /orbit'))
+
+    ax = fig.add_subplot(gs[0, 2])
+    growth_rate_in_ave = (growth_rate_in[num_files_ave:])
+    growth_rate_out_ave = (growth_rate_out[num_files_ave:])
+    orbit_ave_axis = (rate_orbit_axis[num_files_ave:])
+    for k in range(num_files_ave-1):
+        growth_rate_in_ave = growth_rate_in_ave + (growth_rate_in[num_files_ave-(k+1):-(k+1)])
+        growth_rate_out_ave = growth_rate_out_ave + (growth_rate_out[num_files_ave-(k+1):-(k+1)])
+        orbit_ave_axis = orbit_ave_axis + (rate_orbit_axis[num_files_ave-(k+1):-(k+1)])
+    growth_rate_in_ave = growth_rate_in_ave / num_files_ave
+    growth_rate_out_ave = growth_rate_out_ave / num_files_ave
+    orbit_ave_axis = orbit_ave_axis / num_files_ave
+    ax.plot(orbit_ave_axis, growth_rate_out_ave, "C9-", label="outer disk")
+    ax.plot(orbit_ave_axis, growth_rate_in_ave, "C2-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent growth rate")
+    ax.set_ylim([-0.05, 0.05])
+    #ax.set_yscale("log")
+    ax.set_title(f"eccent magnitude growth rate averaged over {num_orbits_ave} orbits")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g /orbit'))
+
+    ax = fig.add_subplot(gs[1, 0])
+    ax.plot(data["orbit_series"], wrap_phase(data["out_eccent_phase_series"]) / np.pi, "C1-", label="outer disk")
+    ax.plot(data["orbit_series"], wrap_phase(data["in_eccent_phase_series"]) / np.pi, "C3-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent phase")
+    ax.set_ylim([-1, 1])
+    #ax.set_yscale("log")
+    ax.set_title("eccent phase")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 1])
+    deccent_ph_in = data["in_eccent_phase_series"][1:] - data["in_eccent_phase_series"][:-1]
+    deccent_ph_out = data["out_eccent_phase_series"][1:] - data["out_eccent_phase_series"][:-1]
+    flips_bool_in = (deccent_ph_in >= 1.9*np.pi)
+    flips_bool_out = (deccent_ph_out >= 1.9*np.pi)
+    neg_flips_bool_in = (deccent_ph_in <= -1.9*np.pi)
+    neg_flips_bool_out = (deccent_ph_out <= -1.9*np.pi)
+    deccent_ph_in = deccent_ph_in - 2*np.pi*flips_bool_in + 2*np.pi*neg_flips_bool_in
+    deccent_ph_out = deccent_ph_out - 2*np.pi*flips_bool_out + 2*np.pi*neg_flips_bool_out
+    prec_rate_in = deccent_ph_in#/dorbit
+    prec_rate_out = deccent_ph_out#/dorbit
+    ax.plot(rate_orbit_axis, prec_rate_out / np.pi, "C1-", label="outer disk")
+    ax.plot(rate_orbit_axis, prec_rate_in / np.pi, "C3-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent phase precession rate")
+    ax.set_ylim([-0.1, 0.1])
+    #ax.set_yscale("log")
+    ax.set_title("eccent phase precession rate")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$/orbit'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 2])
+    prec_rate_in_ave = (prec_rate_in[num_files_ave:])
+    prec_rate_out_ave = (prec_rate_out[num_files_ave:])
+    for k in range(num_files_ave-1):
+        prec_rate_in_ave = prec_rate_in_ave + (prec_rate_in[num_files_ave-(k+1):-(k+1)])
+        prec_rate_out_ave = prec_rate_out_ave + (prec_rate_out[num_files_ave-(k+1):-(k+1)])
+    prec_rate_in_ave = prec_rate_in_ave / num_files_ave
+    prec_rate_out_ave = prec_rate_out_ave / num_files_ave
+    ax.plot(orbit_ave_axis, prec_rate_out_ave / np.pi, "C1-", label="outer disk")
+    ax.plot(orbit_ave_axis, prec_rate_in_ave / np.pi, "C3-", label="inner disk")
+    ax.set_xlabel("binary orbit")
+    ax.set_ylabel("eccent phase precession rate")
+    ax.set_ylim([-0.01, 0.01])
+    #ax.set_yscale("log")
+    ax.set_title(f"eccent phase precession rate averaged over {num_orbits_ave} orbits")
+    ax.legend(loc="upper left")
+    #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$/orbit'))
+    #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    plt.subplots_adjust(top=(1-0.01*(16/vert)))
+    plt.suptitle(dname)
+    plt.tight_layout()
+    plt.savefig("%s/%s%02d%s_growth_%05d%s.png" % (savedir, pname, num_orbits_ave, dname, fnum, sname))
     plt.close()
 
 def tidal_profile_cmap(dname, fnum, grid_type):

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#SBATCH --partition batch
+##SBATCH --ntasks=1 
+##SBATCH --ntasks-per-core 1
+#SBATCH -o /home/mohana/mhd_superhump/Athena_Analysis/job_requests/leaf8.log
+
+##SBATCH --time 48:00:00
+#SBATCH --mail-user mohana@ucsb.edu
+#SBATCH --mail-type ALL
+
+##pathing
+home_path=/home/mohana
+mhd_path=$home_path/mhd_superhump
+athena_analysis_path=$mhd_path/Athena_Analysis
+
+cd $athena_analysis_path/
+
+## Load anaconda env
+source $home_path/.bashrc
+source activate base
+
+## Execute the python script
+python ./leaf8.py

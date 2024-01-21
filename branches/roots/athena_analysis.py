@@ -14,6 +14,9 @@ from scipy.interpolate import griddata
 #Matplotlib
 from matplotlib import pyplot as plt
 from matplotlib import colors as colors
+from matplotlib.colors import SymLogNorm, LogNorm
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import Normalize
 from matplotlib import cm as cm
 import matplotlib.gridspec as gridspec
 from matplotlib import patches
@@ -145,6 +148,7 @@ class Athena_Analysis():
             self.z_len = len(self.z_primitive[0])
             self.array_size = (self.NumMeshBlocks, self.z_len, self.phi_len, self.r_len)
             self.vector_array_size = (3, self.NumMeshBlocks, self.z_len, self.phi_len, self.r_len)
+            self.tensor_array_size = (3, 3, self.NumMeshBlocks, self.z_len, self.phi_len, self.r_len)
 
             self.possible_r = np.sort(list(set((self.r_primitive).flatten())))
             self.possible_phi = np.sort(list(set((self.phi_primitive).flatten())))
@@ -498,7 +502,7 @@ class Athena_Analysis():
                 self.slice_axis = slice_axis
                 self.slice_lower_bound = slice_center - (slice_width/2)
                 self.slice_upper_bound = slice_center + (slice_width/2)
-                self.slice_idx = np.array(list(filter(self._slice_filter, idx)))
+                slice_idx = np.array(list(filter(self._slice_filter, idx)))
                 #print(slice_axis, "slice (no y)", self.slice_idx)
         if self.gridtype == "Cylindrical":
             idx = np.arange(0, self.NumMeshBlocks)
@@ -509,27 +513,37 @@ class Athena_Analysis():
                 self.slice_axis = slice_axis
                 self.slice_lower_bound = slice_center - (slice_width/2)
                 self.slice_upper_bound = slice_center + (slice_width/2)
-                self.slice_idx = np.array(list(filter(self._slice_filter, idx)))
+                slice_idx = np.array(list(filter(self._slice_filter, idx)))
         if slice_axis == 'x':
             self.cart_grid(projection='2D')
-            self.slice_idx = [abs(self.x - slice_center) < slice_width]
+            slice_idx = [abs(self.x - slice_center) < slice_width]
         if slice_axis == 'y':
             self.cart_grid(projection='2D')
-            self.slice_idx = [abs(self.y - slice_center) < slice_width]
+            slice_idx = [abs(self.y - slice_center) < slice_width]
         if slice_axis == 'z':
             #this works and idk why
             self.cart_grid(projection='2D')
-            self.slice_idx = [abs(self.z - slice_center) < slice_width]
-        if len(self.slice_idx) == 0:
+            slice_idx = [abs(self.z - slice_center) < slice_width]
+        if len(slice_idx) == 0:
             warnings.warn("The slice is empty. This will raise errors if you try to index with it.")
-        return self.slice_idx
+        return slice_idx
 
-    def _midplane_plotter_grid(self):
-        if self.midplane_plotter_grid is None:
-            slice_xmax = self.possible_rf[-1]
-            slice_ymax = self.possible_rf[-1]
-            [slice_x, slice_y] = (np.mgrid[-slice_xmax:slice_xmax:512j,-slice_ymax:slice_ymax:512j])
-            self.midplane_plotter_grid = [slice_x, slice_y]
+    def get_rot_slice_idx(self, rotation, slice_center, slice_width):
+        self._axes()
+        if self.gridtype == "Cylindrical":
+            self.cart_grid(projection='3D')
+            idx = np.arange(0, self.NumMeshBlocks)
+            complex_position = (self.x + self.y*1j) * np.exp(-1j*rotation)
+            slice_x = complex_position.real
+            slice_y = complex_position.imag
+            slice_idx = [abs(slice_y - slice_center) < slice_width]
+        if len(slice_idx) == 0:
+            warnings.warn("The slice is empty. This will raise errors if you try to index with it.")
+        return slice_idx
+
+    def _midplane_plotter_grid(self, slice_xmax, slice_ymax):
+        [slice_x, slice_y] = (np.mgrid[-slice_xmax:slice_xmax:512j,-slice_ymax:slice_ymax:512j])
+        return [slice_x, slice_y]
 
     def _build_angular_cmap(self):
         if self.angular_cmap is None:
@@ -559,7 +573,7 @@ class Athena_Analysis():
                 newcolors[n][3] = 1
             self.angular_cmap = colors.ListedColormap(newcolors, "angular")
 
-    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False, cmap="viridis", rotation = 0):
+    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False, cmap="viridis", norm=None, rotation = 0):
         """
         Makes a color plot of a value over the midplane
 
@@ -579,10 +593,6 @@ class Athena_Analysis():
             The angle in radians the image should be rotated (not it does this by rotating the coordinates the opposite amount)
         """
 
-        if vbound[0] < 0 and log == True:
-            log = False
-            warnings.warn("disabled log scale since your bounds extend below zero")
-        
         if angular == True:
             if log == True:
                 warnings.warn("log and angular were both true, you shouldn't log angular quantities, setting log to false")
@@ -591,17 +601,17 @@ class Athena_Analysis():
         #z slice
         if slicetype == 'z':
             self.cart_grid(projection='3D')
-            self.get_slice_idx(slice_axis='z', slice_center=0, slice_width=0.6) #was 0.6
+            slice_idx = self.get_slice_idx(slice_axis='z', slice_center=0, slice_width=0.6) #was 0.6
 
             #print('z', q.shape)
-            q = q[tuple(self.slice_idx)]
+            q = q[tuple(slice_idx)]
             #print('zs', q.shape)
-            x = self.x[tuple(self.slice_idx)]
-            y = self.y[tuple(self.slice_idx)]
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
             complex_position = (x + y*1j) * np.exp(-1j*rotation)
             x = complex_position.real
             y = complex_position.imag
-            z = self.z[tuple(self.slice_idx)]
+            z = self.z[tuple(slice_idx)]
             ax.set_xlabel("x")
             ax.set_ylabel("y")
         #z slice end
@@ -609,31 +619,53 @@ class Athena_Analysis():
         #y slice profile
         if slicetype == 'y':
             self.cart_grid(projection='3D')
-            self.get_slice_idx(slice_axis='y', slice_center=0, slice_width=0.6)
+            slice_idx = self.get_slice_idx(slice_axis='y', slice_center=0, slice_width=0.6)
         
             #print("y", q.shape)
-            q = q[tuple(self.slice_idx)]
+            q = q[tuple(slice_idx)]
             #print("ys", q.shape)
-            x = self.x[tuple(self.slice_idx)]
-            y = self.y[tuple(self.slice_idx)]
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
             if self.gridtype == "Cylindrical":
-                z = self.z[tuple(self.slice_idx)]
+                z = self.z[tuple(slice_idx)]
             else:
-                z = self.z[tuple(self.slice_idx)]
+                z = self.z[tuple(slice_idx)]
 
             ax.set_xlabel("x")
             ax.set_ylabel("z")
         #y slice end
 
+        #vert slice profile
+        if slicetype == 'vert':
+            self.cart_grid(projection='3D')
+            slice_idx = self.get_rot_slice_idx(rotation=rotation, slice_center=0, slice_width=1)
+        
+            #print("y", q.shape)
+            q = q[tuple(slice_idx)]
+            #print("ys", q.shape)
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
+            complex_position = (x + y*1j) * np.exp(-1j*rotation)
+            x = complex_position.real
+            y = complex_position.imag
+            if self.gridtype == "Cylindrical":
+                z = self.z[tuple(slice_idx)]
+            else:
+                z = self.z[tuple(slice_idx)]
+
+            ax.set_xlabel("x")
+            ax.set_ylabel("z")
+        #vert slice end
+
         #theta slice
         if slicetype == 'theta':
             self.cart_grid(projection='2D')
-            self.get_slice_idx(slice_axis='theta', slice_center=np.pi/2, slice_width=0.005*np.pi) #for CVThin2 0.0014*pi was used
+            slice_idx = self.get_slice_idx(slice_axis='theta', slice_center=np.pi/2, slice_width=0.005*np.pi) #for CVThin2 0.0014*pi was used
 
-            x = self.x[self.slice_idx]
-            y = self.y[self.slice_idx]
+            x = self.x[slice_idx]
+            y = self.y[slice_idx]
             #print("t", q.shape)
-            q = q[self.slice_idx]
+            q = q[slice_idx]
             #print("ts", q.shape)
 
             ax.set_xlabel("x")
@@ -645,18 +677,21 @@ class Athena_Analysis():
         #theta_idx = np.argmin(np.abs(theta[0, :, 0] - cone_theta))
 
         # cone
-        self._midplane_plotter_grid()
-        [slice_x, slice_y] = self.midplane_plotter_grid
-        if self.gridtype == 'Cylindrical' and slicetype == 'y':
+        self.native_grid(get_r=True, get_z=True)
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
             slice_xmax = self.possible_rf[-1]
             slice_ymax = self.possible_zf[-1]
         else:
             slice_xmax = self.possible_rf[-1]
             slice_ymax = self.possible_rf[-1]
+
+        [slice_x, slice_y] = self._midplane_plotter_grid(slice_xmax, slice_ymax)
             
         if slicetype == 'z' or slicetype == 'theta':
             point = np.array([x.reshape((-1)), y.reshape((-1))], dtype=np.float32).T
         if slicetype == 'y':
+            point = np.array([x.reshape((-1)), z.reshape((-1))], dtype=np.float32).T
+        if slicetype == "vert":
             point = np.array([x.reshape((-1)), z.reshape((-1))], dtype=np.float32).T
         q_midplane = griddata(point, q.reshape((-1)), (slice_x, slice_y), method="nearest")    
 
@@ -671,19 +706,25 @@ class Athena_Analysis():
                 vmin = -vmax
 
         clip=True
-        if log == True:
-            norm = colors.LogNorm(vmin, vmax, clip)
-        else:
-            norm = colors.Normalize(vmin, vmax, clip)
+
+        if norm is None:
+            if log == True and vmax > 0 and vmin < 0:
+                norm = SymLogNorm(linthresh=0.01, linscale=1, vmin=vmin, vmax=vmax)
+            elif log == True: 
+                norm = colors.LogNorm(vmin, vmax, clip)
+            else:
+                norm = colors.Normalize(vmin, vmax, clip)
 
         # circle for clipping beyond outer boundary
-        if self.gridtype == 'Cylindrical' and slicetype == 'y':
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
             outer_bound = patches.Rectangle((-slice_xmax, -slice_ymax), 2*slice_xmax, 2*slice_ymax, facecolor='none')
         else:
             outer_bound = patches.Circle((0, 0), radius = float(self.data.attrs["RootGridX1"][1]), facecolor='none')
         ax.add_patch(outer_bound)
 
         #angular colormap
+        if log == True and vmin < 0 and vmax > 0:
+            cmap="PRGn"
         if angular == True:
             self._build_angular_cmap()
             cmap=self.angular_cmap
@@ -694,7 +735,7 @@ class Athena_Analysis():
 
         im = ax.pcolormesh(slice_x.T, slice_y.T, q_midplane.T, cmap=cmap, norm=norm, clip_path=outer_bound, clip_on=True, shading="auto") # readd after norm: clip_path=outer_bound
         ax.set_title(r"%s" % (""))
-        if self.gridtype == 'Cylindrical' and slicetype == 'y':
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
             ax.set_aspect('auto')
         else:
             ax.set_aspect(1)
@@ -709,7 +750,7 @@ class Athena_Analysis():
 
         #add the white dwarf
         wd_radius=1
-        if self.gridtype == 'Cylindrical' and slicetype == 'y':
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
             wd = plt.Rectangle((-wd_radius, -slice_ymax), wd_radius*2, slice_ymax*2, color="k")
         else:
             wd = plt.Circle((0, 0), wd_radius*np.sin(cone_theta), color="k")
@@ -718,7 +759,7 @@ class Athena_Analysis():
         #add the resonant radius
         #res_radius=15.2
         res_radius = sim.three_one_res
-        if slicetype == 'y':
+        if (slicetype == 'y' or slicetype == 'vert'):
             res_circ = plt.Rectangle((-res_radius, -slice_ymax), res_radius*2, slice_ymax*2, color="w", fill=False, linewidth=0.5)
         else:
             res_circ = plt.Circle((0, 0), res_radius*np.sin(cone_theta), color="w", fill=False, linewidth=0.5)
@@ -738,6 +779,199 @@ class Athena_Analysis():
         ax.set_ylim([-slice_ymax, slice_ymax])
         ax.xaxis.set_major_formatter(FormatStrFormatter('%.2g'))
         ax.yaxis.set_major_formatter(FormatStrFormatter('%.2g'))
+
+    def midplane_vectorplot(self, q_0, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], rotation = 0, cmap="plasma"):
+        """
+        Makes a color plot of a value over the midplane
+
+        Parameters
+        ----------
+        q : list
+            The athena data being plotted
+        ax : str
+            The name of the matplot ax you want to use for this plot
+        slicetype : str, default theta
+            Determines how the midplane slice is calculated, if 'theta' it will take eveything within a certain theta of theta = pi/2, if 'z' it will take everything within a certain z of z=0.
+        log : bool, default True
+            Determine if Log scaled axes are used
+        vbound : list of int, default [1e-5, 10]
+            Determins the bounds of the y axis.
+        rotation : float, default 0 
+            The angle in radians the image should be rotated (not it does this by rotating the coordinates the opposite amount)
+        """
+        q_0 = np.array(q_0)
+        q = [[],[]]
+
+
+        if (vbound is not None) and (vbound[0] < 0 and log == True):
+            log = False
+            warnings.warn("disabled log scale since your bounds extend below zero")
+        
+        #z slice
+        if slicetype == 'z':
+            self.cart_grid(projection='3D')
+            slice_idx = self.get_slice_idx(slice_axis='z', slice_center=0, slice_width=0.6) #was 0.6
+
+            #print('z', q.shape)
+            for i in range(q_0.shape[0]):
+                q[i] = q_0[i][tuple(slice_idx)]
+            #print('zs', q.shape)
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
+            complex_position = (x + y*1j) * np.exp(-1j*rotation)
+            x = complex_position.real
+            y = complex_position.imag
+            z = self.z[tuple(slice_idx)]
+            ax.set_xlabel("x")
+            ax.set_ylabel("y")
+        #z slice end
+
+        #y slice profile
+        if slicetype == 'y':
+            self.cart_grid(projection='3D')
+            slice_idx = self.get_slice_idx(slice_axis='y', slice_center=0, slice_width=0.6)
+        
+            #print("y", q.shape)
+            for i in range(range(q_0.shape[0])):
+                q[i] = q_0[i][tuple(slice_idx)]
+            #print("ys", q.shape)
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
+            if self.gridtype == "Cylindrical":
+                z = self.z[tuple(slice_idx)]
+            else:
+                z = self.z[tuple(slice_idx)]
+
+            ax.set_xlabel("x")
+            ax.set_ylabel("z")
+        #y slice end
+
+        #vert slice profile
+        if slicetype == 'vert':
+            self.cart_grid(projection='3D')
+            slice_idx = self.get_rot_slice_idx(rotation=rotation, slice_center=0, slice_width=1)
+        
+            #print("y", q.shape)
+            for i in range(q_0.shape[0]):
+                q[i] = q_0[i][tuple(slice_idx)]
+            #print("ys", q.shape)
+            x = self.x[tuple(slice_idx)]
+            y = self.y[tuple(slice_idx)]
+            complex_position = (x + y*1j) * np.exp(-1j*rotation)
+            x = complex_position.real
+            y = complex_position.imag
+            if self.gridtype == "Cylindrical":
+                z = self.z[tuple(slice_idx)]
+            else:
+                z = self.z[tuple(slice_idx)]
+
+            ax.set_xlabel("x")
+            ax.set_ylabel("z")
+        #vert slice end
+
+        #theta slice
+        if slicetype == 'theta':
+            self.cart_grid(projection='2D')
+            slice_idx = self.get_slice_idx(slice_axis='theta', slice_center=np.pi/2, slice_width=0.005*np.pi) #for CVThin2 0.0014*pi was used
+
+            x = self.x[slice_idx]
+            y = self.y[slice_idx]
+            #print("t", q.shape)
+            q = q[:, slice_idx]
+            #print("ts", q.shape)
+
+            ax.set_xlabel("x")
+            ax.set_ylabel("y")
+        #theta slice end
+
+        self.native_grid(get_r=True, get_z=True)
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
+            slice_xmax = self.possible_rf[-1]
+            slice_ymax = self.possible_zf[-1]
+        else:
+            slice_xmax = self.possible_rf[-1]
+            slice_ymax = self.possible_rf[-1]
+
+        [slice_x, slice_y] = self._midplane_plotter_grid(slice_xmax, slice_ymax)
+            
+        if slicetype == 'z' or slicetype == 'theta':
+            point = np.array([x.reshape((-1)), y.reshape((-1))], dtype=np.float32).T
+        if slicetype == 'y':
+            point = np.array([x.reshape((-1)), z.reshape((-1))], dtype=np.float32).T
+        if slicetype == "vert":
+            point = np.array([x.reshape((-1)), z.reshape((-1))], dtype=np.float32).T
+        q_midplane = np.array([griddata(point, q[0].reshape((-1)), (slice_x, slice_y), method="nearest"), griddata(point, q[1].reshape((-1)), (slice_x, slice_y), method="nearest")])    
+      
+        magnitudes = np.sqrt(q_midplane[0]*q_midplane[0] + q_midplane[1]*q_midplane[1])
+
+        if vbound is None:
+            vmin = np.min(magnitudes)
+            vmax = np.max(magnitudes)
+        else:
+            if isinstance(vbound, list):
+                [vmin, vmax] = vbound
+            else:
+                vmax = np.abs(vbound)
+                vmin = -vmax
+
+        mask = (magnitudes < (vmin + 0.0*(vmax-vmin)))
+        q_midplane[0][mask] = np.nan
+        q_midplane[1][mask] = np.nan
+
+        clip=True
+        if log == True:
+            norm = colors.LogNorm(vmin, vmax, clip)
+        else:
+            norm = colors.Normalize(vmin, vmax, clip)
+
+        # circle for clipping beyond outer boundary
+        if not (self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert')):
+            mask = (slice_x*slice_x+slice_y*slice_y > float(self.data.attrs["RootGridX1"][1])*float(self.data.attrs["RootGridX1"][1]))
+            q_midplane[0][mask] = np.nan
+            q_midplane[1][mask] = np.nan
+            mask = (slice_x*slice_x+slice_y*slice_y < 1)
+            q_midplane[0][mask] = np.nan
+            q_midplane[1][mask] = np.nan
+        
+        ax.grid(False)
+
+        im = ax.streamplot(slice_x.T, slice_y.T, q_midplane[0].T, q_midplane[1].T, color=magnitudes.T, cmap=cmap, norm=norm, broken_streamlines=True) # readd after norm: clip_path=outer_bound,  clip_on=True
+        #qk = ax.quiverkey(im, 0.9, 0.9, 300, r'$3000$', labelpos='E', coordinates='figure')
+        ax.set_title(r"%s" % (""))
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
+            ax.set_aspect('auto')
+        else:
+            ax.set_aspect(1)
+
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("top", size="5%", pad=0.05)
+        ax.grid(False)
+        cbar = plt.colorbar(im.lines, cax=cax, orientation="horizontal")
+        cax.xaxis.set_ticks_position("top")
+        cbar.ax.tick_params()
+
+        #add the white dwarf
+        wd_radius=1
+        if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
+            wd = plt.Rectangle((-wd_radius, -slice_ymax), wd_radius*2, slice_ymax*2, color="k")
+        else:
+            wd = plt.Circle((0, 0), wd_radius, color="k")
+        ax.add_artist(wd)
+
+        #add the resonant radius
+        #res_radius=15.2
+        res_radius = sim.three_one_res
+        if (slicetype == 'y' or slicetype == 'vert'):
+            res_circ = plt.Rectangle((-res_radius, -slice_ymax), res_radius*2, slice_ymax*2, color="w", fill=False, linewidth=0.5)
+        else:
+            res_circ = plt.Circle((0, 0), res_radius, color="w", fill=False, linewidth=0.5)
+        ax.add_artist(res_circ)
+
+        ax.set_xlim([-slice_xmax, slice_xmax])
+        ax.set_ylim([-slice_ymax, slice_ymax])
+        ax.xaxis.set_major_formatter(FormatStrFormatter('%.2g'))
+        ax.yaxis.set_major_formatter(FormatStrFormatter('%.2g'))
+
 
     def _ARCHAIC_azmuthal_integral(self, q):
         """
@@ -1330,7 +1564,7 @@ class Athena_Analysis():
                 if variable == 'z':
                     raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
             #check if q has already been integrated through phi and z
-            if q.shape == (len(self.possible_r)):
+            if q.shape == self.possible_r.shape:
                 if len(self.possible_r) == len(self.possible_z):
                     warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and z or phi and r so it's assuming phi and z. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
                 if len(self.possible_r) == len(self.possible_phi):
@@ -1346,7 +1580,7 @@ class Athena_Analysis():
                 if variable != 'r':
                     raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
             #check if q has already been integrated through phi and r
-            if q.shape == (len(self.possible_z)):
+            if q.shape == self.possible_z.shape:
                 if len(self.possible_r) == len(self.possible_z):
                     warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and r or z and r so it's assuming phi and r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
                 if len(self.possible_z) == len(self.possible_phi):
@@ -1362,7 +1596,7 @@ class Athena_Analysis():
                 if variable != 'z':
                     raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
             #check for improper use pt 2: bad triple integrals
-            if q.shape == (len(self.possible_phi)):
+            if q.shape == self.possible_phi.shape:
                 raise Exception("It appears you trying to finish a triple integral with phi as the final variable integrated over. Phi must be integrated over before r. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
         #raise for improper use final pt: bad format
             raise Exception("Sorry Athen Analysis doesn't recognize the format of your data. Please make sure its either an Athena data array, an array I created from this integrator, an integer, or a float. Other arrays of custom shape will not work ;(")
@@ -1373,6 +1607,13 @@ class Athena_Analysis():
         """
         [a, b, c] = v
         return np.array([self.integrate(a, variable='All'), self.integrate(b, variable='All'), self.integrate(c, variable='All')])
+    
+    def vec_shell_integrate(self, v):
+        """
+        Integrates every component of a vector over all space then return a vector of the three integrated components
+        """
+        [a, b, c] = v
+        return np.array([self.integrate(a, variable='shell'), self.integrate(b, variable='shell'), self.integrate(c, variable='shell')])
     
     def differentiate(self, q, variable):
         """
@@ -1489,8 +1730,8 @@ class Athena_Analysis():
         
         Returns
         -------
-        list
-            A 4 dimensional array that contains the divergence, with indices of meshblock and coords as normal.
+        float
+            The divergence
         """
         if coordinates is None:
             coordinates = self.gridtype
@@ -1504,10 +1745,41 @@ class Athena_Analysis():
         if coordinates == 'Cylindrical' or coordinates == 'cylindrical':
             [qz, qp, qr] = q
             self.native_grid(get_r=True)
-            gradq_z = self.differentiate(qz, 'z')
-            gradq_phi = (self.differentiate(qp, 'phi')) / (self.r)
-            gradq_r = self.differentiate(qr*self.r, 'r') / (self.r)
+            divq_z = self.differentiate(qz, 'z')
+            divq_phi = (self.differentiate(qp, 'phi')) / (self.r)
+            divq_r = self.differentiate(qr*self.r, 'r') / (self.r)
             return divq_z + divq_phi + divq_r
+        if coordinates == 'Cartesian' or coordinates == 'cartesian':
+            raise Exception("use spherical/cylindrical lol cartesian is borked")
+
+    def tensor_divergence(self, T, coordinates=None):
+        """
+        Computes the divergence of a tensor
+
+        Parameters
+        ----------
+        q : list of list
+            The data to be differentiated, must be an Athena data array.
+        
+        Returns
+        -------
+        list
+            A 4 dimensional array that contains the divergence, with indices of meshblock and coords as normal.
+        """
+        if coordinates is None:
+            coordinates = self.gridtype
+        if coordinates == 'Spherical' or coordinates == 'spherical':
+            raise("code not written")
+            return T[0]
+        if coordinates == 'Cylindrical' or coordinates == 'cylindrical':
+            [[Tzz, Tzp, Tzr], 
+            [Tpz, Tpp, Tpr],
+            [Trz, Trp, Trr]] = T
+            self.native_grid(get_r=True)
+            divT_z = self.differentiate(Trz, 'r') + (self.differentiate(Tpz, 'phi') + Trz)/self.r + self.differentiate(Tzz, 'z')
+            divT_phi = self.differentiate(Trp, 'r') + (self.differentiate(Tpp, 'phi') + Trp + Tpr)/self.r + self.differentiate(Tzp, 'z')
+            divT_r = self.differentiate(Trr, 'r') + (self.differentiate(Tpr, 'phi') + Trr - Tpp)/self.r + self.differentiate(Tzr, 'z')
+            return np.array([divT_z, divT_phi, divT_r])
         if coordinates == 'Cartesian' or coordinates == 'cartesian':
             raise Exception("use spherical/cylindrical lol cartesian is borked")
 
@@ -1630,6 +1902,7 @@ class Athena_Analysis():
         intermediates : bool, default False
             Determines if intermediate values are returned. If false only the total boundary flux is returned if true, total, inner and outer boundary flux are returned in that order.
         """
+        self.native_grid(get_r = True, get_phi = True, get_z = True)
         #flux at boundaries
         outer_flux = 0
         inner_flux = 0

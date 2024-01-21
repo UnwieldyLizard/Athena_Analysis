@@ -35,7 +35,10 @@ class Utility():
             os.system("ffmpeg -framerate 12 -i "+file.savedir+self.dname+"/"+self.dname+self.aname+"/"+self.dname+self.aname+"%04d0"+self.sname+".png -vf scale=1280:-2 "+file.savedir+self.dname+"/"+self.dname+self.aname+"/"+self.dname+self.aname+self.sname+".mp4")
 
     def tar(self):
-        os.system("tar -czvf "+file.savedir+self.dname+"/"+self.dname+self.aname+"/"+self.dname+self.aname+".tar.gz "+file.savedir+self.dname+"/"+self.dname+self.aname)#+"/"+self.dname+self.aname)
+        tar_name = file.savedir+self.dname+"/"+self.dname+self.aname+"/"+self.dname+self.aname+".tar.gz"
+        if os.path.exists(tar_name):
+            os.system("rm "+tar_name) 
+        os.system("tar -czvf "+tar_name+" "+file.savedir+self.dname+"/"+self.dname+self.aname+self.sname)#+"/"+self.dname+self.aname)
 
     def radial_peg(self, fnum):
         new_name_base = "%s/%s%s%05d" % (file.savedir + self.dname + "/" + self.dname + self.aname, self.dname, self.aname, fnum)

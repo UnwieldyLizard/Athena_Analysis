@@ -3,7 +3,7 @@
 #SBATCH --partition batch
 ##SBATCH --ntasks=1 
 ##SBATCH --ntasks-per-core 1
-#SBATCH -o /home/mohana/mhd_superhump/Athena_Analysis/job_requests/leaf6.log
+#SBATCH -o /home/mohana/mhd_superhump/Athena_Analysis/job_requests/leaf7.log
 
 ##SBATCH --time 48:00:00
 #SBATCH --mail-user mohana@ucsb.edu
@@ -21,4 +21,4 @@ source $home_path/.bashrc
 source activate base
 
 ## Execute the python script
-python ./leaf6.py
+python ./leaf7.py

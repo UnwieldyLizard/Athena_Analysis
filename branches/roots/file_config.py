@@ -22,8 +22,12 @@ class File:
         self.grid_types["Cyl_6"] = "Cylindrical"
         self.grid_types["Cyl_7"] = "Cylindrical"
         self.grid_types["Cyl_11"]= "Cylindrical"
+        self.grid_types["Cyl_11_2"]= "Cylindrical"
         self.grid_types["Cyl_12"]= "Cylindrical"
         self.grid_types["Cyl_13"]= "Cylindrical"
+        self.grid_types["Cyl_13_2"]= "Cylindrical"
+        self.grid_types["Cyl_13_aB"]= "Cylindrical"
+        self.grid_types["Cyl_13_Stream"]= "Cylindrical"
         self.grid_types["Cyl_14"]= "Cylindrical"
         self.grid_types["Cyl_15"]= "Cylindrical"
 
@@ -32,8 +36,12 @@ class File:
         self.MHD["Cyl_2"] = True
         self.MHD["Cyl_7"] = True
         self.MHD["Cyl_11"]= True
+        self.MHD["Cyl_11_2"]= True
         self.MHD["Cyl_12"]= True
         self.MHD["Cyl_13"]= True
+        self.MHD["Cyl_13_2"]= True
+        self.MHD["Cyl_13_aB"]= True
+        self.MHD["Cyl_13_Stream"]= True
         self.MHD["Cyl_14"]= True
         self.MHD["Cyl_15"]= True
 
@@ -42,8 +50,12 @@ class File:
         self.alpha["Cyl_2"] = None
         self.alpha["Cyl_7"] = None
         self.alpha["Cyl_11"]= None
+        self.alpha["Cyl_11_2"]= None
         self.alpha["Cyl_12"]= None
         self.alpha["Cyl_13"]= None
+        self.alpha["Cyl_13_2"]= None
+        self.alpha["Cyl_13_aB"]= None
+        self.alpha["Cyl_13_Stream"]= None
         self.alpha["Cyl_14"]= None
         self.alpha["Cyl_15"]= None
 

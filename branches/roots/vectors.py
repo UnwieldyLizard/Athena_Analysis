@@ -40,8 +40,12 @@ class Vector:
         a : list of int
             The vector
         """
-        [ar, at, ap] = a
-        return np.sqrt(ar*ar + at*at + ap*ap)
+        if len(a) == 3:
+            [ar, at, ap] = a
+            return np.sqrt(ar*ar + at*at + ap*ap)
+        elif len(a) == 2:
+            [ar, at] = a
+            return np.sqrt(ar*ar + at*at)
 
     def growth_prec(self, dvdt, v):
         """

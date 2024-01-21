@@ -7,9 +7,9 @@ def mkdir_if_not_exist(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
-def find_file_spacing(dname):
+def find_file_spacing(dname, start_point = 0):
     data_location = file.data_loc + dname
-    max_fnum = 1
+    max_fnum = 1 + start_point
     file_spacing = None
     while file_spacing is None:
         while not os.path.exists("%s/disk.out1.%05d.athdf" % (data_location, max_fnum)):
@@ -31,6 +31,28 @@ def simple_loop(fnum_range, file_spacing, function):
         except:
             logging.info(f"operation failed on fnum = {fnum}, exiting... (Don't panic this probably just means you've gone through all the data)")
             break
+
+def dirty_loop(fnum_range, file_spacing, function, dname, aname, sname=""):
+    """
+    Intended for dealing with partial data sets or filling in gaps of incomplete jobs.
+    This loop skips timesteps where it detects and output already exists or data is missing.
+    """
+    now = datetime.now()
+    fnum_range = np.arange(fnum_range[0], fnum_range[-1]+1, file_spacing)
+    for fnum in fnum_range:
+        logging.info(datetime.now()-now)
+        now = datetime.now()
+        logging.info("fnum = %d" % fnum)
+        if os.path.exists(file.savedir+dname+"/"+dname+aname+"/"+dname+aname+"%05d%s.png" % (fnum, sname)):
+            logging.info("Output already exist, skipping")
+            continue
+
+        if not os.path.exists(file.data_loc + dname + "/disk.out1.%05d.athdf" % (fnum)):
+            logging.info("'" + file.data_loc + dname + "/disk.out1.%05d.athdf' does not exist" % (fnum))
+            logging.info("Since data file missing, skipping")
+            continue
+        
+        function(fnum)
 
 
 def radial_slice_loop(dname, fnum, grid_type, function, scale_factor=1, start_idx=0):

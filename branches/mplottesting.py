@@ -1,12 +1,13 @@
-from .roots.athena_analysis import *
-from .roots.misc_func import *
+from roots.athena_analysis import *
+from roots.misc_func import *
 import logging
 import scipy.fft
 
 #logging.basicConfig(filename='/home/morgan/mresearch/testing.log', encoding='utf-8', level=logging.INFO)
 
 def main(dname, fnum_range, file_spacing=1):
-    aname = "_alpha"
+    #aname = "_alpha"
+    aname = "_vertKE"
     #data_location = "/home/morgan/mnt/kitp/data/cvdisk/superhump_3d_alpha03"
     #data_location = "/home/morgan/mnt/kitp/data2/cvdisk/CVThin2/Data"
     data_location = file.data_loc + dname
@@ -22,6 +23,7 @@ def main(dname, fnum_range, file_spacing=1):
 
         aa = Athena_Analysis(filename=filename, grid_type=grid_type)
 
+        """
         if i == 0:
             aa.native_grid(get_r=True, get_phi=True)
             r_grid = aa.r
@@ -42,12 +44,13 @@ def main(dname, fnum_range, file_spacing=1):
             if grid_type == "Cylindrical":
                 aa.z_len = z_len
             aa.r_len = r_len
-        
+        """
+
         #calculate stuff
         #aa.get_primaries(get_press=True, get_vel_r=True, get_vel_phi=True)
         #aa.get_potentials(get_companion_grav=True, get_accel=True)
         #tidal = -1 * aa.gradient(aa.companion_grav_pot + aa.accel_pot, coordinates='Spherical')
-        aa.get_primaries(get_rho=True)
+        #aa.get_primaries(get_rho=True)
         #aa.native_grid(get_r=True, get_z=True, get_phi=True)
         #drhodr = aa.differentiate(aa.rho, 'r')
         #drhodtheta = aa.differentiate(aa.rho, 'theta')
@@ -55,13 +58,13 @@ def main(dname, fnum_range, file_spacing=1):
         #drhodz = aa.differentiate(aa.rho, 'z')
 
         #plot stuff 
-        vert = 2
+        vert = 1
         horz = 1
         gs = gridspec.GridSpec(vert, horz)
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
 
         ax1 = fig.add_subplot(gs[0, 0])
-        ax2 = fig.add_subplot(gs[1, 0])
+        #ax2 = fig.add_subplot(gs[1, 0])
         #ax3 = fig.add_subplot(gs[0, 1])
         #ax4 = fig.add_subplot(gs[1, 1])
         #ax5 = fig.add_subplot(gs[0, 2])
@@ -95,16 +98,25 @@ def main(dname, fnum_range, file_spacing=1):
 
         #mass_weighted_eccent = total_rhoxlrl / total_mass
 
-        aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
-        aa.get_Bfields()
+        #aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
+        #aa.get_Bfields()
         #B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
-        alpha_Maxwell = (-2/3)*(aa.B_r*aa.B_phi)/(aa.press)
+        #alpha_Maxwell = (-2/3)*(aa.B_r*aa.B_phi)/(aa.press)
             
         # aa.get_primaries(get_press=True)
         #aa.get_Bfields()
 
-        aa.midplane_colorplot(alpha_Maxwell, ax2, slicetype='z', log=False, vbound=[-0.05,0.05], cmap="PRGn")
-        aa.midplane_colorplot(aa.rho, ax1, slicetype='z', log=True, vbound=[1e-5,1e2])
+        aa.get_primaries(get_rho = True, get_vel_z=True)
+        aa.native_grid(get_r=True)
+        specific_vertKE = 0.5 * aa.vel_z * aa.vel_z
+
+        rotation = -1*sim.orbital_Omega * aa.time
+
+        ax1.plot(aa.possible_r, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+        #aa.midplane_colorplot(specific_vertKE, ax2, slicetype='z', log=False, vbound=[1e-2,2e2], rotation=rotation)
+        #aa.midplane_colorplot(aa.rho, ax1, slicetype='z', log=True, vbound=[1e-5,1e2], rotation=rotation)
+        #aa.midplane_colorplot(specific_vertKE, ax4, slicetype='vert', log=False, vbound=[1e-2,2e2], rotation=rotation)
+        #aa.midplane_colorplot(aa.rho, ax3, slicetype='vert', log=True, vbound=[1e-5,1e2], rotation=rotation)
         #aa.midplane_colorplot(aa.B_r**2 + aa.B_phi**2 + aa.B_z**2, ax3, slicetype='z', log=True, vbound=[1e-5,1e2])
         #aa.midplane_colorplot(aa.B_r**2, ax4, slicetype='z', log=True, vbound=[1e-5,1e2])
         #aa.midplane_colorplot(aa.B_phi**2, ax5, slicetype='z', log=True, vbound=[1e-5,1e2])
@@ -118,7 +130,9 @@ def main(dname, fnum_range, file_spacing=1):
         #aa.midplane_colorplot(drhodphi, ax5, log=False, vbound=[-2,2])
 
         ax1.set_title(r"Density")
-        ax2.set_title(r"$\alpha$")
+        ax1.set_ylabel(r"$\rho$")
+        ax1.set_xlabel(r"r")
+        #ax2.set_title(r"Vertical Specific KE")
         #ax3.set_title(r"B Pressure")
         #ax4.set_title(r"B Pressure (r)")
         #ax5.set_title(r"B Pressure ($\phi$)")
@@ -134,7 +148,7 @@ def main(dname, fnum_range, file_spacing=1):
         plt.close()
 
 
-#main()
+main("Cyl_7", [300, 301])
 
 def ff2_test():
     savedir = file.savedir + "test"
