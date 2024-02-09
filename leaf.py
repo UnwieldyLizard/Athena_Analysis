@@ -1,10 +1,10 @@
 #from branches.angular_momentum import *
 #from branches.comparison import *
-from branches.meccentricity_profile import *
+#from branches.meccentricity_profile import *
 #from branches.eccentricity import*
 #from branches.profile import *
 #from branches.roots.misc_func import *
-#from branches.roots.utility import *
+from branches.roots.utility import *
 #from branches.momentum import *
 
 #eccentricity_radial_profile("Cyl_11", 2000)
@@ -49,8 +49,13 @@ replot("Cyl_15_2", 3100, "_recomp", stress_test=True, recompute_sum=True)
 #E = Eccentricity("Cyl_11_2")
 #dirty_loop([0, 3000], 1, E.plot, "Cyl_11_2", "_eccent")
 
-#U = Utility("Cyl_11_2", "_eccent")
-#U.tar()
+U = Utility("Cyl_11_2", "_eccent")
+U.peg()
+del U
+
+U = Utility("Cyl_13_2", "_eccent")
+U.peg()
+
 #eccentricity_plot("Cyl_15", [409, 10000], inertial=True)
 """
 P = Profile("Cyl_11")

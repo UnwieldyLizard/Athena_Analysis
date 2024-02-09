@@ -6,11 +6,19 @@ class File:
         self.athena_analysis_directory = str(Path(__file__).parents[2])
         self.logs_loc = self.athena_analysis_directory + "/branches/logs"
 
+        #save point and data sources (YOU FILfrom pathlib import Path
+
+class File:
+    def __init__(self):
+        #Self and Log locations (YOU DON'T NEED TO TOUCH THIS)
+        self.athena_analysis_directory = str(Path(__file__).parents[2])
+        self.logs_loc = self.athena_analysis_directory + "/branches/logs"
+
         #save point and data sources (YOU FILL THIS OUT WITH THE APPROPRIATE FILE PATHS)
         #save_dir should be a general directory for all the results, Athena_Analysis will build and organize all the subdirectories itself.
-        self.savedir = "/home/mohana/mhd_superhump/processed_data/"
+        self.savedir = "/mnt/e/processed_data/"
         #Athena_Analysis will expect the data for each dataset to be in a directory called data_loc+dname
-        self.data_loc = "/home/mohana/mhd_superhump/data_raw/globus_dump/"
+        self.data_loc = "/mnt/e/Research_Data/"
 
         #set up dictionaries (YOU FILL THIS OUT)
         #for each item of the dictionary the key should be the dname and the value the grid type
@@ -22,11 +30,8 @@ class File:
         self.grid_types["Cyl_6"] = "Cylindrical"
         self.grid_types["Cyl_7"] = "Cylindrical"
         self.grid_types["Cyl_11"]= "Cylindrical"
-        self.grid_types["Cyl_11_2"]= "Cylindrical"
         self.grid_types["Cyl_12"]= "Cylindrical"
         self.grid_types["Cyl_13"]= "Cylindrical"
-        self.grid_types["Cyl_13_2"]= "Cylindrical"
-        self.grid_types["Cyl_13_aB"]= "Cylindrical"
         self.grid_types["Cyl_13_Stream"]= "Cylindrical"
         self.grid_types["Cyl_14"]= "Cylindrical"
         self.grid_types["Cyl_15"]= "Cylindrical"
@@ -37,11 +42,8 @@ class File:
         self.MHD["Cyl_2"] = True
         self.MHD["Cyl_7"] = True
         self.MHD["Cyl_11"]= True
-        self.MHD["Cyl_11_2"]= True
         self.MHD["Cyl_12"]= True
         self.MHD["Cyl_13"]= True
-        self.MHD["Cyl_13_2"]= True
-        self.MHD["Cyl_13_aB"]= True
         self.MHD["Cyl_13_Stream"]= True
         self.MHD["Cyl_14"]= True
         self.MHD["Cyl_15"]= True
@@ -52,11 +54,8 @@ class File:
         self.alpha["Cyl_2"] = None
         self.alpha["Cyl_7"] = None
         self.alpha["Cyl_11"]= None
-        self.alpha["Cyl_11_2"]= None
         self.alpha["Cyl_12"]= None
         self.alpha["Cyl_13"]= None
-        self.alpha["Cyl_13_2"]= None
-        self.alpha["Cyl_13_aB"]= None
         self.alpha["Cyl_13_Stream"]= None
         self.alpha["Cyl_14"]= None
         self.alpha["Cyl_15"]= None

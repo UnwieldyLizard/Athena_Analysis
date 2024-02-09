@@ -1,3 +1,5 @@
+#Rust
+import rusty_athena
 #Code base
 from .params import *
 from .file_config import*
@@ -96,12 +98,12 @@ class Athena_Analysis():
         Initializes the base axes.
         """
         if self.gridtype == "Spherical":
-            self.r_primitive = np.array(self.data["x1v"])
-            self.theta_primitive = np.array(self.data["x2v"])
-            self.phi_primitive = np.array(self.data["x3v"])
-            self.rf_primitive = np.array(self.data["x1f"])
-            self.thetaf_primitive = np.array(self.data["x2f"])
-            self.phif_primitive = np.array(self.data["x3f"])
+            self.r_primitive = np.array(self.data["x1v"], dtype="float64")
+            self.theta_primitive = np.array(self.data["x2v"], dtype="float64")
+            self.phi_primitive = np.array(self.data["x3v"], dtype="float64")
+            self.rf_primitive = np.array(self.data["x1f"], dtype="float64")
+            self.thetaf_primitive = np.array(self.data["x2f"], dtype="float64")
+            self.phif_primitive = np.array(self.data["x3f"], dtype="float64")
 
             self.r_len = len(self.r_primitive[0])
             self.theta_len = len(self.theta_primitive[0])
@@ -115,6 +117,8 @@ class Athena_Analysis():
             self.possible_rf = np.sort(list(set((self.rf_primitive).flatten())))
             self.possible_thetaf = np.sort(list(set((self.thetaf_primitive).flatten())))
             self.possible_phif = np.sort(list(set((self.phif_primitive).flatten())))
+
+            self.possible_vars = {"r": self.possible_r, "phi": self.possible_phi, "theta": self.possible_theta}
 
             if len(self.possible_r) == (len(self.possible_rf - 1)):
                 self.possible_dr_primitive = self.possible_rf[1:] - self.possible_rf[:-1]
@@ -136,12 +140,12 @@ class Athena_Analysis():
                 self.possible_dphi_primitive[1:] = self.possible_phi[1:] - self.possible_phi[:-1]
 
         if self.gridtype == "Cylindrical":
-            self.r_primitive = np.array(self.data["x1v"])
-            self.phi_primitive = np.array(self.data["x2v"])
-            self.z_primitive = np.array(self.data["x3v"])
-            self.rf_primitive = np.array(self.data["x1f"])
-            self.phif_primitive = np.array(self.data["x2f"])
-            self.zf_primitive = np.array(self.data["x3f"])
+            self.r_primitive = np.array(self.data["x1v"], dtype="float64")
+            self.phi_primitive = np.array(self.data["x2v"], dtype="float64")
+            self.z_primitive = np.array(self.data["x3v"], dtype="float64")
+            self.rf_primitive = np.array(self.data["x1f"], dtype="float64")
+            self.phif_primitive = np.array(self.data["x2f"], dtype="float64")
+            self.zf_primitive = np.array(self.data["x3f"], dtype="float64")
 
             self.r_len = len(self.r_primitive[0])
             self.phi_len = len(self.phi_primitive[0])
@@ -156,6 +160,8 @@ class Athena_Analysis():
             self.possible_rf = np.sort(list(set((self.rf_primitive).flatten())))
             self.possible_phif = np.sort(list(set((self.phif_primitive).flatten())))
             self.possible_zf = np.sort(list(set((self.zf_primitive).flatten())))
+
+            self.possible_vars = {"r": self.possible_r, "phi": self.possible_phi, "z": self.possible_z}
 
             if len(self.possible_r) == (len(self.possible_rf - 1)):
                 self.possible_dr_primitive = self.possible_rf[1:] - self.possible_rf[:-1]
@@ -1025,7 +1031,7 @@ class Athena_Analysis():
             shell_intq = np.sum(az_intq, axis = 1)
         return shell_intq, az_intq
 
-    def integrate(self, q:list, variable:str, bounds:list=None, second_variable:str=None, second_bounds:list=None, third_bounds:list=None, intermediates:bool=False)->list:
+    def integrate(self, q:list, variable:str, bounds:list=None, second_variable:str=None, second_bounds:list=None, third_bounds:list=None, intermediates:bool=False, RUSTY:bool=False)->list:
         """
         Integrates athena data and outputs an array of integrated data.
         KNOWN BUG WITH CYLINDRICAL PHI INTEGRAL IN Z-PHI-R PATHWAY (fixed?)
@@ -1056,6 +1062,7 @@ class Athena_Analysis():
             if you did a triple integral the final result, the intermediate result of the double integral and the intermediate result of the first integral will all be returned in that order.
         """
         self._axes()
+        
         if variable == "All" or variable == "all":
             if self.gridtype == "Spherical":
                 variable = "phi"
@@ -1085,521 +1092,609 @@ class Athena_Analysis():
             raise Exception("You can't integrate over the same variable twice")
         if second_variable is None and second_bounds is not None:
             warnings.warn("It appears you gave bounds for a second integral but didn't tell me what variable the second integral should be integrated over. As a result Athena Analysis will not compute a second integral")
-            
-        if self.gridtype == "Spherical":
-            #check if no integral has previously occured
-            if isinstance(q, int) or isinstance(q, float) or q.shape == self.array_size:
-                if variable == 'r':
-                    self.spherical_grid(get_theta=True, get_phi=True, get_dr=True)
-                    intq_dr = np.zeros((len(self.possible_phi), len(self.possible_theta)))
-                    q_dr = q * self.dr
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('r', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_dr = q_dr[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for p in range(self.phi_len):
-                            phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
-                            for t in range(self.theta_len):
-                                theta_loc = int(np.searchsorted(self.possible_theta, self.theta_primitive[n][t]))
-                                intq_dr[phi_loc, theta_loc] += np.sum(q_dr[n, p, t, :])
-                    if second_variable is None:
-                        return intq_dr
-                    if second_variable is not None:
-                        raise Exception("You should always integrate through r last")
-                if variable == 'theta':
-                    self.spherical_grid(get_r=True, get_phi=True, get_dtheta=True)
-                    intq_r_dtheta = np.zeros((len(self.possible_phi), len(self.possible_r)))
-                    q_r_dtheta = q * self.r * self.dtheta
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('theta', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_r_dtheta = q_r_dtheta[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for p in range(self.phi_len):
-                            phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
-                            for r in range(self.r_len):
-                                r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
-                                intq_r_dtheta[phi_loc, r_loc] += np.sum(q_r_dtheta[n, p, :, r])
-                    if second_variable is None:
-                        return intq_r_dtheta
-                    if second_variable == 'phi':
-                        raise Exception("For shell integrals please integrate through phi first")
-                    if second_variable == 'r':
-                        intq2_dr = np.zeros(len(self.possible_phi))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        for p in range(len(self.possible_phi)):
-                            intq2_dr[p] = np.sum(intq_r_dtheta[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dr, intq_r_dtheta
-                            else:
-                                return intq2_dr
-                        if third_bounds is not None:
-                            raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
-                if variable == 'phi':
-                    self.spherical_grid(get_r=True, get_theta=True, get_dphi=True)
-                    intq_r_sintheta_dphi = np.zeros((len(self.possible_theta), len(self.possible_r)))
-                    q_r_sintheta_dphi = q * self.r * np.sin(self.theta) * self.dphi
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('phi', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_r_sintheta_dphi = q_r_sintheta_dphi[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for t in range(self.theta_len):
-                            theta_loc = int(np.searchsorted(self.possible_theta, self.theta_primitive[n, t]))
-                            for r in range(self.r_len):
-                                r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
-                                intq_r_sintheta_dphi[theta_loc, r_loc] += np.sum(q_r_sintheta_dphi[n, :, t, r])
-                    if second_variable is None:
-                        return intq_r_sintheta_dphi
-                    if second_variable == 'theta':
-                        intq2_r_dtheta = np.zeros(len(self.possible_r))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_theta - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_theta - second_bounds[1]))
-                        for r in range(len(self.possible_r)):
-                            intq2_r_dtheta[r] = np.sum(intq_r_sintheta_dphi[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dtheta_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_r_dtheta, intq_r_sintheta_dphi
-                            else:
-                                return intq2_r_dtheta
-                        if third_bounds is not None:
-                            intq3_dr = np.sum(intq2_r_dtheta * self.possible_dr_primitive)
-                            if intermediates == True:
-                                return intq3_dr, intq2_r_dtheta, intq_r_sintheta_dphi
-                            else:
-                                return intq3_dr
-                    if second_variable == 'r':
-                        intq2_dr = np.zeros(len(self.possible_theta))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        for t in range(len(self.possible_theta)):
-                            intq2_dr[t] = np.sum(intq_r_sintheta_dphi[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dr, intq_r_sintheta_dphi
-                            else:
-                                return intq2_dr
-                        if third_bounds is not None:
-                            raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
-            #check if q has already been integrated through phi
-            if q.shape == (len(self.possible_theta), len(self.possible_r)):
-                if len(self.possible_theta) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or phi so it's assuming phi. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if variable == 'theta':
-                    intq2_r_dtheta = np.zeros(len(self.possible_r))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_theta - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_theta - bounds[1]))
-                    for r in range(len(self.possible_r)):
-                        intq2_r_dtheta[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dtheta_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_r_dtheta
-                    if second_varibale == 'r':
-                        if second_bounds == "Full" or second_bounds is None:
-                            [lower_bound, upper_bound] = [0, -1]
-                        else:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        intq3_dr = np.sum(q * self.possible_dr_primitive)
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq3_dr, intq2_r_dtheta
-                            else:
-                                return intq3_dr
-                        if third_bounds is not None:
-                            raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
-                    if second_variable == 'phi':
-                        raise Exception("phi should be integrated through before theta, if you wish to take a double or triple integral please do it in phi theta r order.")
-                if variable == 'r':
-                    intq2_dr = np.zeros(len(self.possible_theta))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
-                    for t in range(len(self.possible_theta)):
-                        intq2_dr[t] = np.sum(q[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_dr
-                    if second_variabel is not None:
-                        raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
-                if variable == 'phi':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through theta
-            if q.shape == (len(self.possible_phi), len(self.possible_r)):
-                if len(self.possible_theta) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or phi so it's assuming theta. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if len(self.possible_theta) == len(self.possible_r):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or r so it's assuming theta. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if variable == 'phi':
-                    raise Exception("For shell integrals please integrate through phi first")
-                if variable == 'r':
-                    intq2_dr = np.zeros(len(self.possible_phi))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
-                    for p in range(len(self.possible_phi)):
-                        intq2_dr[p] = np.sum(q[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                    return intq2_dr
-                if variable == 'phi':
-                    raise Exception("phi should be integrated through before theta, if you wish to take a double or triple integral please do it in phi theta r order.")
-                if variable == 'theta':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through r
-            if q.shape == (len(self.possible_phi), len(self.possible_thets)):
-                raise Exception("Anthena Analysis thinks this data has already been integrated through r and r should always been the last variable integrated through. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-            #check if q has already been integrated through phi and theta
-            if q.shape == (len(self.possible_r)):
-                if len(self.possible_r) == len(self.possible_theta):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and theta or phi and r so it's assuming r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if len(self.possible_r) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and theta or theta and r so it's assuming r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if variable == 'r':
-                    if bounds == "Full" or bounds is None:
-                                [lower_bound, upper_bound] = [0, -1]
-                    else:
-                        lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
-                    intq3_dr = np.sum(q * self.possible_dr_primitive)
-                    return intq3_dr
-                if variable != 'r':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check for improper use pt 2: bad triple integrals
-            if q.shape == (len(self.possible_theta)):
-                raise Exception("It appears you trying to finish a triple integral with theta as the final variable integrated over. r must be the final variable integrated over. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-            if q.shape == (len(self.possible_phi)):
-                raise Exception("It appears you trying to finish a triple integral with phi as the final variable integrated over. r must be the final variable integrated over. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")                
+        
         if self.gridtype == "Cylindrical":
-            if isinstance(q, int) or isinstance(q, float) or q.shape == self.array_size:
-                if variable == 'phi':
-                    self.native_grid(get_r=True, get_dphi=True)
-                    intq_r_dphi = np.zeros((len(self.possible_z), len(self.possible_r)))
-                    q_r_dphi = q * self.r * self.dphi
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('phi', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_r_dphi = q_r_dphi[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for z in range(self.z_len):
-                            z_loc = int(np.searchsorted(self.possible_z, self.z_primitive[n, z]))
-                            for r in range(self.r_len):
-                                r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
-                                intq_r_dphi[z_loc, r_loc] += np.sum(q_r_dphi[n, z, :, r])
-                    if second_variable is None:
-                        return intq_r_dphi
-                    if second_variable == 'z':
-                        intq2_dz = np.zeros(len(self.possible_r))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
-                        for r in range(len(self.possible_r)):
-                            intq2_dz[r] = np.sum(intq_r_dphi[lower_bound:upper_bound,r] * self.possible_dz_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dz, intq_r_dphi
-                            else:
-                                return intq2_dz
-                        if third_bounds is not None:
-                            if third_bounds == "Full":
+            if (variable == "r" and second_variable == "phi") or (((variable == "r" and second_variable == "z") or (variable == "z" and second_variable == "r")) and third_bounds is not None):
+                raise Exception("You cannot integrate through r before phi")
+        if self.gridtype == "Spherical":
+            if (variable == "r" and second_variable is not None) or (second_variable == "r" and third_bounds is not None):
+                raise Exception("You cannot integrate through r before theta or phi")
+            if (variable == "theta" and second_variable == "phi") or ((variable == "theta" and second_variable == "r") and third_bounds is not None):
+                raise Exception("You cannot integrate through theta before phi")
+
+        if RUSTY:
+            q = np.array(q, dtype="float64")
+            
+            if second_variable is not None:
+                if third_bounds is not None:
+                    if self.gridtype == "Cylindrical":
+                        if variable == "z" or second_variable == "z":
+                            variables = [variable, second_variable, "r"]
+                        elif second_variable == "r":
+                            variables = [variable, second_variable, "z"]
+                    if self.gridtype == "Spherical":
+                        variables = ["theta", "phi", "r"] # uses math convention so phi and theta are flipped
+                    
+                    if third_bounds == "Full":
+                        third_bounds = [self.possible_vars[variables[2]][0], self.possible_vars[variables[2]][-1]]
+                    if second_bounds == "Full" or second_bounds is None:
+                        second_bounds = [self.possible_vars[variables[1]][0], self.possible_vars[variables[1]][-1]]
+                    if bounds == "Full" or bounds is None:
+                        bounds = [self.possible_vars[variables[0]][0], self.possible_vars[variables[0]][-1]]
+                    bounds_tpl = ((bounds[0]-1, bounds[1]+1), (second_bounds[0]-1, second_bounds[1]+1), (third_bounds[0]-1, third_bounds[1]+1))
+                else:
+                    variables = [variable, second_variable]
+
+                    if second_bounds == "Full" or second_bounds is None:
+                        second_bounds = [self.possible_vars[variables[1]][0], self.possible_vars[variables[1]][-1]]
+                    if bounds == "Full" or bounds is None:
+                        bounds = [self.possible_vars[variables[0]][0], self.possible_vars[variables[0]][-1]]
+                    bounds_tpl = ((bounds[0]-1, bounds[1]+1), (second_bounds[0]-1, second_bounds[1]+1))
+            else:
+                variables = [variable]
+
+                if bounds == "Full" or bounds is None:
+                    bounds = [self.possible_vars[variables[0]][0], self.possible_vars[variables[0]][-1]]
+                bounds_tpl = (bounds[0]-1, bounds[1]+1)
+            
+            if len(variables) == 3:
+                if self.gridtype == "Spherical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_theta=True, get_dtheta=True)
+                    return rusty_athena.volume_integral(q, self.phi_primitive, self.theta_primitive, self.r_primitive,
+                                                self.dphi, self.dtheta, self.dr,
+                                                self.possible_phi, self.possible_theta, self.possible_r,
+                                                self.possible_dphi_primitive, self.possible_dtheta_primitive, self.possible_dr_primitive,
+                                                variables, bounds_tpl)
+                if self.gridtype == "Cylindrical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_z=True, get_dz=True)
+                    return rusty_athena.volume_integral(q, self.z_primitive, self.phi_primitive, self.r_primitive,
+                                                self.dz, self.dphi, self.dr,
+                                                self.possible_z, self.possible_phi, self.possible_r,
+                                                self.possible_dz_primitive, self.possible_dphi_primitive, self.possible_dr_primitive,
+                                                variables, bounds_tpl)
+            elif len(variables) == 2:
+                if self.gridtype == "Spherical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_theta=True, get_dtheta=True)
+                    return rusty_athena.area_integral(q, self.phi_primitive, self.theta_primitive, self.r_primitive,
+                                                self.dphi, self.dtheta, self.dr,
+                                                self.possible_phi, self.possible_theta, self.possible_r,
+                                                self.possible_dphi_primitive, self.possible_dtheta_primitive, self.possible_dr_primitive,
+                                                variables, bounds_tpl)
+                if self.gridtype == "Cylindrical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_z=True, get_dz=True)
+                    return rusty_athena.area_integral(q, self.z_primitive, self.phi_primitive, self.r_primitive,
+                                                self.dz, self.dphi, self.dr,
+                                                self.possible_z, self.possible_phi, self.possible_r,
+                                                self.possible_dz_primitive, self.possible_dphi_primitive, self.possible_dr_primitive,
+                                                variables, bounds_tpl)
+            elif len(variables) == 1:
+                if self.gridtype == "Spherical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_theta=True, get_dtheta=True)
+                    return rusty_athena.single_integral(q, self.phi_primitive, self.theta_primitive, self.r_primitive,
+                                                self.dphi, self.dtheta, self.dr,
+                                                self.possible_phi, self.possible_theta, self.possible_r,
+                                                variables, bounds_tpl)
+                if self.gridtype == "Cylindrical":
+                    self.native_grid(get_r=True, get_dr=True, get_phi=True, get_dphi=True, get_z=True, get_dz=True)
+                    return rusty_athena.single_integral(q, self.z_primitive, self.phi_primitive, self.r_primitive,
+                                                self.dz, self.dphi, self.dr,
+                                                self.possible_z, self.possible_phi, self.possible_r,
+                                                variables, bounds_tpl)
+        else:
+            if self.gridtype == "Spherical":
+                #check if no integral has previously occured
+                if isinstance(q, int) or isinstance(q, float) or q.shape == self.array_size:
+                    if variable == 'r':
+                        self.spherical_grid(get_theta=True, get_phi=True, get_dr=True)
+                        intq_dr = np.zeros((len(self.possible_phi), len(self.possible_theta)))
+                        q_dr = q * self.dr
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('r', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_dr = q_dr[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for p in range(self.phi_len):
+                                phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
+                                for t in range(self.theta_len):
+                                    theta_loc = int(np.searchsorted(self.possible_theta, self.theta_primitive[n][t]))
+                                    intq_dr[phi_loc, theta_loc] += np.sum(q_dr[n, p, t, :])
+                        if second_variable is None:
+                            return intq_dr
+                        if second_variable is not None:
+                            raise Exception("You should always integrate through r last")
+                    if variable == 'theta':
+                        self.spherical_grid(get_r=True, get_phi=True, get_dtheta=True)
+                        intq_r_dtheta = np.zeros((len(self.possible_phi), len(self.possible_r)))
+                        q_r_dtheta = q * self.r * self.dtheta
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('theta', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_r_dtheta = q_r_dtheta[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for p in range(self.phi_len):
+                                phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
+                                for r in range(self.r_len):
+                                    r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
+                                    intq_r_dtheta[phi_loc, r_loc] += np.sum(q_r_dtheta[n, p, :, r])
+                        if second_variable is None:
+                            return intq_r_dtheta
+                        if second_variable == 'phi':
+                            raise Exception("For shell integrals please integrate through phi first")
+                        if second_variable == 'r':
+                            intq2_dr = np.zeros(len(self.possible_phi))
+                            if second_bounds is None or second_bounds == "Full":
                                 [lower_bound, upper_bound] = [0, -1]
-                            if third_bounds != "Full":
-                                lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
-                                upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
-                            intq3_dr = np.sum(intq2_dz[lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                            if intermediates == True:
-                                return intq3_dr, intq2_dz, intq_r_dphi
-                            else:
-                                return intq3_dr
-                    if second_variable == 'r':
-                        intq2_dr = np.zeros(len(self.possible_z))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        for z in range(len(self.possible_z)):
-                            intq2_dr[z] = np.sum(intq_r_dphi[z,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dr, intq_r_dphi
-                            else:
-                                return intq2_dr
-                        if third_bounds is not None:
-                            if third_bounds == "Full":
-                                [lower_bound, upper_bound] = [0, -1]
-                            if third_bounds != "Full":
-                                lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
-                                upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
-                            intq3_dz = np.sum(intq2_dr[lower_bound:upper_bound] * self.possible_dz_primitive[lower_bound:upper_bound])
-                            if intermediates == True:
-                                return intq3_dz, intq2_dr, intq_r_dphi
-                            else:
-                                return intq3_dz
-                if variable == 'z':
-                    self.native_grid(get_dz=True)
-                    intq_dz = np.zeros((len(self.possible_phi), len(self.possible_r)))
-                    q_dz = q * self.dz
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('z', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_dz = q_dz[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for p in range(self.phi_len):
-                            phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
-                            for r in range(self.r_len):
-                                r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
-                                intq_dz[phi_loc, r_loc] += np.sum(q_dz[n, :, p, r])
-                    if second_variable is None:
-                        return intq_dz
-                    if second_variable == 'phi':
-                        intq2_r_dphi = np.zeros(len(self.possible_r))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_phi - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_phi - second_bounds[1]))
-                        for r in range(len(self.possible_r)):
-                            intq2_r_dphi[r] = np.sum(intq_dz[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dphi_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_r_dphi, intq_dz
-                            else:
-                                return intq2_r_dphi
-                        if third_bounds is not None:
-                            if third_bounds == "Full":
-                                [lower_bound, upper_bound] = [0, -1]
-                            if third_bounds != "Full":
+                            if second_bounds is not None:
                                 lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
                                 upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                            intq3_dr = np.sum(intq2_r_dphi[lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                            if intermediates == True:
-                                return intq3_dr, intq2_r_dphi, intq_dz
+                            for p in range(len(self.possible_phi)):
+                                intq2_dr[p] = np.sum(intq_r_dtheta[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dr, intq_r_dtheta
+                                else:
+                                    return intq2_dr
+                            if third_bounds is not None:
+                                raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
+                    if variable == 'phi':
+                        self.spherical_grid(get_r=True, get_theta=True, get_dphi=True)
+                        intq_r_sintheta_dphi = np.zeros((len(self.possible_theta), len(self.possible_r)))
+                        q_r_sintheta_dphi = q * self.r * np.sin(self.theta) * self.dphi
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('phi', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_r_sintheta_dphi = q_r_sintheta_dphi[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for t in range(self.theta_len):
+                                theta_loc = int(np.searchsorted(self.possible_theta, self.theta_primitive[n, t]))
+                                for r in range(self.r_len):
+                                    r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
+                                    intq_r_sintheta_dphi[theta_loc, r_loc] += np.sum(q_r_sintheta_dphi[n, :, t, r])
+                        if second_variable is None:
+                            return intq_r_sintheta_dphi
+                        if second_variable == 'theta':
+                            intq2_r_dtheta = np.zeros(len(self.possible_r))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_theta - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_theta - second_bounds[1]))
+                            for r in range(len(self.possible_r)):
+                                intq2_r_dtheta[r] = np.sum(intq_r_sintheta_dphi[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dtheta_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_r_dtheta, intq_r_sintheta_dphi
+                                else:
+                                    return intq2_r_dtheta
+                            if third_bounds is not None:
+                                intq3_dr = np.sum(intq2_r_dtheta * self.possible_dr_primitive)
+                                if intermediates == True:
+                                    return intq3_dr, intq2_r_dtheta, intq_r_sintheta_dphi
+                                else:
+                                    return intq3_dr
+                        if second_variable == 'r':
+                            intq2_dr = np.zeros(len(self.possible_theta))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            for t in range(len(self.possible_theta)):
+                                intq2_dr[t] = np.sum(intq_r_sintheta_dphi[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dr, intq_r_sintheta_dphi
+                                else:
+                                    return intq2_dr
+                            if third_bounds is not None:
+                                raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
+                #check if q has already been integrated through phi
+                if q.shape == (len(self.possible_theta), len(self.possible_r)):
+                    if len(self.possible_theta) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or phi so it's assuming phi. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if variable == 'theta':
+                        intq2_r_dtheta = np.zeros(len(self.possible_r))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_theta - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_theta - bounds[1]))
+                        for r in range(len(self.possible_r)):
+                            intq2_r_dtheta[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dtheta_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_r_dtheta
+                        if second_varibale == 'r':
+                            if second_bounds == "Full" or second_bounds is None:
+                                [lower_bound, upper_bound] = [0, -1]
                             else:
-                                return intq3_dr
-                    if second_variable == 'r':
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            intq3_dr = np.sum(q * self.possible_dr_primitive)
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq3_dr, intq2_r_dtheta
+                                else:
+                                    return intq3_dr
+                            if third_bounds is not None:
+                                raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
+                        if second_variable == 'phi':
+                            raise Exception("phi should be integrated through before theta, if you wish to take a double or triple integral please do it in phi theta r order.")
+                    if variable == 'r':
+                        intq2_dr = np.zeros(len(self.possible_theta))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
+                        for t in range(len(self.possible_theta)):
+                            intq2_dr[t] = np.sum(q[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_dr
+                        if second_variabel is not None:
+                            raise Exception("r should always been the last variable integrated through, if you wish to take a triple integral please do it in phi theta r order.")
+                    if variable == 'phi':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check if q has already been integrated through theta
+                if q.shape == (len(self.possible_phi), len(self.possible_r)):
+                    if len(self.possible_theta) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or phi so it's assuming theta. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if len(self.possible_theta) == len(self.possible_r):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through theta or r so it's assuming theta. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if variable == 'phi':
+                        raise Exception("For shell integrals please integrate through phi first")
+                    if variable == 'r':
                         intq2_dr = np.zeros(len(self.possible_phi))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        for p in range(len(self.possible_p)):
-                            intq2_dr[p] = np.sum(intq_dz[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dr, intq_dz
-                            else:
-                                return intq2_dr
-                        if third_bounds is not None:
-                            raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dphidrdz order).")
-                if variable == 'r':
-                    self.native_grid(get_dr=True)
-                    intq_dr = np.zeros((len(self.possible_z), len(self.possible_phi)))
-                    q_dr = q * self.dr
-                    if bounds != None and bounds != "Full":
-                        self.get_slice_idx('r', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
-                        q_dr = q_dr[self.slice_idx]
-                    for n in range(self.NumMeshBlocks):
-                        for z in range(self.z_len):
-                            z_loc = int(np.searchsorted(self.possible_z, self.z_primitive[n, z]))
-                            for p in range(self.phi_len):
-                                phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n][p]))
-                                intq_dr[z_loc, phi_loc] += np.sum(q_dr[n, z, p, :])
-                    if second_variable is None:
-                        return intq_dr
-                    if second_variable == 'z':
-                        intq2_dz = np.zeros(len(self.possible_phi))
-                        if second_bounds is None or second_bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                        if second_bounds is not None:
-                            lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
                         for p in range(len(self.possible_phi)):
-                            intq2_dz[p] = np.sum(intq_dr[lower_bound:upper_bound,p] * self.possible_dz_primitive[lower_bound:upper_bound])
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq2_dz, intq_dr
+                            intq2_dr[p] = np.sum(q[t,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                        return intq2_dr
+                    if variable == 'phi':
+                        raise Exception("phi should be integrated through before theta, if you wish to take a double or triple integral please do it in phi theta r order.")
+                    if variable == 'theta':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check if q has already been integrated through r
+                if q.shape == (len(self.possible_phi), len(self.possible_thets)):
+                    raise Exception("Anthena Analysis thinks this data has already been integrated through r and r should always been the last variable integrated through. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                #check if q has already been integrated through phi and theta
+                if q.shape == (len(self.possible_r)):
+                    if len(self.possible_r) == len(self.possible_theta):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and theta or phi and r so it's assuming r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if len(self.possible_r) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and theta or theta and r so it's assuming r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if variable == 'r':
+                        if bounds == "Full" or bounds is None:
+                                    [lower_bound, upper_bound] = [0, -1]
+                        else:
+                            lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
+                        intq3_dr = np.sum(q * self.possible_dr_primitive)
+                        return intq3_dr
+                    if variable != 'r':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check for improper use pt 2: bad triple integrals
+                if q.shape == (len(self.possible_theta)):
+                    raise Exception("It appears you trying to finish a triple integral with theta as the final variable integrated over. r must be the final variable integrated over. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                if q.shape == (len(self.possible_phi)):
+                    raise Exception("It appears you trying to finish a triple integral with phi as the final variable integrated over. r must be the final variable integrated over. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")                
+            if self.gridtype == "Cylindrical":
+                if isinstance(q, int) or isinstance(q, float) or q.shape == self.array_size:
+                    if variable == 'phi':
+                        self.native_grid(get_r=True, get_dphi=True)
+                        intq_r_dphi = np.zeros((len(self.possible_z), len(self.possible_r)))
+                        q_r_dphi = q * self.r * self.dphi
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('phi', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_r_dphi = q_r_dphi[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for z in range(self.z_len):
+                                z_loc = int(np.searchsorted(self.possible_z, self.z_primitive[n, z]))
+                                for r in range(self.r_len):
+                                    r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
+                                    intq_r_dphi[z_loc, r_loc] += np.sum(q_r_dphi[n, z, :, r])
+                        if second_variable is None:
+                            return intq_r_dphi
+                        if second_variable == 'z':
+                            intq2_dz = np.zeros(len(self.possible_r))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                            for r in range(len(self.possible_r)):
+                                intq2_dz[r] = np.sum(intq_r_dphi[lower_bound:upper_bound,r] * self.possible_dz_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dz, intq_r_dphi
+                                else:
+                                    return intq2_dz
+                            if third_bounds is not None:
+                                if third_bounds == "Full":
+                                    [lower_bound, upper_bound] = [0, -1]
+                                if third_bounds != "Full":
+                                    lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
+                                    upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
+                                intq3_dr = np.sum(intq2_dz[lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                                if intermediates == True:
+                                    return intq3_dr, intq2_dz, intq_r_dphi
+                                else:
+                                    return intq3_dr
+                        if second_variable == 'r':
+                            intq2_dr = np.zeros(len(self.possible_z))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            for z in range(len(self.possible_z)):
+                                intq2_dr[z] = np.sum(intq_r_dphi[z,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dr, intq_r_dphi
+                                else:
+                                    return intq2_dr
+                            if third_bounds is not None:
+                                if third_bounds == "Full":
+                                    [lower_bound, upper_bound] = [0, -1]
+                                if third_bounds != "Full":
+                                    lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
+                                    upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                                intq3_dz = np.sum(intq2_dr[lower_bound:upper_bound] * self.possible_dz_primitive[lower_bound:upper_bound])
+                                if intermediates == True:
+                                    return intq3_dz, intq2_dr, intq_r_dphi
+                                else:
+                                    return intq3_dz
+                    if variable == 'z':
+                        self.native_grid(get_dz=True)
+                        intq_dz = np.zeros((len(self.possible_phi), len(self.possible_r)))
+                        q_dz = q * self.dz
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('z', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_dz = q_dz[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for p in range(self.phi_len):
+                                phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n, p]))
+                                for r in range(self.r_len):
+                                    r_loc = int(np.searchsorted(self.possible_r, self.r_primitive[n][r]))
+                                    intq_dz[phi_loc, r_loc] += np.sum(q_dz[n, :, p, r])
+                        if second_variable is None:
+                            return intq_dz
+                        if second_variable == 'phi':
+                            intq2_r_dphi = np.zeros(len(self.possible_r))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_phi - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_phi - second_bounds[1]))
+                            for r in range(len(self.possible_r)):
+                                intq2_r_dphi[r] = np.sum(intq_dz[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dphi_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_r_dphi, intq_dz
+                                else:
+                                    return intq2_r_dphi
+                            if third_bounds is not None:
+                                if third_bounds == "Full":
+                                    [lower_bound, upper_bound] = [0, -1]
+                                if third_bounds != "Full":
+                                    lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                    upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                                intq3_dr = np.sum(intq2_r_dphi[lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                                if intermediates == True:
+                                    return intq3_dr, intq2_r_dphi, intq_dz
+                                else:
+                                    return intq3_dr
+                        if second_variable == 'r':
+                            intq2_dr = np.zeros(len(self.possible_phi))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            for p in range(len(self.possible_p)):
+                                intq2_dr[p] = np.sum(intq_dz[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dr, intq_dz
+                                else:
+                                    return intq2_dr
+                            if third_bounds is not None:
+                                raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dphidrdz order).")
+                    if variable == 'r':
+                        self.native_grid(get_dr=True)
+                        intq_dr = np.zeros((len(self.possible_z), len(self.possible_phi)))
+                        q_dr = q * self.dr
+                        if bounds != None and bounds != "Full":
+                            self.get_slice_idx('r', (bounds[0]+bounds[1])/2, (bounds[1]-bounds[0])/2)
+                            q_dr = q_dr[self.slice_idx]
+                        for n in range(self.NumMeshBlocks):
+                            for z in range(self.z_len):
+                                z_loc = int(np.searchsorted(self.possible_z, self.z_primitive[n, z]))
+                                for p in range(self.phi_len):
+                                    phi_loc = int(np.searchsorted(self.possible_phi, self.phi_primitive[n][p]))
+                                    intq_dr[z_loc, phi_loc] += np.sum(q_dr[n, z, p, :])
+                        if second_variable is None:
+                            return intq_dr
+                        if second_variable == 'z':
+                            intq2_dz = np.zeros(len(self.possible_phi))
+                            if second_bounds is None or second_bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                            if second_bounds is not None:
+                                lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                            for p in range(len(self.possible_phi)):
+                                intq2_dz[p] = np.sum(intq_dr[lower_bound:upper_bound,p] * self.possible_dz_primitive[lower_bound:upper_bound])
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq2_dz, intq_dr
+                                else:
+                                    return intq2_dz
+                            if third_bounds is not None:
+                                raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting drdzdphi order).")
+                        if second_variable == 'phi':
+                            raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting drdphi order).")
+                #check if q has already been integrated through z
+                if q.shape == (len(self.possible_phi), len(self.possible_r)):
+                    if len(self.possible_phi) == len(self.possible_z):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through z or phi so it's assuming z. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if variable == 'phi':
+                        intq2_r_dphi = np.zeros(len(self.possible_r))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_phi - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_phi - bounds[1]))
+                        for r in range(len(self.possible_r)):
+                            intq2_r_dphi[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dphi_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_r_dphi
+                        if second_variable == 'r':
+                            if second_bounds == "Full" or second_bounds is None:
+                                [lower_bound, upper_bound] = [0, -1]
                             else:
-                                return intq2_dz
-                        if third_bounds is not None:
-                            raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting drdzdphi order).")
-                    if second_variable == 'phi':
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            intq3_dr = np.sum(q * self.possible_dr_primitive)
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq3_dr, intq2_r_dphi
+                                else:
+                                    return intq3_dr
+                            if third_bounds is not None:
+                                raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
+                    if variable == 'r':
+                        intq2_dr = np.zeros(len(self.possible_phi))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
+                        for p in range(len(self.possible_phi)):
+                            intq2_dr[p] = np.sum(q[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_dr
+                        if second_variable == 'phi':
+                            raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dzdrdphi order).")
+                        if second_variable == 'z':
+                            raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                    if variable == 'z':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check if q has already been integrated through phi
+                if q.shape == (len(self.possible_z), len(self.possible_r)):
+                    if len(self.possible_r) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi or r so it's assuming phi. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if variable == 'z':
+                        intq2_dz = np.zeros(len(self.possible_z))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_z - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_z - bounds[1]))
+                        for r in range(len(self.possible_r)):
+                            intq2_dz[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_dz_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_dz
+                        if second_variable == 'r':
+                            if second_bounds == "Full" or second_bounds is None:
+                                [lower_bound, upper_bound] = [0, -1]
+                            else:
+                                lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            intq3_dr = np.sum(q * self.possible_dr_primitive)
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq3_dr, intq2_dz
+                                else:
+                                    return intq3_dr
+                            if third_bounds is not None:
+                                raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
+                    if variable == 'r':
+                        intq2_dr = np.zeros(len(self.possible_z))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
+                        for z in range(len(self.possible_z)):
+                            intq2_dr[z] = np.sum(q[z,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_dr
+                        if second_variable == 'z':
+                            if second_bounds == "Full" or second_bounds is None:
+                                [lower_bound, upper_bound] = [0, -1]
+                            else:
+                                lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
+                                upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                            intq3_dz = np.sum(q * self.possible_dz_primitive)
+                            if third_bounds is None:
+                                if intermediates == True:
+                                    return intq3_dz, intq2_dr
+                                else:
+                                    return intq3_dr
+                            if third_bounds is not None:
+                                raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
+                    if variable == 'phi':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check if q has already been integrated through r
+                if q.shape == (len(self.possible_z), len(self.possible_phi)):
+                    if len(self.possible_phi) == len(self.possible_r):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through r or phi so it's assuming r. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
+                    if variable == 'phi':
                         raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting drdphi order).")
-            #check if q has already been integrated through z
-            if q.shape == (len(self.possible_phi), len(self.possible_r)):
-                if len(self.possible_phi) == len(self.possible_z):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through z or phi so it's assuming z. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if variable == 'phi':
-                    intq2_r_dphi = np.zeros(len(self.possible_r))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_phi - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_phi - bounds[1]))
-                    for r in range(len(self.possible_r)):
-                        intq2_r_dphi[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_r[r] * self.possible_dphi_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_r_dphi
-                    if second_variable == 'r':
-                        if second_bounds == "Full" or second_bounds is None:
-                            [lower_bound, upper_bound] = [0, -1]
-                        else:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
-                        intq3_dr = np.sum(q * self.possible_dr_primitive)
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq3_dr, intq2_r_dphi
-                            else:
-                                return intq3_dr
-                        if third_bounds is not None:
-                            raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
-                if variable == 'r':
-                    intq2_dr = np.zeros(len(self.possible_phi))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
-                    for p in range(len(self.possible_phi)):
-                        intq2_dr[p] = np.sum(q[p,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_dr
-                    if second_variable == 'phi':
-                        raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dzdrdphi order).")
-                    if second_variable == 'z':
+                    if variable == 'z':
+                        intq2_dz = np.zeros(len(self.possible_phi))
+                        if bounds is None or bounds == "Full":
+                                [lower_bound, upper_bound] = [0, -1]
+                        if bounds is not None:
+                            lower_bound = np.argmin(abs(self.possible_z - bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_z - bounds[1]))
+                        for p in range(len(self.possible_phi)):
+                            intq2_dr[p] = np.sum(q[p,lower_bound:upper_bound] * self.possible_dz_primitive[lower_bound:upper_bound])
+                        if second_variable is None:
+                            return intq2_dz
+                        if second_variable == 'phi':
+                            raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dzdrdphi order).")
+                        if second_variable == 'r':
+                            raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                    if variable == 'z':
                         raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-                if variable == 'z':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through phi
-            if q.shape == (len(self.possible_z), len(self.possible_r)):
-                if len(self.possible_r) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi or r so it's assuming phi. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if variable == 'z':
-                    intq2_dz = np.zeros(len(self.possible_z))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_z - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_z - bounds[1]))
-                    for r in range(len(self.possible_r)):
-                        intq2_dz[r] = np.sum(q[lower_bound:upper_bound,r] * self.possible_dz_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_dz
-                    if second_variable == 'r':
-                        if second_bounds == "Full" or second_bounds is None:
-                            [lower_bound, upper_bound] = [0, -1]
+                #check if q has already been integrated through phi and z
+                if q.shape == self.possible_r.shape:
+                    if len(self.possible_r) == len(self.possible_z):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and z or phi and r so it's assuming phi and z. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if len(self.possible_r) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and z or z and r so it's assuming phi and z. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if variable == 'r':
+                        if bounds == "Full" or bounds is None:
+                                    [lower_bound, upper_bound] = [0, -1]
                         else:
-                            lower_bound = np.argmin(abs(self.possible_r - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_r - second_bounds[1]))
+                            lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
                         intq3_dr = np.sum(q * self.possible_dr_primitive)
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq3_dr, intq2_dz
-                            else:
-                                return intq3_dr
-                        if third_bounds is not None:
-                            raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
-                if variable == 'r':
-                    intq2_dr = np.zeros(len(self.possible_z))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_r - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - bounds[1]))
-                    for z in range(len(self.possible_z)):
-                        intq2_dr[z] = np.sum(q[z,lower_bound:upper_bound] * self.possible_dr_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_dr
-                    if second_variable == 'z':
-                        if second_bounds == "Full" or second_bounds is None:
-                            [lower_bound, upper_bound] = [0, -1]
+                        return intq3_dr
+                    if variable != 'r':
+                        raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
+                #check if q has already been integrated through phi and r
+                if q.shape == self.possible_z.shape:
+                    if len(self.possible_r) == len(self.possible_z):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and r or z and r so it's assuming phi and r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if len(self.possible_z) == len(self.possible_phi):
+                        warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and r or z and r so it's assuming phi and r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+                    if variable == 'z':
+                        if bounds == "Full" or bounds is None:
+                                    [lower_bound, upper_bound] = [0, -1]
                         else:
-                            lower_bound = np.argmin(abs(self.possible_z - second_bounds[0]))
-                            upper_bound = np.argmin(abs(self.possible_z - second_bounds[1]))
+                            lower_bound = np.argmin(abs(self.possible_z - third_bounds[0]))
+                            upper_bound = np.argmin(abs(self.possible_z - third_bounds[1]))
                         intq3_dz = np.sum(q * self.possible_dz_primitive)
-                        if third_bounds is None:
-                            if intermediates == True:
-                                return intq3_dz, intq2_dr
-                            else:
-                                return intq3_dr
-                        if third_bounds is not None:
-                            raise Exception("hmm... I think you've already integrated through every axis, not sure what you're trying to do here")
-                if variable == 'phi':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through r
-            if q.shape == (len(self.possible_z), len(self.possible_phi)):
-                if len(self.possible_phi) == len(self.possible_r):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through r or phi so it's assuming r. If this is wrong redo both this and the original integral using the second_variable kwarg of this method to take the double integral correctly in one step")
-                if variable == 'phi':
-                    raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting drdphi order).")
-                if variable == 'z':
-                    intq2_dz = np.zeros(len(self.possible_phi))
-                    if bounds is None or bounds == "Full":
-                            [lower_bound, upper_bound] = [0, -1]
-                    if bounds is not None:
-                        lower_bound = np.argmin(abs(self.possible_z - bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_z - bounds[1]))
-                    for p in range(len(self.possible_phi)):
-                        intq2_dr[p] = np.sum(q[p,lower_bound:upper_bound] * self.possible_dz_primitive[lower_bound:upper_bound])
-                    if second_variable is None:
-                        return intq2_dz
-                    if second_variable == 'phi':
-                        raise Exception("r must integrated through after phi, please reorder your integral (you are currently attempting dzdrdphi order).")
-                    if second_variable == 'r':
+                        return intq3_dz
+                    if variable != 'z':
                         raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-                if variable == 'z':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through phi and z
-            if q.shape == self.possible_r.shape:
-                if len(self.possible_r) == len(self.possible_z):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and z or phi and r so it's assuming phi and z. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if len(self.possible_r) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and z or z and r so it's assuming phi and z. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if variable == 'r':
-                    if bounds == "Full" or bounds is None:
-                                [lower_bound, upper_bound] = [0, -1]
-                    else:
-                        lower_bound = np.argmin(abs(self.possible_r - third_bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_r - third_bounds[1]))
-                    intq3_dr = np.sum(q * self.possible_dr_primitive)
-                    return intq3_dr
-                if variable != 'r':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check if q has already been integrated through phi and r
-            if q.shape == self.possible_z.shape:
-                if len(self.possible_r) == len(self.possible_z):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and r or z and r so it's assuming phi and r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if len(self.possible_z) == len(self.possible_phi):
-                    warnings.warn("Athena Analysis can't tell if this was previously integrated through phi and r or z and r so it's assuming phi and r. If this is wrong redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-                if variable == 'z':
-                    if bounds == "Full" or bounds is None:
-                                [lower_bound, upper_bound] = [0, -1]
-                    else:
-                        lower_bound = np.argmin(abs(self.possible_z - third_bounds[0]))
-                        upper_bound = np.argmin(abs(self.possible_z - third_bounds[1]))
-                    intq3_dz = np.sum(q * self.possible_dz_primitive)
-                    return intq3_dz
-                if variable != 'z':
-                    raise Exception("I think you've already integrated through this variable, you can't integrate over the same axis twice. If I'm wrong use the inbuilt multiple integral functionality to ensure your integral is taken correctly")
-            #check for improper use pt 2: bad triple integrals
-            if q.shape == self.possible_phi.shape:
-                raise Exception("It appears you trying to finish a triple integral with phi as the final variable integrated over. Phi must be integrated over before r. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
-        #raise for improper use final pt: bad format
-            raise Exception("Sorry Athen Analysis doesn't recognize the format of your data. Please make sure its either an Athena data array, an array I created from this integrator, an integer, or a float. Other arrays of custom shape will not work ;(")
+                #check for improper use pt 2: bad triple integrals
+                if q.shape == self.possible_phi.shape:
+                    raise Exception("It appears you trying to finish a triple integral with phi as the final variable integrated over. Phi must be integrated over before r. It is recommended you redo both this and the original integrals using the inbuilt triple integral capability of this method to take the triple integral correctly in one step")
+            #raise for improper use final pt: bad format
+                raise Exception("Sorry Athen Analysis doesn't recognize the format of your data. Please make sure its either an Athena data array, an array I created from this integrator, an integer, or a float. Other arrays of custom shape will not work ;(")
     
     def vec_vol_integrate(self, v):
         """
