@@ -1,4 +1,0 @@
-/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:183: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
-  ax_radalpha.set_ylim([1e-6, 1e4])
-/home/mohana/mhd_superhump/Athena_Analysis/branches/profile.py:187: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
-  ax_vertalpha.set_ylim([1e-6, 1e4])

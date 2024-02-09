@@ -10,31 +10,52 @@ class Profile():
     def __init__(self, dname, start_point = 0):
         self.dname = dname
         self.aname = "_profile" #a for analysis
+        self.sname = ""
         self.data_location = file.data_loc + dname
         self.grid_type = file.grid_types[dname]
         self.file_spacing = find_file_spacing(dname, start_point)
         self.is_MHD = file.MHD[dname]
         self.savedir = file.savedir + dname + "/" + dname + self.aname
         mkdir_if_not_exist(self.savedir)
+        self.pickldir = self.savedir + "/pickles"
+        mkdir_if_not_exist(self.pickldir)
 
-    def temporal_profile(self, fnum_range, file_spacing=None, plot_every = 100):
+
+    def temporal_profile(self, fnum_range, r_slicepoint = None, file_spacing=None, plot_every = 100):
         self.aname = "temporal"
         if file_spacing == None:
             file_spacing = self.file_spacing
         
+        if r_slicepoint is not None:
+            self.sname = "res"
+
         mass = np.zeros(fnum_range[1]-fnum_range[0])
         times = np.zeros(fnum_range[1]-fnum_range[0])
 
         for i, fnum in enumerate(range(fnum_range[0], fnum_range[1], file_spacing)):
             logging.info("fnum = %d" % fnum)
+
             filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
+
+            if not os.path.exists(filename):
+                with open("%s/%s%s_pickle_%05d-%05d.dat" % (self.pickldir, self.dname, self.aname, fnum_range[0], fnum_range[1]), "wb") as pickle_file:
+                    pickle.dump({"times": times, "mass": mass}, pickle_file)
+                
 
             aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
 
             aa.get_primaries(get_rho=True)
+            aa.native_grid(get_r=True)
+
+            if r_slicepoint is not None:
+                r_idx = np.argmin(abs(aa.possible_r - r_slicepoint))
 
             times[i] = aa.time / sim.binary_period
-            mass[i] = aa.integrate(aa.rho, "all")
+
+            if r_slicepoint is None:
+                mass[i] = aa.integrate(aa.rho, "all")
+            else:
+                mass[i] = aa.integrate(aa.rho, "phi", "Full", "z")[r_idx]
 
             if i % plot_every == 0:
                 vert = 1
@@ -44,12 +65,20 @@ class Profile():
 
                 ax_rho = fig.add_subplot(gs[0, 0])
                 ax_rho.plot(times[:i], mass[:i])
-                ax_rho.set_ylim([0, 130])
+                
+                if r_slicepoint is None:
+                    ax_rho.set_title("Mass of Disk")
+                    ax_rho.set_ylim([0, 130])
+                else:
+                    ax_rho.set_title(f"Mass of disk at r={aa.possible_r[r_idx]:.3}")
+                    ax_rho.set_ylim([0, 5])
+                ax_rho.set_xlabel("Binary Orbits")
+                ax_rho.set_ylabel("M")
 
                 plt.tight_layout()
                 plt.subplots_adjust(top=(1-0.01*(16/vert)))
                 fig.suptitle(self.dname)
-                plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, self.aname, fnum))
+                plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
                 plt.close()
 
 

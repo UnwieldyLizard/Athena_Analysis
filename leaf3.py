@@ -38,7 +38,4 @@ from branches.profile import *
 #main("Cyl_13", [703, 704])#, 100)
 
 P = Profile("Cyl_11_2")
-i = 0
-while i < 20: 
-    P.profile(i*100)
-    i+=1
+P.temporal_profile([0, 10000], r_slicepoint=sim.three_one_res)

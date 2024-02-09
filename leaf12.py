@@ -1,5 +1,4 @@
 #from branches.angular_momentum import *
-#from branches.momentum import *
 #from branches.B_fields import *
 #from branches.eccentricity import *
 from branches.meccentricity_profile import *
@@ -10,7 +9,7 @@ from branches.meccentricity_profile import *
 
 #main("Cyl_15", [0, 10000])
 
-eccentricity_profile("Cyl_11_2", [0, 100000], stress_test=True)
+eccentricity_profile("Cyl_15_2", [3101, 100000], stress_test=True)
 
 #M = Momentum("Cyl_15")
 #M.evolution([0,10000])

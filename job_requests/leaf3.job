@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --partition short
+#SBATCH --partition batch
 ##SBATCH --ntasks=1 
 ##SBATCH --ntasks-per-core 1
 #SBATCH -o /home/mohana/mhd_superhump/Athena_Analysis/job_requests/leaf3.log

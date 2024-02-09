@@ -1,0 +1,1595 @@
+INFO:root:Finding files...
+INFO:root:Found file spacing: 1
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.005994
+INFO:root:fnum = 2100
+INFO:root:0:00:13.817647
+INFO:root:fnum = 2101
+INFO:root:0:00:07.378445
+INFO:root:fnum = 2102
+INFO:root:0:00:07.578349
+INFO:root:fnum = 2103
+INFO:root:0:00:07.432856
+INFO:root:fnum = 2104
+INFO:root:0:00:07.172738
+INFO:root:fnum = 2105
+INFO:root:0:00:07.566571
+INFO:root:fnum = 2106
+INFO:root:0:00:07.337291
+INFO:root:fnum = 2107
+INFO:root:0:00:06.918855
+INFO:root:fnum = 2108
+INFO:root:0:00:07.146980
+INFO:root:fnum = 2109
+INFO:root:0:00:07.065778
+INFO:root:fnum = 2110
+INFO:root:0:00:07.354211
+INFO:root:fnum = 2111
+INFO:root:0:00:07.145815
+INFO:root:fnum = 2112
+INFO:root:0:00:07.262422
+INFO:root:fnum = 2113
+INFO:root:0:00:07.471629
+INFO:root:fnum = 2114
+INFO:root:0:00:07.293198
+INFO:root:fnum = 2115
+INFO:root:0:00:07.341918
+INFO:root:fnum = 2116
+INFO:root:0:00:07.087137
+INFO:root:fnum = 2117
+INFO:root:0:00:07.208614
+INFO:root:fnum = 2118
+INFO:root:0:00:07.277716
+INFO:root:fnum = 2119
+INFO:root:0:00:07.198129
+INFO:root:fnum = 2120
+INFO:root:0:00:07.158925
+INFO:root:fnum = 2121
+INFO:root:0:00:07.080896
+INFO:root:fnum = 2122
+INFO:root:0:00:07.290616
+INFO:root:fnum = 2123
+INFO:root:0:00:07.221316
+INFO:root:fnum = 2124
+INFO:root:0:00:06.974726
+INFO:root:fnum = 2125
+INFO:root:0:00:07.279273
+INFO:root:fnum = 2126
+INFO:root:0:00:07.271068
+INFO:root:fnum = 2127
+INFO:root:0:00:07.097509
+INFO:root:fnum = 2128
+INFO:root:0:00:07.197155
+INFO:root:fnum = 2129
+INFO:root:0:00:07.242681
+INFO:root:fnum = 2130
+INFO:root:0:00:07.310024
+INFO:root:fnum = 2131
+INFO:root:0:00:07.266467
+INFO:root:fnum = 2132
+INFO:root:0:00:07.297830
+INFO:root:fnum = 2133
+INFO:root:0:00:07.100366
+INFO:root:fnum = 2134
+INFO:root:0:00:07.504809
+INFO:root:fnum = 2135
+INFO:root:0:00:07.140530
+INFO:root:fnum = 2136
+INFO:root:0:00:07.404101
+INFO:root:fnum = 2137
+INFO:root:0:00:07.208620
+INFO:root:fnum = 2138
+INFO:root:0:00:07.235945
+INFO:root:fnum = 2139
+INFO:root:0:00:07.073807
+INFO:root:fnum = 2140
+INFO:root:0:00:07.196273
+INFO:root:fnum = 2141
+INFO:root:0:00:07.048951
+INFO:root:fnum = 2142
+INFO:root:0:00:07.277354
+INFO:root:fnum = 2143
+INFO:root:0:00:07.278946
+INFO:root:fnum = 2144
+INFO:root:0:00:07.063997
+INFO:root:fnum = 2145
+INFO:root:0:00:07.092446
+INFO:root:fnum = 2146
+INFO:root:0:00:07.252480
+INFO:root:fnum = 2147
+INFO:root:0:00:07.148654
+INFO:root:fnum = 2148
+INFO:root:0:00:07.319502
+INFO:root:fnum = 2149
+INFO:root:0:00:07.108990
+INFO:root:fnum = 2150
+INFO:root:0:00:07.387652
+INFO:root:fnum = 2151
+INFO:root:0:00:07.243866
+INFO:root:fnum = 2152
+INFO:root:0:00:07.135888
+INFO:root:fnum = 2153
+INFO:root:0:00:07.210263
+INFO:root:fnum = 2154
+INFO:root:0:00:07.215972
+INFO:root:fnum = 2155
+INFO:root:0:00:07.306583
+INFO:root:fnum = 2156
+INFO:root:0:00:06.987012
+INFO:root:fnum = 2157
+INFO:root:0:00:07.268328
+INFO:root:fnum = 2158
+INFO:root:0:00:07.071869
+INFO:root:fnum = 2159
+INFO:root:0:00:07.133828
+INFO:root:fnum = 2160
+INFO:root:0:00:07.143314
+INFO:root:fnum = 2161
+INFO:root:0:00:07.241286
+INFO:root:fnum = 2162
+INFO:root:0:00:07.374873
+INFO:root:fnum = 2163
+INFO:root:0:00:07.145115
+INFO:root:fnum = 2164
+INFO:root:0:00:07.181624
+INFO:root:fnum = 2165
+INFO:root:0:00:07.191965
+INFO:root:fnum = 2166
+INFO:root:0:00:07.692076
+INFO:root:fnum = 2167
+INFO:root:0:00:07.182099
+INFO:root:fnum = 2168
+INFO:root:0:00:07.142157
+INFO:root:fnum = 2169
+INFO:root:0:00:07.588201
+INFO:root:fnum = 2170
+INFO:root:0:00:07.148221
+INFO:root:fnum = 2171
+INFO:root:0:00:07.189334
+INFO:root:fnum = 2172
+INFO:root:0:00:07.392060
+INFO:root:fnum = 2173
+INFO:root:0:00:07.116946
+INFO:root:fnum = 2174
+INFO:root:0:00:07.055676
+INFO:root:fnum = 2175
+INFO:root:0:00:07.254700
+INFO:root:fnum = 2176
+INFO:root:0:00:07.143745
+INFO:root:fnum = 2177
+INFO:root:0:00:07.345047
+INFO:root:fnum = 2178
+INFO:root:0:00:07.075244
+INFO:root:fnum = 2179
+INFO:root:0:00:07.194984
+INFO:root:fnum = 2180
+INFO:root:0:00:07.080270
+INFO:root:fnum = 2181
+INFO:root:0:00:07.084782
+INFO:root:fnum = 2182
+INFO:root:0:00:07.209626
+INFO:root:fnum = 2183
+INFO:root:0:00:07.106780
+INFO:root:fnum = 2184
+INFO:root:0:00:07.095304
+INFO:root:fnum = 2185
+INFO:root:0:00:07.408851
+INFO:root:fnum = 2186
+INFO:root:0:00:07.201112
+INFO:root:fnum = 2187
+INFO:root:0:00:07.106459
+INFO:root:fnum = 2188
+INFO:root:0:00:07.170766
+INFO:root:fnum = 2189
+INFO:root:0:00:08.205759
+INFO:root:fnum = 2190
+INFO:root:0:00:07.351750
+INFO:root:fnum = 2191
+INFO:root:0:00:07.349945
+INFO:root:fnum = 2192
+INFO:root:0:00:07.286014
+INFO:root:fnum = 2193
+INFO:root:0:00:07.755379
+INFO:root:fnum = 2194
+INFO:root:0:00:07.539057
+INFO:root:fnum = 2195
+INFO:root:0:00:07.519896
+INFO:root:fnum = 2196
+INFO:root:0:00:08.125501
+INFO:root:fnum = 2197
+INFO:root:0:00:07.828378
+INFO:root:fnum = 2198
+INFO:root:0:00:07.654201
+INFO:root:fnum = 2199
+INFO:root:0:00:07.609265
+INFO:root:fnum = 2200
+INFO:root:0:00:07.376783
+INFO:root:fnum = 2201
+INFO:root:0:00:07.440970
+INFO:root:fnum = 2202
+INFO:root:0:00:07.251950
+INFO:root:fnum = 2203
+INFO:root:0:00:07.746021
+INFO:root:fnum = 2204
+INFO:root:0:00:07.247793
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Finding files...
+INFO:root:Found file spacing: 1
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.010201
+INFO:root:fnum = 2100
+INFO:root:0:00:50.879714
+INFO:root:fnum = 2101
+INFO:root:0:00:37.215647
+INFO:root:fnum = 2102
+INFO:root:0:00:37.511809
+INFO:root:fnum = 2103
+INFO:root:0:00:36.909257
+INFO:root:fnum = 2104
+INFO:root:0:00:36.272591
+INFO:root:fnum = 2105
+INFO:root:0:00:36.991325
+INFO:root:fnum = 2106
+INFO:root:0:00:36.947126
+INFO:root:fnum = 2107
+INFO:root:0:00:36.194520
+INFO:root:fnum = 2108
+INFO:root:0:00:41.933823
+INFO:root:fnum = 2109
+INFO:root:0:00:41.067164
+INFO:root:fnum = 2110
+INFO:root:0:00:39.458893
+INFO:root:fnum = 2111
+INFO:root:0:00:36.744582
+INFO:root:fnum = 2112
+INFO:root:0:00:35.872014
+INFO:root:fnum = 2113
+INFO:root:0:00:36.192557
+INFO:root:fnum = 2114
+INFO:root:0:00:36.177847
+INFO:root:fnum = 2115
+INFO:root:0:00:36.834113
+INFO:root:fnum = 2116
+INFO:root:0:00:36.284003
+INFO:root:fnum = 2117
+INFO:root:0:00:35.832233
+INFO:root:fnum = 2118
+INFO:root:0:00:37.243677
+INFO:root:fnum = 2119
+INFO:root:0:00:40.497544
+INFO:root:fnum = 2120
+INFO:root:0:00:39.740075
+INFO:root:fnum = 2121
+INFO:root:0:00:37.925084
+INFO:root:fnum = 2122
+INFO:root:0:00:38.871998
+INFO:root:fnum = 2123
+INFO:root:0:00:42.904772
+INFO:root:fnum = 2124
+INFO:root:0:00:42.909450
+INFO:root:fnum = 2125
+INFO:root:0:00:46.320585
+INFO:root:fnum = 2126
+INFO:root:0:00:45.498788
+INFO:root:fnum = 2127
+INFO:root:0:00:35.251832
+INFO:root:fnum = 2128
+INFO:root:0:00:35.329905
+INFO:root:fnum = 2129
+INFO:root:0:00:34.898986
+INFO:root:fnum = 2130
+INFO:root:0:00:35.576786
+INFO:root:fnum = 2131
+INFO:root:0:00:37.183491
+INFO:root:fnum = 2132
+INFO:root:0:00:37.139515
+INFO:root:fnum = 2133
+INFO:root:0:04:59.367730
+INFO:root:fnum = 2134
+INFO:root:0:00:36.206410
+INFO:root:fnum = 2135
+INFO:root:0:00:44.018391
+INFO:root:fnum = 2136
+INFO:root:Finding files...
+INFO:root:Found file spacing: 1
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.006154
+INFO:root:fnum = 2100
+INFO:root:0:00:39.219687
+INFO:root:fnum = 2101
+INFO:root:0:00:32.726939
+INFO:root:fnum = 2102
+INFO:root:0:00:32.606618
+INFO:root:fnum = 2103
+INFO:root:0:00:32.618680
+INFO:root:fnum = 2104
+INFO:root:0:00:32.732551
+INFO:root:fnum = 2105
+INFO:root:0:00:32.592693
+INFO:root:fnum = 2106
+INFO:root:0:00:32.742430
+INFO:root:fnum = 2107
+INFO:root:0:00:32.697100
+INFO:root:fnum = 2108
+INFO:root:0:00:32.722999
+INFO:root:fnum = 2109
+INFO:root:0:00:32.780046
+INFO:root:fnum = 2110
+INFO:root:0:00:32.700165
+INFO:root:fnum = 2111
+INFO:root:0:00:32.820577
+INFO:root:fnum = 2112
+INFO:root:0:00:32.771478
+INFO:root:fnum = 2113
+INFO:root:0:00:32.683420
+INFO:root:fnum = 2114
+INFO:root:0:00:32.767797
+INFO:root:fnum = 2115
+INFO:root:0:00:32.657541
+INFO:root:fnum = 2116
+INFO:root:0:00:32.611212
+INFO:root:fnum = 2117
+INFO:root:0:00:32.501119
+INFO:root:fnum = 2118
+INFO:root:0:00:32.651824
+INFO:root:fnum = 2119
+INFO:root:0:00:32.636187
+INFO:root:fnum = 2120
+INFO:root:0:00:32.712426
+INFO:root:fnum = 2121
+INFO:root:0:00:32.582499
+INFO:root:fnum = 2122
+INFO:root:0:00:32.683502
+INFO:root:fnum = 2123
+INFO:root:0:00:32.772861
+INFO:root:fnum = 2124
+INFO:root:0:00:32.847448
+INFO:root:fnum = 2125
+INFO:root:0:00:32.379315
+INFO:root:fnum = 2126
+INFO:root:0:00:33.171427
+INFO:root:fnum = 2127
+INFO:root:0:00:32.610850
+INFO:root:fnum = 2128
+INFO:root:0:00:32.604389
+INFO:root:fnum = 2129
+INFO:root:0:00:32.312758
+INFO:root:fnum = 2130
+INFO:root:0:00:32.878832
+INFO:root:fnum = 2131
+INFO:root:0:00:32.335925
+INFO:root:fnum = 2132
+INFO:root:0:00:32.729340
+INFO:root:fnum = 2133
+INFO:root:0:00:32.716017
+INFO:root:fnum = 2134
+INFO:root:0:00:32.868336
+INFO:root:fnum = 2135
+INFO:root:0:00:32.746435
+INFO:root:fnum = 2136
+INFO:root:0:00:32.716447
+INFO:root:fnum = 2137
+INFO:root:0:00:36.461697
+INFO:root:fnum = 2138
+INFO:root:0:00:36.039428
+INFO:root:fnum = 2139
+INFO:root:0:00:36.139230
+INFO:root:fnum = 2140
+INFO:root:0:00:35.031293
+INFO:root:fnum = 2141
+INFO:root:0:00:34.548530
+INFO:root:fnum = 2142
+INFO:root:0:00:36.072602
+INFO:root:fnum = 2143
+INFO:root:0:00:35.518981
+INFO:root:fnum = 2144
+INFO:root:0:00:34.711359
+INFO:root:fnum = 2145
+INFO:root:0:00:34.511765
+INFO:root:fnum = 2146
+INFO:root:0:00:34.759370
+INFO:root:fnum = 2147
+INFO:root:0:00:34.745516
+INFO:root:fnum = 2148
+INFO:root:0:00:34.543725
+INFO:root:fnum = 2149
+INFO:root:0:00:34.302651
+INFO:root:fnum = 2150
+INFO:root:0:00:35.629939
+INFO:root:fnum = 2151
+INFO:root:0:00:34.402399
+INFO:root:fnum = 2152
+INFO:root:0:00:34.442989
+INFO:root:fnum = 2153
+INFO:root:0:00:33.923327
+INFO:root:fnum = 2154
+INFO:root:0:00:35.676678
+INFO:root:fnum = 2155
+INFO:root:0:00:34.788152
+INFO:root:fnum = 2156
+INFO:root:0:00:34.117383
+INFO:root:fnum = 2157
+INFO:root:0:00:35.629111
+INFO:root:fnum = 2158
+INFO:root:0:00:34.590710
+INFO:root:fnum = 2159
+INFO:root:0:00:34.603425
+INFO:root:fnum = 2160
+INFO:root:0:00:34.730417
+INFO:root:fnum = 2161
+INFO:root:0:00:34.890325
+INFO:root:fnum = 2162
+INFO:root:0:00:35.094819
+INFO:root:fnum = 2163
+INFO:root:0:00:35.272746
+INFO:root:fnum = 2164
+INFO:root:0:00:35.289907
+INFO:root:fnum = 2165
+INFO:root:0:00:35.123843
+INFO:root:fnum = 2166
+INFO:root:0:00:35.446076
+INFO:root:fnum = 2167
+INFO:root:0:00:36.276341
+INFO:root:fnum = 2168
+INFO:root:0:00:34.538585
+INFO:root:fnum = 2169
+INFO:root:0:00:35.021303
+INFO:root:fnum = 2170
+INFO:root:0:00:35.220749
+INFO:root:fnum = 2171
+INFO:root:0:00:35.055549
+INFO:root:fnum = 2172
+INFO:root:0:00:36.161103
+INFO:root:fnum = 2173
+INFO:root:0:00:35.922490
+INFO:root:fnum = 2174
+INFO:root:0:00:36.075391
+INFO:root:fnum = 2175
+INFO:root:0:00:35.192504
+INFO:root:fnum = 2176
+INFO:root:0:00:35.049266
+INFO:root:fnum = 2177
+INFO:root:0:00:34.648335
+INFO:root:fnum = 2178
+INFO:root:0:00:34.725317
+INFO:root:fnum = 2179
+INFO:root:0:00:34.653385
+INFO:root:fnum = 2180
+INFO:root:0:00:35.077886
+INFO:root:fnum = 2181
+INFO:root:0:00:34.462760
+INFO:root:fnum = 2182
+INFO:root:0:00:35.544492
+INFO:root:fnum = 2183
+INFO:root:0:00:34.362754
+INFO:root:fnum = 2184
+INFO:root:0:00:34.933979
+INFO:root:fnum = 2185
+INFO:root:0:00:35.015231
+INFO:root:fnum = 2186
+INFO:root:0:00:36.234313
+INFO:root:fnum = 2187
+INFO:root:0:00:34.546321
+INFO:root:fnum = 2188
+INFO:root:0:00:35.023561
+INFO:root:fnum = 2189
+INFO:root:0:00:35.475191
+INFO:root:fnum = 2190
+INFO:root:0:00:35.625286
+INFO:root:fnum = 2191
+INFO:root:0:00:35.449994
+INFO:root:fnum = 2192
+INFO:root:0:00:34.821569
+INFO:root:fnum = 2193
+INFO:root:0:00:35.169837
+INFO:root:fnum = 2194
+INFO:root:0:00:34.332627
+INFO:root:fnum = 2195
+INFO:root:0:00:35.287759
+INFO:root:fnum = 2196
+INFO:root:0:00:34.918349
+INFO:root:fnum = 2197
+INFO:root:0:00:34.489879
+INFO:root:fnum = 2198
+INFO:root:0:00:34.561668
+INFO:root:fnum = 2199
+INFO:root:0:00:35.537335
+INFO:root:fnum = 2200
+INFO:root:0:00:34.986168
+INFO:root:fnum = 2201
+INFO:root:0:00:34.828297
+INFO:root:fnum = 2202
+INFO:root:0:00:34.497471
+INFO:root:fnum = 2203
+INFO:root:0:00:35.073666
+INFO:root:fnum = 2204
+INFO:root:0:00:35.875222
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.036315
+INFO:root:fnum = 2100
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.002453
+INFO:root:fnum = 2100
+INFO:root:0:00:22.990832
+INFO:root:fnum = 2101
+INFO:root:0:00:19.748474
+INFO:root:fnum = 2102
+INFO:root:0:00:19.352947
+INFO:root:fnum = 2103
+INFO:root:0:00:18.680022
+INFO:root:fnum = 2104
+INFO:root:0:00:18.398768
+INFO:root:fnum = 2105
+INFO:root:0:00:18.977782
+INFO:root:fnum = 2106
+INFO:root:0:00:18.761521
+INFO:root:fnum = 2107
+INFO:root:0:00:18.432756
+INFO:root:fnum = 2108
+INFO:root:0:00:19.129937
+INFO:root:fnum = 2109
+INFO:root:0:00:18.144226
+INFO:root:fnum = 2110
+INFO:root:0:00:19.509749
+INFO:root:fnum = 2111
+INFO:root:0:00:18.764181
+INFO:root:fnum = 2112
+INFO:root:0:00:19.369351
+INFO:root:fnum = 2113
+INFO:root:0:00:19.064944
+INFO:root:fnum = 2114
+INFO:root:0:00:20.290958
+INFO:root:fnum = 2115
+INFO:root:0:00:19.556185
+INFO:root:fnum = 2116
+INFO:root:0:00:18.455857
+INFO:root:fnum = 2117
+INFO:root:0:00:19.588075
+INFO:root:fnum = 2118
+INFO:root:0:00:18.670265
+INFO:root:fnum = 2119
+INFO:root:0:00:19.088556
+INFO:root:fnum = 2120
+INFO:root:0:00:18.854762
+INFO:root:fnum = 2121
+INFO:root:0:00:22.827373
+INFO:root:fnum = 2122
+INFO:root:0:00:24.713770
+INFO:root:fnum = 2123
+INFO:root:0:00:25.047732
+INFO:root:fnum = 2124
+INFO:root:0:00:24.788855
+INFO:root:fnum = 2125
+INFO:root:0:00:25.327922
+INFO:root:fnum = 2126
+INFO:root:0:00:24.527904
+INFO:root:fnum = 2127
+INFO:root:0:00:24.643513
+INFO:root:fnum = 2128
+INFO:root:0:00:24.643533
+INFO:root:fnum = 2129
+INFO:root:0:00:24.719170
+INFO:root:fnum = 2130
+INFO:root:0:00:25.038165
+INFO:root:fnum = 2131
+INFO:root:0:00:19.244854
+INFO:root:fnum = 2132
+INFO:root:0:00:18.913266
+INFO:root:fnum = 2133
+INFO:root:0:00:18.270352
+INFO:root:fnum = 2134
+INFO:root:0:00:18.056658
+INFO:root:fnum = 2135
+INFO:root:0:00:19.251862
+INFO:root:fnum = 2136
+INFO:root:0:00:18.322340
+INFO:root:fnum = 2137
+INFO:root:0:00:19.066975
+INFO:root:fnum = 2138
+INFO:root:0:00:19.009510
+INFO:root:fnum = 2139
+INFO:root:0:00:18.391389
+INFO:root:fnum = 2140
+INFO:root:0:00:18.151127
+INFO:root:fnum = 2141
+INFO:root:0:00:18.518912
+INFO:root:fnum = 2142
+INFO:root:0:00:18.758529
+INFO:root:fnum = 2143
+INFO:root:0:00:19.477671
+INFO:root:fnum = 2144
+INFO:root:0:00:18.370761
+INFO:root:fnum = 2145
+INFO:root:0:00:18.148174
+INFO:root:fnum = 2146
+INFO:root:0:00:18.961380
+INFO:root:fnum = 2147
+INFO:root:0:00:18.404724
+INFO:root:fnum = 2148
+INFO:root:0:00:19.598160
+INFO:root:fnum = 2149
+INFO:root:0:00:18.242978
+INFO:root:fnum = 2150
+INFO:root:0:00:23.366716
+INFO:root:fnum = 2151
+INFO:root:0:00:24.870079
+INFO:root:fnum = 2152
+INFO:root:0:00:24.302835
+INFO:root:fnum = 2153
+INFO:root:0:00:24.758784
+INFO:root:fnum = 2154
+INFO:root:0:00:20.586596
+INFO:root:fnum = 2155
+INFO:root:0:00:21.279239
+INFO:root:fnum = 2156
+INFO:root:0:00:19.391425
+INFO:root:fnum = 2157
+INFO:root:0:00:19.879967
+INFO:root:fnum = 2158
+INFO:root:0:00:19.360063
+INFO:root:fnum = 2159
+INFO:root:0:00:19.655536
+INFO:root:fnum = 2160
+INFO:root:0:00:18.948723
+INFO:root:fnum = 2161
+INFO:root:0:00:19.751015
+INFO:root:fnum = 2162
+INFO:root:0:00:18.862506
+INFO:root:fnum = 2163
+INFO:root:0:00:18.913306
+INFO:root:fnum = 2164
+INFO:root:0:00:18.855794
+INFO:root:fnum = 2165
+INFO:root:0:00:19.054382
+INFO:root:fnum = 2166
+INFO:root:0:00:21.083056
+INFO:root:fnum = 2167
+INFO:root:0:00:21.536065
+INFO:root:fnum = 2168
+INFO:root:0:00:24.798091
+INFO:root:fnum = 2169
+INFO:root:0:00:24.943705
+INFO:root:fnum = 2170
+INFO:root:0:00:21.038632
+INFO:root:fnum = 2171
+INFO:root:0:00:24.041813
+INFO:root:fnum = 2172
+INFO:root:0:00:25.156622
+INFO:root:fnum = 2173
+INFO:root:0:00:21.828073
+INFO:root:fnum = 2174
+INFO:root:0:00:18.190083
+INFO:root:fnum = 2175
+INFO:root:0:00:18.629031
+INFO:root:fnum = 2176
+INFO:root:0:00:18.395768
+INFO:root:fnum = 2177
+INFO:root:0:00:19.203742
+INFO:root:fnum = 2178
+INFO:root:0:00:18.531041
+INFO:root:fnum = 2179
+INFO:root:0:00:18.548987
+INFO:root:fnum = 2180
+INFO:root:0:00:17.920335
+INFO:root:fnum = 2181
+INFO:root:0:00:18.191902
+INFO:root:fnum = 2182
+INFO:root:0:00:18.890461
+INFO:root:fnum = 2183
+INFO:root:0:00:18.018504
+INFO:root:fnum = 2184
+INFO:root:0:00:18.464259
+INFO:root:fnum = 2185
+INFO:root:0:00:18.491987
+INFO:root:fnum = 2186
+INFO:root:0:00:19.235790
+INFO:root:fnum = 2187
+INFO:root:0:00:18.577937
+INFO:root:fnum = 2188
+INFO:root:0:00:18.410767
+INFO:root:fnum = 2189
+INFO:root:0:00:18.470533
+INFO:root:fnum = 2190
+INFO:root:0:00:18.444624
+INFO:root:fnum = 2191
+INFO:root:0:00:18.522343
+INFO:root:fnum = 2192
+INFO:root:0:00:19.107876
+INFO:root:fnum = 2193
+INFO:root:0:00:18.301167
+INFO:root:fnum = 2194
+INFO:root:0:00:18.425493
+INFO:root:fnum = 2195
+INFO:root:0:00:18.473018
+INFO:root:fnum = 2196
+INFO:root:0:00:18.383982
+INFO:root:fnum = 2197
+INFO:root:0:00:17.938794
+INFO:root:fnum = 2198
+INFO:root:0:00:18.044967
+INFO:root:fnum = 2199
+INFO:root:0:00:18.063157
+INFO:root:fnum = 2200
+INFO:root:0:00:17.908831
+INFO:root:fnum = 2201
+INFO:root:0:00:18.599882
+INFO:root:fnum = 2202
+INFO:root:0:00:18.195231
+INFO:root:fnum = 2203
+INFO:root:0:00:18.064495
+INFO:root:fnum = 2204
+INFO:root:0:00:18.456228
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.002389
+INFO:root:fnum = 2100
+INFO:root:0:00:13.779509
+INFO:root:fnum = 2101
+INFO:root:0:00:07.397457
+INFO:root:fnum = 2102
+INFO:root:0:00:07.640046
+INFO:root:fnum = 2103
+INFO:root:0:00:06.952056
+INFO:root:fnum = 2104
+INFO:root:0:00:06.933484
+INFO:root:fnum = 2105
+INFO:root:0:00:07.007690
+INFO:root:fnum = 2106
+INFO:root:0:00:07.130923
+INFO:root:fnum = 2107
+INFO:root:0:00:08.451266
+INFO:root:fnum = 2108
+INFO:root:0:00:08.239951
+INFO:root:fnum = 2109
+INFO:root:0:00:06.906178
+INFO:root:fnum = 2110
+INFO:root:0:00:07.547139
+INFO:root:fnum = 2111
+INFO:root:0:00:07.116065
+INFO:root:fnum = 2112
+INFO:root:0:00:07.644943
+INFO:root:fnum = 2113
+INFO:root:0:00:06.669318
+INFO:root:fnum = 2114
+INFO:root:0:00:08.265888
+INFO:root:fnum = 2115
+INFO:root:0:00:06.830217
+INFO:root:fnum = 2116
+INFO:root:0:00:06.661655
+INFO:root:fnum = 2117
+INFO:root:0:00:06.810725
+INFO:root:fnum = 2118
+INFO:root:0:00:06.685276
+INFO:root:fnum = 2119
+INFO:root:0:00:07.139581
+INFO:root:fnum = 2120
+INFO:root:0:00:07.061030
+INFO:root:fnum = 2121
+INFO:root:0:00:06.812189
+INFO:root:fnum = 2122
+INFO:root:0:00:06.959538
+INFO:root:fnum = 2123
+INFO:root:0:00:06.606213
+INFO:root:fnum = 2124
+INFO:root:0:00:06.652717
+INFO:root:fnum = 2125
+INFO:root:0:00:06.969843
+INFO:root:fnum = 2126
+INFO:root:0:00:07.454189
+INFO:root:fnum = 2127
+INFO:root:0:00:07.539763
+INFO:root:fnum = 2128
+INFO:root:0:00:07.178284
+INFO:root:fnum = 2129
+INFO:root:0:00:06.987444
+INFO:root:fnum = 2130
+INFO:root:0:00:06.782972
+INFO:root:fnum = 2131
+INFO:root:0:00:08.560295
+INFO:root:fnum = 2132
+INFO:root:0:00:08.264099
+INFO:root:fnum = 2133
+INFO:root:0:00:06.668777
+INFO:root:fnum = 2134
+INFO:root:0:00:06.585491
+INFO:root:fnum = 2135
+INFO:root:0:00:07.129238
+INFO:root:fnum = 2136
+INFO:root:0:00:06.584029
+INFO:root:fnum = 2137
+INFO:root:0:00:07.127917
+INFO:root:fnum = 2138
+INFO:root:0:00:07.258246
+INFO:root:fnum = 2139
+INFO:root:0:00:07.544169
+INFO:root:fnum = 2140
+INFO:root:0:00:06.772453
+INFO:root:fnum = 2141
+INFO:root:0:00:06.980959
+INFO:root:fnum = 2142
+INFO:root:0:00:07.083422
+INFO:root:fnum = 2143
+INFO:root:0:00:06.802602
+INFO:root:fnum = 2144
+INFO:root:0:00:07.550045
+INFO:root:fnum = 2145
+INFO:root:0:00:06.656722
+INFO:root:fnum = 2146
+INFO:root:0:00:07.006647
+INFO:root:fnum = 2147
+INFO:root:0:00:06.995333
+INFO:root:fnum = 2148
+INFO:root:0:00:06.914049
+INFO:root:fnum = 2149
+INFO:root:0:00:06.561345
+INFO:root:fnum = 2150
+INFO:root:0:00:07.338957
+INFO:root:fnum = 2151
+INFO:root:0:00:06.907426
+INFO:root:fnum = 2152
+INFO:root:0:00:06.772070
+INFO:root:fnum = 2153
+INFO:root:0:00:06.794723
+INFO:root:fnum = 2154
+INFO:root:0:00:07.004421
+INFO:root:fnum = 2155
+INFO:root:0:00:07.577135
+INFO:root:fnum = 2156
+INFO:root:0:00:07.110693
+INFO:root:fnum = 2157
+INFO:root:0:00:07.074651
+INFO:root:fnum = 2158
+INFO:root:0:00:07.074995
+INFO:root:fnum = 2159
+INFO:root:0:00:07.013108
+INFO:root:fnum = 2160
+INFO:root:0:00:06.922092
+INFO:root:fnum = 2161
+INFO:root:0:00:07.694605
+INFO:root:fnum = 2162
+INFO:root:0:00:07.413009
+INFO:root:fnum = 2163
+INFO:root:0:00:07.253776
+INFO:root:fnum = 2164
+INFO:root:0:00:07.021613
+INFO:root:fnum = 2165
+INFO:root:0:00:06.902885
+INFO:root:fnum = 2166
+INFO:root:0:00:07.142703
+INFO:root:fnum = 2167
+INFO:root:0:00:07.031535
+INFO:root:fnum = 2168
+INFO:root:0:00:07.228498
+INFO:root:fnum = 2169
+INFO:root:0:00:07.296941
+INFO:root:fnum = 2170
+INFO:root:0:00:07.362826
+INFO:root:fnum = 2171
+INFO:root:0:00:06.900387
+INFO:root:fnum = 2172
+INFO:root:0:00:07.097316
+INFO:root:fnum = 2173
+INFO:root:0:00:07.293182
+INFO:root:fnum = 2174
+INFO:root:0:00:07.150590
+INFO:root:fnum = 2175
+INFO:root:0:00:07.270560
+INFO:root:fnum = 2176
+INFO:root:0:00:07.530601
+INFO:root:fnum = 2177
+INFO:root:0:00:07.442571
+INFO:root:fnum = 2178
+INFO:root:0:00:07.093916
+INFO:root:fnum = 2179
+INFO:root:0:00:07.101579
+INFO:root:fnum = 2180
+INFO:root:0:00:07.501623
+INFO:root:fnum = 2181
+INFO:root:0:00:07.213917
+INFO:root:fnum = 2182
+INFO:root:0:00:07.159662
+INFO:root:fnum = 2183
+INFO:root:0:00:07.734856
+INFO:root:fnum = 2184
+INFO:root:0:00:07.253444
+INFO:root:fnum = 2185
+INFO:root:0:00:07.552756
+INFO:root:fnum = 2186
+INFO:root:0:00:07.089463
+INFO:root:fnum = 2187
+INFO:root:0:00:07.171173
+INFO:root:fnum = 2188
+INFO:root:0:00:07.944336
+INFO:root:fnum = 2189
+INFO:root:0:00:07.654161
+INFO:root:fnum = 2190
+INFO:root:0:00:07.657517
+INFO:root:fnum = 2191
+INFO:root:0:00:07.180609
+INFO:root:fnum = 2192
+INFO:root:0:00:07.111854
+INFO:root:fnum = 2193
+INFO:root:0:00:08.282289
+INFO:root:fnum = 2194
+INFO:root:0:00:08.746311
+INFO:root:fnum = 2195
+INFO:root:0:00:07.443811
+INFO:root:fnum = 2196
+INFO:root:0:00:07.789935
+INFO:root:fnum = 2197
+INFO:root:0:00:07.372758
+INFO:root:fnum = 2198
+INFO:root:0:00:09.365442
+INFO:root:fnum = 2199
+INFO:root:0:00:06.980355
+INFO:root:fnum = 2200
+INFO:root:0:00:09.211840
+INFO:root:fnum = 2201
+INFO:root:0:00:07.823345
+INFO:root:fnum = 2202
+INFO:root:0:00:07.021494
+INFO:root:fnum = 2203
+INFO:root:0:04:31.921296
+INFO:root:fnum = 2204
+INFO:root:0:00:07.788040
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.017703
+INFO:root:fnum = 2100
+INFO:root:0:00:13.154775
+INFO:root:fnum = 2101
+INFO:root:0:00:06.838018
+INFO:root:fnum = 2102
+INFO:root:0:00:06.764838
+INFO:root:fnum = 2103
+INFO:root:0:00:06.937016
+INFO:root:fnum = 2104
+INFO:root:0:00:06.458720
+INFO:root:fnum = 2105
+INFO:root:0:00:06.966139
+INFO:root:fnum = 2106
+INFO:root:0:00:06.915731
+INFO:root:fnum = 2107
+INFO:root:0:00:06.477420
+INFO:root:fnum = 2108
+INFO:root:0:00:06.640061
+INFO:root:fnum = 2109
+INFO:root:0:00:06.601421
+INFO:root:fnum = 2110
+INFO:root:0:00:06.861974
+INFO:root:fnum = 2111
+INFO:root:0:00:06.714352
+INFO:root:fnum = 2112
+INFO:root:0:00:06.816140
+INFO:root:fnum = 2113
+INFO:root:0:00:07.219625
+INFO:root:fnum = 2114
+INFO:root:0:00:06.743201
+INFO:root:fnum = 2115
+INFO:root:0:00:07.198167
+INFO:root:fnum = 2116
+INFO:root:0:00:07.593728
+INFO:root:fnum = 2117
+INFO:root:0:00:07.283916
+INFO:root:fnum = 2118
+INFO:root:0:00:07.236717
+INFO:root:fnum = 2119
+INFO:root:0:00:08.522507
+INFO:root:fnum = 2120
+INFO:root:0:00:09.057540
+INFO:root:fnum = 2121
+INFO:root:0:00:08.935940
+INFO:root:fnum = 2122
+INFO:root:0:00:08.999181
+INFO:root:fnum = 2123
+INFO:root:0:00:07.192496
+INFO:root:fnum = 2124
+INFO:root:0:00:07.034445
+INFO:root:fnum = 2125
+INFO:root:0:00:07.339695
+INFO:root:fnum = 2126
+INFO:root:0:00:06.870050
+INFO:root:fnum = 2127
+INFO:root:0:00:06.867256
+INFO:root:fnum = 2128
+INFO:root:0:00:06.997616
+INFO:root:fnum = 2129
+INFO:root:0:00:06.919434
+INFO:root:fnum = 2130
+INFO:root:0:00:06.856352
+INFO:root:fnum = 2131
+INFO:root:0:00:07.025494
+INFO:root:fnum = 2132
+INFO:root:0:00:06.835084
+INFO:root:fnum = 2133
+INFO:root:0:00:06.706597
+INFO:root:fnum = 2134
+INFO:root:0:00:07.157837
+INFO:root:fnum = 2135
+INFO:root:0:00:06.581759
+INFO:root:fnum = 2136
+INFO:root:0:00:07.102091
+INFO:root:fnum = 2137
+INFO:root:0:00:07.084240
+INFO:root:fnum = 2138
+INFO:root:0:00:06.949744
+INFO:root:fnum = 2139
+INFO:root:0:00:06.644995
+INFO:root:fnum = 2140
+INFO:root:0:00:06.741624
+INFO:root:fnum = 2141
+INFO:root:0:00:06.967655
+INFO:root:fnum = 2142
+INFO:root:0:00:07.054282
+INFO:root:fnum = 2143
+INFO:root:0:00:07.403056
+INFO:root:fnum = 2144
+INFO:root:0:00:06.870469
+INFO:root:fnum = 2145
+INFO:root:0:00:06.565592
+INFO:root:fnum = 2146
+INFO:root:0:00:06.962583
+INFO:root:fnum = 2147
+INFO:root:0:00:06.929824
+INFO:root:fnum = 2148
+INFO:root:0:00:06.748657
+INFO:root:fnum = 2149
+INFO:root:0:00:07.025552
+INFO:root:fnum = 2150
+INFO:root:0:00:07.174702
+INFO:root:fnum = 2151
+INFO:root:0:00:06.845728
+INFO:root:fnum = 2152
+INFO:root:0:00:06.821834
+INFO:root:fnum = 2153
+INFO:root:0:00:06.881444
+INFO:root:fnum = 2154
+INFO:root:0:00:06.981614
+INFO:root:fnum = 2155
+INFO:root:0:00:06.774313
+INFO:root:fnum = 2156
+INFO:root:0:00:06.735092
+INFO:root:fnum = 2157
+INFO:root:0:00:07.073689
+INFO:root:fnum = 2158
+INFO:root:0:00:06.571862
+INFO:root:fnum = 2159
+INFO:root:0:00:06.905322
+INFO:root:fnum = 2160
+INFO:root:0:00:06.617332
+INFO:root:fnum = 2161
+INFO:root:0:00:06.951492
+INFO:root:fnum = 2162
+INFO:root:0:00:06.893068
+INFO:root:fnum = 2163
+INFO:root:0:00:06.889370
+INFO:root:fnum = 2164
+INFO:root:0:00:06.849297
+INFO:root:fnum = 2165
+INFO:root:0:00:07.288432
+INFO:root:fnum = 2166
+INFO:root:0:00:06.699607
+INFO:root:fnum = 2167
+INFO:root:0:00:07.957420
+INFO:root:fnum = 2168
+INFO:root:0:00:08.702724
+INFO:root:fnum = 2169
+INFO:root:0:00:08.747254
+INFO:root:fnum = 2170
+INFO:root:0:00:09.009889
+INFO:root:fnum = 2171
+INFO:root:0:00:08.891237
+INFO:root:fnum = 2172
+INFO:root:0:00:06.869814
+INFO:root:fnum = 2173
+INFO:root:0:00:06.815139
+INFO:root:fnum = 2174
+INFO:root:0:00:06.738435
+INFO:root:fnum = 2175
+INFO:root:0:00:06.826067
+INFO:root:fnum = 2176
+INFO:root:0:00:09.094380
+INFO:root:fnum = 2177
+INFO:root:0:00:07.093610
+INFO:root:fnum = 2178
+INFO:root:0:00:07.487238
+INFO:root:fnum = 2179
+INFO:root:0:00:06.985844
+INFO:root:fnum = 2180
+INFO:root:0:00:06.545032
+INFO:root:fnum = 2181
+INFO:root:0:00:06.748035
+INFO:root:fnum = 2182
+INFO:root:0:00:06.693086
+INFO:root:fnum = 2183
+INFO:root:0:00:06.635530
+INFO:root:fnum = 2184
+INFO:root:0:00:06.842977
+INFO:root:fnum = 2185
+INFO:root:0:00:06.739610
+INFO:root:fnum = 2186
+INFO:root:0:00:07.221793
+INFO:root:fnum = 2187
+INFO:root:0:00:07.018848
+INFO:root:fnum = 2188
+INFO:root:0:00:06.654243
+INFO:root:fnum = 2189
+INFO:root:0:00:06.840351
+INFO:root:fnum = 2190
+INFO:root:0:00:06.842968
+INFO:root:fnum = 2191
+INFO:root:0:00:06.648406
+INFO:root:fnum = 2192
+INFO:root:0:00:06.945525
+INFO:root:fnum = 2193
+INFO:root:0:00:06.642033
+INFO:root:fnum = 2194
+INFO:root:0:00:06.520557
+INFO:root:fnum = 2195
+INFO:root:0:00:06.788695
+INFO:root:fnum = 2196
+INFO:root:0:00:07.035281
+INFO:root:fnum = 2197
+INFO:root:0:00:06.885655
+INFO:root:fnum = 2198
+INFO:root:0:00:06.892880
+INFO:root:fnum = 2199
+INFO:root:0:00:06.630841
+INFO:root:fnum = 2200
+INFO:root:0:00:06.722571
+INFO:root:fnum = 2201
+INFO:root:0:00:07.094267
+INFO:root:fnum = 2202
+INFO:root:0:00:06.765068
+INFO:root:fnum = 2203
+INFO:root:0:00:06.636743
+INFO:root:fnum = 2204
+INFO:root:0:00:06.509903
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.002570
+INFO:root:fnum = 2100
+INFO:root:0:00:25.264656
+INFO:root:fnum = 2101
+INFO:root:0:00:20.024811
+INFO:root:fnum = 2102
+INFO:root:0:00:19.349818
+INFO:root:fnum = 2103
+INFO:root:0:00:19.173988
+INFO:root:fnum = 2104
+INFO:root:0:00:18.702322
+INFO:root:fnum = 2105
+INFO:root:0:00:18.940782
+INFO:root:fnum = 2106
+INFO:root:0:00:19.248576
+INFO:root:fnum = 2107
+INFO:root:0:00:18.519612
+INFO:root:fnum = 2108
+INFO:root:0:00:18.150450
+INFO:root:fnum = 2109
+INFO:root:0:00:18.413795
+INFO:root:fnum = 2110
+INFO:root:0:00:18.660183
+INFO:root:fnum = 2111
+INFO:root:0:00:18.717403
+INFO:root:fnum = 2112
+INFO:root:0:00:18.757668
+INFO:root:fnum = 2113
+INFO:root:0:00:18.818380
+INFO:root:fnum = 2114
+INFO:root:0:00:18.799885
+INFO:root:fnum = 2115
+INFO:root:0:00:19.152999
+INFO:root:fnum = 2116
+INFO:root:0:00:18.424272
+INFO:root:fnum = 2117
+INFO:root:0:00:19.451907
+INFO:root:fnum = 2118
+INFO:root:0:00:19.146586
+INFO:root:fnum = 2119
+INFO:root:0:00:18.427612
+INFO:root:fnum = 2120
+INFO:root:0:00:18.693260
+INFO:root:fnum = 2121
+INFO:root:0:00:18.618633
+INFO:root:fnum = 2122
+INFO:root:0:00:19.515429
+INFO:root:fnum = 2123
+INFO:root:0:00:18.787939
+INFO:root:fnum = 2124
+INFO:root:0:00:18.726482
+INFO:root:fnum = 2125
+INFO:root:0:00:18.848897
+INFO:root:fnum = 2126
+INFO:root:0:00:18.631693
+INFO:root:fnum = 2127
+INFO:root:0:00:18.665732
+INFO:root:fnum = 2128
+INFO:root:0:00:20.260554
+INFO:root:fnum = 2129
+INFO:root:0:00:18.949693
+INFO:root:fnum = 2130
+INFO:root:0:00:19.222199
+INFO:root:fnum = 2131
+INFO:root:0:00:19.259112
+INFO:root:fnum = 2132
+INFO:root:0:00:19.093881
+INFO:root:fnum = 2133
+INFO:root:0:00:18.622204
+INFO:root:fnum = 2134
+INFO:root:0:00:18.517205
+INFO:root:fnum = 2135
+INFO:root:0:00:18.757250
+INFO:root:fnum = 2136
+INFO:root:0:00:20.379446
+INFO:root:fnum = 2137
+INFO:root:0:00:24.418671
+INFO:root:fnum = 2138
+INFO:root:0:00:24.049224
+INFO:root:fnum = 2139
+INFO:root:0:00:24.039578
+INFO:root:fnum = 2140
+INFO:root:0:00:20.705737
+INFO:root:fnum = 2141
+INFO:root:0:00:19.107928
+INFO:root:fnum = 2142
+INFO:root:0:00:18.912459
+INFO:root:fnum = 2143
+INFO:root:0:00:18.698400
+INFO:root:fnum = 2144
+INFO:root:0:00:18.537132
+INFO:root:fnum = 2145
+INFO:root:0:00:18.797055
+INFO:root:fnum = 2146
+INFO:root:0:00:18.672478
+INFO:root:fnum = 2147
+INFO:root:0:00:19.444594
+INFO:root:fnum = 2148
+INFO:root:0:00:19.162263
+INFO:root:fnum = 2149
+INFO:root:0:00:18.943908
+INFO:root:fnum = 2150
+INFO:root:0:00:19.350643
+INFO:root:fnum = 2151
+INFO:root:0:00:19.191070
+INFO:root:fnum = 2152
+INFO:root:0:00:18.550995
+INFO:root:fnum = 2153
+INFO:root:0:00:18.293058
+INFO:root:fnum = 2154
+INFO:root:0:00:18.864274
+INFO:root:fnum = 2155
+INFO:root:0:00:18.906499
+INFO:root:fnum = 2156
+INFO:root:0:00:18.744106
+INFO:root:fnum = 2157
+INFO:root:0:00:18.978359
+INFO:root:fnum = 2158
+INFO:root:0:00:18.642208
+INFO:root:fnum = 2159
+INFO:root:0:00:18.865193
+INFO:root:fnum = 2160
+INFO:root:0:00:19.190378
+INFO:root:fnum = 2161
+INFO:root:0:00:18.684853
+INFO:root:fnum = 2162
+INFO:root:0:00:19.339434
+INFO:root:fnum = 2163
+INFO:root:0:00:18.738909
+INFO:root:fnum = 2164
+INFO:root:0:00:19.124817
+INFO:root:fnum = 2165
+INFO:root:0:00:18.969440
+INFO:root:fnum = 2166
+INFO:root:0:00:19.134146
+INFO:root:fnum = 2167
+INFO:root:0:00:19.166571
+INFO:root:fnum = 2168
+INFO:root:0:00:18.460328
+INFO:root:fnum = 2169
+INFO:root:0:00:21.519011
+INFO:root:fnum = 2170
+INFO:root:0:00:25.335305
+INFO:root:fnum = 2171
+INFO:root:0:00:24.979339
+INFO:root:fnum = 2172
+INFO:root:0:00:24.634431
+INFO:root:fnum = 2173
+INFO:root:0:00:21.822546
+INFO:root:fnum = 2174
+INFO:root:0:00:18.197045
+INFO:root:fnum = 2175
+INFO:root:0:00:19.005554
+INFO:root:fnum = 2176
+INFO:root:0:00:18.662177
+INFO:root:fnum = 2177
+INFO:root:0:00:18.833085
+INFO:root:fnum = 2178
+INFO:root:0:00:18.557956
+INFO:root:fnum = 2179
+INFO:root:0:00:18.750378
+INFO:root:fnum = 2180
+INFO:root:0:00:18.860112
+INFO:root:fnum = 2181
+INFO:root:0:00:19.052339
+INFO:root:fnum = 2182
+INFO:root:0:00:19.404966
+INFO:root:fnum = 2183
+INFO:root:0:00:18.969829
+INFO:root:fnum = 2184
+INFO:root:0:00:18.779173
+INFO:root:fnum = 2185
+INFO:root:0:00:18.834438
+INFO:root:fnum = 2186
+INFO:root:0:00:18.930185
+INFO:root:fnum = 2187
+INFO:root:0:00:18.714187
+INFO:root:fnum = 2188
+INFO:root:0:00:18.406672
+INFO:root:fnum = 2189
+INFO:root:0:00:19.322106
+INFO:root:fnum = 2190
+INFO:root:0:00:18.845893
+INFO:root:fnum = 2191
+INFO:root:0:00:18.931767
+INFO:root:fnum = 2192
+INFO:root:0:00:18.933241
+INFO:root:fnum = 2193
+INFO:root:0:00:19.159771
+INFO:root:fnum = 2194
+INFO:root:0:00:19.422228
+INFO:root:fnum = 2195
+INFO:root:0:00:19.199590
+INFO:root:fnum = 2196
+INFO:root:0:00:19.194794
+INFO:root:fnum = 2197
+INFO:root:0:00:18.784664
+INFO:root:fnum = 2198
+INFO:root:0:00:18.957961
+INFO:root:fnum = 2199
+INFO:root:0:00:19.264741
+INFO:root:fnum = 2200
+INFO:root:0:00:19.067241
+INFO:root:fnum = 2201
+INFO:root:0:00:18.638719
+INFO:root:fnum = 2202
+INFO:root:0:00:18.828576
+INFO:root:fnum = 2203
+INFO:root:0:00:19.170372
+INFO:root:fnum = 2204
+INFO:root:0:00:18.648038
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.002162
+INFO:root:fnum = 2100
+INFO:root:Found data, range: [2100, 2205], file_count: 106.0
+INFO:root:Beginning collection...
+INFO:root:0:00:00.003272
+INFO:root:fnum = 2100
+INFO:root:0:00:27.256813
+INFO:root:fnum = 2101
+INFO:root:0:00:22.975195
+INFO:root:fnum = 2102
+INFO:root:0:00:22.057120
+INFO:root:fnum = 2103
+INFO:root:0:00:22.228883
+INFO:root:fnum = 2104
+INFO:root:0:00:23.013110
+INFO:root:fnum = 2105
+INFO:root:0:00:22.941625
+INFO:root:fnum = 2106
+INFO:root:0:00:21.624702
+INFO:root:fnum = 2107
+INFO:root:0:00:21.548452
+INFO:root:fnum = 2108
+INFO:root:0:00:21.357798
+INFO:root:fnum = 2109
+INFO:root:0:00:21.498103
+INFO:root:fnum = 2110
+INFO:root:0:00:22.147757
+INFO:root:fnum = 2111
+INFO:root:0:00:21.485988
+INFO:root:fnum = 2112
+INFO:root:0:00:21.838563
+INFO:root:fnum = 2113
+INFO:root:0:00:22.488769
+INFO:root:fnum = 2114
+INFO:root:0:00:22.276195
+INFO:root:fnum = 2115
+INFO:root:0:00:22.671004
+INFO:root:fnum = 2116
+INFO:root:0:00:22.232683
+INFO:root:fnum = 2117
+INFO:root:0:00:22.435857
+INFO:root:fnum = 2118
+INFO:root:0:00:21.957052
+INFO:root:fnum = 2119
+INFO:root:0:00:22.132362
+INFO:root:fnum = 2120
+INFO:root:0:00:21.698352
+INFO:root:fnum = 2121
+INFO:root:0:00:22.557176
+INFO:root:fnum = 2122
+INFO:root:0:00:22.194060
+INFO:root:fnum = 2123
+INFO:root:0:00:22.548018
+INFO:root:fnum = 2124
+INFO:root:0:00:22.285889
+INFO:root:fnum = 2125
+INFO:root:0:00:21.836736
+INFO:root:fnum = 2126
+INFO:root:0:00:21.449273
+INFO:root:fnum = 2127
+INFO:root:0:00:22.538725
+INFO:root:fnum = 2128
+INFO:root:0:00:22.393479
+INFO:root:fnum = 2129
+INFO:root:0:00:22.098060
+INFO:root:fnum = 2130
+INFO:root:0:00:22.133712
+INFO:root:fnum = 2131
+INFO:root:0:00:23.170798
+INFO:root:fnum = 2132
+INFO:root:0:00:21.974178
+INFO:root:fnum = 2133
+INFO:root:0:00:22.027501
+INFO:root:fnum = 2134
+INFO:root:0:00:21.707862
+INFO:root:fnum = 2135
+INFO:root:0:00:22.105153
+INFO:root:fnum = 2136
+INFO:root:0:00:22.413295
+INFO:root:fnum = 2137
+INFO:root:0:00:22.519459
+INFO:root:fnum = 2138
+INFO:root:0:00:22.317617
+INFO:root:fnum = 2139
+INFO:root:0:00:22.239267
+INFO:root:fnum = 2140
+INFO:root:0:00:21.610747
+INFO:root:fnum = 2141
+INFO:root:0:00:21.973778
+INFO:root:fnum = 2142
+INFO:root:0:00:21.819648
+INFO:root:fnum = 2143
+INFO:root:0:00:22.400028
+INFO:root:fnum = 2144
+INFO:root:0:00:21.739319
+INFO:root:fnum = 2145
+INFO:root:0:00:21.621899
+INFO:root:fnum = 2146
+INFO:root:0:00:23.280302
+INFO:root:fnum = 2147
+INFO:root:0:00:22.312204
+INFO:root:fnum = 2148
+INFO:root:0:00:22.747135
+INFO:root:fnum = 2149
+INFO:root:0:00:21.510707
+INFO:root:fnum = 2150
+INFO:root:0:00:21.654084
+INFO:root:fnum = 2151
+INFO:root:0:00:21.831395
+INFO:root:fnum = 2152
+INFO:root:0:00:21.756078
+INFO:root:fnum = 2153
+INFO:root:0:00:21.712742
+INFO:root:fnum = 2154
+INFO:root:0:00:22.863547
+INFO:root:fnum = 2155
+INFO:root:0:00:22.410557
+INFO:root:fnum = 2156
+INFO:root:0:00:21.763381
+INFO:root:fnum = 2157
+INFO:root:0:00:22.808261
+INFO:root:fnum = 2158
+INFO:root:0:00:22.478505
+INFO:root:fnum = 2159
+INFO:root:0:00:22.195101
+INFO:root:fnum = 2160
+INFO:root:0:00:21.752655
+INFO:root:fnum = 2161
+INFO:root:0:00:22.599720
+INFO:root:fnum = 2162
+INFO:root:0:00:22.029685
+INFO:root:fnum = 2163
+INFO:root:0:00:22.173305
+INFO:root:fnum = 2164
+INFO:root:0:00:22.300485
+INFO:root:fnum = 2165
+INFO:root:0:00:22.920287
+INFO:root:fnum = 2166
+INFO:root:0:00:23.195844
+INFO:root:fnum = 2167
+INFO:root:0:00:22.623858
+INFO:root:fnum = 2168
+INFO:root:0:00:22.173982
+INFO:root:fnum = 2169
+INFO:root:0:00:21.953911
+INFO:root:fnum = 2170
+INFO:root:0:00:22.647490
+INFO:root:fnum = 2171
+INFO:root:0:00:22.518321
+INFO:root:fnum = 2172
+INFO:root:0:00:22.916181
+INFO:root:fnum = 2173
+INFO:root:0:00:22.072314
+INFO:root:fnum = 2174
+INFO:root:0:00:22.042757
+INFO:root:fnum = 2175
+INFO:root:0:00:22.779790
+INFO:root:fnum = 2176
+INFO:root:0:00:22.052431
+INFO:root:fnum = 2177
+INFO:root:0:00:22.831007
+INFO:root:fnum = 2178
+INFO:root:0:00:22.015655
+INFO:root:fnum = 2179
+INFO:root:0:00:21.789189
+INFO:root:fnum = 2180
+INFO:root:0:00:22.299881
+INFO:root:fnum = 2181
+INFO:root:0:00:21.836967
+INFO:root:fnum = 2182
+INFO:root:0:00:22.713828
+INFO:root:fnum = 2183
+INFO:root:0:00:22.263559
+INFO:root:fnum = 2184
+INFO:root:0:00:21.790022
+INFO:root:fnum = 2185
+INFO:root:0:00:22.262924
+INFO:root:fnum = 2186
+INFO:root:0:00:22.697943
+INFO:root:fnum = 2187
+INFO:root:0:00:21.611617
+INFO:root:fnum = 2188
+INFO:root:0:00:22.277386
+INFO:root:fnum = 2189
+INFO:root:0:00:23.602652
+INFO:root:fnum = 2190
+INFO:root:0:00:22.354411
+INFO:root:fnum = 2191
+INFO:root:0:00:21.926366
+INFO:root:fnum = 2192
+INFO:root:0:00:21.622017
+INFO:root:fnum = 2193
+INFO:root:0:00:22.555817
+INFO:root:fnum = 2194
+INFO:root:0:00:22.177707
+INFO:root:fnum = 2195
+INFO:root:0:00:22.495544
+INFO:root:fnum = 2196
+INFO:root:0:00:22.835802
+INFO:root:fnum = 2197
+INFO:root:0:00:22.055850
+INFO:root:fnum = 2198
+INFO:root:0:00:22.110241
+INFO:root:fnum = 2199
+INFO:root:0:00:22.277583
+INFO:root:fnum = 2200
+INFO:root:0:00:22.361585
+INFO:root:fnum = 2201
+INFO:root:0:00:22.525606
+INFO:root:fnum = 2202
+INFO:root:0:00:21.985782
+INFO:root:fnum = 2203
+INFO:root:0:00:22.148741
+INFO:root:fnum = 2204
+INFO:root:0:00:22.913040
+INFO:root:fnum = 2205
+INFO:root:pickling up to 2205

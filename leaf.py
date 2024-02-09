@@ -42,7 +42,9 @@ def simple_loop(fnum_range, file_spacing, function):
 
 #compare_alpha(["Cyl_11", "Cyl_12", "Cyl_13", "Cyl_14", "Cyl_15"], [1600, 10000], res=True, B_field_focus=True)
 
-eccentricity_profile("Cyl_13_2", [0, 100000])
+#eccentricity_profile("Cyl_13_2", [0, 100000])
+#replot("Cyl_11_2", 3400)
+replot("Cyl_15_2", 3100, "_recomp", stress_test=True, recompute_sum=True)
 
 #E = Eccentricity("Cyl_11_2")
 #dirty_loop([0, 3000], 1, E.plot, "Cyl_11_2", "_eccent")

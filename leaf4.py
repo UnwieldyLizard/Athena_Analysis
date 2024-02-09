@@ -1,9 +1,10 @@
+from branches.comparison import *
 #from branches.angular_momentum import *
 #from branches.momentum import *
 #from branches.B_fields import *
 #from branches.meccentricity_profile import *
 #from branches.eccentricity import *
-from branches.profile import *
+#from branches.profile import *
 #from branches.roots.misc_func import *
 #from branches.roots.utility import *
 #from branches.mplottesting import *
@@ -37,5 +38,8 @@ from branches.profile import *
 #main("Cyl_13", [300, 301])#, 100)
 #main("Cyl_13", [703, 704])#, 100)
 
-P = Profile("Cyl_11_2")
-P.temporal_profile([0, 100000])
+#P = Profile("Cyl_11_2")
+#P.temporal_profile([0, 100000])
+
+C = Comparison(["Cyl_11_2", "Cyl_13_2", "Cyl_15_2"])
+C.alpha([0,3000])

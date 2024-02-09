@@ -31,11 +31,10 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
         if stress_test:
             terms = ["tidal", "press", "boundary", "B", "vpress", "hpress", "vB", "hB"]
             sum_terms = ["tidal", "press", "boundary", "B"]
-            MAGNETIC_FIELDS_ENABLED = True
         else:
             terms = ["tidal", "press", "boundary", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress"]
             sum_terms = ["tidal", "press", "boundary", "Bpress", "Btens"]
-            MAGNETIC_FIELDS_ENABLED = True
+        MAGNETIC_FIELDS_ENABLED = True
     else:
         terms = ["tidal", "press", "boundary", "visc", "vpress", "hpress", "tidal_vr"]
         sum_terms = ["tidal", "press", "boundary", "visc"]
@@ -163,33 +162,34 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
         
         force["tidal"] = -1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=coordinates)
         
-        if MAGNETIC_FIELDS_ENABLED and (not stress_test):
-            if aa.gridtype == "Spherical":
-                force["Bpress"] = -1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=coordinates)
-                force["Btens"] = aa.material_derivative([aa.B_phi, aa.B_theta, aa.B_r], [aa.B_phi, aa.B_theta, aa.B_r])
-                force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
-                force["vBpress"][0, :] *= 0
-                force["vBpress"][2, :] *= 0
-            elif aa.gridtype == "Cylindrical":
-                force["Bpress"] = -1 * aa.gradient(((aa.B_z ** 2) + (aa.B_phi ** 2) + (aa.B_r ** 2)) / 2, coordinates=coordinates)
-                force["Btens"] = aa.material_derivative([aa.B_z, aa.B_phi, aa.B_r], [aa.B_z, aa.B_phi, aa.B_r])
-                force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
-                force["vBpress"][1, :] *= 0
-                force["vBpress"][2, :] *= 0
-            force["hBpress"] = force["Bpress"] - force["vBpress"]
-        elif stress_test:
-            if aa.gridtype == "Sphereical":
-                logging.info("not implimented spherical stress calc in eccent prof")
-            if aa.gridtype == "Cylindrical":
-                B_sq = ((aa.B_z * aa.B_z) + (aa.B_phi * aa.B_phi) + (aa.B_r * aa.B_r))
-                max_stress = np.array([[aa.B_z * aa.B_z - (B_sq/2), aa.B_z * aa.B_phi             , aa.B_z * aa.B_r],
-                                        [aa.B_z * aa.B_phi        , aa.B_phi * aa.B_phi - (B_sq/2), aa.B_phi * aa.B_r],
-                                        [aa.B_z * aa.B_r          , aa.B_r * aa.B_phi             , aa.B_r * aa.B_r - (B_sq/2)]])
-                force["B"] = aa.tensor_divergence(max_stress)
-                force["vB"] = np.array(force["B"])
-                force["vB"][1, :] *= 0
-                force["vB"][2, :] *= 0
-            force["hB"] = force["B"] - force["vB"]
+        if MAGNETIC_FIELDS_ENABLED:
+            if stress_test:
+                if aa.gridtype == "Sphereical":
+                    logging.info("not implimented spherical stress calc in eccent prof")
+                if aa.gridtype == "Cylindrical":
+                    B_sq = ((aa.B_z * aa.B_z) + (aa.B_phi * aa.B_phi) + (aa.B_r * aa.B_r))
+                    max_stress = np.array([[aa.B_z * aa.B_z - (B_sq/2), aa.B_z * aa.B_phi             , aa.B_z * aa.B_r],
+                                            [aa.B_z * aa.B_phi        , aa.B_phi * aa.B_phi - (B_sq/2), aa.B_phi * aa.B_r],
+                                            [aa.B_z * aa.B_r          , aa.B_r * aa.B_phi             , aa.B_r * aa.B_r - (B_sq/2)]])
+                    force["B"] = aa.tensor_divergence(max_stress)
+                    force["vB"] = np.array(force["B"])
+                    force["vB"][1, :] *= 0
+                    force["vB"][2, :] *= 0
+                force["hB"] = force["B"] - force["vB"]
+            else:    
+                if aa.gridtype == "Spherical":
+                    force["Bpress"] = -1 * aa.gradient(((aa.B_r ** 2) + (aa.B_theta ** 2) + (aa.B_phi ** 2)) / 2, coordinates=coordinates)
+                    force["Btens"] = aa.material_derivative([aa.B_phi, aa.B_theta, aa.B_r], [aa.B_phi, aa.B_theta, aa.B_r])
+                    force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
+                    force["vBpress"][0, :] *= 0
+                    force["vBpress"][2, :] *= 0
+                elif aa.gridtype == "Cylindrical":
+                    force["Bpress"] = -1 * aa.gradient(((aa.B_z ** 2) + (aa.B_phi ** 2) + (aa.B_r ** 2)) / 2, coordinates=coordinates)
+                    force["Btens"] = aa.material_derivative([aa.B_z, aa.B_phi, aa.B_r], [aa.B_z, aa.B_phi, aa.B_r])
+                    force["vBpress"] = np.array(force["Bpress"], dtype=np.float32)
+                    force["vBpress"][1, :] *= 0
+                    force["vBpress"][2, :] *= 0
+                force["hBpress"] = force["Bpress"] - force["vBpress"]
         else:
             force["visc"] = aa.alpha_visc(alpha)
             logging.info("alpha visc in testing")
@@ -211,7 +211,7 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
         total_rhoxlrl = aa.vec_vol_integrate(rhoxlrl)
         mass_weighted_eccent = total_rhoxlrl / total_mass
 
-        test_cart = aa.vec_vol_integrate(lrl_cart)
+        #test_cart = aa.vec_vol_integrate(lrl_cart)
 
         '''
         logging.info("integrateed lrl cart: \n" + " ".join(map(str, test_cart)))
@@ -269,8 +269,9 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
                 phase_increment = (time_series[j]-time_series[j-1])*(eccent_term_phase_series[key][j] + eccent_term_phase_series[key][j-1])/2
                 integrated_eccent_term_phase_series[key][j] = integrated_eccent_term_phase_series[key][j-1] + phase_increment
 
-                total_eccent_increment += eccent_increment
-                total_phase_increment += phase_increment
+                if key in sum_terms:
+                    total_eccent_increment += eccent_increment
+                    total_phase_increment += phase_increment
 
         #summing all contributions
         for key in sum_terms:
@@ -403,7 +404,7 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
                 }, pickle_file)
 
 
-def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
+def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_sum=False):
     """
     replots data
 
@@ -421,7 +422,10 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
         If it's MHD or not
     """
     aname = "_eccent_growth_prec" #a for analysis
+    if stress_test:
+        aname += "_stress"
     savedir = file.savedir + dname + "/" + dname + aname
+    MHD = file.MHD[dname]
     logging.info("looking for file")
     found_load_point = False
     load_point = fnum
@@ -437,14 +441,31 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
         data = pickle.load(pickle_file)
 
     if MHD == True:
-        terms = ["tidal", "press", "boundary", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress"]
-        sum_terms = ["tidal", "press", "boundary", "Bpress", "Btens"]
+        if stress_test:
+            terms = ["tidal", "press", "boundary", "B", "vpress", "hpress", "vB", "hB"]
+            sum_terms = ["tidal", "press", "boundary", "B"]
+        else:
+            terms = ["tidal", "press", "boundary", "Bpress", "Btens", "vpress", "hpress", "vBpress", "hBpress"]
+            sum_terms = ["tidal", "press", "boundary", "Bpress", "Btens"]
         MAGNETIC_FIELDS_ENABLED = True
     else:
         terms = ["tidal", "press", "boundary", "visc", "vpress", "hpress", "tidal_vr"]
         sum_terms = ["tidal", "press", "boundary", "visc"]
         MAGNETIC_FIELDS_ENABLED = False
     
+    if recompute_sum:
+        cutoff = len(data["integrated_eccent_sum_term_series"])
+        integrated_eccent_sum_term_series = np.zeros(cutoff)
+        integrated_eccent_phase_sum_term_series = np.zeros(cutoff)
+        for key in sum_terms:
+            integrated_eccent_sum_term_series += data["integrated_eccent_term_series"][key][:cutoff]
+            integrated_eccent_phase_sum_term_series += data["integrated_eccent_term_phase_series"][key][:cutoff]
+
+        initial_offset_diff = data["eccent_phase_series"][5] - integrated_eccent_phase_sum_term_series[5]
+        integrated_eccent_phase_sum_term_series += initial_offset_diff
+    else:
+        integrated_eccent_sum_term_series = data["integrated_eccent_sum_term_series"]
+
     # growth plot
     vert = 2
     horz = 1
@@ -463,7 +484,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
 
     ax = fig.add_subplot(gs[0, 0])
     ax.plot(data["orbit_series"], data["eccent_series"], "C2-", label="measured")
-    ax.plot(data["orbit_series"], data["integrated_eccent_sum_term_series"], "C9--", label="total source terms")
+    ax.plot(data["orbit_series"], integrated_eccent_sum_term_series, "C9--", label="total source terms")
     ax.set_xlabel("binary orbit")
     ax.set_ylabel("eccent magnitude")
     ax.set_ylim([1e-4, 1])
@@ -493,7 +514,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
 
     ax = fig.add_subplot(gs[0, 0])
     ax.plot(data["orbit_series"], wrap_phase(data["eccent_phase_series"]) / np.pi, "C3-", label="measured")
-    ax.plot(data["orbit_series"], (wrap_phase(data["integrated_eccent_phase_sum_term_series"])) / np.pi, "C1--", label="total source terms")
+    ax.plot(data["orbit_series"], (wrap_phase(integrated_eccent_phase_sum_term_series)) / np.pi, "C1--", label="total source terms")
     ax.set_xlabel("binary orbit")
     ax.set_ylabel("eccent phase")
     ax.set_ylim([-1, 1])
@@ -507,7 +528,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, MHD=False):
     ax = fig.add_subplot(gs[1, 0])
     for k, key in enumerate(terms):
         ax.plot(data["orbit_series"], (wrap_phase(data["integrated_eccent_term_phase_series"][key][:data["offset"]+1])) / np.pi, f"C{k}-", label=key)
-    ax.plot(data["orbit_series"], (wrap_phase(data["integrated_phase_flips"])) / np.pi, f"C3--", label="phase inversion")
+    #ax.plot(data["orbit_series"], (wrap_phase(data["integrated_phase_flips"])) / np.pi, f"C3--", label="phase inversion")
     ax.set_xlabel("binary orbit")
     ax.set_ylabel("eccent phase contribution")
     ax.set_ylim([-1, 1])

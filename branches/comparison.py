@@ -13,8 +13,9 @@ class Comparison():
         self.savedir_stem = file.savedir + self.dname + "/"
         self.file_spacing = 1
 
-    def alpha(self, fnum_range, plot_every=100, pickle_every=None):
+    def alpha(self, fnum_range, sname = "", plot_every=100, pickle_every=None):
         self.aname = "alpha"
+        self.sname = sname
         self.savedir = self.savedir_stem + self.aname
         self.pickldir = self.savedir + "/pickles"
         mkdir_if_not_exist(self.savedir)
@@ -86,7 +87,7 @@ class Comparison():
                 title = r"Average $\alpha$s"
                 plt.suptitle(title)
                 plt.tight_layout()
-                plt.savefig("%s/%s%05d.png" % (self.savedir, self.aname, fnum))
+                plt.savefig("%s/%s%05d%s.png" % (self.savedir, self.aname, fnum, self.sname))
                 plt.close()
 
             if fnum % pickle_every == 0:
