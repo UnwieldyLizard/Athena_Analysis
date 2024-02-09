@@ -453,7 +453,7 @@ class Fourier_Waves:
             plt.close()
 
     def tidal_waves(self, fnum_range=None):
-        aname = "tidal_waves"
+        sname = "tidal_waves"
         if fnum_range is None:
             pickl_loc = self.pickle_loc
         else:
@@ -505,7 +505,7 @@ class Fourier_Waves:
                 pr_m[r] = np.sum(pr_phi_fourier[:, r] * np.exp(-1j*(m)*sim.orbital_Omega*time_ax) * dt) / (time_ax[-1]-time_ax[0])
                 pphi_m[r] = np.sum(pphi_phi_fourier[:, r] * np.exp(-1j*(m)*sim.orbital_Omega*time_ax) * dt) / (time_ax[-1]-time_ax[0])
 
-            d_tid_m_dr = np.zeros(len(tid_m))
+            d_tid_m_dr = np.zeros(len(tid_m), dtype = 'complex_')
             d_tid_m_dr[1:] = (tid_m[1:] - tid_m[:-1]) / (r_ax[1:] - r_ax[:-1])
             d_tid_m_dr[0] = d_tid_m_dr[1] - ((d_tid_m_dr[2]-d_tid_m_dr[1]) * ((r_ax[1]-r_ax[0])/(r_ax[2]-r_ax[1])))
 
@@ -520,12 +520,12 @@ class Fourier_Waves:
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
         ax = fig.add_subplot(gs[0, 0])
         for i, C in enumerate(C_m):
-            ax.plot(r_ax, C, f"C{i}-", label=f"({m[i]},{m[i]+1})")
+            ax.plot(r_ax, C, f"C{i}-", label=f"({wave_modes[i]},{wave_modes[i]+1})")
         ax.axvline(x= sim.three_one_res, color = "red", linestyle="--")
         ax.set_xlabel("r")
         ax.set_ylabel("Eccent Contribution")
         ax.legend(loc="upper left")
         
         plt.tight_layout()
-        plt.savefig("%s/%s%s%05d-%05d.png" % (self.savedir, self.dname, self.aname, times[0], times[-1]))
+        plt.savefig("%s/%s%s%05d-%05d%s.png" % (self.savedir, self.dname, self.aname, times[0], times[-1], sname))
         plt.close()
