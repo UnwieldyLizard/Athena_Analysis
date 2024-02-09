@@ -510,7 +510,7 @@ class Fourier_Waves:
             d_tid_m_dr[0] = d_tid_m_dr[1] - ((d_tid_m_dr[2]-d_tid_m_dr[1]) * ((r_ax[1]-r_ax[0])/(r_ax[2]-r_ax[1])))
 
             prefactor = (2*np.pi)*(2*np.pi)/(2*sim.gm1*M_fluid*sim.orbital_Omega)
-            expression = -1*m*tid_m(2j*pphi_m + pr_m) + 1j*r_ax*pphi_m*d_tid_m_dr
+            expression = -1*m*tid_m*(2j*pphi_m + pr_m) + 1j*r_ax*pphi_m*d_tid_m_dr
             C_m[i] = np.real_if_close(prefactor*(expression + np.conjugate(expression)))
 
             
