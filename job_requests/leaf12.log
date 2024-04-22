@@ -1,9 +1,9 @@
 Traceback (most recent call last):
   File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf12.py", line 12, in <module>
-    eccentricity_profile("Cyl_11_2", [2801, 100000], stress_test=True)
+    eccentricity_profile("Cyl_15_2", [3101, 100000], stress_test=True)
   File "/home/mohana/mhd_superhump/Athena_Analysis/branches/meccentricity_profile.py", line 150, in eccentricity_profile
     aa = Athena_Analysis(filename=filename, grid_type= coordinates)
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 48, in __init__
+  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 50, in __init__
     self.data = h5py.File(filename, 'r')
   File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/files.py", line 507, in __init__
     fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
@@ -12,51 +12,4 @@ Traceback (most recent call last):
   File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
   File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
   File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/home/mohana/mhd_superhump/data_raw/globus_dump/Cyl_11_2/disk.out1.03452.athdf', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf12.py", line 13, in <module>
-    
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/meccentricity_profile.py", line 150, in eccentricity_profile
-    aa = Athena_Analysis(filename=filename, grid_type= coordinates)
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 48, in __init__
-    self.data = h5py.File(filename, 'r')
-  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/files.py", line 507, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/files.py", line 220, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/home/mohana/mhd_superhump/data_raw/globus_dump/Cyl_13_2/disk.out1.03125.athdf', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf12.py", line 13, in <module>
-    
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/meccentricity_profile.py", line 231, in eccentricity_profile
-Traceback (most recent call last):
-  File "/home/mohana/mhd_superhump/Athena_Analysis/./leaf12.py", line 13, in <module>
-    
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/meccentricity_profile.py", line 231, in eccentricity_profile
-    evol_C = aa.vec_vol_integrate(C[key]) / total_mass
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 1609, in vec_vol_integrate
-    evol_C = aa.vec_vol_integrate(C[key]) / total_mass
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 1609, in vec_vol_integrate
-    return np.array([self.integrate(a, variable='All'), self.integrate(b, variable='All'), self.integrate(c, variable='All')])
-    return np.array([self.integrate(a, variable='All'), self.integrate(b, variable='All'), self.integrate(c, variable='All')])
-  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 1058, in integrate
-    self._axes()
-  File "/home/moh  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", li  File "/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py", line 140, in _axes
-    self.r_primitive = np.array(self.data["x1v"])
-  File "h5py/_objects.pyx", line 54, in h5py._obje    self.phi_primitive  File "h5py/_objects.pyx", li  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/dataset.py", line 1015, in __array__
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/dataset.py", line 1015, in __array__
-    self.read_direct(arr)
-  File "/home/mohana/miniconda3/lib/python3.9/site-packages/h5py/_hl/dataset.py", line 976, in read_direct
-    self.id.read(mspace, fspace, dest, dxpl=self._dxpl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5d.pyx", line 192, in h5py.h5d.DatasetID.read
-  File "h5py/_proxy.pyx", line 112, in h5py._proxy.dset_rw
-OSError: [Errno 70] Can't read data (file read failed: time = Mon Feb  5 23:25:44 2024
-, filename = '/home/mohana/mhd_superhump/data_raw/globus_dump/Cyl_15_2/disk.out1.02935.athdf', file descriptor = 8, errno = 70, error message = 'Communication error on send', buf = 0x561d56e876b0, total read size = 221184, bytes this sub-read = 221184, bytes actually read = 18446744073709551615, offset = 0)
+FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/home/mohana/mhd_superhump/data_raw/globus_dump/Cyl_15_2/disk.out1.04177.athdf', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)

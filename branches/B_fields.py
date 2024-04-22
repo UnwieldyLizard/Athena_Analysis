@@ -82,13 +82,13 @@ class B_fields():
         B_cart = aa.native_to_cart([aa.B_z, aa.B_phi, aa.B_r])
         B_horz = B_cart[0]*np.cos(rotation) + B_cart[1]*np.sin(rotation)
 
-        vert = 2
-        horz = 1
+        vert = 1
+        horz = 2
         gs = gridspec.GridSpec(vert, horz)
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
 
         ax_rho = fig.add_subplot(gs[0, 0])
-        ax_rhov = fig.add_subplot(gs[1, 0])
+        ax_rhov = fig.add_subplot(gs[0, 1])
 
         aa.midplane_colorplot(aa.rho, ax_rho, vbound=[1e-5,1e2], slicetype='z')#, rotation=rotation)
         aa.midplane_colorplot(aa.rho, ax_rhov, vbound=[1e-5,1e2], slicetype='vert')#, rotation=rotation)
@@ -100,7 +100,7 @@ class B_fields():
         plt.tight_layout()
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
-        fig.suptitle(f"orbit: {orbit:.2f}")
+        fig.suptitle(f"{self.dname} orbit: {orbit:.2f}")
         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
 

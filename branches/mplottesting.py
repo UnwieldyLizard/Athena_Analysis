@@ -7,7 +7,7 @@ import scipy.fft
 
 def main(dname, fnum_range, file_spacing=1):
     #aname = "_alpha"
-    aname = "_vertKE"
+    aname = "_deviation"
     #data_location = "/home/morgan/mnt/kitp/data/cvdisk/superhump_3d_alpha03"
     #data_location = "/home/morgan/mnt/kitp/data2/cvdisk/CVThin2/Data"
     data_location = file.data_loc + dname
@@ -23,122 +23,39 @@ def main(dname, fnum_range, file_spacing=1):
 
         aa = Athena_Analysis(filename=filename, grid_type=grid_type)
 
-        """
-        if i == 0:
-            aa.native_grid(get_r=True, get_phi=True)
-            r_grid = aa.r
-            phi_grid = aa.phi
-            phi_len = aa.phi_len
-            if grid_type == "Spherical":
-                theta_len = aa.theta_len
-            if grid_type == "Cylindrical":
-                z_len = aa.z_len
-            r_len = aa.r_len
-
-        if i != 0:
-            aa.r = r_grid
-            aa.phi = phi_grid
-            aa.phi_len = phi_len
-            if grid_type == "Spherical":
-                aa.theta_len = theta_len
-            if grid_type == "Cylindrical":
-                aa.z_len = z_len
-            aa.r_len = r_len
-        """
-
         #calculate stuff
-        #aa.get_primaries(get_press=True, get_vel_r=True, get_vel_phi=True)
-        #aa.get_potentials(get_companion_grav=True, get_accel=True)
-        #tidal = -1 * aa.gradient(aa.companion_grav_pot + aa.accel_pot, coordinates='Spherical')
-        #aa.get_primaries(get_rho=True)
-        #aa.native_grid(get_r=True, get_z=True, get_phi=True)
-        #drhodr = aa.differentiate(aa.rho, 'r')
-        #drhodtheta = aa.differentiate(aa.rho, 'theta')
-        #drhodphi = aa.differentiate(aa.rho, 'phi')
-        #drhodz = aa.differentiate(aa.rho, 'z')
+
+        aa.get_primaries(get_rho=True)
+        aa.native_grid(get_r=True)
+
+        deviations = np.copy(aa.rho)
+        means = (aa.integrate(aa.rho, "shell") / aa.integrate(1, "shell"))
+        
+        for n in range(aa.NumMeshBlocks):
+            for r in range(aa.r_len):
+                r_loc = int(np.searchsorted(aa.possible_r, aa.r_primitive[n, r]))
+                deviations[n,:,:,r] -= means[r_loc]
 
         #plot stuff 
         vert = 1
-        horz = 1
+        horz = 2
         gs = gridspec.GridSpec(vert, horz)
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
 
         ax1 = fig.add_subplot(gs[0, 0])
-        #ax2 = fig.add_subplot(gs[1, 0])
-        #ax3 = fig.add_subplot(gs[0, 1])
-        #ax4 = fig.add_subplot(gs[1, 1])
-        #ax5 = fig.add_subplot(gs[0, 2])
-        #ax6 = fig.add_subplot(gs[1, 2])
-
-        #rho_gridded = np.copy(aa.rho)
-        #rho_gridded[:,:,0,:] = 1000
-
-        #rho_griddedp = np.copy(aa.rho)
-        #rho_griddedp[:,0,:,:] = 1000
-        #aa.rho[:,:,0,:] = 10000
-        #aa.rho[:,0,:,:] = 10000
-        #aa.rho[:,:,:,0] = 10000
- 
-        #aa.get_potentials(get_accel=True, get_companion_grav=True)        
-        #tidal = -1 * aa.rho* aa.gradient(aa.companion_grav_pot + aa.accel_pot, coordinates=grid_type)
-        #tidal_c = aa.get_C_vec(tidal)
-        #tidal_c = aa.native_to_cart(tidal_c)
-        #tidal_c_mag = get_magnitude(tidal_c)
-
-        #lrl_native, lrl_cart = aa.get_lrl(components = True)        
-        #total_mass = aa.integrate(aa.rho, variable='all')
-        #rhoxlrl = [aa.rho*lrl_cart[0], aa.rho*lrl_cart[1], 0]
-        #total_rhoxlrl = aa.vec_vol_integrate(rhoxlrl)
-
-        #pos_x_lrl_bool = (rhoxlrl[0] >= 0)
-        #pos_x_lrl_y = np.multiply(pos_x_lrl_bool, rhoxlrl[1])
-        #neg_x_lrl_bool = np.logical_not(pos_x_lrl_bool)
-        #neg_x_lrl_y = np.multiply(neg_x_lrl_bool, rhoxlrl[1])
-        #lrl_orient = (np.arctan(pos_x_lrl_y / rhoxlrl[0]) % (2*np.pi)) + np.multiply(((np.pi + np.arctan(neg_x_lrl_y / rhoxlrl[0])) % (2*np.pi)), neg_x_lrl_bool)
-
-        #mass_weighted_eccent = total_rhoxlrl / total_mass
-
-        #aa.get_primaries(get_press=True, get_rho=True, get_vel_phi=True, get_vel_r=True)
-        #aa.get_Bfields()
-        #B_press = (aa.B_z**2 + aa.B_phi**2 + aa.B_r**2)/2
-        #alpha_Maxwell = (-2/3)*(aa.B_r*aa.B_phi)/(aa.press)
-            
-        # aa.get_primaries(get_press=True)
-        #aa.get_Bfields()
-
-        aa.get_primaries(get_rho = True, get_vel_z=True)
-        aa.native_grid(get_r=True)
-        specific_vertKE = 0.5 * aa.vel_z * aa.vel_z
-
+        ax2 = fig.add_subplot(gs[0, 1])
+        
         rotation = -1*sim.orbital_Omega * aa.time
 
-        ax1.plot(aa.possible_r, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
-        #aa.midplane_colorplot(specific_vertKE, ax2, slicetype='z', log=False, vbound=[1e-2,2e2], rotation=rotation)
-        #aa.midplane_colorplot(aa.rho, ax1, slicetype='z', log=True, vbound=[1e-5,1e2], rotation=rotation)
-        #aa.midplane_colorplot(specific_vertKE, ax4, slicetype='vert', log=False, vbound=[1e-2,2e2], rotation=rotation)
-        #aa.midplane_colorplot(aa.rho, ax3, slicetype='vert', log=True, vbound=[1e-5,1e2], rotation=rotation)
-        #aa.midplane_colorplot(aa.B_r**2 + aa.B_phi**2 + aa.B_z**2, ax3, slicetype='z', log=True, vbound=[1e-5,1e2])
-        #aa.midplane_colorplot(aa.B_r**2, ax4, slicetype='z', log=True, vbound=[1e-5,1e2])
-        #aa.midplane_colorplot(aa.B_phi**2, ax5, slicetype='z', log=True, vbound=[1e-5,1e2])
-        #aa.midplane_colorplot(aa.B_z**2, ax6, slicetype='z', log=True, vbound=[1e-5,1e2])
-        #aa.midplane_colorplot(tidal_c[1], ax3, slicetype='z', log=False, vbound=[-1e0,1e0])
-        #aa.midplane_colorplot(lrl_orient, ax4, slicetype='z', log=False, vbound=[0,2], angular=True) 
-        #aa.midplane_colorplot(aa.rho, ax2, log=True, vbound=[1e-5,1e1])
-        #aa.midplane_colorplot(drhodr, ax3, slicetype='y', log=False, vbound=[-2,2])
-        #aa.midplane_colorplot(drhodz, ax6, slicetype='y', log=False, vbound=[-2,2])
-        #aa.midplane_colorplot(drhodr, ax4, log=False, vbound=[-2,2])
-        #aa.midplane_colorplot(drhodphi, ax5, log=False, vbound=[-2,2])
-
+        aa.midplane_colorplot(aa.rho, ax1, rotation=rotation)
+        aa.midplane_colorplot(deviations, ax2, vbound=[-1,1], rotation=rotation)
+        #ax1.plot(aa.possible_r, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+       
         ax1.set_title(r"Density")
-        ax1.set_ylabel(r"$\rho$")
-        ax1.set_xlabel(r"r")
-        #ax2.set_title(r"Vertical Specific KE")
-        #ax3.set_title(r"B Pressure")
-        #ax4.set_title(r"B Pressure (r)")
-        #ax5.set_title(r"B Pressure ($\phi$)")
-        #x6.set_title(r"B Pressure (z)")
-        
-        #ax1.set_yticks(ticks=[-12, -6, 0, 6, 12], labels=[-0.5, -0.25, 'test', 0.25, 0.5])
+        ax2.set_title(r"Density Deviation From Shell Mean")
+        #ax1.set_ylabel(r"$\rho$")
+        #ax1.set_xlabel(r"r")
+       
 
         plt.tight_layout()
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
@@ -148,7 +65,7 @@ def main(dname, fnum_range, file_spacing=1):
         plt.close()
 
 
-main("Cyl_7", [300, 301])
+main("Cyl_15_2", [4000, 4003])
 
 def ff2_test():
     savedir = file.savedir + "test"

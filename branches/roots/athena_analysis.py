@@ -408,10 +408,10 @@ class Athena_Analysis():
         if get_rcc_face_areas == True and self.rccfa is None and self.gridtype == "Cylindrical":
             self.rcc_face_area = np.zeros(self.array_size)
             for i in range(self.NumMeshBlocks):
-                rpart = self.r_primitive[i]
-                ppart = (self.phif_primitive[i][1:] - self.phif_primitive[i][:-1])
-                zpart = (self.zf_primitive[i][1:] - self.zf_primitive[i][:-1])
-                self.rcc_face_area[i] = np.einsum("k,j,i->kji", zpart, ppart, rpart)
+                rpart = self.r[i] # self.r_primitive[i]
+                ppart = self.dphi[i] #(self.phif_primitive[i][1:] - self.phif_primitive[i][:-1])
+                zpart = self.dz[i] #(self.zf_primitive[i][1:] - self.zf_primitive[i][:-1])
+                self.rcc_face_area[i] = rpart * ppart * zpart # np.einsum("k,j,i->kji", zpart, ppart, rpart)
 
         self._axes()
         if get_r_face_areas == True and self.gridtype == "Spherical":
@@ -728,7 +728,7 @@ class Athena_Analysis():
             outer_bound = patches.Circle((0, 0), radius = float(self.data.attrs["RootGridX1"][1]), facecolor='none')
         ax.add_patch(outer_bound)
 
-        #angular colormap
+        #special colormaps
         if log == True and vmin < 0 and vmax > 0:
             cmap="PRGn"
         if angular == True:
@@ -920,7 +920,7 @@ class Athena_Analysis():
                 vmax = np.abs(vbound)
                 vmin = -vmax
 
-        mask = (magnitudes < (vmin + 0.0*(vmax-vmin)))
+        mask = (magnitudes < (vmin + 0.001*(vmax-vmin)))
         q_midplane[0][mask] = np.nan
         q_midplane[1][mask] = np.nan
 
@@ -941,7 +941,7 @@ class Athena_Analysis():
         
         ax.grid(False)
 
-        im = ax.streamplot(slice_x.T, slice_y.T, q_midplane[0].T, q_midplane[1].T, color=magnitudes.T, cmap=cmap, norm=norm, broken_streamlines=True) # readd after norm: clip_path=outer_bound,  clip_on=True
+        im = ax.streamplot(slice_x.T, slice_y.T, q_midplane[0].T, q_midplane[1].T, color=magnitudes.T, cmap=cmap, norm=norm, broken_streamlines=False) # readd after norm: clip_path=outer_bound,  clip_on=True
         #qk = ax.quiverkey(im, 0.9, 0.9, 300, r'$3000$', labelpos='E', coordinates='figure')
         ax.set_title(r"%s" % (""))
         if self.gridtype == 'Cylindrical' and (slicetype == 'y' or slicetype == 'vert'):
@@ -1031,7 +1031,7 @@ class Athena_Analysis():
             shell_intq = np.sum(az_intq, axis = 1)
         return shell_intq, az_intq
 
-    def integrate(self, q:list, variable:str, bounds:list=None, second_variable:str=None, second_bounds:list=None, third_bounds:list=None, intermediates:bool=False, RUSTY:bool=False)->list:
+    def integrate(self, q:list, variable:str, bounds:list=None, second_variable:str=None, second_bounds:list=None, third_bounds:list=None, intermediates:bool=False, RUSTY:bool=True)->list:
         """
         Integrates athena data and outputs an array of integrated data.
         KNOWN BUG WITH CYLINDRICAL PHI INTEGRAL IN Z-PHI-R PATHWAY (fixed?)
@@ -1102,8 +1102,15 @@ class Athena_Analysis():
             if (variable == "theta" and second_variable == "phi") or ((variable == "theta" and second_variable == "r") and third_bounds is not None):
                 raise Exception("You cannot integrate through theta before phi")
 
+        if intermediates and RUSTY:
+            warnings.warn("Rusty infrastructure can't handle intermediates, defaulting to python")
+            RUSTY = False
+
         if RUSTY:
-            q = np.array(q, dtype="float64")
+            if isinstance(q, int) or isinstance(q, float):
+                q = np.full(self.array_size, q, dtype="float64")
+            else:
+                q = np.array(q, dtype="float64")
             
             if second_variable is not None:
                 if third_bounds is not None:
@@ -1696,11 +1703,14 @@ class Athena_Analysis():
             #raise for improper use final pt: bad format
                 raise Exception("Sorry Athen Analysis doesn't recognize the format of your data. Please make sure its either an Athena data array, an array I created from this integrator, an integer, or a float. Other arrays of custom shape will not work ;(")
     
-    def vec_vol_integrate(self, v):
+    def vec_vol_integrate(self, v, radial_bounds=None):
         """
         Integrates every component of a vector over all space then return a vector of the three integrated components
         """
         [a, b, c] = v
+        if radial_bounds is not None:
+            return np.array([self.integrate(a, variable='phi', second_variable='z', third_bounds=radial_bounds), self.integrate(b, variable='phi', second_variable='z', third_bounds=radial_bounds), self.integrate(c, variable='phi', second_variable='z', third_bounds=radial_bounds)])
+
         return np.array([self.integrate(a, variable='All'), self.integrate(b, variable='All'), self.integrate(c, variable='All')])
     
     def vec_shell_integrate(self, v):
@@ -2038,6 +2048,53 @@ class Athena_Analysis():
             return total_flux, inner_flux, outer_flux
         else:
             return total_flux
+
+    def get_slice_flux(self, q, r_slicepoint):
+        """
+        Takes the flux of a quantity out of the boundaries. Bassically q * vr * da integrated through theta and phi at the boundary.
+
+        Parameters
+        ----------
+        q : list
+            The quantity of which flux will be calculated
+        intermediates : bool, default False
+            Determines if intermediate values are returned. If false only the total boundary flux is returned if true, total, inner and outer boundary flux are returned in that order.
+        """
+        self.native_grid(get_r = True, get_phi = True, get_z = True)
+        #flux at boundaries
+        flux = 0
+        self.get_primaries(get_vel_r=True)
+        '''
+        inner_boundary_bool = (self.r_primitive[:].any() == self.possible_r[0])
+        outer_boundary_bool = (self.r_primitive[:].any() == self.possible_r[-1])
+        if self.gridtype == 'Spherical':
+            in_boundary_thetaf = self.thetaf_primitive[inner_boundary_bool]
+            in_boumdary_phif = self.phif_primitive[inner_boundary_bool]
+            in_da = -(np.cos(in_boundary_thetaf[:,:+1]) - np.cos(in_boundary_theta[:,:])) * (in_boundary_phif[:,:+1] - in_boundary_phif[:,:]) * (self.possible_r[0] ** 2)
+            inner_flux
+        '''
+
+        r_slicepoint = self.possible_r[np.argmin(abs(self.possible_r - r_slicepoint))]
+
+        if self.gridtype == 'Spherical': 
+            for n in range(self.NumMeshBlocks):
+                for p in range(self.phi_len):
+                    for t in range(self.theta_len):
+                        for r in range(self.r_len):
+                            if self.r_primitive[n,r] == r_slicepoint:
+                                da = (np.cos(self.thetaf_primitive[n,t+1]) - np.cos(self.thetaf_primitive[n,t])) * (self.phif_primitive[n,p+1]-self.phif_primitive[n,p]) * (r_slicepoint ** 2)
+                                flux += (self.vel_r[n,p,t,r] * q[n,p,t,r] * da)
+        if self.gridtype == 'Cylindrical': 
+            for n in range(self.NumMeshBlocks):
+                for z in range(self.z_len):
+                    for p in range(self.phi_len):
+                        for r in range(self.r_len):
+                            if self.r_primitive[n,r] == r_slicepoint:
+                                da = (self.zf_primitive[n,z+1] - self.zf_primitive[n,z]) * (self.phif_primitive[n,p+1]-self.phif_primitive[n,p]) * (r_slicepoint)
+                                flux += (self.vel_r[n,z,p,r] * q[n,z,p,r] * da)
+        
+        return flux
+
 
     def get_boundary_int(self, q, intermediates=False):
         """

@@ -636,18 +636,11 @@ def eccentricity_radial_profile(dname, fnum):
         eccent_term[key] = growth
         eccent_term_phase[key] = prec
 
-    # #Boundary
-    # rhoxlrl_flux = np.array([aa.get_boundary_flux(rhoxlrl[0]), aa.get_boundary_flux(rhoxlrl[1]), 0])
-    # advect_evol = -1 * rhoxlrl_flux / total_mass
-    # adv_growth, adv_prec = vec.growth_prec(advect_evol, mass_weighted_eccent)
+    flux = aa.integrate(aa.radial_transport(aa.rho * vec.get_magnitude(lrl_cart)), "Shell")
 
-    # mass_flux = aa.get_boundary_flux(aa.rho)
-
-    # massd_evol = mass_flux * np.array(mass_weighted_eccent) / total_mass
-    # growth, prec = vec.growth_prec(massd_evol, mass_weighted_eccent)
-
-    # eccent_term_series["boundary"][j] = adv_growth + growth
-    # eccent_term_phase_series["boundary"][j] = adv_prec + prec
+    aa.get_primaries(get_vel_r=True)
+    aa.get_face_areas(get_rcc_face_areas=True)
+    flux2 = aa.integrate(aa.rcc_face_area * aa.vel_r * aa.rho * vec.get_magnitude(lrl_cart), "Shell")
 
     # set up plot
 
@@ -656,7 +649,7 @@ def eccentricity_radial_profile(dname, fnum):
     logging.info("\tplot")
 
     # growth plot
-    vert = 2
+    vert = 3
     horz = 1
     gs = gridspec.GridSpec(vert, horz)
     fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
@@ -677,9 +670,18 @@ def eccentricity_radial_profile(dname, fnum):
         ax.plot(r_axis, eccent_term[key], f"C{k}-", label=key)
     ax.set_xlabel("r")
     ax.set_ylabel("eccent contribution")
+    ax.set_ylim(top=25)
     #ax.set_title("mhd_3d time integrated sources")
     ax.legend(loc="upper left")
     #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[2, 0])
+    #ax.plot(r_axis, flux)
+    ax.plot(r_axis, flux2)
+    #ax.legend()
+    ax.set_xlabel("r")
+    ax.set_ylabel("Flux")
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
     plt.subplots_adjust(top=(1-0.01*(16/vert)))
@@ -800,6 +802,15 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
     pickle_flags = np.append(pickle_flags, fnum_limits[1])
     if restart == True:
         dname = dname + "_%ssrt" % fnum_range[0]
+
+    if MHD == True:
+        terms = ["tidal", "press", "boundary", "cutoff flux", "B", "vpress", "hpress", "vB", "hB"]
+        sum_terms = ["tidal", "press", "boundary", "cutoff flux", "B"]
+        MAGNETIC_FIELDS_ENABLED = True
+    else:
+        terms = ["tidal", "press", "visc", "vpress", "hpress", "tidal_vr", "flux", "cutoff flux"]
+        sum_terms = ["tidal", "press", "visc", "flux", "cutoff flux"]
+        MAGNETIC_FIELDS_ENABLED = False
     
     orbit_series = np.zeros(len(fnum_range))
     time_series = np.zeros(len(fnum_range))
@@ -807,6 +818,32 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
     in_eccent_phase_series = np.zeros(len(fnum_range))
     out_eccent_series = np.zeros(len(fnum_range))
     out_eccent_phase_series = np.zeros(len(fnum_range))
+
+    in_eccent_term_series = {}
+    in_integrated_eccent_term_series = {}
+    in_eccent_term_phase_series = {}
+    in_integrated_eccent_term_phase_series = {}
+    out_eccent_term_series = {}
+    out_integrated_eccent_term_series = {}
+    out_eccent_term_phase_series = {}
+    out_integrated_eccent_term_phase_series = {}
+
+    for key in terms:
+        in_eccent_term_series[key] = np.zeros(len(fnum_range))
+        in_integrated_eccent_term_series[key] = np.zeros(len(fnum_range))
+        in_eccent_term_phase_series[key] = np.zeros(len(fnum_range))
+        in_integrated_eccent_term_phase_series[key] = np.zeros(len(fnum_range))
+        out_eccent_term_series[key] = np.zeros(len(fnum_range))
+        out_integrated_eccent_term_series[key] = np.zeros(len(fnum_range))
+        out_eccent_term_phase_series[key] = np.zeros(len(fnum_range))
+        out_integrated_eccent_term_phase_series[key] = np.zeros(len(fnum_range))
+    in_integrated_phase_flips = np.zeros(len(fnum_range))
+    out_integrated_phase_flips = np.zeros(len(fnum_range))
+
+    in_integrated_eccent_sum_term_series = np.zeros(len(fnum_range))
+    in_integrated_eccent_phase_sum_term_series = np.zeros(len(fnum_range))
+    out_integrated_eccent_sum_term_series = np.zeros(len(fnum_range))
+    out_integrated_eccent_phase_sum_term_series = np.zeros(len(fnum_range))
 
     now = datetime.now()
     for i, fnum in enumerate(fnum_range):
@@ -837,12 +874,48 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
             logging.info(str(i_0))
             logging.info(str(len(fnum_range)))
 
+            for key in terms:
+                in_eccent_term_series[key] = np.zeros(len(fnum_range)+i_0)
+                in_integrated_eccent_term_series[key] = np.zeros(len(fnum_range)+i_0)
+                in_eccent_term_phase_series[key] = np.zeros(len(fnum_range)+i_0)
+                in_integrated_eccent_term_phase_series[key] = np.zeros(len(fnum_range)+i_0)
+                out_eccent_term_series[key] = np.zeros(len(fnum_range)+i_0)
+                out_integrated_eccent_term_series[key] = np.zeros(len(fnum_range)+i_0)
+                out_eccent_term_phase_series[key] = np.zeros(len(fnum_range)+i_0)
+                out_integrated_eccent_term_phase_series[key] = np.zeros(len(fnum_range)+i_0)
+            in_integrated_phase_flips = np.zeros(len(fnum_range)+i_0)
+            out_integrated_phase_flips = np.zeros(len(fnum_range)+i_0)
+
+            in_integrated_eccent_sum_term_series = np.zeros(len(fnum_range)+i_0)
+            in_integrated_eccent_phase_sum_term_series = np.zeros(len(fnum_range)+i_0)
+            out_integrated_eccent_sum_term_series = np.zeros(len(fnum_range)+i_0)
+            out_integrated_eccent_phase_sum_term_series = np.zeros(len(fnum_range)+i_0)
+
             time_series[:i_0+1] = data["time_series"]
             orbit_series[:i_0+1] = data["orbit_series"]
             in_eccent_series[:i_0+1] = data["in_eccent_series"]
             in_eccent_phase_series[:i_0+1] = data["in_eccent_phase_series"]
             out_eccent_series[:i_0+1] = data["out_eccent_series"]
             out_eccent_phase_series[:i_0+1] = data["out_eccent_phase_series"]
+            for key in terms:
+                in_eccent_term_series[key][:i_0+1] = data["in_eccent_term_series"][key][:i_0+1]
+                in_eccent_term_phase_series[key][:i_0+1] = data["in_eccent_term_phase_series"][key][:i_0+1]
+                in_integrated_eccent_term_series[key][:i_0+1] = data["in_integrated_eccent_term_series"][key][:i_0+1]
+                in_integrated_eccent_term_phase_series[key][:i_0+1] = data["in_integrated_eccent_term_phase_series"][key][:i_0+1]
+                out_eccent_term_series[key][:i_0+1] = data["out_eccent_term_series"][key][:i_0+1]
+                out_eccent_term_phase_series[key][:i_0+1] = data["out_eccent_term_phase_series"][key][:i_0+1]
+                out_integrated_eccent_term_series[key][:i_0+1] = data["out_integrated_eccent_term_series"][key][:i_0+1]
+                out_integrated_eccent_term_phase_series[key][:i_0+1] = data["out_integrated_eccent_term_phase_series"][key][:i_0+1]
+            in_integrated_eccent_sum_term_series[:i_0+1] = data["in_integrated_eccent_sum_term_series"]
+            in_integrated_eccent_phase_sum_term_series[:i_0+1] = data["in_integrated_eccent_phase_sum_term_series"]
+            in_integrated_phase_flips[:i_0+1] = data["in_integrated_phase_flips"][:i_0+1]
+            out_integrated_eccent_sum_term_series[:i_0+1] = data["out_integrated_eccent_sum_term_series"]
+            out_integrated_eccent_phase_sum_term_series[:i_0+1] = data["out_integrated_eccent_phase_sum_term_series"]
+            out_integrated_phase_flips[:i_0+1] = data["out_integrated_phase_flips"][:i_0+1]
+
+
+            in_old_mass_weighted_eccent = data["in_old_mass_weighted_eccent"]
+            out_old_mass_weighted_eccent = data["out_old_mass_weighted_eccent"]
             
             logging.info("set up done")
         elif i == 0:
@@ -863,14 +936,54 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
         time_series[j] = (aa.time)
 
         #Mass Weighted Eccentricity
-        aa.get_primaries(get_rho=True)
+        aa.get_primaries(get_rho=True, get_press=True)
+        aa.get_potentials(get_companion_grav=True, get_accel=True)
+        aa.build_vectors()
+        if MAGNETIC_FIELDS_ENABLED:
+            aa.get_Bfields()
+        force = {}
+
+        force["tidal"] = -1 * aa.rho * aa.gradient(aa.accel_pot + aa.companion_grav_pot, coordinates=coordinates)
+        
+        if MAGNETIC_FIELDS_ENABLED:
+            if aa.gridtype == "Sphereical":
+                logging.info("not implimented spherical stress calc in eccent prof")
+            if aa.gridtype == "Cylindrical":
+                B_sq = ((aa.B_z * aa.B_z) + (aa.B_phi * aa.B_phi) + (aa.B_r * aa.B_r))
+                max_stress = np.array([[aa.B_z * aa.B_z - (B_sq/2), aa.B_z * aa.B_phi             , aa.B_z * aa.B_r],
+                                        [aa.B_z * aa.B_phi        , aa.B_phi * aa.B_phi - (B_sq/2), aa.B_phi * aa.B_r],
+                                        [aa.B_z * aa.B_r          , aa.B_r * aa.B_phi             , aa.B_r * aa.B_r - (B_sq/2)]])
+                force["B"] = aa.tensor_divergence(max_stress)
+                force["vB"] = np.array(force["B"])
+                force["vB"][1, :] *= 0
+                force["vB"][2, :] *= 0
+            force["hB"] = force["B"] - force["vB"]
+        else:
+            force["visc"] = aa.alpha_visc(alpha)
+            logging.info("alpha visc in testing")
+
+        force["press"] = -1 * aa.gradient(aa.press, coordinates=coordinates)    
+        force["vpress"] = np.array(force["press"], dtype=np.float32)
+        if aa.gridtype == "Spherical":
+            force["vpress"][0, :] *= 0
+            force["vpress"][2, :] *= 0
+        elif aa.gridtype == "Cylindrical":
+            force["vpress"][1, :] *= 0
+            force["vpress"][2, :] *= 0
+        force["hpress"] = force["press"] - force["vpress"]
+
+        if i == 0:
+            aa.native_grid(get_r=True)
+            r_max = max(aa.possible_r)+1
+            r_min = min(aa.possible_r)-1
+            #overshoots endpoints by 1
+
         lrl_native, lrl_cart = aa.get_lrl(components = True)        
-        in_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[0, radial_cutoff])
-        out_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]) 
-        #over and undershooting endpoints should be fine
+        in_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[r_min, radial_cutoff])
+        out_mass = aa.integrate(aa.rho, variable='phi', second_variable='z', third_bounds=[radial_cutoff, r_max])
         rhoxlrl = np.array([aa.rho*lrl_cart[0], aa.rho*lrl_cart[1], np.zeros(aa.array_size)])
-        in_rhoxlrl = np.array([aa.integrate(rhoxlrl[0], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff]), aa.integrate(rhoxlrl[1], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff]), aa.integrate(rhoxlrl[2], variable='phi', second_variable='z', third_bounds=[0, radial_cutoff])])
-        out_rhoxlrl = np.array([aa.integrate(rhoxlrl[0], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]), aa.integrate(rhoxlrl[1], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100]), aa.integrate(rhoxlrl[2], variable='phi', second_variable='z', third_bounds=[radial_cutoff, 100])])
+        in_rhoxlrl = aa.vec_vol_integrate(rhoxlrl, radial_bounds=[r_min, radial_cutoff])
+        out_rhoxlrl = aa.vec_vol_integrate(rhoxlrl, radial_bounds=[radial_cutoff, r_max])
         in_mass_weighted_eccent = in_rhoxlrl / in_mass
         out_mass_weighted_eccent = out_rhoxlrl / out_mass
 
@@ -879,20 +992,143 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
         out_eccent_series[j] = vec.get_magnitude(out_mass_weighted_eccent)
         out_eccent_phase_series[j] = np.arctan2(out_mass_weighted_eccent[1], out_mass_weighted_eccent[0]) + sim.orbital_Omega * aa.time
         
+        # calculate C
+        aa.get_primaries(get_vel_r=True, get_vel_phi=True)
+        C = {}
+        for key in force:
+            C[key] = aa.get_C_vec(force[key])
+            C[key] = aa.native_to_cart(C[key])
+            in_evol_C = aa.vec_vol_integrate(C[key], radial_bounds=[r_min, radial_cutoff]) / in_mass
+            out_evol_C = aa.vec_vol_integrate(C[key], radial_bounds=[radial_cutoff, r_max]) / out_mass
+            
+            growth, prec = vec.growth_prec(in_evol_C, in_mass_weighted_eccent)
+            in_eccent_term_series[key][j] = growth
+            in_eccent_term_phase_series[key][j] = prec
+
+            growth, prec = vec.growth_prec(out_evol_C, out_mass_weighted_eccent)
+            out_eccent_term_series[key][j] = growth
+            out_eccent_term_phase_series[key][j] = prec
+
+        #Boundary
+        tot_flux_0, in_flux_0, out_flux_0 = aa.get_boundary_flux(rhoxlrl[0], intermediates=True)
+        tot_flux_1, in_flux_1, out_flux_1 = aa.get_boundary_flux(rhoxlrl[1], intermediates=True)
+        rhoxlrl_flux_outer_boundary = np.array([out_flux_0, out_flux_1, 0])
+        rhoxlrl_flux_inner_boundary = np.array([in_flux_0, in_flux_1, 0])
+        advect_evol_outer_boundary = -1 * rhoxlrl_flux_outer_boundary / out_mass
+        advect_evol_inner_boundary = -1 * rhoxlrl_flux_inner_boundary / in_mass
+        adv_growth_outer_boundary, adv_prec_outer_boundary = vec.growth_prec(advect_evol_outer_boundary, out_mass_weighted_eccent)
+        adv_growth_inner_boundary, adv_prec_inner_boundary = vec.growth_prec(advect_evol_inner_boundary, in_mass_weighted_eccent)
+
+        mass_flux_boundary, inner_mass_flux, outer_mass_flux = aa.get_boundary_flux(aa.rho, intermediates=True)
+
+        massd_evol_outer = outer_mass_flux * np.array(out_mass_weighted_eccent) / out_mass
+        massd_evol_inner = inner_mass_flux * np.array(in_mass_weighted_eccent) / in_mass
         
+        growth, prec = vec.growth_prec(massd_evol_inner, in_mass_weighted_eccent)
+        in_eccent_term_series["boundary"][j] = adv_growth_inner_boundary + growth
+        in_eccent_term_phase_series["boundary"][j] = adv_prec_inner_boundary + prec
+
+        growth, prec = vec.growth_prec(massd_evol_outer, out_mass_weighted_eccent)
+        out_eccent_term_series["boundary"][j] = adv_growth_outer_boundary + growth
+        out_eccent_term_phase_series["boundary"][j] = adv_prec_outer_boundary + prec
+
+        #Cutoff Boundary
+        rhoxlrl_flux_cutoff = np.array([aa.get_slice_flux(rhoxlrl[0], radial_cutoff), aa.get_slice_flux(rhoxlrl[1], radial_cutoff), 0])
+        out_advect_evol_cutoff = -1 * rhoxlrl_flux_cutoff / out_mass
+        in_advect_evol_cutoff = +1 * rhoxlrl_flux_cutoff / in_mass
+        out_adv_growth_cutoff, out_adv_prec_cutoff = vec.growth_prec(out_advect_evol_cutoff, out_mass_weighted_eccent)
+        in_adv_growth_cutoff, in_adv_prec_cutoff = vec.growth_prec(in_advect_evol_cutoff, in_mass_weighted_eccent)
+        
+        mass_flux = aa.get_slice_flux(aa.rho, radial_cutoff)
+
+        out_massd_evol_cutoff = -1 * mass_flux * np.array(out_mass_weighted_eccent) / out_mass
+        in_massd_evol_cutoff = mass_flux * np.array(in_mass_weighted_eccent) / in_mass
+        
+        growth, prec = vec.growth_prec(in_massd_evol_cutoff, in_mass_weighted_eccent)
+        in_eccent_term_series["cutoff flux"][j] = in_adv_growth_cutoff + growth
+        in_eccent_term_phase_series["cutoff flux"][j] = in_adv_prec_cutoff + prec
+
+        growth, prec = vec.growth_prec(out_massd_evol_cutoff, out_mass_weighted_eccent)
+        out_eccent_term_series["cutoff flux"][j] = out_adv_growth_cutoff + growth
+        out_eccent_term_phase_series["cutoff flux"][j] = out_adv_prec_cutoff + prec
+
+        #integrate values forward
+        in_total_eccent_increment = 0
+        in_total_phase_increment = 0
+        out_total_eccent_increment = 0
+        out_total_phase_increment = 0
+        for key in terms:
+            if j != 0:
+                eccent_increment = (time_series[j]-time_series[j-1])*(in_eccent_term_series[key][j] + in_eccent_term_series[key][j-1])/2
+                in_integrated_eccent_term_series[key][j] = in_integrated_eccent_term_series[key][j-1] + eccent_increment
+                phase_increment = (time_series[j]-time_series[j-1])*(in_eccent_term_phase_series[key][j] + in_eccent_term_phase_series[key][j-1])/2
+                in_integrated_eccent_term_phase_series[key][j] = in_integrated_eccent_term_phase_series[key][j-1] + phase_increment
+
+                if key in sum_terms:
+                    in_total_eccent_increment += eccent_increment
+                    in_total_phase_increment += phase_increment
+
+                eccent_increment = (time_series[j]-time_series[j-1])*(out_eccent_term_series[key][j] + out_eccent_term_series[key][j-1])/2
+                out_integrated_eccent_term_series[key][j] = out_integrated_eccent_term_series[key][j-1] + eccent_increment
+                phase_increment = (time_series[j]-time_series[j-1])*(out_eccent_term_phase_series[key][j] + out_eccent_term_phase_series[key][j-1])/2
+                out_integrated_eccent_term_phase_series[key][j] = out_integrated_eccent_term_phase_series[key][j-1] + phase_increment
+
+                if key in sum_terms:
+                    out_total_eccent_increment += eccent_increment
+                    out_total_phase_increment += phase_increment
+
+        if j == 0 or j == 1:
+            in_integrated_eccent_sum_term_series[i] = in_eccent_series[i]
+            in_integrated_eccent_phase_sum_term_series[i] = in_eccent_phase_series[i]
+            out_integrated_eccent_sum_term_series[i] = out_eccent_series[i]
+            out_integrated_eccent_phase_sum_term_series[i] = out_eccent_phase_series[i]
+        elif j != 0 and j != 1:
+            in_integrated_eccent_sum_term_series[j] = in_integrated_eccent_sum_term_series[j-1] + in_total_eccent_increment
+            out_integrated_eccent_sum_term_series[j] = out_integrated_eccent_sum_term_series[j-1] + out_total_eccent_increment
+            
+            #checking for flip and adjusting
+            if in_integrated_eccent_sum_term_series[j] < 0:
+                in_flip_phase = np.pi
+                in_integrated_eccent_sum_term_series[j] = np.abs(in_integrated_eccent_sum_term_series[j])
+                logging.info("auto-flipped phase")
+            elif (vec.ortho_dot(in_old_mass_weighted_eccent, in_mass_weighted_eccent)) < 0:
+                in_flip_phase = np.pi
+                logging.info("manually flipped phase")
+            else:
+                in_flip_phase = 0
+            in_integrated_phase_flips[j] = in_integrated_phase_flips[j-1] + in_flip_phase
+            in_integrated_eccent_phase_sum_term_series[j] = in_integrated_eccent_phase_sum_term_series[j-1] + in_total_phase_increment + in_flip_phase
+
+            if out_integrated_eccent_sum_term_series[j] < 0:
+                out_flip_phase = np.pi
+                out_integrated_eccent_sum_term_series[j] = np.abs(out_integrated_eccent_sum_term_series[j])
+                logging.info("auto-flipped phase")
+            elif (vec.ortho_dot(out_old_mass_weighted_eccent, out_mass_weighted_eccent)) < 0:
+                out_flip_phase = np.pi
+                logging.info("manually flipped phase")
+            else:
+                out_flip_phase = 0
+            out_integrated_phase_flips[j] = out_integrated_phase_flips[j-1] + out_flip_phase
+            out_integrated_eccent_phase_sum_term_series[j] = out_integrated_eccent_phase_sum_term_series[j-1] + out_total_phase_increment + out_flip_phase
+        
+        #memorising old eccentricity vector for comparison in next time step
+        in_old_mass_weighted_eccent = in_mass_weighted_eccent
+        out_old_mass_weighted_eccent = out_mass_weighted_eccent
+
         # set up plot
         if j % plot_every == 0 or i == 0:
             logging.info("\tplot")
 
             # growth plot
             vert = 2
-            horz = 1
+            horz = 2
             gs = gridspec.GridSpec(vert, horz)
             fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
 
             ax = fig.add_subplot(gs[0, 0])
-            ax.plot(orbit_series[:j+1], in_eccent_series[:j+1], "C2-", label="inner disk")
-            ax.plot(orbit_series[:j+1], out_eccent_series[:j+1], "C9-", label="outer disk")
+            ax.set_title(f"Inner Disk (inside r = {10})")
+            ax.plot(orbit_series[:j+1], in_eccent_series[:j+1], "C2-", label="measured")
+            ax.plot(orbit_series[:j+1], in_integrated_eccent_sum_term_series[:j+1], "C9--", label="sum terms")
             ax.set_xlabel("binary orbit")
             ax.set_ylabel("eccent magnitude")
             ax.set_ylim([1e-4, 1])
@@ -903,8 +1139,52 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
             ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
             ax = fig.add_subplot(gs[1, 0])
-            ax.plot(orbit_series[:j+1], wrap_phase(in_eccent_phase_series[:j+1]) / np.pi, "C3-", label="inner disk")
-            ax.plot(orbit_series[:j+1], wrap_phase(out_eccent_phase_series[:j+1]) / np.pi, "C1-", label="outer disk")
+            for k, key in enumerate(terms):
+                ax.plot(orbit_series[:j+1], in_integrated_eccent_term_series[key][:j+1], f"C{k}-", label=key)
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent contribution")
+            #ax.set_title("mhd_3d time integrated sources")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            ax = fig.add_subplot(gs[0, 1])
+            ax.set_title(f"Outer Disk (outside r = {10})")
+            ax.plot(orbit_series[:j+1], out_eccent_series[:j+1], "C2-", label="measured")
+            ax.plot(orbit_series[:j+1], out_integrated_eccent_sum_term_series[:j+1], "C9--", label="sum terms")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent magnitude")
+            ax.set_ylim([1e-4, 1])
+            ax.set_yscale("log")
+            #ax.set_title("mhd_3d eccent magnitude")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            ax = fig.add_subplot(gs[1, 1])
+            for k, key in enumerate(terms):
+                ax.plot(orbit_series[:j+1], out_integrated_eccent_term_series[key][:j+1], f"C{k}-", label=key)
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent contribution")
+            #ax.set_title("mhd_3d time integrated sources")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            plt.tight_layout()
+            plt.savefig("%s/%s_growth_%05d%s.png" % (savedir, dname, fnum, sname))
+            plt.close()
+
+            # precession plot
+            vert = 2
+            horz = 2
+            gs = gridspec.GridSpec(vert, horz)
+            fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
+
+            ax = fig.add_subplot(gs[0, 0])
+            ax.set_title(f"Inner Disk (inside r = {10})")
+            ax.plot(orbit_series[:j+1], wrap_phase(in_eccent_phase_series[:j+1]) / np.pi, "C3-", label="measured")
+            ax.plot(orbit_series[:j+1], (wrap_phase(in_integrated_eccent_phase_sum_term_series[:j+1])) / np.pi, "C1--", label="total source terms")
             ax.set_xlabel("binary orbit")
             ax.set_ylabel("eccent phase")
             ax.set_ylim([-1, 1])
@@ -915,8 +1195,48 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
             ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
             #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
+            ax = fig.add_subplot(gs[1, 0])
+            for k, key in enumerate(terms):
+                ax.plot(orbit_series[:j+1], (wrap_phase(in_integrated_eccent_term_phase_series[key][:j+1])) / np.pi, f"C{k}-", label=key)
+            ax.plot(orbit_series[:j+1], (wrap_phase(in_integrated_phase_flips[:j+1])) / np.pi, f"C3--", label="phase inversion")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent phase contribution")
+            ax.set_ylim([-1, 1])
+            ax.set_title("mhd_3d time integrated sources")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+            #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            ax = fig.add_subplot(gs[0, 1])
+            ax.set_title(f"Outer Disk (outside r = {10})")
+            ax.plot(orbit_series[:j+1], wrap_phase(out_eccent_phase_series[:j+1]) / np.pi, "C3-", label="measured")
+            ax.plot(orbit_series[:j+1], (wrap_phase(out_integrated_eccent_phase_sum_term_series[:j+1])) / np.pi, "C1--", label="total source terms")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent phase")
+            ax.set_ylim([-1, 1])
+            #ax.set_yscale("log")
+            ax.set_title("mhd_3d eccent phase")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+            #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+            ax = fig.add_subplot(gs[1, 1])
+            for k, key in enumerate(terms):
+                ax.plot(orbit_series[:j+1], (wrap_phase(out_integrated_eccent_term_phase_series[key][:j+1])) / np.pi, f"C{k}-", label=key)
+            ax.plot(orbit_series[:j+1], (wrap_phase(out_integrated_phase_flips[:j+1])) / np.pi, f"C3--", label="phase inversion")
+            ax.set_xlabel("binary orbit")
+            ax.set_ylabel("eccent phase contribution")
+            ax.set_ylim([-1, 1])
+            ax.set_title("mhd_3d time integrated sources")
+            ax.legend(loc="upper left")
+            #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+            ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))
+            #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
             plt.tight_layout()
-            plt.savefig("%s/%s_prec_%05d%s.png" % (savedir, dname, fnum, sname))
+            plt.savefig("%s/%s_prec_%05d.png" % (savedir, dname, fnum))
             plt.close()
 
         if (j % pickle_every == 0) or (fnum in pickle_flags):
@@ -930,6 +1250,22 @@ def split_profile(dname, fnum_limits, radial_cutoff=5, plot_every=100, pickle_ev
                     "in_eccent_phase_series": in_eccent_phase_series[:j+1],
                     "out_eccent_series": out_eccent_series[:j+1],
                     "out_eccent_phase_series": out_eccent_phase_series[:j+1],
+                    "in_eccent_term_series": in_eccent_term_series,
+                    "in_eccent_term_phase_series": in_eccent_term_phase_series,
+                    "out_eccent_term_series": out_eccent_term_series,
+                    "out_eccent_term_phase_series": out_eccent_term_phase_series,
+                    "in_integrated_eccent_term_series": in_integrated_eccent_term_series,
+                    "in_integrated_eccent_term_phase_series": in_integrated_eccent_term_phase_series,
+                    "out_integrated_eccent_term_series": out_integrated_eccent_term_series,
+                    "out_integrated_eccent_term_phase_series": out_integrated_eccent_term_phase_series,
+                    "in_integrated_eccent_sum_term_series": in_integrated_eccent_sum_term_series[:j+1],
+                    "in_integrated_eccent_phase_sum_term_series": in_integrated_eccent_phase_sum_term_series[:j+1],
+                    "out_integrated_eccent_sum_term_series": out_integrated_eccent_sum_term_series[:j+1],
+                    "out_integrated_eccent_phase_sum_term_series": out_integrated_eccent_phase_sum_term_series[:j+1],
+                    "in_integrated_phase_flips": in_integrated_phase_flips[:j+1],
+                    "in_old_mass_weighted_eccent": in_old_mass_weighted_eccent,
+                    "out_integrated_phase_flips": out_integrated_phase_flips[:j+1],
+                    "out_old_mass_weighted_eccent": out_old_mass_weighted_eccent,
                 }, pickle_file)
 
 def split_profile_replot(dname, fnum, pname="", aspect_ratio=2):

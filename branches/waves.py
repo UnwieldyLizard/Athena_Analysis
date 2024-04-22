@@ -452,8 +452,8 @@ class Fourier_Waves:
             plt.savefig("%s/%s%s%05d-%05d%s.png" % (self.savedir, self.dname, self.aname, times[0], times[-1], sname))
             plt.close()
 
-    def tidal_waves(self, fnum_range=None):
-        sname = "tidal_waves"
+    def tidal_waves(self, fnum_range=None, wave_modes=[3,2,1,0], sname=""):
+        sname = "tidal_waves"+sname
         if fnum_range is None:
             pickl_loc = self.pickle_loc
         else:
@@ -483,7 +483,6 @@ class Fourier_Waves:
 
         tides = ref.integrate(tidal_field, "z") / ref.integrate(1, "z")
 
-        wave_modes = [2]
         C_m = np.zeros((len(wave_modes), len(r_ax)))
         for i, m in enumerate(wave_modes):
             
@@ -513,18 +512,25 @@ class Fourier_Waves:
             expression = -1*m*tid_m*(2j*pphi_m + pr_m) + 1j*r_ax*pphi_m*d_tid_m_dr
             C_m[i] = np.real_if_close(prefactor*(expression + np.conjugate(expression)))
 
-            
+        C_sum = np.sum(C_m, axis=0)
+
         vert = 1
-        horz = 1
+        horz = 2
+
         gs = gridspec.GridSpec(vert, horz)
         fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
-        ax = fig.add_subplot(gs[0, 0])
+        
+        ax_wave = fig.add_subplot(gs[0, 0])
+        ax_sum = fig.add_subplot(gs[0, 1])
+
         for i, C in enumerate(C_m):
-            ax.plot(r_ax, C, f"C{i}-", label=f"({wave_modes[i]},{wave_modes[i]+1})")
-        ax.axvline(x= sim.three_one_res, color = "red", linestyle="--")
-        ax.set_xlabel("r")
-        ax.set_ylabel("Eccent Contribution")
-        ax.legend(loc="upper left")
+            ax_wave.plot(r_ax, C, f"C{i}-", label=f"({wave_modes[i]},{wave_modes[i]+1})")
+        ax_wave.axvline(x= sim.three_one_res, color = "red", linestyle="--")
+        ax_wave.set_xlabel("r")
+        ax_wave.set_ylabel("Eccent Contribution")
+        ax_wave.legend(loc="upper left")
+
+        ax_sum.plot(r_ax, C_sum, "C9--", label="Sum of Waves")
         
         plt.tight_layout()
         plt.savefig("%s/%s%s%05d-%05d%s.png" % (self.savedir, self.dname, self.aname, times[0], times[-1], sname))

@@ -19,7 +19,7 @@ class AngularMomentum():
         
         self.time = None
 
-    def profile(self, fnum, plot=True, flatten=False, reynolds=False, just_torques=False, vbound=1e2):
+    def profile(self, fnum, plot=True, flatten=False, reynolds=False, just_torques=False, spread=True, vbound=1e2):
         self.torques = {}
         self.total_torques = {}
         if self.is_MHD:
@@ -60,50 +60,84 @@ class AngularMomentum():
             normalization_weight = aa.integrate(1, "shell")
             for key in self.torque_list:
                 self.total_torques[key], self.torques[key], azimuthal_integral = aa.integrate(self.torques[key], "All", intermediates=True) #azimuthal will be ignored
-                self.torques[key] = self.torques[key] #/ normalization_weight
-            self.L_z = aa.integrate(self.L_z, "shell") #/ normalization_weight
+                self.torques[key] = self.torques[key] / normalization_weight
+            self.L_z = aa.integrate(self.L_z, "shell") / normalization_weight
 
             self.r_axis = aa.possible_r
 
             if plot:
 
                 if just_torques:
-                    #plot
-                    self.sname = "spread"
-                    vert_num = 3
-                    horz_num = 2
-                    gs = gridspec.GridSpec(vert_num, horz_num)
-                    fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
-                    
-                    ax_torques = fig.add_subplot(gs[0:2,:])
-                    ax_image = fig.add_subplot(gs[2, 0])
-                    ax_rho = fig.add_subplot(gs[2, 1])
+                    if spread:
+                        #plot
+                        self.sname = "spread"
+                        vert_num = 3
+                        horz_num = 2
+                        gs = gridspec.GridSpec(vert_num, horz_num)
+                        fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
+                        
+                        ax_torques = fig.add_subplot(gs[0:2,:])
+                        ax_image = fig.add_subplot(gs[2, 1])
+                        ax_rho = fig.add_subplot(gs[2, 0])
 
-                    for k, key in enumerate(self.torque_list): 
-                        if k == 0: c = 0 #skipping the ugly orange at c=1 LOL
-                        else: c = k + 1
-                        ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key)
-                        #ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
-                    ax_torques.set_ylabel(r"$\tau$")
-                    #ax_torques.set_ylim([-10000,10000])
-                    ax_torques.set_xlabel("r")
-                    ax_torques.set_title("Torques")
-                    ax_torques.legend()
+                        for k, key in enumerate(self.torque_list): 
+                            if k == 0: c = 0 #skipping the ugly orange at c=1 LOL
+                            else: c = k + 1
+                            ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key)
+                            #ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
+                        ax_torques.set_ylabel(r"$\tau$")
+                        ax_torques.set_ylim([-1600,500])
+                        ax_torques.set_xlabel("r")
+                        ax_torques.set_title("Torques")
+                        ax_torques.legend()
 
-                    ax_rho.plot(self.r_axis, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
-                    ax_rho.set_xlabel("r")
-                    ax_rho.set_ylabel(r"$\rho$")
-                    #ax_rho.set_ylim([-5,100])
-                    ax_rho.set_title("Density")
+                        ax_rho.plot(self.r_axis, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+                        ax_rho.set_xlabel("r")
+                        ax_rho.set_ylabel(r"$\rho$")
+                        ax_rho.set_ylim([-5,100])
+                        ax_rho.set_title("Density")
 
-                    rotation = -1*sim.orbital_Omega * aa.time
-                    aa.midplane_colorplot(aa.rho, ax_image, vbound=[1e-5,1e2], slicetype='z', rotation=rotation)
+                        rotation = -1*sim.orbital_Omega * aa.time
+                        aa.midplane_colorplot(aa.rho, ax_image, vbound=[1e-5,1e2], slicetype='z', rotation=rotation)
+                        ax_image.set_title("Density")
 
-                    plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
-                    orbit = (self.time / sim.binary_period)
-                    fig.suptitle(f"{self.dname} Orbit: {orbit:.2f}")
-                    plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
-                    plt.close()
+                        plt.subplots_adjust(top=(1-0.01*(20/vert_num)))
+                        orbit = (self.time / sim.binary_period)
+                        fig.suptitle(f"{self.dname} Orbit: {orbit:.2f}")
+                        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
+                        plt.close()
+                    else:
+                        #plot
+                        vert_num = 1
+                        horz_num = 2
+                        gs = gridspec.GridSpec(vert_num, horz_num)
+                        fig = plt.figure(figsize=(horz_num*3, vert_num*3), dpi=300)
+                        
+                        ax_torques = fig.add_subplot(gs[0,1])
+                        ax_rho = fig.add_subplot(gs[0,0])
+
+                        for k, key in enumerate(self.torque_list): 
+                            if k == 0: c = 0 #skipping the ugly orange at c=1 LOL
+                            else: c = k + 1
+                            ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key)
+                            #ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
+                        ax_torques.set_ylabel(r"$\tau$")
+                        ax_torques.set_ylim([-1600,500])
+                        ax_torques.set_xlabel("r")
+                        ax_torques.set_title("Torques")
+                        ax_torques.legend()
+
+                        ax_rho.plot(self.r_axis, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+                        ax_rho.set_xlabel("r")
+                        ax_rho.set_ylabel(r"$\rho$")
+                        ax_rho.set_ylim([-5,100])
+                        ax_rho.set_title("Density")
+
+                        plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
+                        orbit = (self.time / sim.binary_period)
+                        fig.suptitle(f"{self.dname} Orbit: {orbit:.2f}")
+                        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
+                        plt.close()
                 else:
                     self.plot(fnum)
 

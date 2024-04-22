@@ -1,10 +1,11 @@
 #from branches.angular_momentum import *
-#from branches.comparison import *
+from branches.comparison import *
+#from branches.B_fields import *
 #from branches.meccentricity_profile import *
 #from branches.eccentricity import*
 #from branches.profile import *
 #from branches.roots.misc_func import *
-from branches.roots.utility import *
+#from branches.roots.utility import *
 #from branches.momentum import *
 
 #eccentricity_radial_profile("Cyl_11", 2000)
@@ -24,11 +25,28 @@ def simple_loop(fnum_range, file_spacing, function):
 #A = AngularMomentum("Cyl_13_Stream")
 #simple_loop([1650, 1950], 1, A.profile)
 
-#U = Utility("Cyl_13", "_angular_momentum", "spread")
-#U.tar()
-#del U
+C = Comparison(["Cyl_7", "Cyl_11_2", "Cyl_13_2", "Cyl_15_2"], 4)
+#C.beta([0,5000])
+C.alpha_replot("full", log=False, ylims=[[-0.01,0.15],[-5,15],[-0.2,1]])
 
-#A = AngularMomentum("Cyl_13")
+'''
+filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + "Cyl_11_2", 0)
+aa = Athena_Analysis(filename=filename, grid_type="Cylindrical")
+aa.native_grid(get_r=True)
+aa.get_Bfields()
+aa.get_primaries(get_rho=True)
+B = aa.integrate(aa.rho, "shell")
+annulus_r = np.ma.masked_where(B < 1e-02, aa.possible_r)
+print(aa.possible_rf)
+print(annulus_r)
+'''
+
+#B = B_fields("Cyl_7")
+#B.profile(2000)
+#B = B_fields("Cyl_13_2")
+#B.alpha_plot(3124)
+#B = B_fields("Cyl_15_2")
+#B.alpha_plot(4176)
 
 #simple_loop([1500, 2000], 100, A.profile)
 
@@ -44,17 +62,13 @@ def simple_loop(fnum_range, file_spacing, function):
 
 #eccentricity_profile("Cyl_13_2", [0, 100000])
 #replot("Cyl_11_2", 3400)
-replot("Cyl_15_2", 3100, "_recomp", stress_test=True, recompute_sum=True)
+#replot("Cyl_15_2", 3100, "_recomp", stress_test=True, recompute_sum=True)
 
 #E = Eccentricity("Cyl_11_2")
 #dirty_loop([0, 3000], 1, E.plot, "Cyl_11_2", "_eccent")
 
-U = Utility("Cyl_11_2", "_eccent")
-U.peg()
-del U
-
-U = Utility("Cyl_13_2", "_eccent")
-U.peg()
+#U = Utility("Cyl_11_2", "_eccent")
+#U.peg()
 
 #eccentricity_plot("Cyl_15", [409, 10000], inertial=True)
 """

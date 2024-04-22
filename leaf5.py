@@ -13,7 +13,7 @@ F = Fourier_Waves("Cyl_11_2")
 #F.collect_momentum_density(start_orbit=60)
 #F.collect_rholrl(start_orbit=60)
 #F.plot_momentum_density(fnum_range=[2100, 2205], r_slicepoint=sim.three_one_res, bounds=[0, 1.5])
-F.tidal_waves(fnum_range=[2100, 2205])
+F.tidal_waves(fnum_range=[2100, 2205], wave_modes=[3,2,1,0], sname="")
 
 #momentum_plot("Cyl_14", [0, 10000], bar_widths=[20,30,5])
 
