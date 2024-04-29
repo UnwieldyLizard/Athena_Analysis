@@ -519,7 +519,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
     ax.set_ylabel("eccent phase")
     ax.set_ylim([-1, 1])
     #ax.set_yscale("log")
-    ax.set_title("mhd_3d eccent phase")
+    #ax.set_title("mhd_3d eccent phase")
     ax.legend(loc="upper left")
     #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))

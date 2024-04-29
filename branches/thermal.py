@@ -211,3 +211,40 @@ class Thermal():
         fig.suptitle(f"{self.dname} orbit: {orbit:.2f}")
         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
+
+    def temperature_profile(self, fnum):
+        self.sname = "temp"
+
+        filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
+        aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
+
+        aa.get_primaries(get_rho=True, get_press=True)
+        temp = (aa.press/aa.rho) * (1) #put R/m here is I figure it out
+
+        rad_temp = aa.integrate(temp, "shell") / aa.integrate(1, "shell")
+
+        vert = 1
+        horz = 2
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+
+        ax_temp = fig.add_subplot(gs[0, 0])
+        ax_rtemp = fig.add_subplot(gs[0, 1])
+        
+        aa.midplane_colorplot(temp, ax_temp)
+        ax_temp.set_title(r"$\left(\frac{R}{m}\right)T$")
+
+        ax_rtemp.plot(aa.possible_r, rad_temp)
+        ax_rtemp.plot(aa.possible_r, 65/aa.possible_r, linestyle="--", label=r"$\frac{65}{r}$")
+        ax_rtemp.set_title(r"$\left(\frac{R}{m}\right)T$")
+        ax_rtemp.set_xlabel("r")
+        ax_rtemp.legend()
+
+        plt.tight_layout()
+
+        orbit = (aa.time / sim.binary_period)
+        
+        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+        fig.suptitle(f"{self.dname} orbit: {orbit:.2f}")
+        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
+        plt.close()
