@@ -98,7 +98,7 @@ class Comparison():
                         "alpha_reyn" : alpha_reyn,
                     }, pickle_file)
     
-    def alpha_replot(self, file, sname = "", log=True, ylims=[None, None], cutoffmin=35):
+    def alpha_replot(self, file_name, sname = "", log=True, ylims=[None, None], cutoffmin=35):
         self.aname = "alpha"
         self.sname = sname
         self.savedir = self.savedir_stem + self.aname
@@ -106,7 +106,7 @@ class Comparison():
 
         orbit_ave_width = 1
 
-        with open("%s/%s%s.dat" % (self.pickldir, self.sname, file), "rb") as pickle_file:
+        with open("%s/%s%s.dat" % (self.pickldir, self.sname, file_name), "rb") as pickle_file:
             data = pickle.load(pickle_file)
 
         vert = 1
@@ -116,8 +116,8 @@ class Comparison():
         
         ax_m = fig.add_subplot(gs[0, 0])
         ax_m.set_xlabel("orbits")
-        ax_m.set_ylabel(r"$\alpha$")
-        ax_m.set_title(r"$\langle\alpha_M\rangle$")
+        ax_m.set_ylabel(r"$\alpha_M$")
+        #ax_m.set_title(r"$\langle\alpha_M\rangle$")
         if log:
             ax_m.set_yscale("log")
         if ylims[0] is not None:
@@ -129,7 +129,7 @@ class Comparison():
             arg = np.argmin(abs(data["orbits"][dname] - cutoffmin))
             filtered_alpha = np.ma.compressed(np.ma.masked_where(data["alpha_max"][dname][arg:] == np.inf, data["alpha_max"][dname][arg:]))
             ave = np.sum(filtered_alpha) / len(filtered_alpha)
-            ax_m.plot(data["orbits"][dname], box_ave, f"C{d}-", label=dname+f": {ave:.3f}", linewidth=1)
+            ax_m.plot(data["orbits"][dname], box_ave, f"C{d}-", label=file.display_name[dname]+f": {ave:.3f}", linewidth=1)
             ax_m.plot(data["orbits"][dname], np.full(data["orbits"][dname].shape ,ave), f"C{d}--", linewidth=1)
 
         ax_m.legend()
@@ -156,8 +156,8 @@ class Comparison():
 
         ax_rb = fig.add_subplot(gs[0, 1])
         ax_rb.set_xlabel("orbits")
-        ax_rb.set_ylabel(r"$\alpha$")
-        ax_rb.set_title(r"$\langle\alpha_R\rangle$")
+        ax_rb.set_ylabel(r"$\alpha_R$")
+        #ax_rb.set_title(r"$\langle\alpha_R\rangle$")
         if log:
             ax_rb.set_yscale("log")
         if ylims[2] is not None:
@@ -169,13 +169,13 @@ class Comparison():
             arg = np.argmin(abs(data["orbits"][dname] - cutoffmin))
             filtered_alpha = np.ma.compressed(np.ma.masked_where(data["alpha_reyn"][dname][arg:] == np.inf, data["alpha_reyn"][dname][arg:]))
             ave = np.sum(filtered_alpha) / len(filtered_alpha)
-            ax_rb.plot(data["orbits"][dname], box_ave, f"C{d}-", label=dname+f": {ave:.3f}", linewidth=0.5)
+            ax_rb.plot(data["orbits"][dname], box_ave, f"C{d}-", label=file.display_name[dname]+f": {ave:.3f}", linewidth=0.5)
             ax_rb.plot(data["orbits"][dname], np.full(data["orbits"][dname].shape ,ave), f"C{d}--", linewidth=1)
         
         ax_rb.legend()
 
         plt.tight_layout()
-        plt.savefig("%s/%s%s%s_replot.png" % (self.savedir, self.aname, file, self.sname))
+        plt.savefig("%s/%s%s%s_replot.png" % (self.savedir, self.aname, file_name, self.sname))
         plt.close()
 
     def box_average(self, data, filenum_width):
@@ -294,7 +294,7 @@ class Comparison():
                 "beta": beta,
             }, pickle_file)
 
-    def beta_replot(self, file, sname = "", log=True, ylims=None, cutoffmin=35):
+    def beta_replot(self, file_name, sname = "", log=True, ylims=None, cutoffmin=35):
         self.aname = "beta"
         self.sname = sname
         self.savedir = self.savedir_stem + self.aname
@@ -302,7 +302,7 @@ class Comparison():
 
         orbit_ave_width = 1
 
-        with open("%s/%s%s.dat" % (self.pickldir, self.sname, file), "rb") as pickle_file:
+        with open("%s/%s%s.dat" % (self.pickldir, self.sname, file_name), "rb") as pickle_file:
             data = pickle.load(pickle_file)
 
         vert = 1
@@ -313,7 +313,7 @@ class Comparison():
         ax = fig.add_subplot(gs[0, 0])
         ax.set_xlabel("orbits")
         ax.set_ylabel(r"$\beta$")
-        ax.set_title(r"$\langle\beta\rangle$")
+        #ax.set_title(r"$\langle\beta\rangle$")
         if log:
             ax.set_yscale("log")
         if ylims is not None:
@@ -325,10 +325,60 @@ class Comparison():
             arg = np.argmin(abs(data["orbits"][dname] - cutoffmin))
             filtered_beta = np.ma.compressed(np.ma.masked_where(data["beta"][dname][arg:] == np.inf, data["beta"][dname][arg:]))
             ave = np.sum(filtered_beta) / len(filtered_beta)
-            ax.plot(data["orbits"][dname], box_ave, f"C{d}-", label=dname+f": {ave:.2f}", linewidth=1)
+            ax.plot(data["orbits"][dname], box_ave, f"C{d}-", label=file.display_name[dname]+f": {ave:.2f}", linewidth=1)
             ax.plot(data["orbits"][dname], np.full(data["orbits"][dname].shape ,ave), f"C{d}--", linewidth=1)
         
         plt.legend()
         plt.tight_layout()
-        plt.savefig("%s/%s%s%s_replot.png" % (self.savedir, self.aname, file, self.sname))
+        plt.savefig("%s/%s%s%s_replot.png" % (self.savedir, self.aname, file_name, self.sname))
+        plt.close()
+    
+    def eccent_growth(self, aspect_ratio=2, sname="", stress_test=False):
+        self.aname = "eccent"
+        self.sname = sname
+        self.savedir = self.savedir_stem + self.aname
+        mkdir_if_not_exist(self.savedir)
+
+        vert = 2
+        horz = 1
+
+        if aspect_ratio >= 1:
+            vert_scale = 1
+            horz_scale = aspect_ratio
+        else:
+            vert_scale = 1 / aspect_ratio
+            horz_scale = 1
+            
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(horz_scale * horz*3, vert_scale * vert*3), dpi=300)
+        
+        ax = fig.add_subplot(gs[0, 0])
+        ax.set_xlabel("orbits")
+        ax.set_ylabel(r"$\langle e \rangle$")
+        ax.set_title("Eccentricity Evolution")
+        ax.set_yscale("log")
+        ax.set_ylim([1e-4, 1])
+        ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+        def filename(dname, filenum, stress=stress_test):
+            filelabel = "_pickle_%05d" % (filenum)
+            if stress:
+                return f"{file.savedir + dname}/{dname}_eccent_growth_prec_stress/pickles/{dname}{filelabel}.dat"
+            else:
+                return f"{file.savedir + dname}/{dname}_eccent_growth_prec/pickles/{dname}{filelabel}.dat"
+
+        for d, dname in enumerate(self.dnames):
+            filenum = 0
+            while (os.path.exists(filename(dname, filenum))):
+                filenum += 100
+            filenum -= 100
+
+            with open(filename(dname, filenum), "rb") as pickle_file:
+                data = pickle.load(pickle_file)
+            
+            ax.plot(data["orbit_series"], data["eccent_series"], f"C{d}-", label=file.display_name[dname], linewidth=1)
+
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig("%s/%s%s.png" % (self.savedir, self.aname, self.sname))
         plt.close()

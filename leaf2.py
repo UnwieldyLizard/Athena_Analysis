@@ -1,9 +1,10 @@
 #from branches.angular_momentum import *
+#from branches.comparison import *
 #from branches.momentum import *
 #from branches.B_fields import *
 #from branches.meccentricity_profile import *
-from branches.thermal import *
-#from branches.eccentricity import *
+#from branches.thermal import *
+from branches.eccentricity import *
 #from branches.roots.misc_func import *
 #from branches.roots.utility import *
 #from branches.profile import *
@@ -24,15 +25,24 @@ def simple_loop(fnum_range, file_spacing, function):
 #A = AngularMomentum("Cyl_13")
 #simple_loop([1650, 1950], 1, A.profile)
 
-T = Thermal("Cyl_11_2")
-T.temperature_profile(3000)
+#T = Thermal("Cyl_7")
+#T.temperature_profile(2000)
 
-#replot("Cyl_11_2", 3400, "_recomp", stress_test=True, recompute_sum=True)
+#replot("Cyl_15_2", 4100, "_recomp", stress_test=True, recompute_sum=True)
+#replot("Cyl_15_2", 4100, "", stress_test=True, recompute_sum=False)
+
+E = Eccentricity("Cyl_15_2")
+#E.plot(3451, sname="test:log")
+simple_loop([0, 10000], 1, E.plot)
+
+#C = Comparison(["Cyl_11_2", "Cyl_13_2", "Cyl_15_2"], 4)
+#C.eccent_growth(stress_test=True)
 
 #E = Eccentricity("Cyl_11_2")
 #dirty_loop([0, 10000], 1, E.plot, "Cyl_15_2", "_eccent")
 
 #B = B_fields("Cyl_11_2")
+#B.alpha_beta_radial(0)
 #B.evolution([0, 10000])
 #B.profile(3450)
 #B.vector_profile(3450)

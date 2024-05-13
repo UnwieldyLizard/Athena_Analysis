@@ -1,0 +1,6 @@
+/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py:757: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  cbar.ax.set_yticklabels(['0',r'$\frac{\pi}{2}$',r'$\pi$',r'$\frac{3\pi}{2}$',r'2$\pi$'])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py:757: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  cbar.ax.set_yticklabels(['0',r'$\frac{\pi}{2}$',r'$\pi$',r'$\frac{3\pi}{2}$',r'2$\pi$'])
+/home/mohana/mhd_superhump/Athena_Analysis/branches/roots/athena_analysis.py:757: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  cbar.ax.set_yticklabels(['0',r'$\frac{\pi}{2}$',r'$\pi$',r'$\frac{3\pi}{2}$',r'2$\pi$'])

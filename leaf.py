@@ -1,8 +1,8 @@
 #from branches.angular_momentum import *
-from branches.comparison import *
+#from branches.comparison import *
 #from branches.B_fields import *
 #from branches.meccentricity_profile import *
-#from branches.eccentricity import*
+from branches.eccentricity import*
 #from branches.profile import *
 #from branches.roots.misc_func import *
 #from branches.roots.utility import *
@@ -25,9 +25,13 @@ def simple_loop(fnum_range, file_spacing, function):
 #A = AngularMomentum("Cyl_13_Stream")
 #simple_loop([1650, 1950], 1, A.profile)
 
-C = Comparison(["Cyl_7", "Cyl_11_2", "Cyl_13_2", "Cyl_15_2"], 4)
+#C = Comparison(["Cyl_7", "Cyl_11_2", "Cyl_13_2", "Cyl_15_2"], 4)
 #C.beta([0,5000])
-C.alpha_replot("full", log=False, ylims=[[-0.01,0.15],[-5,15],[-0.2,1]])
+#C.alpha_replot("paper", log=False, ylims=[[-0.01,0.15],[-5,15],[-0.2,1]])
+
+E = Eccentricity("Cyl_13_2")
+#E.plot(3451, sname="test:log")
+simple_loop([0, 10000], 1, E.plot)
 
 '''
 filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + "Cyl_11_2", 0)

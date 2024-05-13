@@ -579,7 +579,7 @@ class Athena_Analysis():
                 newcolors[n][3] = 1
             self.angular_cmap = colors.ListedColormap(newcolors, "angular")
 
-    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False, cmap="viridis", norm=None, rotation = 0):
+    def midplane_colorplot(self, q, ax, slicetype='z', log=True, vbound=[1e-5, 1e2], angular=False, plot_COM=False, sci_notation=True, cmap="viridis", norm=None, rotation = 0, lin_threshhold=0.01):
         """
         Makes a color plot of a value over the midplane
 
@@ -715,7 +715,7 @@ class Athena_Analysis():
 
         if norm is None:
             if log == True and vmax > 0 and vmin < 0:
-                norm = SymLogNorm(linthresh=0.01, linscale=1, vmin=vmin, vmax=vmax)
+                norm = SymLogNorm(linthresh=lin_threshhold, linscale=1, vmin=vmin, vmax=vmax)
             elif log == True: 
                 norm = colors.LogNorm(vmin, vmax, clip)
             else:
@@ -751,6 +751,8 @@ class Athena_Analysis():
         ax.grid(False)
         cbar = plt.colorbar(im, cax=cax)
         cbar.ax.tick_params()
+        if not sci_notation:
+            cbar.ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
         if angular == True:
             cbar.ax.set_yticklabels(['0',r'$\frac{\pi}{2}$',r'$\pi$',r'$\frac{3\pi}{2}$',r'2$\pi$'])
 

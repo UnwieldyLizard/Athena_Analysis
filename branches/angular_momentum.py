@@ -103,7 +103,7 @@ class AngularMomentum():
 
                         plt.subplots_adjust(top=(1-0.01*(20/vert_num)))
                         orbit = (self.time / sim.binary_period)
-                        fig.suptitle(f"{self.dname} Orbit: {orbit:.2f}")
+                        fig.suptitle(f"{file.display_name[self.dname]} Orbit: {orbit:.2f}")
                         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
                         plt.close()
                     else:
@@ -135,7 +135,7 @@ class AngularMomentum():
 
                         plt.subplots_adjust(top=(1-0.01*(16/vert_num)))
                         orbit = (self.time / sim.binary_period)
-                        fig.suptitle(f"{self.dname} Orbit: {orbit:.2f}")
+                        fig.suptitle(f"{file.display_name[self.dname]} Orbit: {orbit:.2f}")
                         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
                         plt.close()
                 else:

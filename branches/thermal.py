@@ -235,7 +235,7 @@ class Thermal():
         ax_temp.set_title(r"$\left(\frac{R}{m}\right)T$")
 
         ax_rtemp.plot(aa.possible_r, rad_temp)
-        ax_rtemp.plot(aa.possible_r, 65/aa.possible_r, linestyle="--", label=r"$\frac{65}{r}$")
+        ax_rtemp.plot(aa.possible_r, 32.5/aa.possible_r, linestyle="--", label=r"$\frac{32.5}{r}$")
         ax_rtemp.set_title(r"$\left(\frac{R}{m}\right)T$")
         ax_rtemp.set_xlabel("r")
         ax_rtemp.legend()

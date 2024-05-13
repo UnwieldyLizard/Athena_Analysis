@@ -404,7 +404,7 @@ def eccentricity_profile(dname, fnum_limits, file_spacing=None, plot_every=100, 
                 }, pickle_file)
 
 
-def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_sum=False):
+def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_sum=False, trim=False):
     """
     replots data
 
@@ -424,6 +424,8 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
     aname = "_eccent_growth_prec" #a for analysis
     if stress_test:
         aname += "_stress"
+    if trim:
+        pname += "_trim"
     savedir = file.savedir + dname + "/" + dname + aname
     MHD = file.MHD[dname]
     logging.info("looking for file")
@@ -465,6 +467,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
         integrated_eccent_phase_sum_term_series += initial_offset_diff
     else:
         integrated_eccent_sum_term_series = data["integrated_eccent_sum_term_series"]
+        integrated_eccent_phase_sum_term_series = data["integrated_eccent_phase_sum_term_series"]
 
     # growth plot
     vert = 2
@@ -495,8 +498,12 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
     ax = fig.add_subplot(gs[1, 0])
-    for k, key in enumerate(terms):
-        ax.plot(data["orbit_series"], data["integrated_eccent_term_series"][key][:data["offset"]+1], f"C{k}-", label=key)
+    if trim:
+        for k, key in enumerate(sum_terms):
+            ax.plot(data["orbit_series"], data["integrated_eccent_term_series"][key][:data["offset"]+1], f"C{k}-", label=key)
+    else:
+        for k, key in enumerate(terms):
+            ax.plot(data["orbit_series"], data["integrated_eccent_term_series"][key][:data["offset"]+1], f"C{k}-", label=key)
     ax.set_xlabel("binary orbit")
     ax.set_ylabel("eccent contribution")
     #ax.set_title("mhd_3d time integrated sources")
@@ -526,13 +533,17 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
     #ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
     ax = fig.add_subplot(gs[1, 0])
-    for k, key in enumerate(terms):
-        ax.plot(data["orbit_series"], (wrap_phase(data["integrated_eccent_term_phase_series"][key][:data["offset"]+1])) / np.pi, f"C{k}-", label=key)
+    if trim:
+        for k, key in enumerate(sum_terms):
+            ax.plot(data["orbit_series"], (wrap_phase(data["integrated_eccent_term_phase_series"][key][:data["offset"]+1])) / np.pi, f"C{k}-", label=key)
+    else:
+        for k, key in enumerate(terms):
+            ax.plot(data["orbit_series"], (wrap_phase(data["integrated_eccent_term_phase_series"][key][:data["offset"]+1])) / np.pi, f"C{k}-", label=key)
     #ax.plot(data["orbit_series"], (wrap_phase(data["integrated_phase_flips"])) / np.pi, f"C3--", label="phase inversion")
     ax.set_xlabel("binary orbit")
     ax.set_ylabel("eccent phase contribution")
     ax.set_ylim([-1, 1])
-    ax.set_title("mhd_3d time integrated sources")
+    #ax.set_title("mhd_3d time integrated sources")
     ax.legend(loc="upper left")
     #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g $\pi$'))

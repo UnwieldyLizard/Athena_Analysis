@@ -23,6 +23,9 @@ class File:
         #set up dictionaries (YOU FILL THIS OUT)
         #for each item of the dictionary the key should be the dname and the value the grid type
         #grid types should be either "Spherical" or "Cylindrical"
+        
+        self.dnames = ["Cyl_1", "Cyl_2", "Cyl_6", "Cyl_7", "Cyl_11", "Cyl_11_2", "Cyl_12", "Cyl_13", "Cyl_13_Stream", "Cyl_13_2", "Cyl_14", "Cyl_15", "Cyl_15_2"]
+
         self.grid_types = {}
         self.grid_types["example_dname"] = "Cylindrical"
         self.grid_types["Cyl_1"] = "Cylindrical"
@@ -66,6 +69,16 @@ class File:
         self.alpha["Cyl_14"]= None
         self.alpha["Cyl_15"]= None
         self.alpha["Cyl_15_2"]= None
+
+        self.display_name = {}
+        for dname in self.dnames:
+            self.display_name[dname] = dname
+        self.display_name["Cyl_7"] = "Cyl_2"
+        self.display_name["Cyl_11_2"] = "Cyl_3"
+        self.display_name["Cyl_13_2"] = "Cyl_4"
+        self.display_name["Cyl_15_2"] = "Cyl_5"
+
+        #self.display_name["Cyl_11_2"] = "test"
 
         #my weird stuff (I told myself I'd remove this before sharing the github with anyone, if somehow you see this you can safely delete this block of code.)
         self.data_loc_D = "/mnt/d/Research_Data/"

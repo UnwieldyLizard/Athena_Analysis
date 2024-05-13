@@ -100,7 +100,7 @@ class B_fields():
         plt.tight_layout()
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
-        fig.suptitle(f"{self.dname} orbit: {orbit:.2f}")
+        fig.suptitle(f"{file.display_name[self.dname]} orbit: {orbit:.2f}")
         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
 
@@ -266,7 +266,7 @@ class B_fields():
         ax_rho.set_title("Density")
         ax_press.set_title("Magnetic Pressure")
 
-        aa.midplane_colorplot(alpha, ax_alpha, log=True, vbound=[-1e2, 1e2], slicetype='z', rotation=rotation)
+        aa.midplane_colorplot(alpha, ax_alpha, log=True, vbound=[-1e2, 1e2], slicetype='z', rotation=rotation, lin_threshhold=0.0001)
         aa.midplane_colorplot(aa.press / B_press, ax_beta, log=True, vbound=[1e-5, 1e3], slicetype='z', rotation=rotation)
         ax_alpha.set_title(r"$\alpha_M$")
         ax_beta.set_title(r"$\beta$")
@@ -274,7 +274,7 @@ class B_fields():
         plt.tight_layout()
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
-        fig.suptitle(f"{self.dname} orbit: {orbit:.2f}")
+        fig.suptitle(f"{file.display_name[self.dname]} orbit: {orbit:.2f}")
         plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, self.sname))
         plt.close()
 

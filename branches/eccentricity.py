@@ -134,7 +134,7 @@ class Eccentricity:
             gc.collect()
             #tracker.print_diff()
     
-    def plot(self, fnum, inertial=True):
+    def plot(self, fnum, inertial=True, sname=""):
         logging.info("fnum = %d" % fnum)
         filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
 
@@ -172,7 +172,7 @@ class Eccentricity:
         ax_rho = fig.add_subplot(gs[1, 1])
         ax_rhv = fig.add_subplot(gs[1, 0])
 
-        aa.midplane_colorplot(eccent, ax_mag, log=False, vbound=[0,1], slicetype='z', rotation=rotation)
+        aa.midplane_colorplot(eccent, ax_mag, log=True, vbound=[1e-2,1], slicetype='z', rotation=rotation, sci_notation=False)     
         aa.midplane_colorplot(lrl_orient, ax_dir, log=False, vbound=[0,2], angular=True, slicetype='z', rotation=rotation)
         aa.midplane_colorplot(aa.rho, ax_rho, plot_COM=False, vbound=[1e-5,1e2], slicetype='z', rotation=rotation)
         aa.midplane_colorplot(aa.rho, ax_rhv, plot_COM=False, vbound=[1e-5,1e2], slicetype='vert', rotation=rotation)
@@ -201,8 +201,8 @@ class Eccentricity:
         plt.tight_layout()
         orbit = (aa.time / sim.binary_period)
         plt.subplots_adjust(top=(1-0.01*(16/vert)))
-        fig.suptitle(f"{self.dname}  Orbit: {orbit:.2f}")
-        plt.savefig("%s/%s%s%05d.png" % (self.savedir, self.dname, self.aname, fnum))
+        fig.suptitle(f"{file.display_name[self.dname]}  Orbit: {orbit:.2f}")
+        plt.savefig("%s/%s%s%05d%s.png" % (self.savedir, self.dname, self.aname, fnum, sname))
         plt.close()
         del aa
         gc.collect()
