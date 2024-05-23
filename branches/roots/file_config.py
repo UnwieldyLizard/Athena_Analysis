@@ -22,9 +22,9 @@ class File:
 
         #set up dictionaries (YOU FILL THIS OUT)
         #for each item of the dictionary the key should be the dname and the value the grid type
-        #grid types should be either "Spherical" or "Cylindrical"
         
         self.dnames = ["Cyl_1", "Cyl_2", "Cyl_6", "Cyl_7", "Cyl_11", "Cyl_11_2", "Cyl_12", "Cyl_13", "Cyl_13_Stream", "Cyl_13_2", "Cyl_14", "Cyl_15", "Cyl_15_2"]
+        #grid types should be either "Spherical" or "Cylindrical"
 
         self.grid_types = {}
         self.grid_types["example_dname"] = "Cylindrical"
@@ -73,10 +73,11 @@ class File:
         self.display_name = {}
         for dname in self.dnames:
             self.display_name[dname] = dname
-        self.display_name["Cyl_7"] = "Cyl_2"
-        self.display_name["Cyl_11_2"] = "Cyl_3"
-        self.display_name["Cyl_13_2"] = "Cyl_4"
-        self.display_name["Cyl_15_2"] = "Cyl_5"
+        self.display_name["Cyl_1"] = r"Hydro-$\alpha$"
+        self.display_name["Cyl_7"] = "MHD-stream"
+        self.display_name["Cyl_11_2"] = r"MHD-$\beta$4"
+        self.display_name["Cyl_13_2"] = r"MHD-$\beta$3"
+        self.display_name["Cyl_15_2"] = r"MHD-$\beta$1"
 
         #self.display_name["Cyl_11_2"] = "test"
 

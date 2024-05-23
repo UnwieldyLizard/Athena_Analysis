@@ -2,10 +2,10 @@
 #from branches.comparison import *
 #from branches.B_fields import *
 #from branches.meccentricity_profile import *
-from branches.eccentricity import*
+#from branches.eccentricity import*
 #from branches.profile import *
 #from branches.roots.misc_func import *
-#from branches.roots.utility import *
+from branches.roots.utility import *
 #from branches.momentum import *
 
 #eccentricity_radial_profile("Cyl_11", 2000)
@@ -29,9 +29,12 @@ def simple_loop(fnum_range, file_spacing, function):
 #C.beta([0,5000])
 #C.alpha_replot("paper", log=False, ylims=[[-0.01,0.15],[-5,15],[-0.2,1]])
 
-E = Eccentricity("Cyl_13_2")
+#E = Eccentricity("Cyl_13_2")
 #E.plot(3451, sname="test:log")
-simple_loop([0, 10000], 1, E.plot)
+#simple_loop([0, 10000], 1, E.plot)
+
+U = Utility("Cyl_13_2", "_eccent")
+U.tar()
 
 '''
 filename = "%s/disk.out1.%05d.athdf" % (file.data_loc + "Cyl_11_2", 0)

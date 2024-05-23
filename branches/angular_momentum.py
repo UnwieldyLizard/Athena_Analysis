@@ -85,6 +85,7 @@ class AngularMomentum():
                             else: c = k + 1
                             ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key)
                             #ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
+                        ax_torques.axvline(sim.three_one_res, c="red", linestyle="dashed")#, label="Resonant Radius")
                         ax_torques.set_ylabel(r"$\tau$")
                         ax_torques.set_ylim([-1600,500])
                         ax_torques.set_xlabel("r")
@@ -92,6 +93,7 @@ class AngularMomentum():
                         ax_torques.legend()
 
                         ax_rho.plot(self.r_axis, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+                        ax_rho.axvline(sim.three_one_res, c="red", linestyle="dashed")#, label="Resonant Radius")
                         ax_rho.set_xlabel("r")
                         ax_rho.set_ylabel(r"$\rho$")
                         ax_rho.set_ylim([-5,100])
@@ -121,6 +123,7 @@ class AngularMomentum():
                             else: c = k + 1
                             ax_torques.plot(self.r_axis, self.torques[key], f"C{c}-", label=key)
                             #ax_torques.axhline(self.total_torques[key], c=f"C{c}", linestyle="dashed")
+                        ax_torques.axvline(sim.three_one_res, c="red", linestyle="dashed")#, label="Resonant Radius")
                         ax_torques.set_ylabel(r"$\tau$")
                         ax_torques.set_ylim([-1600,500])
                         ax_torques.set_xlabel("r")
@@ -128,6 +131,7 @@ class AngularMomentum():
                         ax_torques.legend()
 
                         ax_rho.plot(self.r_axis, aa.integrate(aa.rho, "shell")/aa.integrate(1, "shell"))
+                        ax_rho.axvline(sim.three_one_res, c="red", linestyle="dashed")#, label="Resonant Radius")
                         ax_rho.set_xlabel("r")
                         ax_rho.set_ylabel(r"$\rho$")
                         ax_rho.set_ylim([-5,100])

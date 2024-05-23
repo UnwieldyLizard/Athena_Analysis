@@ -142,7 +142,6 @@ class Eccentricity:
 
         aa.get_primaries(get_rho=True, get_vel_r=True, get_vel_phi=True)
 
-        arctan_start = datetime.now()
         eccent, lrl_orient = aa.get_lrl()
         '''
         #computing sums
@@ -207,6 +206,107 @@ class Eccentricity:
         del aa
         gc.collect()
         #tracker.print_diff()
+
+    def two_point_comparison(self, start_fnum=None, start_time=None, end_fnum=None, delta_t=None):
+        if start_fnum is None and start_time is None:
+            raise("You must proved either an explicit end point or a start time")
+        if start_fnum is None:
+            start_fnum = int(sim.filenums_per_orbit * start_time)
+        if end_fnum is None and delta_t is None:
+            raise("You must proved either an explicit end point or a duration")
+        if end_fnum is None:
+            end_fnum = int(start_fnum + sim.filenums_per_orbit * delta_t)
+
+        sname = f"Comp{start_fnum}-{end_fnum}"
+
+        start_point = Athena_Analysis(filename="%s/disk.out1.%05d.athdf" % (self.data_location, start_fnum), grid_type=self.grid_type)
+        end_point = Athena_Analysis(filename="%s/disk.out1.%05d.athdf" % (self.data_location, end_fnum), grid_type=self.grid_type)
+
+        start_point.get_primaries(get_rho=True, get_vel_r=True, get_vel_phi=True)
+        end_point.get_primaries(get_rho=True, get_vel_r=True, get_vel_phi=True)
+
+        start_eccent, start_lrl_orient = start_point.get_lrl()
+        end_eccent, end_lrl_orient = end_point.get_lrl()
+
+        diff = end_eccent - start_eccent
+
+        int_diff = start_point.integrate(diff * start_point.rho * end_point.rho, "shell") / start_point.integrate(start_point.rho * end_point.rho, "shell")
+  
+        vert = 1
+        horz = 1
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(horz*3, vert*3), dpi=300)
+
+        #'''
+        ax_mag = fig.add_subplot(gs[0, 0])
+        
+        ax_mag.plot(start_point.possible_r, int_diff)
+        #start_point.midplane_colorplot(end_eccent-start_eccent, ax_mag, log=True, vbound=[-1,1], slicetype='z', sci_notation=False)     
+        ax_mag.set_title(r"$\Delta$e between orbits"+f" {start_point.time/sim.binary_period:.3} - {end_point.time/sim.binary_period:.3}")
+        
+        plt.tight_layout()
+        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+        fig.suptitle(f"{file.display_name[self.dname]}")
+        plt.savefig("%s/%s%s%s.png" % (self.savedir, self.dname, self.aname, sname))
+        plt.close()
+        gc.collect()
+        #tracker.print_diff()
+
+    def flux(self, start_fnum, fnum_len=1):
+        end_fnum = start_fnum + fnum_len - 1
+
+        for i, fnum in enumerate(range(start_fnum, end_fnum+1, 1)):
+            filename = "%s/disk.out1.%05d.athdf" % (self.data_location, fnum)
+
+            aa = Athena_Analysis(filename=filename, grid_type=self.grid_type)
+            
+            aa.get_primaries(get_vel_r=True, get_rho=True)
+
+            if i == 0:
+                aa.native_grid(get_r=True)
+                r_axis = aa.possible_r
+                flux = np.zeros(len(aa.possible_r))
+                M_dot = np.zeros(len(aa.possible_r))
+
+            lrl_native, lrl_cart = aa.get_lrl(components = True)    
+
+            flux += aa.integrate(aa.vel_r * aa.rho * vec.get_magnitude(lrl_cart), "Shell") / (fnum_len)
+            M_dot += aa.integrate(aa.vel_r * aa.rho, "Shell") /(fnum_len)
+
+        # growth plot
+        vert = 2
+        horz = 1
+        gs = gridspec.GridSpec(vert, horz)
+        fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
+        
+        ax = fig.add_subplot(gs[0, 0])
+        #ax.plot(r_axis, flux)
+        ax.plot(r_axis, flux)
+        #ax.legend()
+        ax.set_xlabel("r")
+        ax.set_ylabel("Flux")
+        ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+        ax = fig.add_subplot(gs[1, 0])
+        #ax.plot(r_axis, flux)
+        ax.plot(r_axis, M_dot)
+        #ax.legend()
+        ax.set_xlabel("r")
+        ax.set_ylabel(r"$\dot{M}$")
+        ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+        plt.subplots_adjust(top=(1-0.01*(16/vert)))
+        start_orbit = start_fnum / sim.filenums_per_orbit
+        end_orbit = end_fnum / sim.filenums_per_orbit
+        if start_fnum == end_fnum:
+            title = file.display_name[self.dname]+f": orbit {start_orbit:.2f}"
+        else:
+            title = file.display_name[self.dname]+f": orbits {start_orbit:.2f} - {end_orbit:.2f}" 
+        plt.suptitle(title)
+        plt.tight_layout()
+        plt.savefig("%s/%s_flux_%05d-%05d.png" % (self.savedir, self.dname, start_fnum, end_fnum))
+        plt.close()
+
         
 #main()
 #os.system('umount ~/mnt/kitp')

@@ -333,7 +333,7 @@ class Comparison():
         plt.savefig("%s/%s%s%s_replot.png" % (self.savedir, self.aname, file_name, self.sname))
         plt.close()
     
-    def eccent_growth(self, aspect_ratio=2, sname="", stress_test=False):
+    def eccent_growth(self, aspect_ratio=2, sname="", stress_test=False, cutoffmin=35):
         self.aname = "eccent"
         self.sname = sname
         self.savedir = self.savedir_stem + self.aname
@@ -371,12 +371,20 @@ class Comparison():
             filenum = 0
             while (os.path.exists(filename(dname, filenum))):
                 filenum += 100
+            if filenum == 0:
+                raise("No data, check your file path and function parameters")
             filenum -= 100
+
+            filenum = 4989
 
             with open(filename(dname, filenum), "rb") as pickle_file:
                 data = pickle.load(pickle_file)
             
             ax.plot(data["orbit_series"], data["eccent_series"], f"C{d}-", label=file.display_name[dname], linewidth=1)
+
+            arg = np.argmin(abs(data["orbit_series"] - cutoffmin))
+            max_eccent = max(data["eccent_series"][arg:])
+            print(dname+"/"+file.display_name[dname]+f": {max_eccent:.3}")
 
         plt.legend()
         plt.tight_layout()

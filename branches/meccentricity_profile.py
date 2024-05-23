@@ -422,7 +422,7 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
         If it's MHD or not
     """
     aname = "_eccent_growth_prec" #a for analysis
-    if stress_test:
+    if stress_test and file.MHD[dname] == True:
         aname += "_stress"
     if trim:
         pname += "_trim"
@@ -465,6 +465,9 @@ def replot(dname, fnum, pname="", aspect_ratio=2, stress_test=False, recompute_s
 
         initial_offset_diff = data["eccent_phase_series"][5] - integrated_eccent_phase_sum_term_series[5]
         integrated_eccent_phase_sum_term_series += initial_offset_diff
+
+        initial_offset_diff = data["eccent_series"][5] - integrated_eccent_sum_term_series[5]
+        integrated_eccent_sum_term_series += initial_offset_diff
     else:
         integrated_eccent_sum_term_series = data["integrated_eccent_sum_term_series"]
         integrated_eccent_phase_sum_term_series = data["integrated_eccent_phase_sum_term_series"]
@@ -626,8 +629,9 @@ def eccentricity_radial_profile(dname, fnum):
     mass_weighted_eccent = shell_rhoxlrl / shell_mass
 
     vel = aa.native_to_cart(np.array([aa.vel_z, aa.vel_phi, aa.vel_r]))
-    eccent_flux = aa.rho * np.array([lrl_cart[0] * vel, lrl_cart[1] * vel, lrl_cart[2] * vel])  
-    flux_term = aa.vec_shell_integrate(-1 * np.array([aa.divergence(eccent_flux[0]), aa.divergence(eccent_flux[1]), aa.divergence(eccent_flux[2])])) / shell_mass
+    eccent_flux = aa.rho * np.array([lrl_cart[0] * vel, lrl_cart[1] * vel, lrl_cart[2] * vel])
+    div_flux = -1 * np.array([aa.divergence(eccent_flux[0]), aa.divergence(eccent_flux[1]), aa.divergence(eccent_flux[2])])
+    flux_term = aa.vec_shell_integrate(div_flux) / shell_mass
     growth, prec = vec.growth_prec(flux_term, mass_weighted_eccent)
     eccent_term["flux"] = growth
     eccent_term_phase["flux"] = prec
@@ -651,7 +655,8 @@ def eccentricity_radial_profile(dname, fnum):
 
     aa.get_primaries(get_vel_r=True)
     aa.get_face_areas(get_rcc_face_areas=True)
-    flux2 = aa.integrate(aa.rcc_face_area * aa.vel_r * aa.rho * vec.get_magnitude(lrl_cart), "Shell")
+    flux2 = aa.integrate(aa.vel_r * aa.rho * vec.get_magnitude(lrl_cart), "Shell") #aa.rcc_face_area *
+    M_dot = aa.integrate(aa.vel_r * aa.rho, "Shell") #aa.rcc_face_area *
 
     # set up plot
 
@@ -660,8 +665,8 @@ def eccentricity_radial_profile(dname, fnum):
     logging.info("\tplot")
 
     # growth plot
-    vert = 3
-    horz = 1
+    vert = 2
+    horz = 2
     gs = gridspec.GridSpec(vert, horz)
     fig = plt.figure(figsize=(2*horz*3, vert*3), dpi=300)
 
@@ -687,12 +692,20 @@ def eccentricity_radial_profile(dname, fnum):
     #ax.xaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
-    ax = fig.add_subplot(gs[2, 0])
+    ax = fig.add_subplot(gs[0, 1])
     #ax.plot(r_axis, flux)
     ax.plot(r_axis, flux2)
     #ax.legend()
     ax.set_xlabel("r")
     ax.set_ylabel("Flux")
+    ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
+
+    ax = fig.add_subplot(gs[1, 1])
+    #ax.plot(r_axis, flux)
+    ax.plot(r_axis, M_dot)
+    #ax.legend()
+    ax.set_xlabel("r")
+    ax.set_ylabel(r"$\dot{M}$")
     ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2g'))
 
     plt.subplots_adjust(top=(1-0.01*(16/vert)))

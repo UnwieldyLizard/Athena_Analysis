@@ -2,8 +2,8 @@
 #from branches.momentum import *
 #from branches.B_fields import *
 #from branches.meccentricity_profile import *
-#from branches.eccentricity import *
-from branches.profile import *
+from branches.eccentricity import *
+#from branches.profile import *
 #from branches.roots.misc_func import *
 #from branches.roots.utility import *
 #from branches.mplottesting import *
@@ -33,9 +33,20 @@ from branches.profile import *
 #append_dataset_alpha(["Cyl_14", "Cyl_15"], [0,10000])
 #replot_compare_alpha(2200, res=True)
 
+#eccentricity_radial_profile("Cyl_11_2", 500)
+
 #eccentricity_plot("Cyl_13", [0, 10000], inertial=True)
 #main("Cyl_13", [300, 301])#, 100)
 #main("Cyl_13", [703, 704])#, 100)
 
-P = Profile("Cyl_11_2")
-P.temporal_profile([0, 10000], r_slicepoint=sim.three_one_res)
+#P = Profile("Cyl_11_2")
+#P.temporal_profile([0, 10000], r_slicepoint=sim.three_one_res)
+
+E = Eccentricity("Cyl_7")
+E.plot(4440)
+#E.flux(3300, 100)
+#E.two_point_comparison(start_time=40, delta_t=20)
+#simple_loop([0, 10000], 4, E.plot)
+
+#U = Utility("Cyl_7", "_eccent")
+#U.tar()
